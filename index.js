@@ -31,7 +31,16 @@ function delay(milliseconds) {
     socket.cookies = sockcookies;
     next();
   });
-
+let data = [];
+  app.post("/data/add", async(req, res) => {
+var name = req.query.name;
+var val = req.query.value;
+    data.push({ name: name, value: val });
+    res.send("success");
+  });
+  app.post("/data/get", async(req, res) => {
+ res.json(data);
+  });
   
 app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 3)");
