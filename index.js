@@ -32,10 +32,12 @@ function delay(milliseconds) {
     next();
   });
 
-
   
 app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 3)");
+});
+app.get("/ex/template", async(req, res) => {
+res.render("index");
 });
 
 
