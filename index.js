@@ -46,7 +46,9 @@ app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 3)");
 });
 app.get("/admin", async(req, res) => {
-  res.render("admin");
+  res.render("admin", {
+    data: data
+  });
 });
 app.get("/ex/template", async(req, res) => {
   var temp = [
