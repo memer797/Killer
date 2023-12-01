@@ -45,6 +45,9 @@ var val = req.query.value;
 app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 3)");
 });
+app.get("/", async(req, res) => {
+  res.render("admin");
+});
 app.get("/ex/template", async(req, res) => {
   var temp = [
     {
