@@ -1,10 +1,13 @@
-Data Received: ↓
+Data Received: ↓ <br>
 <%= JSON.stringify(data)%>
-
+<br>
 Visualisation
 
 <% data.forEach(dt => { %>
 <br>
-<h6>Question: </h6>
+<h5>Question: <%= dt.name%> kisne bola?</h5>
+<br>
+<h6>Answer: <%= dt.author%> ne bola; </h6>
+<br>
 <br>
 <% }); %>
