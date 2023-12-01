@@ -15,7 +15,7 @@ Added Data ↓ <br>
 document.getElementById("addBtn").addEventListener("click", () => {
 var name = document.getElementById("name");
 var value = document.getElementById("val");
-if(!name || name.trim() === "" || !value || value.trim() === ""){ return; }
+if(!name || !value){ return; }
 name.value = "";
 value.value = "";
 var mainDiv = document.getElementById("mainDiv");
