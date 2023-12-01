@@ -11,6 +11,20 @@ Added Data ↓ <br>
 <input id="name"></input> <br>
 <input id="val"></input> <br>
 <button id="addBtn">Add Data</button>
+<script>
+document.getElementById("addBtn").addEventListener("click", () => {
+var name = document.getElementById("name");
+var value = document.getElementById("val");
+if(!name || name.trim() === "" || !value || value.trim() === ""){ return; }
+name.value = "";
+value.value = "";
+var mainDiv = document.getElementById("mainDiv");
+var newDiv = document.createElement("div");
+var htmlTemplate = `${name} = ${val}`;
+newDiv.innerHTML = htmlTemplate;
+mainDiv.appendChild(newDiv);
 
+});
+</script>
 </body>
 </html>
