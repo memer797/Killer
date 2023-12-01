@@ -6,6 +6,9 @@
 <body>
 Added Data ↓ <br>
 <div id="mainDiv">
+<% data.forEach(dtaa => { %>
+<%= dtaa.name%> = <%= dtaa.value%>
+<% }); %>
 </div>
 <br>
 <input id="name"></input> <br>
