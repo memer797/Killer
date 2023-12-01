@@ -1,2 +1,10 @@
 Data Received: ↓
-<%= JSON.parse(JSON.stringify(data))%>
+<%= JSON.stringify(data)%>
+
+Visualisation
+
+<% data.forEach(dt => { %>
+<br>
+<h6>Question: </h6>
+<br>
+<% }); %>
