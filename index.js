@@ -20,10 +20,8 @@ function delay(milliseconds) {
       maxAge: 900000 * 4 * 24 * 5,
       secure: true,
     }))
-    .use(bodyParser.json())
+    .use(express.urlencoded({ extended: false }))
     .use(express.json())
-    .use(express.urlencoded({ extended: true }))
-    .use(bodyParser.urlencoded({ extended: true }))
     .engine("html", require("ejs").renderFile)
     .set("view engine", "ejs")
     .use(express.static(path.join(__dirname, "/public")))
