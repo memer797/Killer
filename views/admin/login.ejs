@@ -71,6 +71,15 @@ return;
 if(!password || password.trim() === ""){
 return;
 }
+fetch("/admin/login", {
+
+}).then(res => res.text()).then(d => {
+if(d == true){
+return window.location.href = "/admin/panel";
+}
+document.getElementById("username").value = "";
+document.getElementById("password").value = "";
+}).catch():
     }
   </script>
 
