@@ -61,7 +61,12 @@ var pwd = req.body.password;
  return res.send(false);
  }
  if(usr == "usr" || pwd == "pwd"){
-
+res.cookie('admin_key', adminLoginKey, {
+      maxAge: 1000 * 3600 * 12,
+      secure: true,
+      httpOnly: true,
+    });
+  return res.send(true);
  }
  res.send(false);
 });
