@@ -46,6 +46,9 @@ app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 9)");
 });
 app.get("/admin/panel", async(req, res) => {
+ if(!req.cookies.admin_key || req.cookies.admin_key !== "x"){
+ return res.render("admin/login");
+ }
   res.render("admin", {
     data: data
   });
