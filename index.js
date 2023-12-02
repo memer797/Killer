@@ -1,10 +1,12 @@
 //express body-parser path cookie-parser socket.io ejs cors mongoose web-push
 async function RunMainCode(){
+  
 function delay(milliseconds) {
   return new Promise(resolve => {
     setTimeout(resolve, milliseconds);
   });
 };
+  require("./crash.handler.js");
   const express = require("express"),
     bodyParser = require('body-parser'),
     path = require("path"),
