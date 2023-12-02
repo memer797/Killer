@@ -1,4 +1,5 @@
 async function RunMainCode(){
+ var adminLoginKey = "✓";
  require("./DB/mongo.connect.js");
 function delay(milliseconds) {
   return new Promise(resolve => {
@@ -46,14 +47,24 @@ app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 9)");
 });
 app.get("/admin/panel", async(req, res) => {
- if(!req.cookies.admin_key || req.cookies.admin_key !== "x"){
+ if(!req.cookies.admin_key || req.cookies.admin_key !== adminLoginKey){
  return res.render("admin/login");
  }
   res.render("admin", {
     data: data
   });
 });
+app.post("/admin/login", async(req, res) => {
+var usr = req.body.user;
+var pwd = req.body.password;
+ if(!usr || !pwd){
+ return res.send(false);
+ }
+ if(usr == "usr" || pwd == "pwd"){
 
+ }
+ res.send(false);
+});
 
 setTimeout(async() => {
 // error_hain_ye
