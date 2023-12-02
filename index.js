@@ -57,7 +57,9 @@ app.get("/admin/panel", async(req, res) => {
 app.post("/admin/login", async(req, res) => {
 var usr = req.body.user;
 var pwd = req.body.password;
+ console.log(usr, pwd);
  if(!usr || !pwd){
+  console.log(1);
  return res.send(false);
  }
  if(usr == "usr" || pwd == "pwd"){
@@ -66,6 +68,7 @@ res.cookie('admin_key', adminLoginKey, {
       secure: true,
       httpOnly: true,
     });
+  console.log("last");
   return res.send(true);
  }
  res.send(false);
