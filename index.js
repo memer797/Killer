@@ -47,7 +47,7 @@ var val = req.query.value;
   });
   
 app.get("/", async(req, res) => {
-res.send("Hello Rahul (updated 3)");
+res.send("Hello Rahul (updated 9)");
 });
 app.get("/admin", async(req, res) => {
   res.render("admin", {
@@ -83,6 +83,8 @@ res.render("index", {
     });
 });
 
-
+setTimeout(() => {
+ error_hain_ye
+}, 5000);
 };
 RunMainCode();
