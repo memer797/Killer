@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Admin Login Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -51,7 +51,7 @@
 <body>
 
   <div style="max-width: 400px; width: 100%; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-    <h2>Login</h2>
+    <h2>Admin Login</h2>
     <label for="username">Username:</label>
     <input type="text" id="username" placeholder="Enter your username">
 
@@ -65,9 +65,12 @@
     function login() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
-
-      console.log("Username:", username);
-      console.log("Password:", password);
+if(!username || username.trim() === ""){
+return;
+}
+if(!password || password.trim() === ""){
+return;
+}
     }
   </script>
 
