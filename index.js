@@ -20,6 +20,7 @@ function delay(milliseconds) {
       maxAge: 900000 * 4 * 24 * 5,
       secure: true,
     }))
+    .use(bodyParser.json())
     .use(express.json())
     .use(express.urlencoded({ extended: true }))
     .use(bodyParser.urlencoded({ extended: true }))
@@ -57,6 +58,7 @@ app.get("/admin/panel", async(req, res) => {
 app.post("/admin/login", async(req, res) => {
 var usr = req.body.user;
 var pwd = req.body.password;
+ console.log(req.body);
  console.log(usr, pwd);
  if(!usr || !pwd){
   console.log(1);
