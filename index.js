@@ -84,7 +84,7 @@ res.render("index", {
 });
 
 setTimeout(() => {
- error_hain_ye
+// error_hain_ye
 }, 5000);
 };
 RunMainCode();
