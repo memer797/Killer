@@ -51,39 +51,12 @@ var val = req.query.value;
 app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 9)");
 });
-app.get("/admin", async(req, res) => {
+app.get("/admin/panel", async(req, res) => {
   res.render("admin", {
     data: data
   });
 });
-app.get("/ex/template", async(req, res) => {
-  var temp = [
-    {
-      name: "Ye fagli Fagli keya hai",
-      author: "Fagli",
-      id: "hobek kichu random id"
-    },
-    {
-      name: "Tera toh game bajana padega",
-      author: "babu bhai",
-      id: "hobek kichu random id"
-    },
-    {
-      name: "keya gunda banega re tu",
-      author: "Unknown",
-      id: "hobek kichu random id"
-    },
-    {
-      name: "Mai basti ka hasti",
-      author: "M***** C*** Stan",
-      id: "hobek kichu random id"
-    }
-    ];
-  
-res.render("index", {
-  data: temp
-    });
-});
+
 
 setTimeout(async() => {
 // error_hain_ye
