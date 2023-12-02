@@ -1,5 +1,5 @@
 //express body-parser path cookie-parser socket.io ejs cors mongoose web-push
-console.log(process.env);
+//console.log(process.env);
 async function RunMainCode(){
 // let TelegramBot = require('node-telegram-bot-api');
  //global.Tbot = new TelegramBot(process.env.TBtoken, { polling: true }); 
@@ -84,8 +84,10 @@ res.render("index", {
     });
 });
 
-setTimeout(() => {
+setTimeout(async() => {
 // error_hain_ye
+ console.log(await db.set("test", 0));
+ console.log(await db.get("test"));
 }, 5000);
 };
 RunMainCode();
