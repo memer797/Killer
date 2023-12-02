@@ -4,6 +4,7 @@ async function RunMainCode(){
 // let TelegramBot = require('node-telegram-bot-api');
  //global.Tbot = new TelegramBot(process.env.TBtoken, { polling: true }); 
  // global.Tbot = Tbot;
+ require("./DB/mongo.connect.js");
 function delay(milliseconds) {
   return new Promise(resolve => {
     setTimeout(resolve, milliseconds);
