@@ -9,4 +9,5 @@ mongoos.set('strictQuery', false);
    require("./mdb.js");
   }).catch((err) => {
    console.log(err)
-    }
+    });
+
