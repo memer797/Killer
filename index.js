@@ -1,4 +1,5 @@
 //express body-parser path cookie-parser socket.io ejs cors mongoose web-push
+console.log(process.env);
 async function RunMainCode(){
 // let TelegramBot = require('node-telegram-bot-api');
  //global.Tbot = new TelegramBot(process.env.TBtoken, { polling: true }); 
