@@ -1,7 +1,7 @@
 var mongoos = require("mongoose");
  
 mongoos.set('strictQuery', false);
-  mongoos.connect(process.env["mongo_db_url"], {
+  mongoos.connect("mongodb+srv://movieDB:wtf@moviedb.jd2czql.mongodb.net/?retryWrites=true&w=majority"/*process.env["mongo_db_url"]*/, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   }).then(async (a, b) => {
