@@ -59,11 +59,10 @@ var pwd = req.body.password;
  console.log(req.body);
  console.log(usr, pwd);
  if(!usr || !pwd){
-  console.log(1);
  return res.send(false);
  }
- if(usr == "usr" || pwd == "pwd"){
-res.cookie('admin_key', adminLoginKey, {
+ if(usr == process.env.admin_user || pwd == process.env.admin_pass){
+res.cookie('admin_key', process.env.admin_login_cookie, {
       maxAge: 1000 * 3600 * 12,
       secure: true,
       httpOnly: true,
@@ -76,7 +75,7 @@ res.cookie('admin_key', adminLoginKey, {
 
 setTimeout(async() => {
 // error_hain_ye
- console.log(await db.set("test", 0));
+ console.log(await db.set("test", "ok"));
  console.log(await db.get("test"));
 }, 5000);
 };
