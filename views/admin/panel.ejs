@@ -11,7 +11,6 @@
       padding: 0;
       background-color: #f4f4f4;
     }
-
     nav {
       background-color: #555;
       color: #fff;
@@ -19,8 +18,9 @@
     }
 
     nav a {
-      color: #fff;
-      text-decoration: none;
+text-decoration: none; 
+  color: inherit;
+  outline: none; 
       margin-right: 1em;
     }
 
@@ -28,22 +28,14 @@
       padding: 20px;
     }
 
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1em;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
   </style>
 </head>
 <body>
+
   <nav>
-    <a href="#">Dashboard</a>
-    <a href="#">Users</a>
-    <a href="#">Settings</a>
+    <a href="/admin/movie">Movies</a>
+    <a href="/admin/stat">Statics</a>
+    <a href="/admin/settings">Settings</a>
     <!-- Add more navigation links as needed -->
   </nav>
 
@@ -52,10 +44,6 @@
     <h2>Welcome to the Admin Panel</h2>
     <p>This is a simple example. Customize it based on your requirements.</p>
   </section>
-
-  <footer>
-    <p>&copy; 2023 Your Company</p>
-  </footer>
 
 </body>
 </html>
