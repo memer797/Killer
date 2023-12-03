@@ -1,6 +1,5 @@
 async function RunMainCode(){
- var adminLoginKey = "✓";
- require("./DB/mongo.connect.js");
+require("./DB/mongo.connect.js");
 function delay(milliseconds) {
   return new Promise(resolve => {
     setTimeout(resolve, milliseconds);
@@ -13,9 +12,7 @@ function delay(milliseconds) {
     app = express(),
     server = app.listen(3000),
     io = require('socket.io')(server);
-
-  //using modules
-  app
+ app
     .use(cookieParser("putaMexican_WtfItsASong", {
       maxAge: 900000 * 4 * 24 * 5,
       secure: true,
@@ -31,6 +28,13 @@ function delay(milliseconds) {
     socket.cookies = sockcookies;
     next();
   });
+ app.use("/admin/*", async(req, res, next) => {
+if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
+ return res.render("admin/login");
+ }
+next();
+ });
+ 
 let data = [];
   app.post("/data/add", async(req, res) => {
 var name = req.query.name;
@@ -46,14 +50,11 @@ app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 9)");
 });
 app.get("/admin/panel", async(req, res) => {
- if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
- return res.render("admin/login");
- }
   res.render("admin", {
     data: data
   });
 });
-app.post("/admin/login", async(req, res) => {
+app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
 var pwd = req.body.password;
  console.log(req.body);
