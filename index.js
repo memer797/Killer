@@ -50,7 +50,7 @@ app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 9)");
 });
 app.get("/admin/panel", async(req, res) => {
-  res.render("admin", {
+  res.render("admin/panel", {
     data: data
   });
 });
