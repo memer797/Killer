@@ -85,7 +85,7 @@
     })
   }).then(res => res.text()).then(d => {
     if (d = true) {
-      return window.location.href = "/admin/panel";
+      return window.location.reload();
     }
 
     document.getElementById("username").value = "";
