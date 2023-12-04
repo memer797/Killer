@@ -28,6 +28,8 @@ function delay(milliseconds) {
     socket.cookies = sockcookies;
     next();
   });
+var apiRoute = require("./routes/api");
+  app.use("/api", apiRoute);
  app.use("/admin/*", async(req, res, next) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.render("admin/login");
