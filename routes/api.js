@@ -7,7 +7,7 @@ res.send({ success: true, msg: 'api route' });
 
 router.get('/data', async(req, res) => {
 res.json({ success: true, msg: 'data route' });
-}):
+});
 router.get('/data/movie/:id', async(req, res) => {
 var id = req.params.id;
   if(!id || id.trim() === ''){
