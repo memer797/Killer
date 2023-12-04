@@ -13,6 +13,10 @@ var id = req.params.id;
   if(!id || id.trim() === ''){
   return res.json({ success: false, msg: 'id is not provided!'});
 };
-  
+var movieArray = await db.getArray('info.movie');
+  var thatMovie = mmovieArray.filter(mov => mov.id === id);
+  if(!thatMovie || thatMovie < 1){
+    return res.json({ success: false, msg: `no movie found with this id ${id}`});
+  };
 });
 module.exports = router;
