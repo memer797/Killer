@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-01 router.use("*", async(req, res, next) => {
+router.use("*", async(req, res, next) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.render("admin/login");
  }
