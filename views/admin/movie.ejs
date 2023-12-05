@@ -334,8 +334,8 @@ console.log(tgs);
 fetch("/admin/data/get/movie", {
 method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
-dtta.forEach((dosta) => {
-      const name = document.getElementById('name').value;
+dtta.data.forEach((dosta) => {
+      const name = dosta;
       const imageUrl = document.getElementById('imageUrl').value;
       const description = document.getElementById('description').value;
       const category = document.getElementById('category').value;
