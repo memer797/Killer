@@ -335,6 +335,75 @@ fetch("/admin/data/get/movie", {
 method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.forEach((dosta) => {
+      const name = document.getElementById('name').value;
+      const imageUrl = document.getElementById('imageUrl').value;
+      const description = document.getElementById('description').value;
+      const category = document.getElementById('category').value;
+      const tagsInput = document.getElementById('tags');
+      const tagsContainer = document.getElementById('tagContainer');
+
+      // Extract tags from input and split by commas
+      const tags = tagsInput.value.split(',');
+
+      const cardsContainer = document.getElementById('cardsContainer');
+
+      const cardDiv = document.createElement('div');
+      cardDiv.classList.add('card');
+
+      const cardContent = document.createElement('div');
+      cardContent.classList.add('card-content');
+
+      const cardName = document.createElement('h3');
+      cardName.innerText = name;
+
+      const cardImage = document.createElement('img');
+      cardImage.src = imageUrl;
+      cardImage.alt = name;
+
+      const cardDescription = document.createElement('p');
+      cardDescription.innerText = description;
+
+      const optionsDots = document.createElement('div');
+      optionsDots.classList.add('options-dots');
+      optionsDots.innerText = '...';
+      optionsDots.addEventListener('click', (event) => showOptionsMenu(event, cardDiv));
+
+      const optionsMenu = document.createElement('div');
+      optionsMenu.classList.add('options-menu');
+      optionsMenu.innerHTML = `
+        <button onclick="viewCard()">View</button>
+        <button onclick="editCard()">Edit</button>
+        <button onclick="confirmDeleteCard()">Delete</button>
+      `;
+
+      cardContent.appendChild(cardName);
+      cardContent.appendChild(cardImage);
+      cardContent.appendChild(cardDescription);
+
+      cardDiv.appendChild(cardContent);
+      cardDiv.appendChild(optionsDots);
+      cardDiv.appendChild(optionsMenu);
+
+      cardDiv.addEventListener('click', (event) => {
+        // Prevent the click event from bubbling up to the options menu
+        event.stopPropagation();
+        toggleOptionsMenu(cardDiv);
+      });
+
+      cardsContainer.appendChild(cardDiv);
+
+      // Clear input fields and tags container
+      tagsInput.value = '';
+      tagsContainer.innerHTML = '';
+
+      // Add tags to the tag container
+  /*    tags.forEach(tag => {
+        const tagElement = document.createElement('div');
+        tagElement.classList.add('tag');
+        tagElement.innerText = tag;
+        tagElement.addEventListener('click', () => removeTag(tagElement));
+        tagsContainer.appendChild(tagElement);
+      });*/
 
 });
 }).catch();
