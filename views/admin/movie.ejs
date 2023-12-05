@@ -253,7 +253,7 @@ max-height: 80%;
         toggleOptionsMenu(cardDiv);
       });
 
-      cardsContainer.insertBefore(cardDiv);
+      cardsContainer.insertBefore(cardDiv, cardsContainer.childNodes[0]);
 
       // Clear input fields and tags container
       tagsInput.value = '';
