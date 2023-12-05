@@ -10,5 +10,9 @@ next();
 router.get("/", async(req, res) => {
 res.render("admin/panel");
 });
+router.get('/movie', async(req, res) => {
+ res.render('admin/movie');
+});
+
 
 module.exports = router;
