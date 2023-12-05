@@ -12,7 +12,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var name = req.body.name;
- await db.push("info.movie");
+ await db.push("info.movie", name);
  res.json({success: true, msg: "movie saves successfully"});
 });
 router.post("/data/get/movie", async(req, res) => {
