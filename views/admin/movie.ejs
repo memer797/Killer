@@ -329,6 +329,15 @@ if(!tgs[0].length || tgs[0].trim() === "") return;
 TInput.value = "";
 console.log(tgs);
        });
+
+//get movie data
+fetch("/admin/data/get/movie", {
+method: "POST"
+}).then(ggp => ggp.json()).then(dtta => {
+dtta.forEach((dosta) => {
+
+});
+}).catch();
   </script>
 
 </body>
