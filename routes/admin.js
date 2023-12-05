@@ -8,7 +8,7 @@ next();
  });
 
 router.get("/", async(req, res) => {
-res.send("hi");
+res.render("admin/planel");
 });
 
 module.exports = router;
