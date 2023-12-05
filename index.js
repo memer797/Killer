@@ -29,6 +29,8 @@ function delay(milliseconds) {
     next();
   });
 var apiRoute = require("./routes/api");
+var adminRoute = require("./routes/admin");
+
   app.use("/api", apiRoute);
  app.use("/admin/*", async(req, res, next) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
@@ -36,6 +38,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  }
 next();
  });
+app.use("/admin", adminRoute);
  
 let data = [];
   app.post("/data/add", async(req, res) => {
