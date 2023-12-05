@@ -32,13 +32,7 @@ var apiRoute = require("./routes/api");
 var adminRoute = require("./routes/admin");
 
   app.use("/api", apiRoute);
- app.use("/admin/*", async(req, res, next) => {
-if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
- return res.render("admin/login");
- }
-next();
- });
-app.use("/admin", adminRoute);
+  app.use("/admin", adminRoute);
  
 let data = [];
   app.post("/data/add", async(req, res) => {
@@ -54,10 +48,10 @@ var val = req.query.value;
 app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 9)");
 });
-app.get("/admin/panel", async(req, res) => {
+/*app.get("/admin/panel", async(req, res) => {
   res.render("admin/panel", {
     data: data
-  });
+});*/
 });
 app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
@@ -78,11 +72,5 @@ res.cookie('admin_key', process.env.admin_login_cookie, {
  }
  res.send(false);
 });
-
-setTimeout(async() => {
-// error_hain_ye
- console.log(await db.set("test", "ok"));
- console.log(await db.get("test"));
-}, 5000);
 };
 RunMainCode();
