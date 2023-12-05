@@ -52,7 +52,7 @@ res.send("Hello Rahul (updated 9)");
   res.render("admin/panel", {
     data: data
 });*/
-});
+// });
 app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
 var pwd = req.body.password;
