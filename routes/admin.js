@@ -17,7 +17,7 @@ router.post("/data/get/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
 }
- var movAray = db
+ var movAray = db.getArray("info.movie");
  res.json({success: true, data: movAray});
 });
 
