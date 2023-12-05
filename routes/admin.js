@@ -22,6 +22,16 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  var movAray = await db.getArray("info.movie");
  res.json({success: true, data: movAray});
 });
+router.post("/data/delete/movie", async(req, res) => {
+ if(!req.body){
+  return res.json({success: false, error: "body is not provided});
+ }
+var idToDel = req.body.id;
+  if(!idToDel){
+   return res.json({success: false, error: "id is not specified!});
+  };
+   res.json({success: true, msg: "done"});
+});
 
 //get methods to serve files
 router.get("/", async(req, res) => {
