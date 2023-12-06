@@ -4,7 +4,12 @@ var router = express.Router();
 router.get('/', async(req, res) => {
 res.send({ success: true, msg: 'api route' });
 });
-
+router.post("/search/movie", async(req, res) => {
+  if(!req.body || !req.body.search || req.body.trim() === ""){
+return res.json({success: false, msg: "No String Specified!"});
+  }
+var searchString = req.body.search;
+});
 router.get('/data', async(req, res) => {
 res.json({ success: true, msg: 'data route' });
 });
