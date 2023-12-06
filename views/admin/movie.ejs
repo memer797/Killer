@@ -319,6 +319,10 @@ max-height: calc(100% - 70px);
     function confirmDeleteCard() {
       const isConfirmed = confirm('Are you sure you want to delete this card?');
       if (isConfirmed) {
+        var lastPrompt = prompt(`say YES to delete`);
+if(lastPrompt.toLowerCase() !== "yes"){
+return;
+}
         const card = activeOptionsMenu.closest('.card');
         card.parentNode.removeChild(card);
         activeOptionsMenu.style.display = 'none';
