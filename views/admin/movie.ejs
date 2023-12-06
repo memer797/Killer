@@ -191,11 +191,9 @@ max-height: calc(100% - 70px);
 
   <script>
     let activeOptionsMenu = null;
-
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
     }
-
     function closeModal() {
       document.getElementById('myModal').style.display = 'none';
     }
@@ -250,18 +248,18 @@ max-height: calc(100% - 70px);
       cardDiv.appendChild(optionsDots);
       cardDiv.appendChild(optionsMenu);
 
-      cardDiv.addEventListener('click', (event) => {
+   /*   cardDiv.addEventListener('click', (event) => {
         // Prevent the click event from bubbling up to the options menu
         event.stopPropagation();
         toggleOptionsMenu(cardDiv);
-      });
+      });*/
 
       cardsContainer.insertBefore(cardDiv, cardsContainer.childNodes[0]);
 
       // Clear input fields and tags container
       tagsInput.value = '';
       tagsContainer.innerHTML = '';
-
+if(!tags || tags.length < 1) return;
       // Add tags to the tag container
       tags.forEach(tag => {
         const tagElement = document.createElement('div');
@@ -281,12 +279,12 @@ max-height: calc(100% - 70px);
 
     function viewCard() {
       // Implement view functionality here
-      alert('Viewing card');
+      alert('Viewing card soon :)');
     }
 
     function editCard() {
       // Implement edit functionality here
-      alert('Editing card');
+      alert('Editing card function soon');
     }
 
     function toggleOptionsMenu(card) {
@@ -414,21 +412,7 @@ dtta.data.forEach((dosta) => {
         toggleOptionsMenu(cardDiv);
       });
 
-      cardsContainer.appendChild(cardDiv);
-
-      // Clear input fields and tags container
-      tagsInput.value = '';
-      tagsContainer.innerHTML = '';
-
-      // Add tags to the tag container
-  /*    tags.forEach(tag => {
-        const tagElement = document.createElement('div');
-        tagElement.classList.add('tag');
-        tagElement.innerText = tag;
-        tagElement.addEventListener('click', () => removeTag(tagElement));
-        tagsContainer.appendChild(tagElement);
-      });*/
-
+      cardsContainer.insertBefore(cardDiv, cardsContainer.childNode);
 });
 }).catch();
   </script>
