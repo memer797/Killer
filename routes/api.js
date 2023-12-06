@@ -10,7 +10,8 @@ return res.json({success: false, msg: "No String Specified!"});
   }
 var searchString = req.body.search;
 var movieArray = await db.getArray('info.movie');
-  
+var searchResult = [];
+  res.json({success: true, data: searchResult});
 });
 router.get('/data', async(req, res) => {
 res.json({ success: true, msg: 'data route' });
