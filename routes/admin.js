@@ -12,6 +12,8 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var name = req.body.name;
+ var description = req.body.description ? req.body.description : "No Description Provided";
+ var tags = req.body.tags ? req.body.tags : [];
  await db.push("info.movie", name);
  res.json({success: true, msg: "movie saves successfully"});
 });
