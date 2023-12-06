@@ -73,10 +73,12 @@ width: 100%;
     .card {
       margin-top: 10px;
       border: 1px solid black;
-      border-radius: 8px;
-      overflow-y: auto;
+      border-radius: 8px;    
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- /*   height: calc(100% - 20px);*/ /* Adjust the height as needed */
+      height: 3em;/* Adjust the height as needed */
       position: relative;
       cursor: pointer;
     }
@@ -85,6 +87,10 @@ width: 100%;
       width: 50%;
       height: 50%;
       object-fit: cover;
+      top: 2px;
+      left: 2px;
+      border: 1px solid gray;
+      border-radius: 8px;
     }
 
     .card-content {
