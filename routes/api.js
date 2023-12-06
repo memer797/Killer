@@ -9,6 +9,8 @@ router.post("/search/movie", async(req, res) => {
 return res.json({success: false, msg: "No String Specified!"});
   }
 var searchString = req.body.search;
+var movieArray = await db.getArray('info.movie');
+  
 });
 router.get('/data', async(req, res) => {
 res.json({ success: true, msg: 'data route' });
