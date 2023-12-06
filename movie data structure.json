@@ -1,0 +1,17 @@
+[
+  {
+    name: String,
+    id: String,
+    description: String,
+    image_url: String,
+    views: Number,
+    is_new: Boolean,
+    is_trending: Boolean,
+    tags: Array » String,
+    multi_languages: Boolean,
+    languages_link: Array » Object,
+    is_parted: Boolean,
+    dounload_links: Array » Object,
+    extra_search_term: Array » String
+  }
+]
