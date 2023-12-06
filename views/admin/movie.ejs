@@ -223,12 +223,12 @@ max-height: calc(100% - 70px);
       const cardContent = document.createElement('div');
       cardContent.classList.add('card-content');
 
-      const cardName = document.createElement('h3');
-      cardName.innerText = name;
-
       const cardImage = document.createElement('img');
       cardImage.src = imageUrl;
       cardImage.alt = name;
+   
+const cardName = document.createElement('h3');
+      cardName.innerText = name;
 
       const cardDescription = document.createElement('p');
       cardDescription.innerText = description;
