@@ -26,5 +26,6 @@ var movieArray = await db.getArray('info.movie');
   if(!thatMovie || thatMovie < 1){
     return res.json({ success: false, msg: `no movie found with this id ${id}`});
   };
+  res.json({success: true, data: mmovieArray.filter(mov => mov.id === id)});
 });
 module.exports = router;
