@@ -343,7 +343,7 @@ if(!tags || tags.length < 1) return;
       alert('Editing card function soon');
     }
 
-    function toggleOptionsMenu(card) {
+   /* function toggleOptionsMenu(card) {
       const optionsMenu = card.querySelector('.options-menu');
       if (optionsMenu.style.display === 'block') {
         optionsMenu.style.display = 'none';
@@ -355,7 +355,7 @@ if(!tags || tags.length < 1) return;
         optionsMenu.style.display = 'block';
         activeOptionsMenu = optionsMenu;
       }
-    }
+    }*/
 
     function showOptionsMenu(event, card) {
       // Close any active options menu
@@ -423,7 +423,7 @@ var optionsButton = document.createElement('div');
 optionsButton.classList.add('options');
 optionsButton.textContent = '...';
 optionsButton.onclick = function(event) {
-    toggleOptionsMenu(event, cardContainer);
+    showOptionsMenu(event, cardContainer);
 };
 
 // Create options menu
