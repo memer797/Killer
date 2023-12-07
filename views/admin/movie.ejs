@@ -414,9 +414,107 @@ method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.data.forEach((dosta) => {
       const name = dosta;
-var cardToIn = cardTemplate.replace(/<=name=>/g, name);
-const cardsContainer = document.getElementById("cardsContainer");
-cardsContainer.insertBefore(cardToIn, cardsContainer.childNodes[0]);
+// Create card container
+var cardContainer = document.createElement('div');
+cardContainer.classList.add('card-container');
+
+// Create options button
+var optionsButton = document.createElement('div');
+optionsButton.classList.add('options');
+optionsButton.textContent = '...';
+optionsButton.onclick = function(event) {
+    toggleOptionsMenu(event);
+};
+
+// Create options menu
+var optionsMenu = document.createElement('div');
+optionsMenu.classList.add('options-menu');
+optionsMenu.id = 'optionsMenu';
+
+// Create "View" link
+var viewLink = document.createElement('a');
+viewLink.href = '#';
+viewLink.textContent = 'View';
+viewLink.onclick = function() {
+    viewCard();
+};
+
+// Create "Edit" link
+var editLink = document.createElement('a');
+editLink.href = '#';
+editLink.textContent = 'Edit';
+editLink.onclick = function() {
+    editCard();
+};
+
+// Create "Delete" link
+var deleteLink = document.createElement('a');
+deleteLink.href = '#';
+deleteLink.classList.add('delete');
+deleteLink.textContent = 'Delete';
+deleteLink.onclick = function() {
+    confirmDeleteCard();
+};
+
+// Append links to options menu
+optionsMenu.appendChild(viewLink);
+optionsMenu.appendChild(editLink);
+optionsMenu.appendChild(deleteLink);
+
+// Create image container
+var imageContainer = document.createElement('div');
+imageContainer.classList.add('image-container');
+
+// Create image element
+var imageElement = document.createElement('img');
+imageElement.src = 'https://placekitten.com/200/100';
+imageElement.alt = 'Icon';
+
+// Append image to image container
+imageContainer.appendChild(imageElement);
+
+// Create text container
+var textContainer = document.createElement('div');
+textContainer.classList.add('text-container');
+
+// Create name heading
+var nameHeading = document.createElement('div');
+nameHeading.style.width = '100%';
+nameHeading.innerHTML = `<h4>${name}</h4>`;
+
+// Create description paragraph
+var descriptionParagraph = document.createElement('div');
+descriptionParagraph.classList.add('pd');
+descriptionParagraph.textContent = 'Description here... (up to 2 lines)';
+
+// Create category
+var category = document.createElement('div');
+category.classList.add('category');
+category.textContent = 'Category: Unknown';
+
+// Create custom text
+var customText = document.createElement('div');
+customText.id = 'customText';
+customText.style.position = 'absolute';
+customText.style.bottom = '5px';
+customText.style.left = '5px';
+customText.style.color = '#555';
+customText.textContent = '#he5jiGj29Jd83GjekwJBIfSk';
+
+// Append elements to text container
+textContainer.appendChild(nameHeading);
+textContainer.appendChild(descriptionParagraph);
+textContainer.appendChild(category);
+textContainer.appendChild(customText);
+
+// Append elements to card container
+cardContainer.appendChild(optionsButton);
+cardContainer.appendChild(optionsMenu);
+cardContainer.appendChild(imageContainer);
+cardContainer.appendChild(textContainer);
+
+// Append card container to the body or another parent element
+cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
 });
 }).catch();
   </script>
