@@ -514,7 +514,7 @@ cardContainer.appendChild(imageContainer);
 cardContainer.appendChild(textContainer);
 
 // Append card container to the body or another parent element
-cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
+cardsContainer.insertBefore(cardContainer.firstChild, cardsContainer.childNodes[0]);
 });
 }).catch();
   </script>
