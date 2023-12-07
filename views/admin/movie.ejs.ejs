@@ -4,22 +4,141 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Card Creator</title>
-  <style>
+<style>
 html {
-width: 100%;
-  height: 100%;
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            background-color: #f2f2f2;
+        }
+
+        .card-container {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            height: 6em;
+            display: flex;
+            clear: both;
+            position: relative;
+        }
+
+        .options {
+            position: absolute;
+            top: 3px;
+            right: 5px;
+            cursor: pointer;
+        }
+
+        .options-menu {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .options-menu a {
+            padding: 4px;
+            display: block;
+            text-decoration: none;
+            color: #333;
+            z-index: 10;
+            overflow: auto;
+        }
+
+        .options-menu a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .options-menu a.delete {
+            color: red; /* Set the color for the delete option */
+        }
+
+        .image-container {
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            border-bottom-right-radius: 7px;
+            border-top-left-radius: 7px;
+            border: 1px solid #ccc;
+        }
+
+        img {
+            border-top-left-radius: 6px; /* Add border-radius for the image container */
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+
+        .text-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        h4, .pd, .category {
+            margin: 0;
+        }
+
+        .category {
+            font-style: italic;
+            color: #555;
+            text-align: right;
+        }
+
+        .pd {
+            margin-top: -7px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            max-height: 3em;
+        }
+#cardsContainer {
+margin-top: 10px;
+border: 1px solid black;
+border-radius: 3px;
+overflow-y: auto;
+max-height: calc(100% - 70px);
 }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-width: 100%;
-  height: 100%;
+    .tag-container {
+      margin-top: 10px;
     }
 
+    .tag {
+      display: inline-block;
+      background-color: #3498db;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 8px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    select, input, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
     .add-button {
       background-color: #3498db;
       width: 100%;
@@ -69,97 +188,7 @@ width: 100%;
       right: 10px;
       border-radius: 5px;
     }
-
-    .card {
-      margin-top: 10px;
-      border: 1px solid black;
-      border-radius: 8px;    
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      height: 3em;/* Adjust the height as needed */
-      position: relative;
-      cursor: pointer;
-    }
-
-    .card img {
-      width: 50%;
-      height: 50%;
-      object-fit: cover;
-      top: 2px;
-      left: 2px;
-      border: 1px solid gray;
-      border-radius: 8px;
-    }
-
-    .card-content {
-      padding: 10px;
-border: 1px solid black;
-border-radius: 3px;
-overflow-y: auto;
-height: 80%;
-    }
-#cardsContainer {
-margin-top: 10px;
-border: 1px solid black;
-border-radius: 3px;
-overflow-y: auto;
-max-height: calc(100% - 70px);
-}
-    .tag-container {
-      margin-top: 10px;
-    }
-
-    .tag {
-      display: inline-block;
-      background-color: #3498db;
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 8px;
-      margin-right: 5px;
-      cursor: pointer;
-    }
-
-    select, input, textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      box-sizing: border-box;
-    }
-
-    .options-menu {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      border-radius: 5px;
-      display: none;
-    }
-
-    .options-menu button {
-      display: block;
-      width: 100%;
-      padding: 8px;
-      text-align: left;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-    }
-
-    .options-menu button:hover {
-      background-color: #f0f0f0;
-    }
-
-    .options-dots {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 20px;
-      cursor: pointer;
-    }
-  </style>
+        </style>
 </head>
 <body>
 
@@ -197,6 +226,27 @@ max-height: calc(100% - 70px);
 
   <script>
     let activeOptionsMenu = null;
+    let cardTemplate = `    <div class="card-container">
+        <div class="options" onclick="toggleOptionsMenu(event)">...</div>
+        <div class="options-menu" id="optionsMenu">
+            <a href="#" onclick="viewCard()">View</a>
+            <a href="#" onclick="editCard()">Edit</a>
+            <a href="#" class="delete" onclick="confirmDeleteCard()">Delete</a>
+        </div>
+        <div class="image-container">
+            <img src="https://placekitten.com/200/100" alt="Icon">
+        </div>
+        <div class="text-container">
+            <div style="width: 100%;">
+                <h4>Name</h4>
+            </div>
+            <div class="pd">
+                Description here... (up to 2 lines) 
+            </div>
+            <div class="category">Category: Unknown</div>
+     <div id="customText" style="position: absolute; bottom: 5px; left: 5px; color: #555;">#he5jiGj29Jd83GjekwJBIfSk</div>
+      </div>
+    </div>`;
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
     }
@@ -293,7 +343,7 @@ if(!tags || tags.length < 1) return;
       alert('Editing card function soon');
     }
 
-    function toggleOptionsMenu(card) {
+   /* function toggleOptionsMenu(card) {
       const optionsMenu = card.querySelector('.options-menu');
       if (optionsMenu.style.display === 'block') {
         optionsMenu.style.display = 'none';
@@ -305,7 +355,7 @@ if(!tags || tags.length < 1) return;
         optionsMenu.style.display = 'block';
         activeOptionsMenu = optionsMenu;
       }
-    }
+    }*/
 
     function showOptionsMenu(event, card) {
       // Close any active options menu
@@ -327,7 +377,7 @@ if(!tags || tags.length < 1) return;
 if(lastPrompt.toLowerCase() !== "yes"){
 return;
 }
-        const card = activeOptionsMenu.closest('.card');
+        const card = activeOptionsMenu.closest('.card-container');
         card.parentNode.removeChild(card);
         activeOptionsMenu.style.display = 'none';
       }
@@ -364,65 +414,110 @@ method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.data.forEach((dosta) => {
       const name = dosta;
-      const imageUrl = document.getElementById('imageUrl').value;
-      const description = document.getElementById('description').value;
-      const category = document.getElementById('category').value;
-      const tagsInput = document.getElementById('tags');
-      const tagsContainer = document.getElementById('tagContainer');
+// Create card container
+var cardContainer = document.createElement('div');
+cardContainer.classList.add('card-container');
 
-      // Extract tags from input and split by commas
-      const tags = tagsInput.value.split(',');
+// Create options button
+var optionsButton = document.createElement('div');
+optionsButton.classList.add('options');
+optionsButton.textContent = '...';
+optionsButton.onclick = function(event) {
+    showOptionsMenu(event, cardContainer);
+};
 
-      const cardsContainer = document.getElementById('cardsContainer');
+// Create options menu
+var optionsMenu = document.createElement('div');
+optionsMenu.classList.add('options-menu');
+optionsMenu.id = 'optionsMenu';
 
-      const cardDiv = document.createElement('div');
-      cardDiv.classList.add('card');
+// Create "View" link
+var viewLink = document.createElement('a');
+viewLink.href = '#';
+viewLink.textContent = 'View';
+viewLink.onclick = function() {
+    viewCard();
+};
 
-      const cardContent = document.createElement('div');
-      cardContent.classList.add('card-content');
+// Create "Edit" link
+var editLink = document.createElement('a');
+editLink.href = '#';
+editLink.textContent = 'Edit';
+editLink.onclick = function() {
+    editCard();
+};
 
-      const cardName = document.createElement('h3');
-      cardName.innerText = name;
+// Create "Delete" link
+var deleteLink = document.createElement('a');
+deleteLink.href = '#';
+deleteLink.classList.add('delete');
+deleteLink.textContent = 'Delete';
+deleteLink.onclick = function() {
+    confirmDeleteCard();
+};
 
-      const cardImage = document.createElement('img');
-      cardImage.src = imageUrl;
-      cardImage.alt = name;
+// Append links to options menu
+optionsMenu.appendChild(viewLink);
+optionsMenu.appendChild(editLink);
+optionsMenu.appendChild(deleteLink);
 
-      const cardDescription = document.createElement('p');
-      cardDescription.innerText = description;
+// Create image container
+var imageContainer = document.createElement('div');
+imageContainer.classList.add('image-container');
 
-      const optionsDots = document.createElement('div');
-      optionsDots.classList.add('options-dots');
-      optionsDots.innerText = '...';
-      optionsDots.addEventListener('click', (event) => showOptionsMenu(event, cardDiv));
+// Create image element
+var imageElement = document.createElement('img');
+imageElement.src = 'https://placekitten.com/200/100';
+imageElement.alt = 'Icon';
 
-      const optionsMenu = document.createElement('div');
-      optionsMenu.classList.add('options-menu');
-      optionsMenu.innerHTML = `
-        <button onclick="viewCard()">View</button>
-        <button onclick="editCard()">Edit</button>
-        <button onclick="confirmDeleteCard()">Delete</button>
-      `;
+// Append image to image container
+imageContainer.appendChild(imageElement);
 
-      cardContent.appendChild(cardName);
-      cardContent.appendChild(cardImage);
-      cardContent.appendChild(cardDescription);
+// Create text container
+var textContainer = document.createElement('div');
+textContainer.classList.add('text-container');
 
-      cardDiv.appendChild(cardContent);
-      cardDiv.appendChild(optionsDots);
-      cardDiv.appendChild(optionsMenu);
+// Create name heading
+var nameHeading = document.createElement('div');
+nameHeading.style.width = '100%';
+nameHeading.innerHTML = `<h4>${name}</h4>`;
 
-      cardDiv.addEventListener('click', (event) => {
-        // Prevent the click event from bubbling up to the options menu
-        event.stopPropagation();
-        toggleOptionsMenu(cardDiv);
-      });
+// Create description paragraph
+var descriptionParagraph = document.createElement('div');
+descriptionParagraph.classList.add('pd');
+descriptionParagraph.textContent = 'Description here... (up to 2 lines)';
 
-      cardsContainer.insertBefore(cardDiv, cardsContainer.childNodes[0]);
+// Create category
+var category = document.createElement('div');
+category.classList.add('category');
+category.textContent = 'Category: Unknown';
+
+// Create custom text
+var customText = document.createElement('div');
+customText.id = 'customText';
+customText.style.position = 'absolute';
+customText.style.bottom = '5px';
+customText.style.left = '5px';
+customText.style.color = '#555';
+customText.textContent = '#he5jiGj29Jd83GjekwJBIfSk';
+
+// Append elements to text container
+textContainer.appendChild(nameHeading);
+textContainer.appendChild(descriptionParagraph);
+textContainer.appendChild(category);
+textContainer.appendChild(customText);
+
+// Append elements to card container
+cardContainer.appendChild(optionsButton);
+cardContainer.appendChild(optionsMenu);
+cardContainer.appendChild(imageContainer);
+cardContainer.appendChild(textContainer);
+
+// Append card container to the body or another parent element
+cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
 });
 }).catch();
   </script>
 
 </body>
 </html>
-
