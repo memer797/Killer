@@ -415,7 +415,7 @@ method: "POST"
 dtta.data.forEach((dosta) => {
       const name = dosta;
 var cardToIn = cardTemplate.replace(/<=name=>/g, name);
-const cardContainer = document.getElementById("cardsContainer");
+const cardsContainer = document.getElementById("cardsContainer");
 cardsContainer.insertBefore(cardToIn, cardsContainer.childNodes[0]);
 });
 }).catch();
