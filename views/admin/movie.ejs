@@ -226,6 +226,27 @@ max-height: calc(100% - 70px);
 
   <script>
     let activeOptionsMenu = null;
+    let cardTemplate = `    <div class="card-container">
+        <div class="options" onclick="toggleOptionsMenu(event)">...</div>
+        <div class="options-menu" id="optionsMenu">
+            <a href="#" onclick="viewCard()">View</a>
+            <a href="#" onclick="editCard()">Edit</a>
+            <a href="#" class="delete" onclick="confirmDeleteCard()">Delete</a>
+        </div>
+        <div class="image-container">
+            <img src="https://placekitten.com/200/100" alt="Icon">
+        </div>
+        <div class="text-container">
+            <div style="width: 100%;">
+                <h4>Name</h4>
+            </div>
+            <div class="pd">
+                Description here... (up to 2 lines) 
+            </div>
+            <div class="category">Category: Unknown</div>
+     <div id="customText" style="position: absolute; bottom: 5px; left: 5px; color: #555;">#he5jiGj29Jd83GjekwJBIfSk</div>
+      </div>
+    </div>`;
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
     }
@@ -393,61 +414,9 @@ method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.data.forEach((dosta) => {
       const name = dosta;
-      const imageUrl = document.getElementById('imageUrl').value;
-      const description = document.getElementById('description').value;
-      const category = document.getElementById('category').value;
-      const tagsInput = document.getElementById('tags');
-      const tagsContainer = document.getElementById('tagContainer');
-
-      // Extract tags from input and split by commas
-      const tags = tagsInput.value.split(',');
-
-      const cardsContainer = document.getElementById('cardsContainer');
-
-      const cardDiv = document.createElement('div');
-      cardDiv.classList.add('card');
-
-      const cardContent = document.createElement('div');
-      cardContent.classList.add('card-content');
-
-      const cardName = document.createElement('h3');
-      cardName.innerText = name;
-
-      const cardImage = document.createElement('img');
-      cardImage.src = imageUrl;
-      cardImage.alt = name;
-
-      const cardDescription = document.createElement('p');
-      cardDescription.innerText = description;
-
-      const optionsDots = document.createElement('div');
-      optionsDots.classList.add('options-dots');
-      optionsDots.innerText = '...';
-      optionsDots.addEventListener('click', (event) => showOptionsMenu(event, cardDiv));
-
-      const optionsMenu = document.createElement('div');
-      optionsMenu.classList.add('options-menu');
-      optionsMenu.innerHTML = `
-        <button onclick="viewCard()">View</button>
-        <button onclick="editCard()">Edit</button>
-        <button onclick="confirmDeleteCard()">Delete</button>
-      `;
-
-      cardContent.appendChild(cardName);
-      cardContent.appendChild(cardImage);
-      cardContent.appendChild(cardDescription);
-
-      cardDiv.appendChild(cardContent);
-      cardDiv.appendChild(optionsDots);
-      cardDiv.appendChild(optionsMenu);
-
-      cardDiv.addEventListener('click', (event) => {
-        // Prevent the click event from bubbling up to the options menu
-        event.stopPropagation();
-        toggleOptionsMenu(cardDiv);
-      });
-
-      cardsContainer.insertBefore(cardDiv, cardsContainer.childNodes[0]);
+var cardToIn = cardTemplate.replace(/<=name=>/g, name);
+const cardContainer = document.getElementById("cardsContainer");
+cardsContainer.insertBefore(cardToIn, cardsContainer.childNodes[0]);
 });
 }).catch();
   </script>
