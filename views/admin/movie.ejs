@@ -106,11 +106,11 @@ html {
         }
 
         .pd {
-            margin-top: -12px;
+            margin-top: -7px;
             overflow: hidden;
             text-overflow: ellipsis;
             word-wrap: break-word;
-            max-height: 2.5em;
+            max-height: 3em;
         }
 #cardsContainer {
 margin-top: 10px;
@@ -514,7 +514,7 @@ cardContainer.appendChild(imageContainer);
 cardContainer.appendChild(textContainer);
 
 // Append card container to the body or another parent element
-cardsContainer.insertBefore(cardContainer.firstChild, cardsContainer.childNodes[0]);
+cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
 });
 }).catch();
   </script>
