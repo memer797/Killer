@@ -325,7 +325,7 @@ const cardName = document.createElement('h3');
       // Clear input fields and tags container
       tagsInput.value = '';
       tagsContainer.innerHTML = '';
-if(!tags || tags.length < 1) return;
+if(!tags || tags.length < 1 || tags[0].trim() === "") return;
       // Add tags to the tag container
       tags.forEach(tag => {
         const tagElement = document.createElement('div');
@@ -374,6 +374,12 @@ if(lastPrompt.trim().toLowerCase() !== "yes"){
 return;
 }
 console.log(idToDel);
+fetch("/admin/data/delete/movie", {
+method: "POST",
+body: JSON.stringify({
+id: idToDel
+});
+});
         const card = activeOptionsMenu.closest('.card-container');
         card.parentNode.removeChild(card);
         activeOptionsMenu.style.display = 'none';
