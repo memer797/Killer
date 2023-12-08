@@ -376,6 +376,9 @@ return;
 console.log(idToDel);
 fetch("/admin/data/delete/movie", {
 method: "POST",
+headers: {
+        "Content-Type": "application/json"
+    },
 body: JSON.stringify({
 id: idToDel
 })
