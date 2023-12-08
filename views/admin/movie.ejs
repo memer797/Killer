@@ -304,12 +304,6 @@ const cardName = document.createElement('h3');
       cardDiv.appendChild(optionsDots);
       cardDiv.appendChild(optionsMenu);
 
-   /*   cardDiv.addEventListener('click', (event) => {
-        // Prevent the click event from bubbling up to the options menu
-        event.stopPropagation();
-        toggleOptionsMenu(cardDiv);
-      });*/
-
       cardsContainer.insertBefore(cardDiv, cardsContainer.childNodes[0]);
 
       // Clear input fields and tags container
@@ -343,20 +337,6 @@ if(!tags || tags.length < 1) return;
       alert('Editing card function soon');
     }
 
-   /* function toggleOptionsMenu(card) {
-      const optionsMenu = card.querySelector('.options-menu');
-      if (optionsMenu.style.display === 'block') {
-        optionsMenu.style.display = 'none';
-      } else {
-        // Close any active options menu
-        if (activeOptionsMenu) {
-          activeOptionsMenu.style.display = 'none';
-        }
-        optionsMenu.style.display = 'block';
-        activeOptionsMenu = optionsMenu;
-      }
-    }*/
-
     function showOptionsMenu(event, card) {
       // Close any active options menu
       if (activeOptionsMenu) {
@@ -374,7 +354,7 @@ if(!tags || tags.length < 1) return;
       const isConfirmed = confirm('Are you sure you want to delete this card?');
       if (isConfirmed) {
         var lastPrompt = prompt(`say YES to delete`);
-if(lastPrompt.toLowerCase() !== "yes"){
+if(lastPrompt.trim().toLowerCase() !== "yes"){
 return;
 }
         const card = activeOptionsMenu.closest('.card-container');
