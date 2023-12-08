@@ -285,7 +285,16 @@ max-height: calc(100% - 70px);
 
       const cardDiv = document.createElement('div');
       cardDiv.classList.add('card');
+fetch("/data/save/movie", {
+method: "POST",
+headers: {
+        "Content-Type": "application/json"
+    },
+body: JSON.stringify({
+name: name
+}),
 
+});
       const cardContent = document.createElement('div');
       cardContent.classList.add('card-content');
 
