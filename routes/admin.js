@@ -47,8 +47,6 @@ return res.json({success: false, msg: 'id is not provided!'});
 
 
 
-
-
 //get methods to serve files
 router.get("/", async(req, res) => {
 res.render("admin/panel");
