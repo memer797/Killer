@@ -23,8 +23,11 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var name = req.body.name;
+if(!name || name.trim() === ""){ return res.json({success: false, msg: "name is required" }); };
  var description = req.body.description ? req.body.description : "No Description Provided";
  var tags = req.body.tags ? req.body.tags : [];
+ var category = req.body.category ? req.body.category : "Unknown";
+ var img = req.body.img ? req.body.img : "";
  var rID = generateRandomString(20);
  await db.push("info.movie", {name: name});
  res.json({success: true, msg: "movie saves successfully", id: rID});
