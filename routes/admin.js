@@ -15,7 +15,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  var description = req.body.description ? req.body.description : "No Description Provided";
  var tags = req.body.tags ? req.body.tags : [];
  await db.push("info.movie", name);
- res.json({success: true, msg: "movie saves successfully"});
+ res.json({success: true, msg: "movie saves successfully", id: "#648#});
 });
 router.post("/data/get/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
