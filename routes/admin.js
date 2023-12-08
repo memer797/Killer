@@ -1,5 +1,16 @@
 var express = require('express');
 var router = express.Router();
+function generateRandomString(length) {
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let randomString = '';
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        randomString += charset.charAt(randomIndex);
+    }
+
+    return randomString;
+}
 router.use("*", async(req, res, next) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.render("admin/login");
@@ -14,8 +25,9 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  var name = req.body.name;
  var description = req.body.description ? req.body.description : "No Description Provided";
  var tags = req.body.tags ? req.body.tags : [];
- await db.push("info.movie", name);
- res.json({success: true, msg: "movie saves successfully", id: "#648"});
+ var rID = generateRandomString(20);
+ await db.push("info.movie", {name: name});
+ res.json({success: true, msg: "movie saves successfully", id: rID});
 });
 router.post("/data/get/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
