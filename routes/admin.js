@@ -64,6 +64,7 @@ router.get("/", async(req, res) => {
 res.render("admin/panel");
 });
 router.get('/movie', async(req, res) => {
+    await db.delete("info.movie");
  res.render('admin/movie');
 });
 
