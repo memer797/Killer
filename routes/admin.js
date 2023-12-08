@@ -32,7 +32,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
 return res.json({success: false, msg: 'id is not provided!'});
  }
  await db.pull("info.movie", req.body.id);
- res.json({success: true, msg: `movie ${req.body.id} removed successfully`});*/
+ res.json({success: true, msg: `movie ${req.body.id} removed successfully`});
 });
 
 
