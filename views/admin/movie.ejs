@@ -471,7 +471,7 @@ imageContainer.classList.add('image-container');
 
 // Create image element
 var imageElement = document.createElement('img');
-imageElement.src = 'https://placekitten.com/200/100';
+imageElement.src = img;
 imageElement.alt = 'Icon';
 
 // Append image to image container
@@ -489,12 +489,12 @@ nameHeading.innerHTML = `<h4>${name}</h4>`;
 // Create description paragraph
 var descriptionParagraph = document.createElement('div');
 descriptionParagraph.classList.add('pd');
-descriptionParagraph.textContent = 'Description here... (up to 2 lines)';
+descriptionParagraph.textContent = description;
 
 // Create category
 var category = document.createElement('div');
 category.classList.add('category');
-category.textContent = 'Category: Unknown';
+category.textContent = `Category: ${category}`;
 
 // Create custom text
 var customText = document.createElement('div');
@@ -503,7 +503,7 @@ customText.style.position = 'absolute';
 customText.style.bottom = '5px';
 customText.style.left = '5px';
 customText.style.color = '#555';
-customText.textContent = '#he5jiGj29Jd83GjekwJBIfSk';
+customText.textContent = id;
 
 // Append elements to text container
 textContainer.appendChild(nameHeading);
