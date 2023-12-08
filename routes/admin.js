@@ -27,9 +27,17 @@ if(!name || name.trim() === ""){ return res.json({success: false, msg: "name is 
  var description = req.body.description ? req.body.description : "No Description Provided";
  var tags = req.body.tags ? req.body.tags : [];
  var category = req.body.category ? req.body.category : "Unknown";
- var img = req.body.img ? req.body.img : "";
+ var img = req.body.img ? req.body.img : "https://placekitten.com/200/100";
  var rID = generateRandomString(20);
- await db.push("info.movie", {name: name});
+ await db.push("info.movie", {
+     name: name,
+     description: description,
+     tags: tags,
+     category: category,
+     img: img,
+     id: rID
+     });
+    
  res.json({success: true, msg: "movie saves successfully", id: rID});
 });
 router.post("/data/get/movie", async(req, res) => {
@@ -37,11 +45,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var movAray = await db.getArray("info.movie");
- var sendAre = [];
- movAray.forEach(dt => {
-sendAre.push({ name: dt });
- });
- res.json({success: true, data: sendAre});
+ res.json({success: true, data: movAray});
 });
 router.post("/data/delete/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
