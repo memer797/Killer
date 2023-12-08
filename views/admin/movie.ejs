@@ -350,13 +350,14 @@ if(!tags || tags.length < 1) return;
       event.stopPropagation();
     }
 
-    function confirmDeleteCard() {
+    function confirmDeleteCard(idToDel) {
       const isConfirmed = confirm('Are you sure you want to delete this card?');
       if (isConfirmed) {
         var lastPrompt = prompt(`say YES to delete`);
 if(lastPrompt.trim().toLowerCase() !== "yes"){
 return;
 }
+console.log(idToDel);
         const card = activeOptionsMenu.closest('.card-container');
         card.parentNode.removeChild(card);
         activeOptionsMenu.style.display = 'none';
@@ -393,7 +394,10 @@ fetch("/admin/data/get/movie", {
 method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.data.forEach((dosta) => {
-      const name = dosta;
+      var name = dosta.name ? dosta.name : "Unknown";
+      var description = dosta.desc ? dosta.desc : "No Description Provided";
+      var category = dosta.category ? dosta.category : "Unknown";
+      var id = dosta.id ? dosta.id : "err_id_provided";
 // Create card container
 var cardContainer = document.createElement('div');
 cardContainer.classList.add('card-container');
@@ -416,7 +420,7 @@ var viewLink = document.createElement('a');
 viewLink.href = '#';
 viewLink.textContent = 'View';
 viewLink.onclick = function() {
-    viewCard();
+    viewCard(id);
 };
 
 // Create "Edit" link
@@ -424,7 +428,7 @@ var editLink = document.createElement('a');
 editLink.href = '#';
 editLink.textContent = 'Edit';
 editLink.onclick = function() {
-    editCard();
+    editCard(id);
 };
 
 // Create "Delete" link
@@ -433,7 +437,7 @@ deleteLink.href = '#';
 deleteLink.classList.add('delete');
 deleteLink.textContent = 'Delete';
 deleteLink.onclick = function() {
-    confirmDeleteCard();
+    confirmDeleteCard(id);
 };
 
 // Append links to options menu
