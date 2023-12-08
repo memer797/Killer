@@ -22,7 +22,11 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var movAray = await db.getArray("info.movie");
- res.json({success: true, data: {name: movAray }});
+ var sendAre = [];
+ movAray.forEach(dt => {
+sendAre.push({ name: dt });
+ });
+ res.json({success: true, data: sendAre});
 });
 router.post("/data/delete/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
