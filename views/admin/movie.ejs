@@ -242,27 +242,7 @@ max-height: calc(100% - 70px);
 
   <script>
     let activeOptionsMenu = null;
-    let cardTemplate = `    <div class="card-container">
-        <div class="options" onclick="toggleOptionsMenu(event)">...</div>
-        <div class="options-menu" id="optionsMenu">
-            <a href="#" onclick="viewCard()">View</a>
-            <a href="#" onclick="editCard()">Edit</a>
-            <a href="#" class="delete" onclick="confirmDeleteCard()">Delete</a>
-        </div>
-        <div class="image-container">
-            <img src="https://placekitten.com/200/100" alt="Icon">
-        </div>
-        <div class="text-container">
-            <div style="width: 100%;">
-                <h4>Name</h4>
-            </div>
-            <div class="pd">
-                Description here... (up to 2 lines) 
-            </div>
-            <div class="category">Category: Unknown</div>
-     <div id="customText" style="position: absolute; bottom: 5px; left: 5px; color: #555;">#he5jiGj29Jd83GjekwJBIfSk</div>
-      </div>
-    </div>`;
+
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
     }
@@ -432,10 +412,12 @@ fetch("/admin/data/get/movie", {
 method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.data.forEach((dosta) => {
-      var name = dosta.name ? dosta.name : "Unknown";
-      var description = dosta.desc ? dosta.desc : "No Description Provided";
-      var category = dosta.category ? dosta.category : "Unknown";
-      var id = dosta.id ? dosta.id : "err_id_provided";
+console.log(dosta);
+      var name = dosta.name;
+      var description = dosta.desceiption;
+      var category = dosta.category;;
+      var id = dosta.id;
+      var img = dosta.img;
 // Create card container
 var cardContainer = document.createElement('div');
 cardContainer.classList.add('card-container');
