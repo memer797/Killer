@@ -291,7 +291,11 @@ headers: {
         "Content-Type": "application/json"
     },
 body: JSON.stringify({
-name: name
+name: name,
+description: description,
+category: category,
+tags: tags,
+img: document.getElementById("imageUrl").value
 }),
 
 });
