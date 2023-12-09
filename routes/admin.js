@@ -58,8 +58,8 @@ return res.json({success: false, msg: 'id is not provided!'});
     if(!toRemVe || toRemVe.length < 1) {
         return res.json({success: false, msg: "no Movie Found With This Id"});
     }
-    console.log(toRemVe);
- await db.pull("info.movie", toRemVe);
+
+ await db.pull("info.movie", (i => i.id === req.body.id));
  res.json({success: true, msg: `movie ${req.body.id} removed successfully`});
 });
 
