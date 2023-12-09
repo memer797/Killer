@@ -50,12 +50,15 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
 router.post("/data/delete/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
-}
- console.log(req.body.id);
+    }
  if(!req.body || !req.body.id || req.body.id.trim() === ''){
 return res.json({success: false, msg: 'id is not provided!'});
  }
- await db.pull("info.movie", req.body.id);
+    var toRemVe = (await db.get()).filter(i => i.id === req.body.id);
+    if(!toRemVe || toRemVe.length < 1) {
+        return res.json({success: false, msg: "no Movie Found With This Id"});
+    }
+ await db.pull("info.movie", toRemVe);
  res.json({success: true, msg: `movie ${req.body.id} removed successfully`});
 });
 
