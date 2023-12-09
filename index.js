@@ -48,11 +48,20 @@ var val = req.query.value;
 app.get("/", async(req, res) => {
 res.send("Hello Rahul (updated 9)");
 });
-/*app.get("/admin/panel", async(req, res) => {
-  res.render("admin/panel", {
-    data: data
-});*/
-// });
+
+app.get("/movie/:id", async(req, res) => {
+  if(!req.params.id || req.params.id.trim() === ""){
+   return res.send(`4** error, id parameter is required to fetch the movie example:: /movie/Jfo48BKue`);
+  }
+var id = req.params.id;
+  var movie_info = await db.getArray("info.movie").filter(i => i.id === id);
+  if(!movie_info || movie_info.length < 1){
+    return res.send(`4** error, N 0 Movie F()und With ${id} id`);
+  }
+  res.json(movie_info);
+});
+
+  //post methods
 app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
 var pwd = req.body.password;
