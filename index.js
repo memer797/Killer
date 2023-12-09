@@ -54,7 +54,8 @@ app.get("/movie/:id", async(req, res) => {
    return res.send(`4** error, id parameter is required to fetch the movie example:: /movie/Jfo48BKue`);
   }
 var id = req.params.id;
-  var movie_info = await db.getArray("info.movie").filter(i => i.id === id);
+  var movie_info = await db.getArray("info.movie")
+  var movie_info = movie_info.filter(i => i.id === id);
   if(!movie_info || movie_info.length < 1){
     return res.send(`4** error, N 0 Movie F()und With ${id} id`);
   }
