@@ -59,6 +59,7 @@ return res.json({success: false, msg: 'id is not provided!'});
         return res.json({success: false, msg: "no Movie Found With This Id"});
     }
 console.log(toRemVe);
+   return res.json(toRemVe);
     console.log(await db.getArray("info.movie"));
  await db.pull("info.movie", toRemVe);
         console.log(await db.getArray("info.movie"));
