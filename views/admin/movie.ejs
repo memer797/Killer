@@ -414,8 +414,8 @@ method: "POST"
 dtta.data.forEach((dosta) => {
 console.log(dosta);
       var name = dosta.name;
-      var description = dosta.desceiption;
-      var category = dosta.category;;
+      var description = dosta.description;
+      var category_txt = dosta.category;;
       var id = dosta.id;
       var img = dosta.img;
 // Create card container
@@ -494,7 +494,7 @@ descriptionParagraph.textContent = description;
 // Create category
 var category = document.createElement('div');
 category.classList.add('category');
-category.textContent = `Category: ${category}`;
+category.textContent = `${category_txt}`;
 
 // Create custom text
 var customText = document.createElement('div');
