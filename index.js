@@ -61,16 +61,16 @@ var id = req.params.id;
   }
   console.log(movie_info);
   res.render("show_movie", {
-    name: "test",
+    name: movie_info.nane,
     banner: {
-      jpg: "https://prize-pulse.github.io/favicon.ico"
+      jpg: movie_info.img
     },
     release_date: "16/12/2023",
     duration: "16 minutes",
-    category: "test",
+    category: movie_info.category,
     actors: ["sujoy", "rahul", "memer", "crystal", "duplicate"],
     language: "english",
-    description: "this is a test run to set the template",
+    description: movie_info.description,
     file_size: "1.2 gb",
     downloads: [
       {
