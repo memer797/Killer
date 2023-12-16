@@ -73,12 +73,12 @@ var id = req.params.id;
     file_size: "1.2 gb",
     downloads: [
       {
-        link: "https://prize-pulse.uk.to",
+        link: "https://prize-pulse.uk.to/ff/giveaway",
         quality: "144",
         size: "500 mb"
       },
       {
-        link: "https://prize-pulse.uk.to",
+        link: "https://prize-pulse.uk.to/ff/giveaway",
         quality: "72p",
         size: "1.2 gb"   
       }
