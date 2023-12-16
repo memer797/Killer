@@ -59,11 +59,11 @@ var id = req.params.id;
   if(!movie_info || movie_info.length < 1){
     return res.send(`4** error, N 0 Movie F()und With ${id} id`);
   }
-  console.log(movie_info.name);
-  var name = movie_info.name;
-  var description = movie_info.description;
-  var img = movie_info.img;
-  var category = movie_info.category;
+  console.log(movie_info);
+  var name = movie_info[0].name;
+  var description = movie_info[0].description;
+  var img = movie_info[0].img;
+  var category = movie_info[0].category;
   res.render("show_movie", {
     name: name,
     banner: {
