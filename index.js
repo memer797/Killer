@@ -60,17 +60,21 @@ var id = req.params.id;
     return res.send(`4** error, N 0 Movie F()und With ${id} id`);
   }
   console.log(movie_info);
+  var name = movie_info.name;
+  var description = movie_info.description;
+  var img = movie_info.img;
+  var category = movie_info.category;
   res.render("show_movie", {
-    name: movie_info.nane,
+    name: name,
     banner: {
-      jpg: movie_info.img
+      jpg: img
     },
     release_date: "16/12/2023",
     duration: "16 minutes",
-    category: movie_info.category,
+    category: category,
     actors: ["sujoy", "rahul", "memer", "crystal", "duplicate"],
     language: "english",
-    description: movie_info.description,
+    description: description,
     file_size: "1.2 gb",
     downloads: [
       {
