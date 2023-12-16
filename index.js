@@ -59,7 +59,7 @@ var id = req.params.id;
   if(!movie_info || movie_info.length < 1){
     return res.send(`4** error, N 0 Movie F()und With ${id} id`);
   }
-  console.log(movie_info);
+  console.log(movie_info.name);
   var name = movie_info.name;
   var description = movie_info.description;
   var img = movie_info.img;
