@@ -54,12 +54,37 @@ app.get("/movie/:id", async(req, res) => {
    return res.send(`4** error, id parameter is required to fetch the movie example:: /movie/Jfo48BKue`);
   }
 var id = req.params.id;
-  var movie_info = await db.getArray("info.movie")
+  var movie_info = await db.getArray("info.movie");
   var movie_info = movie_info.filter(i => i.id === id);
   if(!movie_info || movie_info.length < 1){
     return res.send(`4** error, N 0 Movie F()und With ${id} id`);
   }
-  res.json(movie_info);
+  res.json(movie_info, {
+    name: "test",
+    banner: {
+      jpg: "https://prize-pulse.github.io/favicon.ico"
+    },
+    release_date: "16/12/2023",
+    duration: "16 minutes",
+    category: "test",
+    actors: ["sujoy", "rahul", "memer", "crystal", "duplicate"],
+    language: "english",
+    description: "this is a test run to set the template",
+    file_size: "1.2 gb",
+    downloads: [
+      {
+        link: "https://prize-pulse.uk.to",
+        quality: "144",
+        size: "500 mb"
+      },
+      {
+        link: "https://prize-pulse.uk.to",
+        quality: "72p",
+        size: "1.2 gb"   
+      }
+    ],
+    tags: ["test", "#1", "first test", "this is a tag"]
+  });
 });
 
   //post methods
