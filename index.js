@@ -59,7 +59,7 @@ var id = req.params.id;
   if(!movie_info || movie_info.length < 1){
     return res.send(`4** error, N 0 Movie F()und With ${id} id`);
   }
-  res.render("", {
+  res.render("show_movie", {
     name: "test",
     banner: {
       jpg: "https://prize-pulse.github.io/favicon.ico"
