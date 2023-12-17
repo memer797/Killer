@@ -64,6 +64,7 @@ var id = req.params.id;
   var description = movie_info[0].description;
   var img = movie_info[0].img;
   var category = movie_info[0].category;
+  var tags = movie_info[0].tags;
   res.render("show_movie", {
     name: name,
     banner: {
@@ -88,7 +89,7 @@ var id = req.params.id;
         size: "1.2 gb"   
       }
     ],
-    tags: ["test", "#1", "first test", "this is a tag"]
+    tags
   });
 });
 
