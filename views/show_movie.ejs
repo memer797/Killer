@@ -147,7 +147,7 @@ button {
    <p><a href="download-link-720p">Download 720p</a></p>
    <p><a href="download-link-1080p">Download 1080p</a></p>--->
     <% downloads.forEach(data => { %>
-    	<p><a href="<%= data.link%>">Download <%= data.quality%> (<%= data.size%>)</a></p>
+    	<p><a href="<%= data.link%>">Download <% data.language ? `in <%= data.language%>` : `in default` %> <%= data.quality%> (<%= data.size%>)</a></p>
   <%  }); %>
   </div>
 
