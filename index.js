@@ -92,7 +92,14 @@ var id = req.params.id;
     tags
   });
 });
-
+//get all movie with related tag
+app.get("/tag/:tagToSe", async(req, res) => {
+var tagToSearch = req.params.tagToSe;
+var allMovies = await db.getArray("info.movie");
+var resultMovies = allMovies.filter(idata => idata.tags.include(tagToSearch));
+res.json(resultMovies);
+});
+  
   //post methods
 app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
