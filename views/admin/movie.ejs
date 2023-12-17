@@ -245,6 +245,7 @@ max-height: calc(100% - 70px);
 
   <script>
     let activeOptionsMenu = null;
+    let ttags = [];
 
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
@@ -262,7 +263,7 @@ max-height: calc(100% - 70px);
       const tagsContainer = document.getElementById('tagContainer');
 
       // Extract tags from input and split by commas
-      const tags = tagsInput.value.split(',');
+      const tags = ttags;
 
       const cardsContainer = document.getElementById('cardsContainer');
 
@@ -408,6 +409,7 @@ if(!tgs[0].length || tgs[0].trim() === "") return;
         agElement.addEventListener('click', () => removeTag(agElement));
         agsContainer.appendChild(agElement);
 TInput.value = "";
+ttags.push(tgs);
 console.log(tgs);
        });
 
