@@ -5,6 +5,7 @@ function delay(milliseconds) {
     setTimeout(resolve, milliseconds);
   });
 };
+
  const express = require("express"),
     bodyParser = require('body-parser'),
     path = require("path"),
@@ -120,5 +121,19 @@ res.cookie('admin_key', process.env.admin_login_cookie, {
  }
  res.send(false);
 });
+
+//dynamic sutemaps
+  app.get("/sitemap/dynamic/index.xml", (req, res) => {
+res.header('Content-Type', 'application/xml');
+  res.send(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+<loc>https://all-yt.onrender.com/ff/giveaway</loc>
+<lastmod>2023-12-16T14:12:28+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.00</priority>
+</url>
+</urlset>`);
+    
+  });
 };
 RunMainCode();
