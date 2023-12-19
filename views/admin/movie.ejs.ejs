@@ -203,15 +203,34 @@ max-height: calc(100% - 70px);
 
       <label for="imageUrl">Image URL:</label>
       <input type="text" id="imageUrl" placeholder="Enter Image URL">
+      
+     <label for="dounlink">Dounload Link:</label>
+      <input type="text" id="dounlink" placeholder="Enter Dounload  Link">
 
       <label for="description">Description:</label>
       <textarea id="description" placeholder="Enter Description"></textarea>
 
       <label for="category">Category:</label>
-      <select id="category">
-        <option value="action">Action</option>
-        <option value="entertainment">Entertainment</option>
-        <option value="many_more">Many More...</option>
+      <select id="category"><option value="action">Action</option>
+    <option value="adventure">Adventure</option>
+    <option value="animation">Animation</option>
+    <option value="biography">Biography</option>
+    <option value="comedy">Comedy</option>
+    <option value="crime">Crime</option>
+    <option value="documentary">Documentary</option>
+    <option value="drama">Drama</option>
+    <option value="family">Family</option>
+    <option value="fantasy">Fantasy</option>
+    <option value="historical">Historical</option>
+    <option value="horror">Horror</option>
+    <option value="musical">Musical</option>
+    <option value="mystery">Mystery</option>
+    <option value="romance">Romance</option>
+    <option value="science-fiction">Science Fiction (Sci-Fi)</option>
+    <option value="superhero">Superhero</option>
+    <option value="thriller">Thriller</option>
+    <option value="war">War</option>
+    <option value="western">Western</option>
       </select>
 
       <label for="tags">Tags:</label>
@@ -226,27 +245,8 @@ max-height: calc(100% - 70px);
 
   <script>
     let activeOptionsMenu = null;
-    let cardTemplate = `    <div class="card-container">
-        <div class="options" onclick="toggleOptionsMenu(event)">...</div>
-        <div class="options-menu" id="optionsMenu">
-            <a href="#" onclick="viewCard()">View</a>
-            <a href="#" onclick="editCard()">Edit</a>
-            <a href="#" class="delete" onclick="confirmDeleteCard()">Delete</a>
-        </div>
-        <div class="image-container">
-            <img src="https://placekitten.com/200/100" alt="Icon">
-        </div>
-        <div class="text-container">
-            <div style="width: 100%;">
-                <h4>Name</h4>
-            </div>
-            <div class="pd">
-                Description here... (up to 2 lines) 
-            </div>
-            <div class="category">Category: Unknown</div>
-     <div id="customText" style="position: absolute; bottom: 5px; left: 5px; color: #555;">#he5jiGj29Jd83GjekwJBIfSk</div>
-      </div>
-    </div>`;
+    let ttags = [];
+
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
     }
@@ -263,13 +263,27 @@ max-height: calc(100% - 70px);
       const tagsContainer = document.getElementById('tagContainer');
 
       // Extract tags from input and split by commas
-      const tags = tagsInput.value.split(',');
+      const tags = ttags;
 
       const cardsContainer = document.getElementById('cardsContainer');
 
       const cardDiv = document.createElement('div');
       cardDiv.classList.add('card');
+fetch("/admin/data/save/movie", {
+method: "POST",
+headers: {
+        "Content-Type": "application/json"
+    },
+body: JSON.stringify({
+name: name,
+description: description,
+category: category,
+tags: tags,
+img: document.getElementById("imageUrl").value,
+dounload_link: document.getElementById("dounlink").value
+}),
 
+});
       const cardContent = document.createElement('div');
       cardContent.classList.add('card-content');
 
@@ -304,18 +318,12 @@ const cardName = document.createElement('h3');
       cardDiv.appendChild(optionsDots);
       cardDiv.appendChild(optionsMenu);
 
-   /*   cardDiv.addEventListener('click', (event) => {
-        // Prevent the click event from bubbling up to the options menu
-        event.stopPropagation();
-        toggleOptionsMenu(cardDiv);
-      });*/
-
       cardsContainer.insertBefore(cardDiv, cardsContainer.childNodes[0]);
 
       // Clear input fields and tags container
       tagsInput.value = '';
       tagsContainer.innerHTML = '';
-if(!tags || tags.length < 1) return;
+if(!tags || tags.length < 1 || tags[0].trim() === "") return;
       // Add tags to the tag container
       tags.forEach(tag => {
         const tagElement = document.createElement('div');
@@ -343,20 +351,6 @@ if(!tags || tags.length < 1) return;
       alert('Editing card function soon');
     }
 
-   /* function toggleOptionsMenu(card) {
-      const optionsMenu = card.querySelector('.options-menu');
-      if (optionsMenu.style.display === 'block') {
-        optionsMenu.style.display = 'none';
-      } else {
-        // Close any active options menu
-        if (activeOptionsMenu) {
-          activeOptionsMenu.style.display = 'none';
-        }
-        optionsMenu.style.display = 'block';
-        activeOptionsMenu = optionsMenu;
-      }
-    }*/
-
     function showOptionsMenu(event, card) {
       // Close any active options menu
       if (activeOptionsMenu) {
@@ -370,13 +364,23 @@ if(!tags || tags.length < 1) return;
       event.stopPropagation();
     }
 
-    function confirmDeleteCard() {
+    function confirmDeleteCard(idToDel) {
       const isConfirmed = confirm('Are you sure you want to delete this card?');
       if (isConfirmed) {
         var lastPrompt = prompt(`say YES to delete`);
-if(lastPrompt.toLowerCase() !== "yes"){
+if(lastPrompt.trim().toLowerCase() !== "yes"){
 return;
 }
+console.log(idToDel);
+fetch("/admin/data/delete/movie", {
+method: "POST",
+headers: {
+        "Content-Type": "application/json"
+    },
+body: JSON.stringify({
+id: idToDel
+})
+});
         const card = activeOptionsMenu.closest('.card-container');
         card.parentNode.removeChild(card);
         activeOptionsMenu.style.display = 'none';
@@ -405,6 +409,7 @@ if(!tgs[0].length || tgs[0].trim() === "") return;
         agElement.addEventListener('click', () => removeTag(agElement));
         agsContainer.appendChild(agElement);
 TInput.value = "";
+ttags.push(tgs[0]);
 console.log(tgs);
        });
 
@@ -413,7 +418,12 @@ fetch("/admin/data/get/movie", {
 method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.data.forEach((dosta) => {
-      const name = dosta;
+console.log(dosta);
+      var name = dosta.name;
+      var description = dosta.description;
+      var category_txt = dosta.category;;
+      var id = dosta.id;
+      var img = dosta.img;
 // Create card container
 var cardContainer = document.createElement('div');
 cardContainer.classList.add('card-container');
@@ -436,7 +446,7 @@ var viewLink = document.createElement('a');
 viewLink.href = '#';
 viewLink.textContent = 'View';
 viewLink.onclick = function() {
-    viewCard();
+    viewCard(id);
 };
 
 // Create "Edit" link
@@ -444,7 +454,7 @@ var editLink = document.createElement('a');
 editLink.href = '#';
 editLink.textContent = 'Edit';
 editLink.onclick = function() {
-    editCard();
+    editCard(id);
 };
 
 // Create "Delete" link
@@ -453,7 +463,7 @@ deleteLink.href = '#';
 deleteLink.classList.add('delete');
 deleteLink.textContent = 'Delete';
 deleteLink.onclick = function() {
-    confirmDeleteCard();
+    confirmDeleteCard(id);
 };
 
 // Append links to options menu
@@ -467,7 +477,7 @@ imageContainer.classList.add('image-container');
 
 // Create image element
 var imageElement = document.createElement('img');
-imageElement.src = 'https://placekitten.com/200/100';
+imageElement.src = img;
 imageElement.alt = 'Icon';
 
 // Append image to image container
@@ -485,12 +495,12 @@ nameHeading.innerHTML = `<h4>${name}</h4>`;
 // Create description paragraph
 var descriptionParagraph = document.createElement('div');
 descriptionParagraph.classList.add('pd');
-descriptionParagraph.textContent = 'Description here... (up to 2 lines)';
+descriptionParagraph.textContent = description;
 
 // Create category
 var category = document.createElement('div');
 category.classList.add('category');
-category.textContent = 'Category: Unknown';
+category.textContent = `${category_txt}`;
 
 // Create custom text
 var customText = document.createElement('div');
@@ -499,7 +509,7 @@ customText.style.position = 'absolute';
 customText.style.bottom = '5px';
 customText.style.left = '5px';
 customText.style.color = '#555';
-customText.textContent = '#he5jiGj29Jd83GjekwJBIfSk';
+customText.textContent = id;
 
 // Append elements to text container
 textContainer.appendChild(nameHeading);
@@ -521,3 +531,5 @@ cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
 
 </body>
 </html>
+
+
