@@ -368,41 +368,6 @@ dounload_link: document.getElementById("dounlink").value
 }),
 
 });
-      const cardContent = document.createElement('div');
-      cardContent.classList.add('card-content');
-
-      const cardImage = document.createElement('img');
-      cardImage.src = imageUrl;
-      cardImage.alt = name;
-   
-const cardName = document.createElement('h3');
-      cardName.innerText = name;
-
-      const cardDescription = document.createElement('p');
-      cardDescription.innerText = description;
-
-      const optionsDots = document.createElement('div');
-      optionsDots.classList.add('options-dots');
-      optionsDots.innerText = '...';
-      optionsDots.addEventListener('click', (event) => showOptionsMenu(event, cardDiv));
-
-      const optionsMenu = document.createElement('div');
-      optionsMenu.classList.add('options-menu');
-      optionsMenu.innerHTML = `
-        <button onclick="viewCard()">View</button>
-        <button onclick="editCard()">Edit</button>
-        <button onclick="confirmDeleteCard()">Delete</button>
-      `;
-
-      cardContent.appendChild(cardName);
-      cardContent.appendChild(cardImage);
-      cardContent.appendChild(cardDescription);
-
-      cardDiv.appendChild(cardContent);
-      cardDiv.appendChild(optionsDots);
-      cardDiv.appendChild(optionsMenu);
-
-      cardsContainer.insertBefore(cardDiv, cardsContainer.childNodes[0]);
 
       // Clear input fields and tags container
       tagsInput.value = '';
