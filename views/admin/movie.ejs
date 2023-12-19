@@ -237,7 +237,7 @@ max-height: calc(100% - 70px);
       <input type="text" id="tags" placeholder="Enter Tags">
       <div class="tag-container" id="tagContainer"></div>
 
-      <button onclick="addCard()">Add</button>
+      <button onclick="addCardFu()">Add</button>
     </div>
   </div>
 
@@ -246,6 +246,94 @@ max-height: calc(100% - 70px);
   <script>
     let activeOptionsMenu = null;
     let ttags = [];
+    function addCard(data){
+      var { name, description, category_txt, id, img } = data;
+
+    var cardContainer = document.createElement('div');
+cardContainer.classList.add('card-container');
+
+var optionsButton = document.createElement('div');
+optionsButton.classList.add('options');
+optionsButton.textContent = '...';
+optionsButton.onclick = function(event) {
+    showOptionsMenu(event, cardContainer);
+};
+
+var optionsMenu = document.createElement('div');
+optionsMenu.classList.add('options-menu');
+optionsMenu.id = 'optionsMenu';
+
+var viewLink = document.createElement('a');
+viewLink.href = '#';
+viewLink.textContent = 'View';
+viewLink.onclick = function() {
+    viewCard(id);
+};
+
+var editLink = document.createElement('a');
+editLink.href = '#';
+editLink.textContent = 'Edit';
+editLink.onclick = function() {
+    editCard(id);
+};
+
+var deleteLink = document.createElement('a');
+deleteLink.href = '#';
+deleteLink.classList.add('delete');
+deleteLink.textContent = 'Delete';
+deleteLink.onclick = function() {
+    confirmDeleteCard(id);
+};
+
+optionsMenu.appendChild(viewLink);
+optionsMenu.appendChild(editLink);
+optionsMenu.appendChild(deleteLink);
+
+var imageContainer = document.createElement('div');
+imageContainer.classList.add('image-container');
+
+var imageElement = document.createElement('img');
+imageElement.src = img;
+imageElement.alt = 'Icon';
+
+imageContainer.appendChild(imageElement);
+
+var textContainer = document.createElement('div');
+textContainer.classList.add('text-container');
+
+var nameHeading = document.createElement('div');
+nameHeading.style.width = '100%';
+nameHeading.innerHTML = `<h4>${name}</h4>`;
+
+var descriptionParagraph = document.createElement('div');
+descriptionParagraph.classList.add('pd');
+descriptionParagraph.textContent = description;
+
+var category = document.createElement('div');
+category.classList.add('category');
+category.textContent = `${category_txt}`;
+
+var customText = document.createElement('div');
+customText.id = 'customText';
+customText.style.position = 'absolute';
+customText.style.bottom = '5px';
+customText.style.left = '5px';
+customText.style.color = '#555';
+customText.textContent = id;
+
+textContainer.appendChild(nameHeading);
+textContainer.appendChild(descriptionParagraph);
+textContainer.appendChild(category);
+textContainer.appendChild(customText);
+
+cardContainer.appendChild(optionsButton);
+cardContainer.appendChild(optionsMenu);
+cardContainer.appendChild(imageContainer);
+cardContainer.appendChild(textContainer);
+
+cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
+    };
+    
 
     function openModal() {
       document.getElementById('myModal').style.display = 'flex';
@@ -254,7 +342,7 @@ max-height: calc(100% - 70px);
       document.getElementById('myModal').style.display = 'none';
     }
 
-    function addCard() {
+    function addCardFu() {
       const name = document.getElementById('name').value;
       const imageUrl = document.getElementById('imageUrl').value;
       const description = document.getElementById('description').value;
@@ -265,10 +353,6 @@ max-height: calc(100% - 70px);
       // Extract tags from input and split by commas
       const tags = ttags;
 
-      const cardsContainer = document.getElementById('cardsContainer');
-
-      const cardDiv = document.createElement('div');
-      cardDiv.classList.add('card');
 fetch("/admin/data/save/movie", {
 method: "POST",
 headers: {
@@ -424,107 +508,14 @@ console.log(dosta);
       var category_txt = dosta.category;;
       var id = dosta.id;
       var img = dosta.img;
-// Create card container
-var cardContainer = document.createElement('div');
-cardContainer.classList.add('card-container');
+addCard({
+	name,
+	description,
+	category_txt,
+	id,
+	img
+	});
 
-// Create options button
-var optionsButton = document.createElement('div');
-optionsButton.classList.add('options');
-optionsButton.textContent = '...';
-optionsButton.onclick = function(event) {
-    showOptionsMenu(event, cardContainer);
-};
-
-// Create options menu
-var optionsMenu = document.createElement('div');
-optionsMenu.classList.add('options-menu');
-optionsMenu.id = 'optionsMenu';
-
-// Create "View" link
-var viewLink = document.createElement('a');
-viewLink.href = '#';
-viewLink.textContent = 'View';
-viewLink.onclick = function() {
-    viewCard(id);
-};
-
-// Create "Edit" link
-var editLink = document.createElement('a');
-editLink.href = '#';
-editLink.textContent = 'Edit';
-editLink.onclick = function() {
-    editCard(id);
-};
-
-// Create "Delete" link
-var deleteLink = document.createElement('a');
-deleteLink.href = '#';
-deleteLink.classList.add('delete');
-deleteLink.textContent = 'Delete';
-deleteLink.onclick = function() {
-    confirmDeleteCard(id);
-};
-
-// Append links to options menu
-optionsMenu.appendChild(viewLink);
-optionsMenu.appendChild(editLink);
-optionsMenu.appendChild(deleteLink);
-
-// Create image container
-var imageContainer = document.createElement('div');
-imageContainer.classList.add('image-container');
-
-// Create image element
-var imageElement = document.createElement('img');
-imageElement.src = img;
-imageElement.alt = 'Icon';
-
-// Append image to image container
-imageContainer.appendChild(imageElement);
-
-// Create text container
-var textContainer = document.createElement('div');
-textContainer.classList.add('text-container');
-
-// Create name heading
-var nameHeading = document.createElement('div');
-nameHeading.style.width = '100%';
-nameHeading.innerHTML = `<h4>${name}</h4>`;
-
-// Create description paragraph
-var descriptionParagraph = document.createElement('div');
-descriptionParagraph.classList.add('pd');
-descriptionParagraph.textContent = description;
-
-// Create category
-var category = document.createElement('div');
-category.classList.add('category');
-category.textContent = `${category_txt}`;
-
-// Create custom text
-var customText = document.createElement('div');
-customText.id = 'customText';
-customText.style.position = 'absolute';
-customText.style.bottom = '5px';
-customText.style.left = '5px';
-customText.style.color = '#555';
-customText.textContent = id;
-
-// Append elements to text container
-textContainer.appendChild(nameHeading);
-textContainer.appendChild(descriptionParagraph);
-textContainer.appendChild(category);
-textContainer.appendChild(customText);
-
-// Append elements to card container
-cardContainer.appendChild(optionsButton);
-cardContainer.appendChild(optionsMenu);
-cardContainer.appendChild(imageContainer);
-cardContainer.appendChild(textContainer);
-
-// Append card container to the body or another parent element
-cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
 });
 }).catch();
   </script>
