@@ -367,7 +367,17 @@ img: document.getElementById("imageUrl").value,
 dounload_link: document.getElementById("dounlink").value
 }),
 
-});
+}).then(d => d.json()).then(gotData => {
+var gotId = gotData.id;
+
+addCard({
+	name,
+	description,
+	category_txt: category,
+	id: gotId,
+	img: document.getElementById("imageUrl").value 
+	});
+}).catch();
 
       // Clear input fields and tags container
       tagsInput.value = '';
