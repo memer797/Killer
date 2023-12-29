@@ -1,13 +1,1632 @@
-Data Received: ↓ <br>
-<%= JSON.stringify(data)%>
-<br>
-Visualisation
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movieswhere</title>
+  <!-- Add your logo link here -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    header {
+      background-color: #141414;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    header img {
+      width: 100px;
+      height: auto;
+    }
+.logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      width: 40px;
+      height: 40px; 
+      margin-right: 10px; 
+    }
+    .logo img {
+      width: 100%;
+      height: auto;
+    }
+        .menu-icon {
+      font-size: 24px; 
+      cursor: pointer;
+      color: #fff; 
+      transition: color 0.3s ease; 
+    }
+    .menu-icon:hover {
+      color: #e50914; 
+    }
+    nav {
+      background-color: #141414;
+      padding: 10px;
+      text-align: center; /* Align text to the center */
+      display: none; /* Hide the navigation by default */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      border-radius: 5px;
+      z-index: 1000;
+      display: block;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff; /* Set your navigation text color */
+      display: block;
+      padding: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition for hover effect */
+    }
+    nav a:hover {
+      background-color: #333; 
+      color: #e50914; /* Red color on hover */
+    }
+@media (max-width: 768px) {
+  nav {
+    display: none; /* or adjust as needed */
+  }
+}
+    .login-container {
+      text-align: right;
+    }
 
-<% data.forEach(dt => { %>
-<br>
-<h5>Question: <%= dt.name%> kisne bola?</h5>
-<br>
-<h6>Answer: <%= dt.author%> ne bola; </h6>
-<br>
-<br>
-<% }); %>
+    .login-button {
+      background-color: #e50914;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #trending {
+      background-color: #f5f5f5;
+    }
+
+    #trending .movie-container {
+  margin: 10px;
+  text-align: center;
+  width: 150px; /* Adjust the width as needed */
+}
+
+#trending .movie-image {
+  width: 100%; /* Make the image fill the container */
+  height: 160px; /* Adjust the height as needed */
+  object-fit: cover;
+  border-radius: 10px;
+}
+/*search*/
+.search-container {
+  margin-top: 10px; /* Adjust the top margin as needed */
+  margin-bottom: 10px; /* Add padding to the left */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Added to center horizontally */
+}
+
+    .search-input {
+  padding: 12px;
+  font-size: 16px;
+  border: none; /* Remove the border property */
+  background-color: #333; /* Dark background color for the input */
+  color: #fff;
+  border-radius: 25px;
+  outline: none;
+  transition: box-shadow 0.3s ease; /* Add smooth transition for box-shadow */
+  box-shadow: 0 0 10px 0px transparent; /* Initial transparent box-shadow */
+  margin-left: 10px;
+  flex: 1;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 10px 0px #e50914; /* Red box-shadow on focus */
+}
+
+    .search-icon {
+      font-size: 20px;
+      color: #4285f4;
+      margin-left: 10px; /* Adjusted margin to place it on the right */
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .leftright-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+
+.left-side {
+      flex: 1;
+    }
+
+    .right-side {
+      flex: 1;
+      text-align: right;
+    }
+    
+.see-all {
+  color: #4285f4;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.see-all:hover {
+  color: #e50914; /* Hover color */
+}
+
+
+    
+/* New Section */
+.new-section {
+  overflow-x: auto;
+  white-space: nowrap;
+  direction: ltr; /* Changed to left-to-right direction */
+  text-align: left; /* Align the text to the left */
+  margin-top: 3px; /* Adjust the top margin as needed */
+  padding-left: 15px; /* Add padding to the left */
+  padding-right: 15px; /* Add padding to the left */
+}
+
+.new-section .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: #fff; /* Set the text color */
+}
+
+.new-section .movie-container {
+  display: inline-block;
+  margin-right: 7px; /* Adjust spacing between movies */
+  text-align: center;
+  width: 135px; /* Set the width */
+}
+ 
+.new-section .movie-image {
+  width: 100%; /* Make the image fill the container */
+  height: 80px; /* Set the height */
+  object-fit: cover;
+}
+
+.new-section .movie-name {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #fff; 
+  }
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    position: relative;
+  }
+}
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer-logo {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo img {
+      width: 100%;
+      max-width: 100px;
+      border-radius: 8px; /* Adding border radius for a rounded look */
+    }
+
+    .footer-links {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #e50914; /* Hover color */
+    }
+
+    .footer-social {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+
+    .social-icon {
+      margin: 0 10px;
+      font-size: 18px;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: #e50914; /* Hover color */
+    }
+
+    
+    /* Responsive styles */
+    @media (min-width: 768px) {
+      .footer-content {
+        justify-content: space-between;
+      }
+
+     .footer-logo,
+      .footer-links,
+      .footer-social,
+      .footer-copyright {
+        flex-basis: calc(25% - 10px);
+        margin: 0;
+      }
+    }
+    
+.footer-copyright {
+      flex-basis: 100%;
+      margin-top: 10px;
+      font-size: 12px;
+}
+    
+  </style>
+</head>
+
+<body><!---
+  <header>
+    <div class="logo-container">
+      <div class="logo">
+        <img src="" alt="Your Logo">
+      </div>
+      <div class="logo-text">memer797</div>
+    </div>
+    
+    <div class="menu-icon">&#9776;</div>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Trending</a>
+    <a href="#">LOGIN</a>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+    <i class="fas fa-search search-icon" onclick="performSearch()"></i>
+  </div>
+  
+    <script>
+    document.getElementById('searchInput').addEventListener('focus', function() {
+      this.placeholder = '';
+    });
+
+    document.getElementById('searchInput').addEventListener('blur', function() {
+      this.placeholder = 'Search...';
+    });
+
+    function performSearch() {
+      var searchTerm = document.getElementById('searchInput').value;
+      console.log('Search term:', searchTerm);
+      // Add your search functionality here
+    }
+  </script>
+--->
+  <div id="trending">
+    <div class="movie-container">
+      <img class="movie-image" src="" alt="Movie 1">
+      <div class="movie-name">Movie 1</div>
+    </div>
+    <div class="movie-container">
+      <img class="movie-image" src="movie2.jpg" alt="Movie 2">
+      <div class="movie-name">Movie 2</div>
+    </div>
+    <div class="movie-container">
+      <img class="movie-image" src="movie3.jpg" alt="Movie 3">
+      <div class="movie-name">Movie 3</div>
+    </div>
+    <div class="movie-container">
+      <img class="movie-image" src="movie4.jpg" alt="Movie 4">
+      <div class="movie-name">Movie 4</div>
+    </div>
+    <!-- Add more movie containers as needed -->
+  </div>
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Action</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <a href="#"> <img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 1"></a>
+     <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+       <a href="#"> <img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 2"></a>
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <a href="#"><img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 3"></a>
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+       <a href="#"> <img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 4"></a>
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+       <a href="#"> <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5"></a>
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <a href="#"><img class="movie-image" src="https://imgur.com/7SLAEiU.jpg" alt="Movie 6"></a>
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+       <a href="#"> <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7"></a>
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <a href="#"><img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8"></a>
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+       <a href="#"> <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9"></a>
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <a href="#"><img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10"></a>
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Comedy</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Drama</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Horror</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Science Fiction (Sci-Fi)</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Fantasy</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Mystery</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Romance</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Thriller</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Animation</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Documentary</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Biography</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Historical</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Musical</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Adventure</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Crime</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Family</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">War</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Western</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">Superhero</div>
+  </div>
+  <div class="right-side">
+    <a href="#" class="see-all">See All</a>
+  </div>
+</div>
+  
+  <!-- New Section -->
+  <div class="new-section">
+    <div class="movies-container">
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 1">
+        <div class="movie-name">Movie 1</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 2">
+        <div class="movie-name">Movie 2</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 3">
+        <div class="movie-name">Movie 3</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 4">
+        <div class="movie-name">Movie 4</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5">
+        <div class="movie-name">Movie 5</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 6">
+        <div class="movie-name">Movie 6</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7">
+        <div class="movie-name">Movie 7</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8">
+        <div class="movie-name">Movie 8</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9">
+        <div class="movie-name">Movie 9</div>
+      </div>
+      <div class="movie-container">
+        <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10">
+        <div class="movie-name">Movie 10</div>
+      </div>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+
+
+
+
+
+
+
+
+  
+
+
+<!---
+ 
+<div class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+ 
+        <img src="your-logo.png" alt="Your Logo">
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+
+      <div class="footer-social">
+        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:noreply.memer797@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a>
+        <a href="https://www.instagram.com/memer_797?igshid=OGQ5ZDc2ODk2ZA==" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/+hVgGjErhQk0xZDI1" class="social-icon" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.youtube.com/YOUR_CHANNEL_URL" class="social-icon" target="_blank"><i class="fab fa-youtube"></i>
+    </a>
+      </div>
+
+      <div class="footer-copyright">
+        <p>&copy; 2023 Memer797. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+--->
+
+
+<script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const nav = document.querySelector('nav');
+
+  menuIcon.addEventListener('click', function () {
+    if (nav.style.display === 'block') {
+      nav.style.display = 'none';
+      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
+    } else {
+      nav.style.display = 'block';
+      menuIcon.innerHTML = '&#10006;'; 
+    }
+  });
+
+  // Add event listener to close the menu when clicking outside of it
+  document.addEventListener('click', function (event) {
+    const isClickInsideMenu = nav.contains(event.target);
+    const isClickOnMenuIcon = menuIcon.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnMenuIcon) {
+      nav.style.display = 'none';
+      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
+    }
+  });
+</script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script>
+  // Initialize Slick slider
+  $(document).ready(function(){
+    $('#trending').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000, // Adjust the speed as needed
+      pauseOnHover: true,
+      arrows: false // Set arrows to false to hide them
+    });
+  });
+  </script>
+</body>
+</html>
