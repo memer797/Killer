@@ -48,7 +48,7 @@ var val = req.query.value;
   
 app.get("/", async (req, res) => {
     var data = await db.getArray("info.movie");
-var result = Object.values(data.reduce((acc, { name, img, id }) => {
+var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
   acc[category] = acc[category] || { category, items: [] };
   acc[category].items.push({ name, img, id });
   return acc;
