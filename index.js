@@ -49,15 +49,21 @@ var val = req.query.value;
 app.get("/", async(req, res) => {
 //res.render("index");
   var ddataa = await db.getArray("info.movie");
-  let categoryArrays = {};
-ddataa.forEach((item) => {
-  if (!categoryArrays[item.category]) {
-    categoryArrays[item.category] = [];
+  
+  let categoryArrays = [];
+
+data.forEach((item) => {
+  let index = categoryArrays.findIndex((arr) => arr[0].category === item.category);
+
+  if (index === -1) {
+    categoryArrays.push([item]);
+  } else {
+    // If the category array already exists, push the item to it
+    categoryArrays[index].push(item);
   }
-  categoryArrays[item.category].push(item);
 });
 
-  res.json(categoryArrays);
+  await res.json(categoryArrays);
 });
 
 app.get("/movie/:id", async(req, res) => {
