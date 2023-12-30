@@ -46,25 +46,29 @@ var val = req.query.value;
  res.json(data);
   });
   
-app.get("/", async(req, res) => {
-//res.render("index");
-  var data = await db.getArray("info.movie");
-  
-  let categoryArrays = [];
-/*
-data.forEach((item) => {
-  let index = categoryArrays.findIndex((arr) => arr[0].category === item.category);
+app.get("/", async (req, res) => {
+  try {
+    var data = await db.getArray("info.movie");
 
-  if (index === -1) {
-    categoryArrays.push([item]);
-  } else {
-    // If the category array already exists, push the item to it
-    categoryArrays[index].push(item);
+    let categoryArrays = [];
+
+    data.forEach((item) => {
+      let index = categoryArrays.findIndex((arr) => arr[0]?.category === item.category);
+
+      if (index === -1) {
+        categoryArrays.push([item]);
+      } else {
+        categoryArrays[index].push(item);
+      }
+    });
+
+    res.json(categoryArrays);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
-});*/
-
-  await res.json({json: "json"});
 });
+
 
 app.get("/movie/:id", async(req, res) => {
   if(!req.params.id || req.params.id.trim() === ""){
