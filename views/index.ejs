@@ -326,7 +326,7 @@
 <main>
   <div class="leftright-container">
   <div class="left-side">
-      <div class="section-title">Action</div>
+      <div class="section-title"><%= data.category%></div>
   </div>
   <div class="right-side">
     <a href="#" class="see-all">See All</a>
@@ -337,44 +337,8 @@
   <div class="new-section">
     <div class="movies-container">
       <div class="movie-container">
-        <a href="#"> <img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 1"></a>
-     <div class="movie-name">Movie 1</div>
-      </div>
-      <div class="movie-container">
-       <a href="#"> <img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 2"></a>
-        <div class="movie-name">Movie 2</div>
-      </div>
-      <div class="movie-container">
-        <a href="#"><img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 3"></a>
-        <div class="movie-name">Movie 3</div>
-      </div>
-      <div class="movie-container">
-       <a href="#"> <img class="movie-image" src="https://i.imgur.com/7SLAEiU.jpg" alt="Movie 4"></a>
-        <div class="movie-name">Movie 4</div>
-      </div>
-      <div class="movie-container">
-       <a href="#"> <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 5"></a>
-        <div class="movie-name">Movie 5</div>
-      </div>
-      <div class="movie-container">
-        <a href="#"><img class="movie-image" src="https://imgur.com/7SLAEiU.jpg" alt="Movie 6"></a>
-        <div class="movie-name">Movie 6</div>
-      </div>
-      <div class="movie-container">
-       <a href="#"> <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 7"></a>
-        <div class="movie-name">Movie 7</div>
-      </div>
-      <div class="movie-container">
-        <a href="#"><img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 8"></a>
-        <div class="movie-name">Movie 8</div>
-      </div>
-      <div class="movie-container">
-       <a href="#"> <img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 9"></a>
-        <div class="movie-name">Movie 9</div>
-      </div>
-      <div class="movie-container">
-        <a href="#"><img class="movie-image" src="https://via.placeholder.com/299x168" alt="Movie 10"></a>
-        <div class="movie-name">Movie 10</div>
+        <a href="#"> <img class="movie-image" src="<= data.img%>" alt="< data.name%>"></a>
+     <div class="movie-name"><= data.name%>/div>
       </div>
       <!-- Add more movie containers as needed -->
     </div>
