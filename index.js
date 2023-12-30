@@ -57,7 +57,7 @@ ddataa.forEach((item) => {
   categoryArrays[item.category].push(item);
 });
     
-  res.json(categoryArray);
+  res.json(categoryArrays);
 });
 
 app.get("/movie/:id", async(req, res) => {
