@@ -306,7 +306,7 @@ background-color: #111;
 <%- include('./includes/nav')%>
   <div id="trending">
 <% allData.forEach(data => { %>
-    <div class="movie-container">
+    <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
       <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
       <div class="movie-name"><%= data.name%></div>
     </div>
@@ -381,7 +381,7 @@ background-color: #111;
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000, // Adjust the speed as needed
-      pauseOnHover: true,
+      pauseOnHover: false,
       arrows: false // Set arrows to false to hide them
     });
   });
