@@ -51,7 +51,7 @@ app.get("/", async(req, res) => {
   var data = await db.getArray("info.movie");
   
   let categoryArrays = [];
-
+/*
 data.forEach((item) => {
   let index = categoryArrays.findIndex((arr) => arr[0].category === item.category);
 
@@ -61,7 +61,7 @@ data.forEach((item) => {
     // If the category array already exists, push the item to it
     categoryArrays[index].push(item);
   }
-});
+});*/
 
   await res.json({json: "json"});
 });
