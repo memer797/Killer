@@ -47,7 +47,9 @@ var val = req.query.value;
   });
   
 app.get("/", async(req, res) => {
-res.render("index");
+//res.render("index");
+  var ja = await db.getArray("info.movie");
+  res.json(ja);
 });
 
 app.get("/movie/:id", async(req, res) => {
