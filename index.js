@@ -63,7 +63,7 @@ data.forEach((item) => {
   }
 });
 
-  await res.json(categoryArrays);
+  await res.json({json: "json"});
 });
 
 app.get("/movie/:id", async(req, res) => {
