@@ -304,22 +304,12 @@
 <body>
 <%- include('./includes/nav')%>
   <div id="trending">
+<% allData.forEach(data => { %>
     <div class="movie-container">
-      <img class="movie-image" src="" alt="Movie 1">
-      <div class="movie-name">Movie 1</div>
+      <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
+      <div class="movie-name"><%= data.name%></div>
     </div>
-    <div class="movie-container">
-      <img class="movie-image" src="movie2.jpg" alt="Movie 2">
-      <div class="movie-name">Movie 2</div>
-    </div>
-    <div class="movie-container">
-      <img class="movie-image" src="movie3.jpg" alt="Movie 3">
-      <div class="movie-name">Movie 3</div>
-    </div>
-    <div class="movie-container">
-      <img class="movie-image" src="movie4.jpg" alt="Movie 4">
-      <div class="movie-name">Movie 4</div>
-    </div>
+<% }); %>
     <!-- Add more movie containers as needed -->
   </div>
 <% data.forEach(data => { %>
