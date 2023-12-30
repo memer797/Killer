@@ -1,0 +1,38 @@
+
+  <header>
+    <div class="logo-container">
+      <div class="logo">
+        <img src="" alt="Your Logo">
+      </div>
+      <div class="logo-text">memer797</div>
+    </div>
+    
+    <div class="menu-icon">&#9776;</div>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Trending</a>
+    <a href="#">LOGIN</a>
+  </nav>
+
+  <div class="search-container">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+    <i class="fas fa-search search-icon" onclick="performSearch()"></i>
+  </div>
+  
+    <script>
+    document.getElementById('searchInput').addEventListener('focus', function() {
+      this.placeholder = '';
+    });
+
+    document.getElementById('searchInput').addEventListener('blur', function() {
+      this.placeholder = 'Search...';
+    });
+
+    function performSearch() {
+      var searchTerm = document.getElementById('searchInput').value;
+      console.log('Search term:', searchTerm);
+      // Add your search functionality here
+    }
+  </script>
