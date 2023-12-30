@@ -53,8 +53,8 @@ var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
   acc[category].items.push({ name, img, id });
   return acc;
 }, {}));
-res.json(result);
-//  res.render('index', { data: result });
+
+  res.render('index', { data: result });
 });
 
 
