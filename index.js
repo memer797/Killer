@@ -56,8 +56,9 @@ ddataa.forEach((item) => {
   }
   categoryArrays[item.category].push(item);
 });
-    
-  res.json(ddataa[0]);
+    setTimeout(() => {
+  res.json(categoryArrays);
+    }, 3000);
 });
 
 app.get("/movie/:id", async(req, res) => {
