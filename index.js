@@ -48,8 +48,16 @@ var val = req.query.value;
   
 app.get("/", async(req, res) => {
 //res.render("index");
-  var ja = await db.getArray("info.movie");
-  res.json(ja);
+  var ddataa = await db.getArray("info.movie");
+  let categoryArrays = [];
+ddataa.forEach((item) => {
+  if (!categoryArrays[item.category]) {
+    categoryArrays[item.category] = [];
+  }
+  categoryArrays[item.category].push(item);
+});
+    
+  res.json(categoryArray);
 });
 
 app.get("/movie/:id", async(req, res) => {
