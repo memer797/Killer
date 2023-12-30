@@ -54,7 +54,7 @@ var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
   return acc;
 }, {}));
 
-  res.render('index', { data: result });
+  res.render('index', { data: result, allData: data });
 });
 
 
