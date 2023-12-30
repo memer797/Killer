@@ -48,7 +48,7 @@ var val = req.query.value;
   
 app.get("/", async(req, res) => {
 //res.render("index");
-  var ddataa = await db.getArray("info.movie");
+  var data = await db.getArray("info.movie");
   
   let categoryArrays = [];
 
