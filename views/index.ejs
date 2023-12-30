@@ -332,14 +332,15 @@
     <a href="#" class="see-all">See All</a>
   </div>
 </div>
-  
+<% data.items.forEach(item => { %>  
   <!-- New Section -->
   <div class="new-section">
     <div class="movies-container">
       <div class="movie-container">
-        <a href="#"> <img class="movie-image" src="<= data.img%>" alt="< data.name%>"></a>
-     <div class="movie-name"><= data.name%>/div>
+        <a href="#"> <img class="movie-image" src="<%= item.img%>" alt="<%= item.name%>"></a>
+     <div class="movie-name"><%= item.name%>/div>
       </div>
+<% }); %>
       <!-- Add more movie containers as needed -->
     </div>
   </div>
