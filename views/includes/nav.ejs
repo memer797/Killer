@@ -1,5 +1,4 @@
-
-  <header>
+ <header>
     <div class="logo-container">
       <div class="logo">
         <img src="" alt="Your Logo">
@@ -35,4 +34,15 @@
       console.log('Search term:', searchTerm);
       // Add your search functionality here
     }
+
+var searchQ = document.getElementById("searchInput");
+let searchTimeout;
+searchQ.addEventListener("input", async() => {
+clearTimeout(searchTimeout);
+searchTimeout = setTimeout(getSuggestion,200);
+});
+function getSuggestion() {
+if(searchQ.value.trim() === ""){ return; };
+console.log(searchQ.value);
+};
   </script>
