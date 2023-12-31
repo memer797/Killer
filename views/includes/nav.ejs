@@ -10,16 +10,16 @@
   </header>
 
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Trending</a>
-    <a href="#">LOGIN</a>
+    <a href="/">Home</a>
+ <!---   <a href="#">Trending</a>
+    <a href="#">LOGIN</a>--->
   </nav>
 
   <div class="search-container">
     <input type="text" class="search-input" id="searchInput" placeholder="Search...">
     <i class="fas fa-search search-icon" onclick="performSearch()"></i>
   </div>
-<div style="width: 100%; height: 60px; margin-top: 4px; display: none; text-align: center; color: white;" id="sugsug"></div>
+<div style="width: 100%; height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; text-align: center; color: white; overflow-y: auto;" id="sugsug"></div>
   
     <script>
     document.getElementById('searchInput').addEventListener('focus', function() {
