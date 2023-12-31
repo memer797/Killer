@@ -44,5 +44,6 @@ searchTimeout = setTimeout(getSuggestion,200);
 function getSuggestion() {
 if(searchQ.value.trim() === ""){ return; };
 console.log(searchQ.value);
+fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.json()).then(console.log);
 };
   </script>
