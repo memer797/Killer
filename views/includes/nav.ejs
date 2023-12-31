@@ -19,7 +19,7 @@
     <input type="text" class="search-input" id="searchInput" placeholder="Search...">
     <i class="fas fa-search search-icon" onclick="performSearch()"></i>
   </div>
-<div style="width: 100%; height: 60px; margin-top: 4px;"></div>
+<div style="width: 100%; height: 60px; margin-top: 4px; display: none;" id="sugsug"></div>
   
     <script>
     document.getElementById('searchInput').addEventListener('focus', function() {
@@ -37,6 +37,7 @@
     }
 
 var searchQ = document.getElementById("searchInput");
+var sugDiv = document.querySelector("#sugsug");
 let searchTimeout;
 searchQ.addEventListener("input", async() => {
 clearTimeout(searchTimeout);
@@ -45,6 +46,11 @@ searchTimeout = setTimeout(getSuggestion,200);
 function getSuggestion() {
 if(searchQ.value.trim() === ""){ return; };
 console.log(searchQ.value);
-fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.json()).then(console.log);
+fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.json()).then(ardata => {
+sugDiv.innerHTML = "";
+ardata.forEach(ss => {
+sugDiv.innerHTML += ss;
+});
+});
 };
   </script>
