@@ -67,7 +67,7 @@ var query = req.query.q ? req.query.q : "";
         threshold: 0.4, // Adjust the threshold as needed
       };
 
-      var fuse = new Fuse(data, options_s);
+      var fuse = new searchAlgo__(data, options_s);
       var result = fuse.search(query);
       res.json(result.map(item => item.item));
 });
