@@ -58,7 +58,9 @@ var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
 
   res.render('index', { data: result, allData: data });
 });
+app.get("/suggest", async(req, res) => {
 
+});
 
 app.get("/movie/:id", async(req, res) => {
   if(!req.params.id || req.params.id.trim() === ""){
