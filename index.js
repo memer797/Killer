@@ -59,7 +59,17 @@ var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
   res.render('index', { data: result, allData: data });
 });
 app.get("/suggest", async(req, res) => {
+var query = req.query.q ? req.query.q : "";
+  var data = await db.getArray("info.movie");
+      var options_s = {
+        keys: ["name", "description"],
+        includeScore: true,
+        threshold: 0.4, // Adjust the threshold as needed
+      };
 
+      var fuse = new Fuse(data, options_s);
+      var result = fuse.search(query);
+      res.json(result.map(item => item.item));
 });
 
 app.get("/movie/:id", async(req, res) => {
