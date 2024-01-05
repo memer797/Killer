@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie {
+            display: flex;
+            margin: 10px -10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie img {
+            max-width: 135px;
+            max-height: 80px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .movie-details {
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .movie-name {
+            margin-top: 0;
+            word-wrap: break-word;
+        }
+
+        .movie-name a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #1c13bf;
+        }
+
+        .movie-category {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #fff;
+            background-color: #bf1338;
+            padding: 2px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+    <title>Movie Category - Action</title>
+</head>
+<body>
+
+<div class="header">
+    <a href="#" class="back-link">← Back</a>
+    <h1>Action Movies</h1>
+</div>
+
+<div class="container">
+    <div id="movies-container"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const moviesContainer = document.getElementById('movies-container');
+
+        // Sample movie data for the Action category
+        const movies = [
+            { name: 'Movie 1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
+            { name: 'Movie 2', image: 'movie2.jpg', link: 'https://example.com/movie2', category: 'Action' },
+            // Add more movies as needed
+        ];
+
+        // Display movies
+        movies.forEach(movie => {
+            const movieElement = document.createElement('div');
+            movieElement.classList.add('movie');
+
+            const imageElement = document.createElement('img');
+            imageElement.src = movie.image;
+
+            const detailsElement = document.createElement('div');
+            detailsElement.classList.add('movie-details');
+
+            const nameElement = document.createElement('h3');
+            const anchorElement = document.createElement('a');
+            anchorElement.href = movie.link;
+            anchorElement.textContent = movie.name;
+            anchorElement.style.color = getRandomColor();
+
+            const categoryElement = document.createElement('div');
+            categoryElement.classList.add('movie-category');
+            categoryElement.textContent = movie.category;
+            categoryElement.style.backgroundColor = getRandomColor();
+
+            nameElement.classList.add('movie-name');
+            nameElement.appendChild(anchorElement);
+            detailsElement.appendChild(nameElement);
+            detailsElement.appendChild(categoryElement);
+
+            movieElement.appendChild(imageElement);
+            movieElement.appendChild(detailsElement);
+            moviesContainer.appendChild(movieElement);
+        });
+
+        function getRandomColor() {
+            const colors = ['#1c13bf', '#bf1338', '#b3a744', '#5cbf73', '#b565b5', '#79c98d', '#c9bd79', '#45734c', '#231499', '#7ac470', '#d42f4a'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    });
+</script>
+
+</body>
+</html>
