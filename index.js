@@ -120,7 +120,7 @@ app.get("/tag/:tagToSe", async(req, res) => {
 var tagToSearch = req.params.tagToSe;
 var allMovies = await db.getArray("info.movie");
 var resultMovies = allMovies.filter(idata => idata.tags.includes(tagToSearch));
-res.json(resultMovies);
+res.render("category list");
 });
   
   //post methods
