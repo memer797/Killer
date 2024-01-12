@@ -74,7 +74,8 @@ var query = req.query.q ? req.query.q : "";
 app.get("/search/:term", async(req, res) => {
 var query = req.params.term;
 var data = await db.getArray("info.movie");
-      var options_s = {
+console.log(data);  
+  var options_s = {
         keys: ["name", "description"],
         includeScore: false,
         threshold: 0.4, // Adjust the threshold as needed
