@@ -69,8 +69,7 @@ var query = req.query.q ? req.query.q : "";
 
       var fuse = new searchAlgo__(data, options_s);
       var result = fuse.search(query);
-  res.json(result)
-   //   res.json(result.map(item => item.item.name));
+      res.json(result.map(item => ({name: item.item.name, id: item.item.id}));
 });
 
 app.get("/movie/:id", async(req, res) => {
