@@ -64,7 +64,7 @@ var query = req.query.q ? req.query.q : "";
       var options_s = {
         keys: ["name", "description"],
         includeScore: true,
-        threshold: 0.2, // Adjust the threshold as needed
+        threshold: 1, // Adjust the threshold as needed
       };
 
       var fuse = new searchAlgo__(data, options_s);
