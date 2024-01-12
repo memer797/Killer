@@ -71,6 +71,19 @@ var query = req.query.q ? req.query.q : "";
       var result = fuse.search(query);
       res.json(result.map(item => ({name: item.item.name, id: item.item.id})));
 });
+app.get("/search/:term", async(req, res) => {
+var query = req.params.term;
+var data = await db.getArray("info.movie");
+      var options_s = {
+        keys: ["name", "description"],
+        includeScore: false,
+        threshold: 0.4, // Adjust the threshold as needed
+      };
+
+      var fuse = new searchAlgo__(data, options_s);
+      var result = fuse.search(query);
+      res.json(result.map(item => ({name: item.item.name, id: item.item.id})));
+});
 
 app.get("/movie/:id", async(req, res) => {
   if(!req.params.id || req.params.id.trim() === ""){
