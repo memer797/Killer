@@ -54,7 +54,7 @@ fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.js
 sugDiv.innerHTML = "";
 sugDiv.style.display = "block";
 ardata.forEach(ss => {
-sugDiv.innerHTML += `<strong><a href="https://memer797.onrender.com/movie/${ss.id}" style="display: block; color: white; margin-bottom: 3px; padding: 3px; margin-left: 10px; -webkit-tap-highlight-color: transparent;">${ss.name}</a></strong>`;
+sugDiv.innerHTML += `<strong><a href="https://memer797.onrender.com/movie/${ss.id}" style="display: block; color: white; margin-bottom: 3px; padding: 3px; margin-left: 10px; -webkit-tap-highlight-color: transparent; text-decorarion: none;">${ss.name}</a></strong>`;
 });
 });
 };
