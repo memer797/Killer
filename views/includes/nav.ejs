@@ -99,6 +99,7 @@ if(searchQ.value.trim() === ""){
 sugDiv.style.display = "none";
 return; 
 };
+sugDiv.innerHTML = `<div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div>`;
 console.log(searchQ.value);
 fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.json()).then(ardata => {
 sugDiv.innerHTML = "";
