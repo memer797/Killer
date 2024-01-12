@@ -20,7 +20,7 @@
     <input type="text" class="search-input" id="searchInput" placeholder="Search...">
     <i class="fas fa-search search-icon" onclick="performSearch()"></i>
   </div>
-<div style="width: 99%; margin: 0 auto; height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
+<div style="width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
   
     <script>
     document.getElementById('searchInput').addEventListener('focus', function() {
@@ -54,7 +54,7 @@ fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.js
 sugDiv.innerHTML = "";
 sugDiv.style.display = "block";
 ardata.forEach(ss => {
-sugDiv.innerHTML += `<strong><a style="display: block; color: white; margin-bottom: 3px; width: 100%; padding: 3px; margin-left: 8px;">${ss}</a></strong>`;
+sugDiv.innerHTML += `<strong><a style="display: block; color: white; margin-bottom: 3px; padding: 3px; margin-left: 10px;">${ss}</a></strong>`;
 });
 });
 };
