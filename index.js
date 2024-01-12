@@ -76,7 +76,7 @@ var query = req.params.term;
 var data = await db.getArray("info.movie");
 console.log(data);  
   var options_s = {
-        keys: ["name", "description"],
+        keys: ["name", "description", "tags", "category", "id"],
         includeScore: false,
         threshold: 0.4, // Adjust the threshold as needed
       };
