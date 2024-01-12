@@ -54,7 +54,7 @@ fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.js
 sugDiv.innerHTML = "";
 sugDiv.style.display = "block";
 ardata.forEach(ss => {
-sugDiv.innerHTML += `<strong><a style="display: block; color: white; margin-bottom: 3px; height: 42px; width: 100%; padding: 3px; margin-left: 8px;">${ss}</a></strong><br>`;
+sugDiv.innerHTML += `<strong><a style="display: block; color: white; margin-bottom: 3px; width: 100%; padding: 3px; margin-left: 8px;">${ss}</a></strong>`;
 });
 });
 };
