@@ -84,7 +84,9 @@
     function performSearch() {
       var searchTerm = document.getElementById('searchInput').value;
       console.log('Search term:', searchTerm);
-      // Add your search functionality here
+if(!searchTerm || searchTerm.trim() === "") return;
+
+windor.location.href=`${searchTerm}`
     }
 
 var searchQ = document.getElementById("searchInput");
