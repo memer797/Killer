@@ -111,7 +111,7 @@
 
 <script>
 setInterval(() => {
-console.log(<%= list%>)
+console.log("<%= JSON.stringify(list)%>")
 }, 2000);
     document.addEventListener('DOMContentLoaded', function () {
         const moviesContainer = document.getElementById('movies-container');
