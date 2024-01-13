@@ -83,7 +83,7 @@ console.log(data);
 
       var fuse = new searchAlgo__(data, options_s);
       var result = fuse.search(query);
-     res.render("search list", {list: result.map(item => ({name: item.item.name, id: item.item.id, category: item.item.category, img: item.item.img}))});
+     res.render("search list", {list: result.map(item => ({name: item.item.name, id: item.item.id, category: item.item.category, img: item.item.img})), term: query});
      // res.json(result.map(item => ({name: item.item.name, id: item.item.id})));
 });
 
