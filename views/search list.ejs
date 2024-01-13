@@ -90,7 +90,23 @@
 </div>
 
 <div class="container">
-    <div id="movies-container"></div>
+    <div id="movies-container">
+<% list.forEach(data => { %>
+<div class="movie">
+<img src="movie1.jpg">
+<div class="movie-details">
+<h3 class="movie-name">
+<a href="https://memer797.onrender.com/movie/<%= list.id%>" style="color: rgb(212, 47, 74);">
+<%= list.name%>
+</a>
+</h3>
+<div class="movie-category" style="background-color: rgb(35, 20, 153);">
+<%= list.category%>
+</div>
+</div>
+</div>
+<% }); %>
+</div>
 </div>
 
 <script>
