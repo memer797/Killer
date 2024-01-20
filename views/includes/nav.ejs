@@ -184,6 +184,29 @@
 <div style="width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
   
     <script>
+const menuIcon = document.querySelector('.menu-icon');
+  const nav = document.querySelector('nav');
+
+  menuIcon.addEventListener('click', function () {
+    if (nav.style.display === 'block') {
+      nav.style.display = 'none';
+      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
+    } else {
+      nav.style.display = 'block';
+      menuIcon.innerHTML = '&#10006;'; 
+    }
+  });
+
+  // Add event listener to close the menu when clicking outside of it
+  document.addEventListener('click', function (event) {
+    const isClickInsideMenu = nav.contains(event.target);
+    const isClickOnMenuIcon = menuIcon.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnMenuIcon) {
+      nav.style.display = 'none';
+      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
+    }
+  });
     document.getElementById('searchInput').addEventListener('focus', function() {
       this.placeholder = '';
     });
@@ -223,4 +246,5 @@ sugDiv.innerHTML += `<strong><a href="https://memer797.onrender.com/movie/${ss.i
 });
 });
 };
+
   </script>
