@@ -64,7 +64,8 @@
   display: flex;
   align-items: center;
   justify-content: center; /* Added to center horizontally */
-width: 100%;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
     .search-input {
@@ -156,7 +157,7 @@ width: 100%;
 }
   }
 </style>
-<div style="width: 100%; position: fixed; z-index: 999; padding-bottom: 5px; border-bottom: 0.5px: solid gray;">
+<div style="width: 100%; position: fixed; z-index: 999; padding-bottom: 5px border-bottom: 0.5px: solid gray;">
 <header>
     <div class="logo-container">
       <div class="logo">
@@ -178,7 +179,7 @@ width: 100%;
     <input type="text" class="search-input" id="searchInput" placeholder="Search...">
     <i class="fas fa-search search-icon" onclick="performSearch()"></i>
   </div>
-<div style="width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
+<div style="background-color: #252525; width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
   </div>
     <script>
 const menuIcon = document.querySelector('.menu-icon');
