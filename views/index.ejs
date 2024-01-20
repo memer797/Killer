@@ -14,83 +14,6 @@
       background-color: #303030;
       color: #fff;
     }
-    header {
-      background-color: #141414;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    header img {
-      width: 100px;
-      height: auto;
-    }
-.logo-container {
-      display: flex;
-      align-items: center;
-    }
-    .logo {
-      width: 40px;
-      height: 40px; 
-      margin-right: 10px; 
-    }
-    .logo img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-    }
-        .menu-icon {
-      font-size: 24px; 
-      cursor: pointer;
-      color: #fff; 
-      transition: color 0.3s ease; 
-    }
-    .menu-icon:hover {
-      color: #e50914; 
-    }
-    nav {
-      background-color: #141414;
-      padding: 10px;
-      text-align: center; /* Align text to the center */
-      display: none; /* Hide the navigation by default */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 60px;
-      right: 10px;
-      border-radius: 5px;
-      z-index: 1000;
-      display: block;
-    }
-    nav a {
-      text-decoration: none;
-      color: #fff; /* Set your navigation text color */
-      display: block;
-      padding: 8px;
-      transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition for hover effect */
-    }
-    nav a:hover {
-      background-color: #333; 
-      color: #e50914; /* Red color on hover */
-    }
-@media (max-width: 768px) {
-  nav {
-    display: none; /* or adjust as needed */
-  }
-}
-    .login-container {
-      text-align: right;
-    }
-
-    .login-button {
-      background-color: #e50914;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
 
     #trending {
       background-color: transparent;
@@ -112,40 +35,6 @@ background-color: transparent;
 .new-section .movies-container .movie-container .movie-image {
 border-radius: 4px;
 }
-/*search*/
-.search-container {
-  margin-top: 10px; /* Adjust the top margin as needed */
-  margin-bottom: 10px; /* Add padding to the left */
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Added to center horizontally */
-}
-
-    .search-input {
-  padding: 12px;
-  font-size: 16px;
-  border: none; /* Remove the border property */
-  background-color: #333; /* Dark background color for the input */
-  color: #fff;
-  border-radius: 25px;
-  outline: none;
-  transition: box-shadow 0.3s ease; /* Add smooth transition for box-shadow */
-  box-shadow: 0 0 10px 0px transparent; /* Initial transparent box-shadow */
-  margin-left: 10px;
-  flex: 1;
-}
-
-.search-input:focus {
-  box-shadow: 0 0 10px 0px #e50914; /* Red box-shadow on focus */
-}
-
-    .search-icon {
-      font-size: 20px;
-      color: #4285f4;
-      margin-left: 10px; /* Adjusted margin to place it on the right */
-      margin-right: 10px;
-      cursor: pointer;
-    }
 
     .leftright-container {
       display: flex;
@@ -343,35 +232,6 @@ border-radius: 4px;
 <% }); %>
 <%- include('./includes/footer')%>
 
-
-
-
-
-<script>
-  const menuIcon = document.querySelector('.menu-icon');
-  const nav = document.querySelector('nav');
-
-  menuIcon.addEventListener('click', function () {
-    if (nav.style.display === 'block') {
-      nav.style.display = 'none';
-      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
-    } else {
-      nav.style.display = 'block';
-      menuIcon.innerHTML = '&#10006;'; 
-    }
-  });
-
-  // Add event listener to close the menu when clicking outside of it
-  document.addEventListener('click', function (event) {
-    const isClickInsideMenu = nav.contains(event.target);
-    const isClickOnMenuIcon = menuIcon.contains(event.target);
-
-    if (!isClickInsideMenu && !isClickOnMenuIcon) {
-      nav.style.display = 'none';
-      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
-    }
-  });
-</script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
