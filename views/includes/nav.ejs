@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
   header {
-      background-color: #181818;
+      background-color: #303030;
       padding: 10px;
       display: flex;
       justify-content: space-between;
@@ -59,11 +59,11 @@
       background-color: #333; 
       color: #e50914; /* Red color on hover */
     }
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   nav {
     display: none; /* or adjust as needed */
   }
-}
+}*/
 
 .search-container {
   background-color: #181818;
@@ -192,10 +192,10 @@ const menuIcon = document.querySelector('.menu-icon');
     if (nav.style.display === 'block') {
       nav.style.display = 'none';
       menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
-    } else {
+    }/* else {
       nav.style.display = 'block';
       menuIcon.innerHTML = '&#10006;'; 
-    }
+    }*/
   });
 
   // Add event listener to close the menu when clicking outside of it
