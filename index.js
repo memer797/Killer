@@ -74,7 +74,7 @@ var query = req.query.q ? req.query.q : "";
 app.get("/search/:term", async(req, res) => {
 var query = req.params.term;
 var data = await db.getArray("info.movie");
-console.log(data);  
+//console.log(data);  
   var options_s = {
         keys: ["name", "description", "tags", "category", "id"],
         includeScore: false,
