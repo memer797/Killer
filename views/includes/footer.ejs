@@ -1,3 +1,94 @@
+<style>
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    position: relative;
+  }
+}
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer-logo {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo img {
+      width: 100%;
+      max-width: 100px;
+      border-radius: 8px; /* Adding border radius for a rounded look */
+    }
+
+    .footer-links {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #e50914; /* Hover color */
+    }
+
+    .footer-social {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+
+    .social-icon {
+      margin: 0 10px;
+      font-size: 18px;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: #e50914; /* Hover color */
+    }
+
+    
+    /* Responsive styles */
+    @media (min-width: 768px) {
+      .footer-content {
+        justify-content: space-between;
+      }
+
+     .footer-logo,
+      .footer-links,
+      .footer-social,
+      .footer-copyright {
+        flex-basis: calc(25% - 10px);
+        margin: 0;
+      }
+    }
+    
+.footer-copyright {
+      flex-basis: 100%;
+      margin-top: 10px;
+      font-size: 12px;
+}
+</style>
 <div class="footer">
     <div class="footer-content">
       <div class="footer-logo">
