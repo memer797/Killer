@@ -7,8 +7,6 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      position: fixed;
-      z-index: 999
 }
     header img {
       width: 100px;
@@ -158,6 +156,7 @@ width: 100%;
 }
   }
 </style>
+<div style="width: 100%; position: fixed; z-index: 999;">
 <header>
     <div class="logo-container">
       <div class="logo">
@@ -180,7 +179,7 @@ width: 100%;
     <i class="fas fa-search search-icon" onclick="performSearch()"></i>
   </div>
 <div style="width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
-  
+  </div>
     <script>
 const menuIcon = document.querySelector('.menu-icon');
   const nav = document.querySelector('nav');
