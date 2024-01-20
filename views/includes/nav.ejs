@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
   header {
-      background-color: #303030;
+      background-color: #252525;
       padding: 10px;
       display: flex;
       justify-content: space-between;
@@ -36,10 +36,11 @@
       color: #e50914; 
     }
     nav {
+      display: none;
       background-color: #141414;
       padding: 10px;
       text-align: center; /* Align text to the center */
-      display: none; /* Hide the navigation by default */
+  /*    display: none;  Hide the navigation by default */
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       position: absolute;
       top: 60px;
@@ -192,10 +193,10 @@ const menuIcon = document.querySelector('.menu-icon');
     if (nav.style.display === 'block') {
       nav.style.display = 'none';
       menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
-    }/* else {
+    } else {
       nav.style.display = 'block';
       menuIcon.innerHTML = '&#10006;'; 
-    }*/
+    }
   });
 
   // Add event listener to close the menu when clicking outside of it
