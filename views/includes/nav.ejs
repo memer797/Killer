@@ -58,11 +58,45 @@
       background-color: #333; 
       color: #e50914; /* Red color on hover */
     }
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   nav {
     display: none; /* or adjust as needed */
   }
+}*/
+.search-container {
+  margin-top: 10px; /* Adjust the top margin as needed */
+  margin-bottom: 10px; /* Add padding to the left */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Added to center horizontally */
 }
+
+    .search-input {
+  padding: 12px;
+  font-size: 16px;
+  border: none; /* Remove the border property */
+  background-color: #333; /* Dark background color for the input */
+  color: #fff;
+  border-radius: 25px;
+  outline: none;
+  transition: box-shadow 0.3s ease; /* Add smooth transition for box-shadow */
+  box-shadow: 0 0 10px 0px transparent; /* Initial transparent box-shadow */
+  margin-left: 10px;
+  flex: 1;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 10px 0px #e50914; /* Red box-shadow on focus */
+}
+
+    .search-icon {
+      font-size: 20px;
+      color: #4285f4;
+      margin-left: 10px; /* Adjusted margin to place it on the right */
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
     .login-container {
       text-align: right;
     }
