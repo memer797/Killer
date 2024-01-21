@@ -24,7 +24,9 @@ height: 100%;
     #trending {
       background-color: transparent;
     }
-
+.taremaka {
+padding-top: 10px;
+}
     #trending .movie-container {
   margin: 10px;
   text-align: center;
@@ -112,6 +114,7 @@ border-radius: 4px;
 
 <body>
 <%- include('./includes/nav')%>
+<div class="taremaka">
   <div id="trending">
 <% allData.forEach(data => { %>
     <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
@@ -147,7 +150,7 @@ border-radius: 4px;
 </main>
 <% }); %>
 <%- include('./includes/footer')%>
-
+</div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
