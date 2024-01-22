@@ -172,5 +172,17 @@ res.header('Content-Type', 'application/xml');
 </urlset>`);
     
   });
+  app.get("/privacy-policy", async(req, res) => {
+res.render("privacy-policy");
+  });
+    app.get("/about-us", async(req, res) => {
+//res.render("privacy-policy");
+  });
+    app.get("/contact-us", async(req, res) => {
+//res.render("privacy-policy");
+  });
+    app.get("/contact/chat", async(req, res) => {
+//res.render("privacy-policy");
+  });
 };
 RunMainCode();
