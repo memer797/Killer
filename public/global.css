@@ -11,6 +11,8 @@ width: 100%;
 height: 100%;
     }
 .taremaka {
+      margin: 0;
+      padding: 0;
 padding-top: 110px;
 min-height: calc(100% - 110px);
 }
