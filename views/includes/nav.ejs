@@ -175,7 +175,7 @@
 
   <div class="search-container">
     <input type="search" class="search-input" id="searchInput" placeholder="Search...">
-    <span style="padding: 6px; font-sixe: 13px;" onclick="performSearch()">&#128269;</span>
+    <span style="padding: 6px; font-sixe: 13px;" onclick="performSearch()" onkeydown="searchOnEnter(event)">&#128269;</span>
   </div>
 <div style="background-color: #252525; width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
   </div>
@@ -210,7 +210,11 @@ const menuIcon = document.querySelector('.menu-icon');
     document.getElementById('searchInput').addEventListener('blur', function() {
       this.placeholder = 'Search...';
     });
-
+function searchOnEnter(event) {
+    if (event.key === "Enter") {
+     performSearch();
+}
+  }
     function performSearch() {
       var searchTerm = document.getElementById('searchInput').value;
       console.log('Search term:', searchTerm);
