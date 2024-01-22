@@ -176,7 +176,7 @@ res.header('Content-Type', 'application/xml');
 res.render("privacy-policy");
   });
     app.get("/about-us", async(req, res) => {
-//res.render("privacy-policy");
+res.render("about-us");
   });
     app.get("/contact-us", async(req, res) => {
 //res.render("privacy-policy");
