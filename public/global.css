@@ -12,6 +12,7 @@ height: 100%;
     }
 .taremaka {
 padding-top: 100px;
+min-height: calc(100% - 100px);
 }
 .line {
   display: block;
