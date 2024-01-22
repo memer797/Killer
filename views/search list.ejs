@@ -78,6 +78,7 @@
 </head>
 <body>
 <%- include('./includes/nav')%>
+<div class="taremaka">
 <div class="header">
     <a href="javascript: window.history.go(-1)" class="back-link">← Back</a>
     <h1 style="font-size: 12px;">Search result for "<%= term%>"</h1>
@@ -103,7 +104,7 @@
 </div>
 </div>
 <%- include('./includes/footer')%>
-
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const moviesContainer = document.getElementById('movies-container');
