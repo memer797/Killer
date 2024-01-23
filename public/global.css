@@ -13,8 +13,8 @@ height: 100%;
 .taremaka {
       margin: 0;
       padding: 0;
-padding-top: 110px;
-min-height: calc(100% - 110px);
+padding-top: 125px;
+min-height: calc(100% - 125px);
 }
 .line {
   display: block;
