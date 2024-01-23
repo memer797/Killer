@@ -182,7 +182,7 @@
   </nav>
 
   <div class="search-container">
-    <input onkeydown="searchOnEnter(event)" type="search" class="search-input" id="searchInput" onfocus="sop()" onblur="nop()" placeholder="Search...">
+    <input onkeydown="searchOnEnter(event)" type="search" class="search-input" id="searchInput" onfocus="sop()" placeholder="Search...">
     <span style="padding: 6px; font-sixe: 13px;" onclick="performSearch()">&#128269;</span>
   </div>
 <div style="background-color: #252525; width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
@@ -190,6 +190,13 @@
     <script>
 const menuIcon = document.querySelector('.menu-icon');
   const nav = document.querySelector('nav');
+document.addEventListener('click', function(event) {
+    var userInput = document.getElementById('searchInput');
+    var myDiv = document.querySelector("#sugsug");
+if (event.target !== userInput && event.target !== myDiv) {
+        nop();
+    }
+});
 function sop(){
 if(document.querySelector("#sugsug").innerHTML !== ""){
 document.querySelector("#sugsug").style.display = "block";
