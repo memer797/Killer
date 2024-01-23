@@ -192,8 +192,8 @@ const menuIcon = document.querySelector('.menu-icon');
   const nav = document.querySelector('nav');
 document.addEventListener('click', function(event) {
     var userInput = document.getElementById('searchInput');
-    var myDiv = document.querySelector("#sugsug");
-if (event.target !== userInput && event.target !== myDiv) {
+    var myDiva = document.querySelector("#sugsug a");
+if (event.target !== userInput && event.target !== myDiva) {
         nop();
     }
 });
