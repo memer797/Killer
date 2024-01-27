@@ -179,7 +179,7 @@ res.render("privacy-policy");
 res.render("about-us");
   });
     app.get("/contact-us", async(req, res) => {
-res.render("contact-us");
+res.render("contact us");
   });
     app.get("/contact/chat", async(req, res) => {
 //res.render("privacy-policy");
