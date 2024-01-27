@@ -178,10 +178,9 @@ res.render("privacy-policy");
     app.get("/about-us", async(req, res) => {
 res.render("about-us");
   });
-  /*  app.get("/contact-us", async(req, res) => {
-
-      //res.render("privacy-policy");
-  });*/
+    app.get("/contact-us", async(req, res) => {
+res.render("contact-us");
+  });
     app.get("/contact/chat", async(req, res) => {
 //res.render("privacy-policy");
   });
