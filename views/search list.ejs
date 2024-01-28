@@ -111,7 +111,7 @@ function getRandomColor() {
 
 <div class="container">
     <div id="movies-container">
-
+<% list.forEach(data => { %>
 <div class="movie">
 <img src="<%= data.img%>">
 <div class="movie-details">
@@ -123,6 +123,7 @@ function getRandomColor() {
 <div class="movie-category" style="background-color: <%= getRandomColor()%>">
 <%= data.category%>
 </div></div></div>
+        <% }); %>
 </div>
 </div>
 
