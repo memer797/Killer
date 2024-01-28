@@ -95,13 +95,18 @@
 
         
     </style>
-    <title>Movie Category - Action</title>
+    <title>Search result for <%= term%></title>
 </head>
 <body>
+<% 
+function getRandomColor() {
+            const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        } %>
 
 <div class="header">
     <a href="function: history.go(-1)" class="back-link">← Back</a>
-    <h1>Action Movies</h1>
+    <h1>Search result for <%= term%></h1>
 </div>
 
 <div class="container">
