@@ -116,11 +116,11 @@ function getRandomColor() {
 <img src="<%= data.img%>">
 <div class="movie-details">
 <h3 class="movie-name">
-<a href="https://memer797.onrender.com/movie/<%= data.id%>" style="color: rgb(255, 0, 255);">
+<a href="https://memer797.onrender.com/movie/<%= data.id%>" style="color: <%= getRandomColor()%>">
 <%= data.name%>
 </a>
 </h3>
-<div class="movie-category" style="background-color: rgb(255, 0, 255);">
+<div class="movie-category" style="background-color: <%= getRandomColor()%>">
 <%= data.category%>
 </div></div></div>
 </div>
