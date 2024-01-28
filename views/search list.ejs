@@ -3,14 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #333; /* Darker background color */
-        }
-
+  <link rel="stylesheet" type="text/css" href="/global.css"/>
+<style>
         .header {
             background-color: #000; /* Darker header background color */
             color: #fff;
@@ -103,7 +97,7 @@ function getRandomColor() {
             const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
             return colors[Math.floor(Math.random() * colors.length)];
         } %>
-
+<div class="taremaka">
 <div class="header">
     <a href="javascript: history.go(-1)" class="back-link">← Back</a>
     <h1>Search result for <%= term%></h1>
@@ -124,6 +118,7 @@ function getRandomColor() {
 <%= data.category%>
 </div></div></div>
         <% }); %>
+</div>
 </div>
 </div>
 
