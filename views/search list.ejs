@@ -9,9 +9,9 @@
             background-color: #000; /* Darker header background color */
             color: #fff;
             padding: 10px;
-            text-align: left;
+         /*   text-align: left;
             display: flex;
-            align-items: center;
+            align-items: center;*/
         }
 
         .back-link {
@@ -101,8 +101,11 @@ function getRandomColor() {
 <div class="taremaka">
 <div class="header">
     <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
+<div style="text-align: left;
+            display: flex;
+            align-items: center; background-color: transparent;">
     <h1>Search result for <%= term%></h1>
-</div>
+</div></div>
 
 <div class="container">
     <div id="movies-container">
