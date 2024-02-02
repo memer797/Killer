@@ -58,6 +58,7 @@ var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
 
   res.render('index', { data: result, allData: data });
 });
+  
 app.get("/suggest", async(req, res) => {
 var query = req.query.q ? req.query.q : "";
   var data = await db.getArray("info.movie");
@@ -71,6 +72,7 @@ var query = req.query.q ? req.query.q : "";
       var result = fuse.search(query);
       res.json(result.map(item => ({name: item.item.name, id: item.item.id})));
 });
+  
 app.get("/search/:term", async(req, res) => {
 var query = req.params.term;
 var data = await db.getArray("info.movie");
@@ -136,6 +138,12 @@ var tagToSearch = req.params.tagToSe;
 var allMovies = await db.getArray("info.movie");
 var resultMovies = allMovies.filter(idata => idata.tags.includes(tagToSearch));
 res.render("category list");
+});
+
+  //see all router
+app.get("/category/:item", async(req, res) => {
+var itemName = req.params.item;
+  res.render("category_list");
 });
   
   //post methods
