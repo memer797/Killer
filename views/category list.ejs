@@ -3,21 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-
+  <link rel="stylesheet" type="text/css" href="/global.css"/>
+<style>
         .header {
-            background-color: #1c1c1c;
+            background-color: #000; /* Darker header background color */
             color: #fff;
             padding: 10px;
-            text-align: left;
+            margin-top: -10px;
+         /*   text-align: left;
             display: flex;
-            align-items: center;
+            align-items: center;*/
         }
 
         .back-link {
@@ -31,7 +26,7 @@
             max-width: 800px;
             margin: 20px auto;
             text-align: center;
-            background-color: #fff;
+            background-color: #444; /* Darker container background color */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -43,15 +38,16 @@
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: #fff;
+            background-color: #555; /* Darker movie background color */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .movie img {
-            max-width: 135px;
-            max-height: 80px;
+            max-width: 146.6664px;
+             max-height: 80px;
             height: auto;
             margin-right: 10px;
+        border-radius: 4px;
         }
 
         .movie-details {
@@ -62,45 +58,86 @@
         .movie-name {
             margin-top: 0;
             word-wrap: break-word;
+            color: #999; /* Light gray color for the movie name */
         }
 
         .movie-name a {
             text-decoration: none;
             font-weight: bold;
-            color: #1c13bf;
+            color: #3498db; /* Accent color for links */
         }
+.movie-name a::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: #000; /* Black color for the border */
+            padding: 2px; /* Adjust the padding for the border thickness */
+            border-radius: 3px; /* Adjust the border radius for a rounded appearance */
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+.movie-category {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #000080; /* Navy Blue text color for category */
+    background-color: #3498db; /* Accent color for category background */
+    padding: 2px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    border: 1px solid #fff; /* White border around the text */
+}
 
-        .movie-category {
-            font-size: 12px;
-            margin-top: 5px;
-            color: #fff;
-            background-color: #bf1338;
-            padding: 2px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
+        
     </style>
-    <title><%%term%%></title>
+    <title>Search result for <%= term%></title>
 </head>
 <body>
-
+<% 
+function getRandomColor() {
+            const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        } %>
+<%- include('./includes/nav')%>
+<div class="taremaka">
 <div class="header">
-    <a href="javascript: window.history.go(-1)" class="back-link">← Back</a>
-    <h1><%%term%%></h1>
-</div>
+    <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
+<div style="text-align: left;
+            display: flex;
+            align-items: center; background-color: transparent;">
+    <h1>Search result for <%= term%></h1>
+</div></div>
 
 <div class="container">
-    <div id="movies-container"></div>
+    <div id="movies-container">
+<% list.forEach(data => { %>
+<div class="movie">
+<img src="<%= data.img%>">
+<div class="movie-details">
+<h3 class="movie-name">
+<a href="https://memer797.onrender.com/movie/<%= data.id%>" style="color: <%= getRandomColor()%>">
+<%= data.name%>
+</a>
+</h3>
+<div class="movie-category" style="background-color: <%= getRandomColor()%>">
+<%= data.category%>
+</div></div></div>
+        <% }); %>
 </div>
-
+</div>
+</div>
+<%- include('./includes/footer')%>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+/*    document.addEventListener('DOMContentLoaded', function () {
         const moviesContainer = document.getElementById('movies-container');
 
         // Sample movie data for the Action category
         const movies = [
-            { name: 'Movie 1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
-            { name: 'Movie 2', image: 'movie2.jpg', link: 'https://example.com/movie2', category: 'Action' },
+            { name: 'Movie bsnnsnshsjjshz1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
+                        { name: 'Movie bsnnsnshsjjshz1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
+                                    { name: 'Movie bsnnsnshsjjshz1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
+            { name: 'Movie 2', image: 'movie2.jpg', link: 'https://example.com/movie2', category: 'Comedy' },
             // Add more movies as needed
         ];
 
@@ -137,10 +174,10 @@
         });
 
         function getRandomColor() {
-            const colors = ['#1c13bf', '#bf1338', '#b3a744', '#5cbf73', '#b565b5', '#79c98d', '#c9bd79', '#45734c', '#231499', '#7ac470', '#d42f4a'];
+            const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];            
             return colors[Math.floor(Math.random() * colors.length)];
         }
-    });
+    });*/
 </script>
 
 </body>
