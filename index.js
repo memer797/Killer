@@ -144,7 +144,7 @@ res.render("category list");
 app.get("/category/:item", async(req, res) => {
 var itemName = req.params.item;
 var data = await db.getArray("info.movie");
-  var daToSend = data.filter(ii => ii.category === itemName);
+  var daToSend = data.filter(ii => (ii.category).toLowerCase() === itemName.toLowerCase());
   res.render("category list", {
     list: daToSend,
     category: itemName
