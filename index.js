@@ -143,7 +143,12 @@ res.render("category list");
   //see all router
 app.get("/category/:item", async(req, res) => {
 var itemName = req.params.item;
-  res.render("category_list");
+var data = await db.getArray("info.movie");
+  var daToSend = data.filter(ii => ii.category === itemName);
+  res.render("category list", {
+    data: daToSend,
+    category: itemName
+  });
 });
   
   //post methods
