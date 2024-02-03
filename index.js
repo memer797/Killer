@@ -146,7 +146,7 @@ var itemName = req.params.item;
 var data = await db.getArray("info.movie");
   var daToSend = data.filter(ii => ii.category === itemName);
   res.render("category list", {
-    data: daToSend,
+    list: daToSend,
     category: itemName
   });
 });
