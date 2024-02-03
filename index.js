@@ -150,7 +150,16 @@ var data = await db.getArray("info.movie");
     category: itemName
   });
 });
-  
+
+  //see all global 😂
+
+  app.get("/see-all", async(req, res) => {
+//see all 🤯 
+    res.send("Hmm");
+  });
+
+  //end of see all global 😢 no 😢 only 😂
+//💩 hagna start
   //post methods
 app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
