@@ -36,7 +36,7 @@ var adminRoute = require("./routes/admin");
 
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
- 
+/* 
 let data = [];
   app.post("/data/add", async(req, res) => {
 var name = req.query.name;
@@ -47,7 +47,7 @@ var val = req.query.value;
   app.post("/data/get", async(req, res) => {
  res.json(data);
   });
-  
+  */
 app.get("/", async (req, res) => {
     var data = await db.getArray("info.movie");
 var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
