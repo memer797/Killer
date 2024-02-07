@@ -141,6 +141,10 @@ res.render("category list");
 });
 
   //see all router
+app.get("/see-all", async(req,res) => {
+//spon
+});
+  //catrgory see all router
 app.get("/category/:item", async(req, res) => {
 var itemName = req.params.item;
 var data = await db.getArray("info.movie");
