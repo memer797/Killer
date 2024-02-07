@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('./includes/fav icon')%>
+<link rel="stylesheet" type="text/css" href="/global.css"/>
+<style>
+        .header {
+            background-color: #000; /* Darker header background color */
+            color: #fff;
+            padding: 10px;
+            margin-top: -10px;
+         /*   text-align: left;
+            display: flex;
+            align-items: center;*/
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #444; /* Darker container background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie {
+            display: flex;
+            margin: 10px -10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #555; /* Darker movie background color */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie img {
+            max-width: 146.6664px;
+             max-height: 80px;
+            height: auto;
+            margin-right: 10px;
+        border-radius: 4px;
+        }
+
+        .movie-details {
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .movie-name {
+            margin-top: 0;
+            word-wrap: break-word;
+            color: #999; /* Light gray color for the movie name */
+        }
+
+        .movie-name a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #3498db; /* Accent color for links */
+        }
+.movie-name a::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: #000; /* Black color for the border */
+            padding: 2px; /* Adjust the padding for the border thickness */
+            border-radius: 3px; /* Adjust the border radius for a rounded appearance */
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+.movie-category {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #000080; /* Navy Blue text color for category */
+    background-color: #3498db; /* Accent color for category background */
+    padding: 2px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    border: 1px solid #fff; /* White border around the text */
+}
+
+        
+    </style>
+    <title>All Movies</title>
+</head>
+<body>
+<% 
+function getRandomColor() {
+            const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        } %>
+<%- include('./includes/nav')%>
+<div class="taremaka">
+<div class="header">
+    <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
+<div style="text-align: left;
+            display: flex;
+            align-items: center; background-color: transparent;">
+    <h1 style="font-size: 25px;">All Movies</h1>
+</div></div>
+
+<div class="container">
+    <div id="movies-container">
+<% list.forEach(data => { %>
+<div class="movie">
+<a href="https://memer797.onrender.com/movie/<%= data.id%>"><img style="border-radius: 4px;" src="<%= data.img%>" alt="<%= data.name%> movie from <% category%> category"></a>
+<div class="movie-details">
+<h3 class="movie-name">
+<a href="https://memer797.onrender.com/movie/<%= data.id%>" style="color: <%= getRandomColor()%>">
+<%= data.name%>
+</a>
+</h3>
+<div class="movie-category" style="background-color: <%= getRandomColor()%>">
+<%= category%>
+</div></div></div>
+        <% }); %>
+</div>
+</div>
+</div>
+<%- include('./includes/footer')%>
+</body>
+</html>
