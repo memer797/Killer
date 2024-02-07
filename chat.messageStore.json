@@ -1,1 +1,9 @@
-{}
+[
+  {
+    "date": "Number",
+    "sender": "String",
+    "deleted": "boolean <true/false>",
+    "content": "Message Storage Test",
+    "isBot": "boolean"
+  }
+]
