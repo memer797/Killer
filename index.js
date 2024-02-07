@@ -142,7 +142,10 @@ res.render("category list");
 
   //see all router
 app.get("/see-all", async(req,res) => {
-//spon
+var dballmov = await db.getArray("info.movie");
+  res.render("see-all", {
+    list: dballmov
+  });
 });
   //catrgory see all router
 app.get("/category/:item", async(req, res) => {
