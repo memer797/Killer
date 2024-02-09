@@ -210,5 +210,8 @@ res.render("contact us");
     app.get("/contact/chat", async(req, res) => {
 //res.render("privacy-policy");
   });
+  app.get("/ping", async(req, res)=> {
+    res.send(true);
+  });
 };
 RunMainCode();
