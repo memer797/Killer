@@ -20,7 +20,7 @@ html {
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            width: 100%;
+            width: 99%;
             height: 6em;
             display: flex;
             clear: both;
