@@ -81,6 +81,8 @@ router.get('/movie', async(req, res) => {
  //   await db.delete("info.movie");
  res.render('admin/movie');
 });
-
+router.get("/stat", async(req, res) => {
+res.render("admin/stat");
+});
 
 module.exports = router;
