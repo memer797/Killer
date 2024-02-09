@@ -1,5 +1,5 @@
 async function RunMainCode(){
-  var fakeLastMod = ;
+  var fakeLastMod = 1707477427165;
 require("./DB/mongo.connect.js");
 function delay(milliseconds) {
   return new Promise(resolve => {
