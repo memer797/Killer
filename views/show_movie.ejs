@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= name%> Download Page • Memer797</title>
   <%- include('./includes/fav icon')%>
+<link rel="stylesheet" type="text/css" href="/global.css"/>
 <style>
-    body {
+/*    body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       font-size: 16px;
       line-height: 1.6;
-      }
+      }*/
       
 button {
   margin: 20px;
@@ -128,7 +129,8 @@ button {
   </style>
 </head>
 <body>
-
+<div class="taremaka">
+<%- include('./includes/nav')%>
 <div class="movie-container">
   <img class="movie-image" src="<%= banner.jpg%>" alt="Movie Poster">
 
@@ -163,6 +165,8 @@ button {
     <%  }); %>
     </ul>
   </div>
+</div>
+<%- include('./includes/footer')%>
 </div>
 <script>
 	function goToTag(tag) {
