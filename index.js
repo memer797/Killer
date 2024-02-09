@@ -1,4 +1,5 @@
 async function RunMainCode(){
+  var fakeLastMod = ;
 require("./DB/mongo.connect.js");
 function delay(milliseconds) {
   return new Promise(resolve => {
@@ -213,5 +214,22 @@ res.render("contact us");
   app.get("/ping", async(req, res)=> {
     res.send(true);
   });
+  function formatDateForSitemap(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero if necessary
+  const day = String(date.getDate()).padStart(2, '0'); // Add leading zero if necessary
+  const hours = String(date.getHours()).padStart(2, '0'); // Add leading zero if necessary
+  const minutes = String(date.getMinutes()).padStart(2, '0'); // Add leading zero if necessary
+  const seconds = String(date.getSeconds()).padStart(2, '0'); // Add leading zero if necessary
+  const timezoneOffset = date.getTimezoneOffset();
+  const timezoneHours = Math.abs(Math.floor(timezoneOffset / 60)).toString().padStart(2, '0'); // Add leading zero if necessary
+  const timezoneMinutes = Math.abs(timezoneOffset % 60).toString().padStart(2, '0'); // Add leading zero if necessary
+  const timezoneSign = timezoneOffset > 0 ? '-' : '+';
+  const timezoneString = `${timezoneSign}${timezoneHours}:${timezoneMinutes}`;
+
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}${timezoneString}`;
+}
+
+var FakeDateToShowInGoogle = formatDateForSitemap(new Date(fakeLastMod));
 };
 RunMainCode();
