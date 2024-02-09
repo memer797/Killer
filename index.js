@@ -233,9 +233,10 @@ res.render("contact us");
 var FakeDateToShowInGoogle = formatDateForSitemap(new Date(fakeLastMod));
 
 app.get("/sitemap/dynamic/all-movies.xml", async(req, res) => {
+  var movieDataToMap = await db.getArray("info.movie");
 res.header('Content-Type', 'application/xml');
   res.send(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-${await db.getArray("info.movie").map(data =>`<url>
+${movieDataToMap.map(data =>`<url>
 <loc>https://memer797.onrender.com/movie/${data.id}</loc>
 <lastmod>${FakeDateToShowInGoogle}</lastmod>
 <changefreq>weekly</changefreq>
