@@ -31,6 +31,10 @@ function delay(milliseconds) {
     socket.cookies = sockcookies;
     next();
   });
+  app.use((req, res, next) => {
+  console.log(req.originalUrl); // Output: current URL path
+  next();
+});
 var apiRoute = require("./routes/api");
 var adminRoute = require("./routes/admin");
 
