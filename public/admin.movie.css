@@ -173,7 +173,7 @@ max-height: calc(100% - 70px);
     }
 
 .modal-content label {
-            margin-top: 5px;
+            margin-top: 10px;
 }
                 
     .close-button {
