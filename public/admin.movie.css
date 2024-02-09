@@ -172,6 +172,10 @@ max-height: calc(100% - 70px);
       height: 99%;
     }
 
+.modal-content label {
+            margin-top: 5px;
+}
+                
     .close-button {
       background-color: #e74c3c;
       color: #fff;
