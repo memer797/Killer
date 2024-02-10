@@ -254,7 +254,7 @@ app.post("/test", async(req, res) => {
      name: "Array category test",
      description: "nothing",
      tags: [],
-     category: ["io"],
+     category: ["io", "numm"],
      img: "https://+_)₹",
      id: "test"
      });
