@@ -246,7 +246,7 @@ ${movieDataToMap.map(data =>`<url>
 </urlset>`);
     
   });  
-app.post("/test" async(req, res) => {
+app.post("/test", async(req, res) => {
   console.log(req);
 });
 };
