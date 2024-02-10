@@ -250,6 +250,14 @@ app.post("/test", async(req, res) => {
   console.log(req.body);
 });
   setTimeout(async() => {
+    await db.pull("info.movie", {
+     name: "Array category test",
+     description: "nothing",
+     tags: [],
+     category: ["io"],
+     img: "https://+_)₹",
+     id: "test"
+     });
   await db.push("info.movie", {
      name: "Array category test",
      description: "nothing",
