@@ -26,7 +26,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
 if(!name || name.trim() === ""){ return res.json({success: false, msg: "name is required" }); };
  var description = req.body.description ? req.body.description : "No Description Provided";
  var tags = req.body.tags ? req.body.tags : [];
- var category = req.body.category ? req.body.category : "Unknown";
+ var category = req.body.category ? req.body.category : [];
  var img = req.body.img ? req.body.img : "https://placekitten.com/200/100";
  var rID = generateRandomString(20);
  await db.push("info.movie", {
