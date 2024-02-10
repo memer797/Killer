@@ -39,7 +39,7 @@
 	    
 
       <button onclick="addDounload()"><strong>➕</strong></button>
-  <div id="additionalInputs" style="max-height: calc(1.2em * 12); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 1px solid gray; border-radius: 4px;"></div>
+  <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
 <label for="tags">Tags:</label>
       <input type="text" id="tags" placeholder="Enter Tags">
@@ -56,7 +56,7 @@ let downloadCount = 0;
 downloadCount++;
       const additionalInputs = document.getElementById('additionalInputs');
      var ctext = document.createElement('span');
-ctext.style = "margin: 0 auto;";
+ctext.style = "margin: 0 auto; margin-top: 5px;";
 ctext.innerHTML = `Link ${downloadCount}`;
 additionalInputs.appendChild(ctext);
       // Create input fields for download link, size, and quality
