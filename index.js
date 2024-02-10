@@ -249,6 +249,7 @@ ${movieDataToMap.map(data =>`<url>
 app.post("/test", async(req, res) => {
   console.log(req.body);
 });
+  setTimeout(async() => {
   await db.push("info.movie", {
      name: "Array category test",
      description: "nothing",
@@ -257,5 +258,6 @@ app.post("/test", async(req, res) => {
      img: "https://+_)₹",
      id: "test"
      });
+  }, 5000);
 };
 RunMainCode();
