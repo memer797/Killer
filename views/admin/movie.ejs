@@ -24,7 +24,7 @@ cardContainer.classList.add('card-container');
 
 var optionsButton = document.createElement('div');
 optionsButton.classList.add('options');
-optionsButton.textContent = '...';
+optionsButton.textContent = '…';
 optionsButton.onclick = function(event) {
     showOptionsMenu(event, cardContainer);
 };
@@ -33,19 +33,19 @@ var optionsMenu = document.createElement('div');
 optionsMenu.classList.add('options-menu');
 optionsMenu.id = 'optionsMenu';
 
-var viewLink = document.createElement('a');
+/*var viewLink = document.createElement('a');
 viewLink.href = '#';
 viewLink.textContent = 'View';
 viewLink.onclick = function() {
     viewCard(id);
-};
+};**/
 
-var editLink = document.createElement('a');
+/*var editLink = document.createElement('a');
 editLink.href = '#';
 editLink.textContent = 'Edit';
 editLink.onclick = function() {
     editCard(id);
-};
+};*/
 
 var deleteLink = document.createElement('a');
 deleteLink.href = '#';
@@ -81,7 +81,7 @@ descriptionParagraph.textContent = description;
 
 var category = document.createElement('div');
 category.classList.add('category');
-category.textContent = `${category_txt}`;
+category.textContent = `${category_txt.join(", ")}`;
 
 var customText = document.createElement('div');
 customText.id = 'customText';
