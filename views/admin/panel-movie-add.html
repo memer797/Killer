@@ -62,34 +62,39 @@ additionalInputs.appendChild(ctext);
       // Create input fields for download link, size, and quality
       const downloadLinkInput = document.createElement('input');
       downloadLinkInput.type = 'text';
+      downloadLinkInput.id = `downLink_${downloadCount}`;
       downloadLinkInput.placeholder = 'Enter Download Link';
       additionalInputs.appendChild(downloadLinkInput);
 
       const sizeInput = document.createElement('input');
       sizeInput.type = 'text';
+      sizeInput.id = `size_${downloadCount}`;
       sizeInput.placeholder = 'Enter Size';
       additionalInputs.appendChild(sizeInput);
 
       const qualityInput = document.createElement('select');
       qualityInput.innerHTML = `
-<option value="144p">144p</option>
-               <option value="360p">360p</option>
+        <option value="144p">144p</option>
+        <option value="360p">360p</option>
         <option value="480p">480p</option>
         <option value="720p">720p</option>
         <option value="1080p">1080p</option>
         <option value="2k">2k</option>
         <option value="4k">4k</option>
       `;
+      qualityInput.id = `qual_${downloadCount}`;
       additionalInputs.appendChild(qualityInput);
       
      const langInput = document.createElement('input');
       langInput.type = 'text';
       langInput.placeholder = 'Enter Language';
+      langInput.id = `lang_${downloadCount}`;
       additionalInputs.appendChild(langInput);
-
+   
       const noteInput = document.createElement('input');
       noteInput.type = 'text';
       noteInput.placeholder = 'eg. parts (optional)';
+      noteInput.id = `note_${downloadCount}`;
       additionalInputs.appendChild(noteInput);
 
 additionalInputs.scrollTop = additionalInputs.scrollHeight;
