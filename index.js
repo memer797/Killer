@@ -44,8 +44,7 @@ let disabled = true;
   if(disabled){
     app.use("*", async(req, res, next) => {
 
-if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
-      if(req.originalUrl == '/login/admin'){ next(); }
+      if(req.originalUrl == '/login/admin'){ next(); }else if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
   return res.send("We are updating the site");
  }
 next();
