@@ -138,6 +138,7 @@ for(i=1; i<downloadCount; i++){
 var ary = {};
 ary.download = document.querySelector(`#downLink_${i}`).value;
 ary.size = document.querySelector(`#size_${i}`).value;
+ary.note = document.querySelector(`note_${i}`).value;
 finalData.links.push(ary);
 }
 console.log(finalData);
