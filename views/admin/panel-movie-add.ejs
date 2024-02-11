@@ -78,13 +78,13 @@ additionalInputs.appendChild(ctext);
       const downloadLinkInput = document.createElement('input');
       downloadLinkInput.type = 'text';
       downloadLinkInput.id = `downLink_${downloadCount}`;
-      downloadLinkInput.placeholder = `Enter Download Link for link #${downloafCount}`;
+      downloadLinkInput.placeholder = `Enter Download Link for link #${downloadCount}`;
       additionalInputs.appendChild(downloadLinkInput);
 
       const sizeInput = document.createElement('input');
       sizeInput.type = 'text';
       sizeInput.id = `size_${downloadCount}`;
-      sizeInput.placeholder = `Enter Size for link #${downloafCount}`;
+      sizeInput.placeholder = `Enter Size for link #${downloadCount}`;
       additionalInputs.appendChild(sizeInput);
 
       const qualityInput = document.createElement('select');
@@ -102,7 +102,7 @@ additionalInputs.appendChild(ctext);
    
       const noteInput = document.createElement('input');
       noteInput.type = 'text';
-      noteInput.placeholder = 'eg. parts (optional)';
+      noteInput.placeholder = `eg. parts (optional) for link #${downloadCount}`;
       noteInput.id = `note_${downloadCount}`;
       additionalInputs.appendChild(noteInput);
 
