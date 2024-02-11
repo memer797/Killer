@@ -270,9 +270,9 @@ app.post("/test", async(req, res) => {
   await db.push("info.movie", {
      name: "Array category test",
      description: "nothing",
-     tags: [],
+     tags: ["test", "only", "man"],
      category: ["io", "numm"],
-     img: "https://+_)₹",
+     img: "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png",
      id: "test"
      });
   }, 5000);
