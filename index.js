@@ -38,7 +38,7 @@ function delay(milliseconds) {
 });
 var apiRoute = require("./routes/api");
 var adminRoute = require("./routes/admin");
-let disabled = true;
+let disabled = false;
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
   if(disabled){
