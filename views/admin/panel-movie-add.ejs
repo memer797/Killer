@@ -133,6 +133,13 @@ finalData.release_date = document.querySelector("#release_date").value;
 finalData.language = document.querySelector("#language").value;
 finalData.starCast = document.querySelector("#starCast").value;
 finalData.tags = ttags;
+finalData.links = [];
+for(i=1; i<downloadCount; i++){
+var ary = {};
+ary.download = document.querySelector(`#downLink_${i}`).value;
+ary.size = document.querySelector(`#size_${i}`).value;
+finalData.links.push(ary);
+}
 console.log(finalData);
 }
 </script>
