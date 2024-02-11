@@ -81,6 +81,17 @@ additionalInputs.appendChild(ctext);
         <option value="4k">4k</option>
       `;
       additionalInputs.appendChild(qualityInput);
+      
+     const langInput = document.createElement('input');
+      langInput.type = 'text';
+      langInput.placeholder = 'Enter Language';
+      additionalInputs.appendChild(langInput);
+
+      const noteInput = document.createElement('input');
+      noteInput.type = 'text';
+      noteInput.placeholder = 'eg. parts (optional)';
+      additionalInputs.appendChild(noteInput);
+
 additionalInputs.scrollTop = additionalInputs.scrollHeight;
 
     }
@@ -89,7 +100,7 @@ function removeDownload() {
 
       // Remove the last set of inputs if there are more than one set
       if (downloadCount > 0) {
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 6; i++) {
           additionalInputs.removeChild(additionalInputs.lastChild);
         }
         downloadCount--;
