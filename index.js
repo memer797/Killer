@@ -167,7 +167,7 @@ var dballmov = await db.getArray("info.movie");
 app.get("/category/:item", async(req, res) => {
 var itemName = req.params.item;
 var data = await db.getArray("info.movie");
-  var daToSend = data.filter(ii => (ii.category).filter(k => k.toLowerCase() === itemName.toLowerCase()));
+  var daToSend = data.filter(ii => (ii.category).filter(k => k.toLowerCase() === itemName.toLowerCase())>0);
 // var daToSend = data.filter(ii => ii.category.map(c => c.toLowerCase()).includes(itemName.toLowerCase()));
 
   res.render("category list", {
