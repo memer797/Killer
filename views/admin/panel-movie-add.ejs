@@ -58,7 +58,7 @@
       <input type="text" id="tags" placeholder="Enter Tags and write ,">
       <div class="tag-container" id="tagContainer"></div>
 
-      <button l="addCardFu()" onclick="test()" class="add-button">Add</button>
+      <button l="addCardFu()" onclick="test()" class="add-button" style="margin-top: 15px;">Add</button>
     </div>
   </div>
 
@@ -139,6 +139,7 @@ var ary = {};
 ary.download = document.querySelector(`#downLink_${i}`).value;
 ary.size = document.querySelector(`#size_${i}`).value;
 ary.note = document.querySelector(`#note_${i}`).value;
+ary.quality = document.querySelector(`#qual_${i}`).value;
 finalData.links.push(ary);
 }
 console.log(finalData);
