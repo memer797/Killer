@@ -38,9 +38,17 @@ function delay(milliseconds) {
 });
 var apiRoute = require("./routes/api");
 var adminRoute = require("./routes/admin");
-
+let disabled = true
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
+  if(disabled){
+    app.use("*", async(req, res, next) => {
+if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
+ res.send("We are updating the site");
+ }
+next();
+ });
+  }
 /* 
 let data = [];
   app.post("/data/add", async(req, res) => {
