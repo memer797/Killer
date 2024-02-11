@@ -68,7 +68,7 @@ var result = Object.values(data.reduce((acc, { name, categoryArray, img, id }) =
   categoryArray.forEach(category => {
   acc[category] = acc[category] || { category, items: [] };
   acc[category].items.push({ name, img, id });
-  }
+  });
   return acc;
 }, {}));
 
