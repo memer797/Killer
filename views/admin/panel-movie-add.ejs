@@ -36,7 +36,7 @@
       </select>
 
      <label for="duration">Duration:</label>
-      <input id="duration" type="test" />
+      <input id="duration" type="test" placeholder="2.5 min"/>
 	
       <label for="release_date">Release Date:</label>
       <input id="release_date" type="date" />
@@ -55,7 +55,7 @@
   <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
 <label for="tags">Tags:</label>
-      <input type="text" id="tags" placeholder="Enter Tags">
+      <input type="text" id="tags" placeholder="Enter Tags and write ,">
       <div class="tag-container" id="tagContainer"></div>
 
       <button onclick="addCardFu()" class="add-button">Add</button>
@@ -68,23 +68,23 @@ let downloadCount = 0;
     function addDounload() {
 downloadCount++;
       const additionalInputs = document.getElementById('additionalInputs');
+additionalInputs.appendChild(document.createElemene('br'));
      var ctext = document.createElement('span');
 ctext.style = "margin: 0 auto; margin-top: 10px;";
 ctext.innerHTML = `Link ${downloadCount}`;
 additionalInputs.appendChild(ctext);
       // Create input fields for download link, size, and quality
-additionalInputs.appendChild(document.createElement('br'))
-
+   
       const downloadLinkInput = document.createElement('input');
       downloadLinkInput.type = 'text';
       downloadLinkInput.id = `downLink_${downloadCount}`;
-      downloadLinkInput.placeholder = 'Enter Download Link';
+      downloadLinkInput.placeholder = `Enter Download Link for link #${downloafCount}`;
       additionalInputs.appendChild(downloadLinkInput);
 
       const sizeInput = document.createElement('input');
       sizeInput.type = 'text';
       sizeInput.id = `size_${downloadCount}`;
-      sizeInput.placeholder = 'Enter Size';
+      sizeInput.placeholder = `Enter Size for link #${downloafCount}`;
       additionalInputs.appendChild(sizeInput);
 
       const qualityInput = document.createElement('select');
