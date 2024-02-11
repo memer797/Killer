@@ -58,7 +58,7 @@
       <input type="text" id="tags" placeholder="Enter Tags and write ,">
       <div class="tag-container" id="tagContainer"></div>
 
-      <button onclick="addCardFu()" class="add-button">Add</button>
+      <button l="addCardFu()" onclick="test()" class="add-button">Add</button>
     </div>
   </div>
 
@@ -120,4 +120,12 @@ function removeDownload() {
         downloadCount--;
       }
     }
+
+//test function
+function test() {
+let finalData = {};
+finalData.name = document.querySelector("#name").value;
+finalData.imageUrl = document.querySelector("#imageUrl").value;
+console.log(finalData);
+}
 </script>
