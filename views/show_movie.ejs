@@ -136,12 +136,12 @@ button {
 
   <div class="movie-details">
     <h2><%= name%></h2>
-    <p><strong>Genre:</strong> <%= category.join(", ")%></p>
-    <p><strong>Duration:</strong> <%= duration%></p>
-    <p><strong>Release Date:</strong> <%= release_date%></p>
-    <p><strong>Language:</strong><%= language%></p>
-    <p><strong>Cast:</strong> <%= actors.join(", ")%></p>
-    <p><strong>Description:</strong> <%= description%></p>
+    <p><strong>Genre: <%= category.join(", ")%></strong></p>
+    <p><strong>Duration: <%= duration%></strong></p>
+    <p><strong>Release Date: <%= release_date%></strong></p>
+    <p><strong>Language: <%= language%></strong></p>
+    <p><strong>Cast: <%= actors.join(", ")%></strong></p>
+    <p><strong>Description: <%= description%></strong></p>
   </div>
 
   <div class="download-links">
@@ -157,9 +157,6 @@ button {
   <div class="tags">
     <h3>Tags</h3>
     <ul>
-     <!--- <li Action</li>
-      <li>Drama</li>
-      <li>Thriller</li>--->
       <% tags.forEach(tag => { %>
            <li onclick="goToTag('<%= tag%>')"><%= tag%></li>	
     <%  }); %>
