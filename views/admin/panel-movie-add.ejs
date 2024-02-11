@@ -12,7 +12,8 @@
       <textarea id="description" placeholder="Enter Description"></textarea>
 
       <label for="category">Category:</label>
-      <select id="category"><option value="action">Action</option>
+      <select id="category" multiple>
+<option value="action">Action</option>
     <option value="Adventure">Adventure</option>
     <option value="Animation">Animation</option>
     <option value="Biography">Biography</option>
@@ -33,11 +34,23 @@
     <option value="War">War</option>
     <option value="Western">Western</option>
       </select>
-	    
+
+     <label for="duration">Duration:</label>
+      <input id="duration" type="test" />
+	
       <label for="release_date">Release Date:</label>
       <input id="release_date" type="date" />
-	    
+    
+      <label for="language">Language:</label>
+      <select id="language"> 
+     <option value="Hindi">Hindi</option>
+     <option value="English">English</option>
+     <option value="Bengali">Bengali</option>
+      </select>
 
+      <label for="starCast">Star Cast:</label>
+      <input id="starCast" type="text" placeholder="Rahul, Sujoy" />
+	
       <button onclick="addDounload()"><strong>➕</strong></button>      <button onclick="removeDownload()"><strong>📛</strong></button>
   <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
@@ -60,6 +73,8 @@ ctext.style = "margin: 0 auto; margin-top: 10px;";
 ctext.innerHTML = `Link ${downloadCount}`;
 additionalInputs.appendChild(ctext);
       // Create input fields for download link, size, and quality
+additionalInputs.appendChild(document.createElement('br'))
+
       const downloadLinkInput = document.createElement('input');
       downloadLinkInput.type = 'text';
       downloadLinkInput.id = `downLink_${downloadCount}`;
@@ -84,12 +99,6 @@ additionalInputs.appendChild(ctext);
       `;
       qualityInput.id = `qual_${downloadCount}`;
       additionalInputs.appendChild(qualityInput);
-      
-     const langInput = document.createElement('input');
-      langInput.type = 'text';
-      langInput.placeholder = 'Enter Language';
-      langInput.id = `lang_${downloadCount}`;
-      additionalInputs.appendChild(langInput);
    
       const noteInput = document.createElement('input');
       noteInput.type = 'text';
