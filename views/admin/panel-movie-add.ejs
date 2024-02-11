@@ -38,7 +38,7 @@
       <input id="release_date" type="date" />
 	    
 
-      <button onclick="addDounload()"><strong>➕</strong></button>[]      <button onclick="removeDownload()"><strong>📛</strong></button>
+      <button onclick="addDounload()"><strong>➕</strong></button>      <button onclick="removeDownload()"><strong>📛</strong></button>
   <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
 <label for="tags">Tags:</label>
@@ -87,7 +87,7 @@ function removeDownload() {
       const additionalInputs = document.getElementById('additionalInputs');
 
       // Remove the last set of inputs if there are more than one set
-      if (downloadCount > 1) {
+      if (downloadCount > 0) {
         for (let i = 0; i < 4; i++) {
           additionalInputs.removeChild(additionalInputs.lastChild);
         }
