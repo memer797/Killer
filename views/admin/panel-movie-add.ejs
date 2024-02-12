@@ -1,7 +1,7 @@
   <div id="myModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
       <button class="close-button" onclick="closeModal()">X</button>
-      <button class="clear-button" onclick="clear-inp">🗑️</button>
+      <button class="clear-button" onclick="clear-inp()">🗑️</button>
       <h2>Add Item</h2>
       <label for="name">Name:</label>
       <input type="text" id="name" placeholder="Enter Name">
@@ -122,30 +122,11 @@ function removeDownload() {
       }
     }
 
-//test function
-/*function test() {
-let finalData = {};
-finalData.name = document.querySelector("#name").value;
-finalData.imageUrl = document.querySelector("#imageUrl").value;
-finalData.description = document.querySelector("#description").value;
-finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);;
-finalData.duration = document.querySelector("#duration").value;
-finalData.release_date = document.querySelector("#release_date").value;
-finalData.language = document.querySelector("#language").value;
-finalData.starCast = document.querySelector("#starCast").value;
-finalData.tags = ttags;
-finalData.links = [];
-for(i=1; i<downloadCount+1; i++){
-var ary = {};
-ary.download = document.querySelector(`#downLink_${i}`).value;
-ary.size = document.querySelector(`#size_${i}`).value;
-ary.note = document.querySelector(`#note_${i}`).value;
-ary.quality = document.querySelector(`#qual_${i}`).value;
-finalData.links.push(ary);
+fumction clear-inp() {
+var i = prompt("Are you sure to clear all inputs?");
+if(i){
 }
-console.log(finalData);
-}*/
-
+}
     function addCardFu() {
 let finalData = {};
 finalData.name = document.querySelector("#name").value;
