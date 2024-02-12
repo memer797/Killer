@@ -16,6 +16,13 @@
   <script>
     let activeOptionsMenu = null;
     let ttags = [];
+function truncateString(str, maxLength) {
+  if (str.length > maxLength) {
+    return str.substring(0, maxLength - 3) + '...';
+  } else {
+    return str;
+  }
+}
     function addCard(data){
       var { name, description, category_txt, id, img } = data;
 
@@ -81,7 +88,7 @@ descriptionParagraph.textContent = description;
 
 var category = document.createElement('div');
 category.classList.add('category');
-category.textContent = `${category_txt.join(", ")}`;
+category.textContent = `${truncateString(category_txt.join(", "), 18)}`;
 
 var customText = document.createElement('div');
 customText.id = 'customText';
