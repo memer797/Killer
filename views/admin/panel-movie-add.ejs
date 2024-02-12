@@ -145,4 +145,59 @@ finalData.links.push(ary);
 console.log(finalData);
 }
 
+    function addCardFu() {
+let finalData = {};
+finalData.name = document.querySelector("#name").value;
+finalData.imageUrl = document.querySelector("#imageUrl").value;
+finalData.description = document.querySelector("#description").value;
+finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);;
+finalData.duration = document.querySelector("#duration").value;
+finalData.release_date = document.querySelector("#release_date").value;
+finalData.language = document.querySelector("#language").value;
+finalData.cast = document.querySelector("#starCast").value;
+finalData.tags = ttags;
+finalData.links = [];
+for(i=1; i<downloadCount+1; i++){
+var ary = {};
+ary.download = document.querySelector(`#downLink_${i}`).value;
+ary.size = document.querySelector(`#size_${i}`).value;
+ary.note = document.querySelector(`#note_${i}`).value;
+ary.quality = document.querySelector(`#qual_${i}`).value;
+finalData.links.push(ary);
+}
+
+fetch("/admin/data/save/movie", {
+method: "POST",
+headers: {
+        "Content-Type": "application/json"
+    },
+body: JSON.stringify(finalData),
+
+}).then(d => d.json()).then(gotData => {
+var gotId = gotData.id;
+
+addCard({
+	name,
+	description,
+	category_txt: category,
+	id: gotId,
+	img: document.getElementById("imageUrl").value 
+	});
+}).catch(console.log);
+
+      // Clear input fields and tags container
+      tagsInput.value = '';
+      tagsContainer.innerHTML = '';
+if(!tags || tags.length < 1 || tags[0].trim() === "") return;
+      // Add tags to the tag container
+      tags.forEach(tag => {
+        const tagElement = document.createElement('div');
+        tagElement.classList.add('tag');
+        tagElement.innerText = tag;
+        tagElement.addEventListener('click', () => removeTag(tagElement));
+        tagsContainer.appendChild(tagElement);
+      });
+
+      closeModal(); // Close the modal after adding the card
+    }
 </script>
