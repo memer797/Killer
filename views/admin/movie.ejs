@@ -112,58 +112,6 @@ cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
       document.getElementById('myModal').style.display = 'none';
     }
 
-    function addCardFu() {
-      const name = document.getElementById('name').value;
-      const imageUrl = document.getElementById('imageUrl').value;
-      const description = document.getElementById('description').value;
-      const category = document.getElementById('category').value;
-      const tagsInput = document.getElementById('tags');
-      const tagsContainer = document.getElementById('tagContainer');
-
-      // Extract tags from input and split by commas
-      const tags = ttags;
-
-fetch("/admin/data/save/movie", {
-method: "POST",
-headers: {
-        "Content-Type": "application/json"
-    },
-body: JSON.stringify({
-name: name,
-description: description,
-category: category,
-tags: tags,
-img: document.getElementById("imageUrl").value,
-dounload_link: document.getElementById("dounlink").value
-}),
-
-}).then(d => d.json()).then(gotData => {
-var gotId = gotData.id;
-
-addCard({
-	name,
-	description,
-	category_txt: category,
-	id: gotId,
-	img: document.getElementById("imageUrl").value 
-	});
-}).catch(console.log);
-
-      // Clear input fields and tags container
-      tagsInput.value = '';
-      tagsContainer.innerHTML = '';
-if(!tags || tags.length < 1 || tags[0].trim() === "") return;
-      // Add tags to the tag container
-      tags.forEach(tag => {
-        const tagElement = document.createElement('div');
-        tagElement.classList.add('tag');
-        tagElement.innerText = tag;
-        tagElement.addEventListener('click', () => removeTag(tagElement));
-        tagsContainer.appendChild(tagElement);
-      });
-
-      closeModal(); // Close the modal after adding the card
-    }
 
     function removeTag(tagElement) {
       const tagsContainer = document.getElementById('tagContainer');
