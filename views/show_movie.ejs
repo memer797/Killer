@@ -154,7 +154,7 @@ button {
 <p> No Download Links Provided</p>
    <% } %>
     <% downloads.forEach(data => { %>
-  <p><a href="<%= data.link %>">Download <%= data.language ? 'in ' + data.language : '' %> <%= data.quality %> (<%= data.size %>)</a></p>
+  <p><a href="<%= data.download %>">Download  <%= data.quality %> (<%= data.size %>)</a></p>
 <% }); %>
   </div>
 
