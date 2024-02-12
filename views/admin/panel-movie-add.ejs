@@ -186,9 +186,9 @@ addCard({
 }).catch(console.log);
 
       // Clear input fields and tags container
-      tagsInput.value = '';
-      tagsContainer.innerHTML = '';
-if(!tags || tags.length < 1 || tags[0].trim() === "") return;
+      document.querySelector("#tags").value = '';
+      documemt.querySelector("#tagContainer").innerHTML = '';
+/*if(!tags || tags.length < 1 || tags[0].trim() === "") return;
       // Add tags to the tag container
       tags.forEach(tag => {
         const tagElement = document.createElement('div');
@@ -196,7 +196,7 @@ if(!tags || tags.length < 1 || tags[0].trim() === "") return;
         tagElement.innerText = tag;
         tagElement.addEventListener('click', () => removeTag(tagElement));
         tagsContainer.appendChild(tagElement);
-      });
+      });*/
 
       closeModal(); // Close the modal after adding the card
     }
