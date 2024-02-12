@@ -149,6 +149,10 @@ button {
   <!--- <p><a href="download-link-480p">Download 480p</a></p>
    <p><a href="download-link-720p">Download 720p</a></p>
    <p><a href="download-link-1080p">Download 1080p</a></p>--->
+
+    <% if(!dounloads || dounloads.length === 0){ %>
+<p> No Dounload Links Provided</p>
+   <% } %>
     <% downloads.forEach(data => { %>
   <p><a href="<%= data.link %>">Download <%= data.language ? 'in ' + data.language : '' %> <%= data.quality %> (<%= data.size %>)</a></p>
 <% }); %>
