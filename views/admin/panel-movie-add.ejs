@@ -177,11 +177,11 @@ body: JSON.stringify(finalData),
 var gotId = gotData.id;
 
 addCard({
-	name,
-	description,
-	category_txt: category,
+	name: finalData.name,
+	description: finalData.description,
+	category_txt: (finalData.category.join(", ")),
 	id: gotId,
-	img: document.getElementById("imageUrl").value 
+	img: finalData.imageUrl
 	});
 }).catch(console.log);
 
