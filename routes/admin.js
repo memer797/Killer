@@ -41,7 +41,12 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
      tags: tags,
      category: category,
      img: img,
-     id: rID
+     id: rID,
+     duration: duration,
+     language: language,
+     release_date: release_date,
+     cast: cast,
+     links: links
      });
     
  res.json({success: true, msg: "movie saves successfully", id: rID});
