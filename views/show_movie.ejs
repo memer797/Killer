@@ -159,10 +159,10 @@ button {
   </div>
 
   <div class="tags">
+    <h3>Tags :</h3>
 <% if(!tags || tags.length === 0){ %>
 <p>No Tags Are Provided</p>
 <% } %>
-    <h3>Tags :</h3>
     <ul>
       <% tags.forEach(tag => { %>
            <li onclick="goToTag('<%= tag%>')"><%= tag%></li>	
