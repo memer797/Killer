@@ -27,7 +27,12 @@ text-decoration: none;
     section {
       padding-top: 5px;
     }
-
+#movie {
+display: block;
+height: 80%;
+padding-top: 4px;
+width: 100%;
+}
   </style>
 </head>
 <body>
@@ -39,9 +44,9 @@ text-decoration: none;
     <!-- Add more navigation links as needed -->
   </nav>
 
-  <section>
+  <div id="movie">
  <%- include("./movie.ejs")%>
-</section>
+</div>
 
 </body>
 </html>
