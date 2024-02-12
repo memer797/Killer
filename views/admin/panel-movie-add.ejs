@@ -127,7 +127,8 @@ var i = confirm("🗑️ Are you sure to clear all inputs?");
 if(i){
 var ii = confirm("clearing all inputs... 🗑️");
 if(ii){
-document.querySelectorAll("").value
+document.querySelectorAll("input").forEach(lak => lak.value = "");
+document.querySelectorAll("testarea").forEach(lak => lak.value = "");
 }
 }
 }
