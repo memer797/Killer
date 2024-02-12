@@ -188,3 +188,16 @@ max-height: calc(100% - 70px);
       border-radius: 5px;
       z-index: 123;
     }
+
+    .clear-button {    
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      border-radius: 5px;
+      z-index: 123;           
+    }
