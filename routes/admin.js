@@ -35,6 +35,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
  var rID = generateRandomString(20);
+ var lastMod = Date.now();
  await db.push("info.movie", {
      name: name,
      description: description,
@@ -46,7 +47,8 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
      language: language,
      release_date: release_date,
      cast: cast,
-     links: links
+     links: links,
+     lastMod: lastMod
      });
     
  res.json({success: true, msg: "movie saves successfully", id: rID});
