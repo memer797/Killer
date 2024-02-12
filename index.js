@@ -121,30 +121,23 @@ var id = req.params.id;
   var img = movie_info[0].img;
   var category = movie_info[0].category;
   var tags = movie_info[0].tags;
+  var duration = movie_info[0].duration;
+  var language = movie_info[0].language;
+  var release_date = movie_info[0].release_date;
+  var cast = movie_info[0].cast;
+  var links = movie_info[0].links;
   res.render("show_movie", {
     name: name,
     banner: {
       jpg: img
     },
-    release_date: "16/12/2023",
-    duration: "16 minutes",
+    release_date: release_date,
+    duration: duration,
     category: category,
-    actors: ["sujoy", "rahul", "memer", "crystal", "duplicate"],
-    language: "english",
+    actors: cast,
+    language: language,
     description: description,
-    file_size: "1.2 gb",
-    downloads: [
-      {
-        link: "https://prize-pulse.uk.to/ff/giveaway",
-        quality: "144",
-        size: "500 mb"
-      },
-      {
-        link: "https://prize-pulse.uk.to/ff/giveaway",
-        quality: "72p",
-        size: "1.2 gb"   
-      }
-    ],
+    downloads: links,
     tags
   });
 });
