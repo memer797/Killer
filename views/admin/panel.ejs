@@ -39,8 +39,10 @@ width: 100%;
 <body>
 
   <nav>
-    <span onclick="display_show('movies')">Movies</span>
- <span onclick="display_show('settings')">settings</span>
+    <span onclick="display_div('movies')">Movies</span>
+ <span onclick="display_div('settings')">Settings</span>
+ <span onclick="display_div('trending')">Trending</span>
+ <span onclick="display_div('stat')">Stat</span>
  <!---   <a href="/admin/stat">Statics</a>
     <a href="/admin/settings">Settings</a>-->
     <!-- Add more navigation links as needed -->
@@ -50,9 +52,10 @@ width: 100%;
  <%- include("./movie.ejs")%>
 </div>
 <script>
-function display_show(item) {
-var all = document.querySelector(`div[id^="div_"]`);
+function display_div(item) {
+var all = document.querySelectorAll(`div[id^="div_"]`);
 all.forEach(divs => divs.style.display = "none");
+document.querySelector(`#div_${item}`).style.display = 'block';
 }
 </script>
 </body>
