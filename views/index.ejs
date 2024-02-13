@@ -127,6 +127,12 @@ border-radius: 4px;
 <body>
 <%- include('./includes/nav')%>
 <div class="taremaka">
+
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title">TRENDING🔥🔥</div>
+  </div>
+</div>
   <div id="trending">
 <% allData.forEach(data => { %>
     <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
