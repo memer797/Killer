@@ -64,6 +64,7 @@
   <script>
 document.getElementById("username").addEventListener('input', async() => {
 var typed = document.getElementById("username").value;
+localStorage.setItem("username_store", typed);
 });
      function login() {
   var username = document.getElementById("username").value;
@@ -96,6 +97,11 @@ var typed = document.getElementById("username").value;
   }).catch();
 }
 
+document.onload = function() {
+if(localStorage.getItem("username_store")){
+document.getElementById("username").value = localStorage.getItem("username_store");
+}
+};
   </script>
 
 </body>
