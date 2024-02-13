@@ -38,9 +38,12 @@ function delay(milliseconds) {
 });
 var apiRoute = require("./routes/api");
 var adminRoute = require("./routes/admin");
+var siteMapsRouter = require("./routes/site-maps");
 let disabled = false;
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
+  app.use("/sitemap", siteMapsRouter);
+
   if(disabled){
     app.use("*", async(req, res, next) => {
 
@@ -220,38 +223,7 @@ res.render("contact us");
   app.get("/ping", async(req, res)=> {
     res.send(true);
   });
-  function formatDateForSitemap(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero if necessary
-  const day = String(date.getDate()).padStart(2, '0'); // Add leading zero if necessary
-  const hours = String(date.getHours()).padStart(2, '0'); // Add leading zero if necessary
-  const minutes = String(date.getMinutes()).padStart(2, '0'); // Add leading zero if necessary
-  const seconds = String(date.getSeconds()).padStart(2, '0'); // Add leading zero if necessary
-  const timezoneOffset = date.getTimezoneOffset();
-  const timezoneHours = Math.abs(Math.floor(timezoneOffset / 60)).toString().padStart(2, '0'); // Add leading zero if necessary
-  const timezoneMinutes = Math.abs(timezoneOffset % 60).toString().padStart(2, '0'); // Add leading zero if necessary
-  const timezoneSign = timezoneOffset > 0 ? '-' : '+';
-  const timezoneString = `${timezoneSign}${timezoneHours}:${timezoneMinutes}`;
-
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}${timezoneString}`;
-}
-
-var FakeDateToShowInGoogle = formatDateForSitemap(new Date(fakeLastMod));
-
-app.get("/sitemap/dynamic/all-movies.xml", async(req, res) => {
-  var movieDataToMap = await db.getArray("info.movie");
-res.header('Content-Type', 'application/xml');
-  res.send(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-${movieDataToMap.map(data =>`<url>
-<loc>https://memer797.onrender.com/movie/${data.id}</loc>
-<lastmod>${FakeDateToShowInGoogle}</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.80</priority>
-</url>
-`).join('')}
-</urlset>`);
-    
-  });  
+  
 app.post("/test", async(req, res) => {
   console.log(req.body);
 });
