@@ -62,6 +62,9 @@
   </div>
 
   <script>
+document.getElementById("username").addEventListener('input', async() => {
+var typed = document.getElementById("username").value;
+});
      function login() {
   var username = document.getElementById("username").value;
   var password = document.getElementById("password").value;
