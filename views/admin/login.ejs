@@ -97,11 +97,12 @@ localStorage.setItem("username_store", typed);
   }).catch();
 }
 
-document.onload = function() {
-if(localStorage.getItem("username_store")){
-document.getElementById("username").value = localStorage.getItem("username_store");
-}
-};
+document.addEventListener('DOMContentLoaded', function() {
+    if(localStorage.getItem("username_store")) {
+        document.getElementById("username").value = localStorage.getItem("username_store");
+    }
+});
+
   </script>
 
 </body>
