@@ -30,7 +30,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var tags = req.body.tags ? req.body.tags : [];
  var img = req.body.imageUrl ? req.body.imageUrl : "https://placekitten.com/200/100";
  var duration = req.body.duration ? req.body.duration : "00:00:00";
- var language = req.body.language ? req.body.language : "Unspecified";
+ var language = req.body.language ? req.body.language : ["unknown"];
  var release_date = req.body.release_date ? req.body.release_date : "No Date Specified!";
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
