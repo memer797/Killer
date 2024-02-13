@@ -43,7 +43,7 @@
       <input id="release_date" type="date" />
     
       <label for="language">Language:</label>
-      <select id="language"> 
+      <select id="language" multiple> 
      <option value="Hindi">Hindi</option>
      <option value="English">English</option>
      <option value="Bengali">Bengali</option>
@@ -137,10 +137,10 @@ let finalData = {};
 finalData.name = document.querySelector("#name").value;
 finalData.imageUrl = document.querySelector("#imageUrl").value;
 finalData.description = document.querySelector("#description").value;
-finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);;
+finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);
 finalData.duration = document.querySelector("#duration").value;
 finalData.release_date = document.querySelector("#release_date").value;
-finalData.language = document.querySelector("#language").value;
+finalData.language = Array.from(document.querySelectorAll('#language option:checked')).map(option => option.value);
 finalData.cast = document.querySelector("#starCast").value;
 finalData.tags = ttags;
 finalData.links = [];
