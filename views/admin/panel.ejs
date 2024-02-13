@@ -28,7 +28,13 @@ text-decoration: none;
     section {
       padding-top: 5px;
     }
-#.movie {
+.movie {
+display: block;
+height: 92%;
+padding-top: 4px;
+width: 100%;
+}
+.showingdivs {
 display: block;
 height: 92%;
 padding-top: 4px;
@@ -43,13 +49,19 @@ width: 100%;
  <span onclick="display_div('settings')">Settings</span>
  <span onclick="display_div('trending')">Trending</span>
  <span onclick="display_div('stat')">Stat</span>
- <!---   <a href="/admin/stat">Statics</a>
-    <a href="/admin/settings">Settings</a>-->
-    <!-- Add more navigation links as needed -->
-  </nav>
+ </nav>
 
-  <div id="div_movies" class="movie">
+  <div id="div_movies" class="showingdivs">
  <%- include("./movie.ejs")%>
+</div>
+<div id="div_settings" class="showingdivs">
+Settings For Whole Website 
+</div>
+<div id="div_trending" class="showingdivs">
+Trending Movie Edit Panel
+</div>
+<div id="div_stat" class="showingdivs">
+Statistics Div Without Reload
 </div>
 <script>
 function display_div(item) {
