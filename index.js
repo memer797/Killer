@@ -2,6 +2,7 @@ async function RunMainCode(){
   var fakeLastMod = 1707477427165;
  global.uniqueMagaViews = 0;
  global.totalMagaViews = 0;
+ global.srarchTermRecord = [];
   var noViwCnt = ["/admin", "/ping"];
  var viw = new Map();
 require("./DB/mongo.connect.js");
