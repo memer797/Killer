@@ -16,6 +16,8 @@
       color: #fff;
       padding: 3px;
      height: 5%;
+overflow-x: scroll; /* Horizontal scroll bar */
+  white-space: nowrap; /* Prevent items from wrapping */
     }
 
     nav span {
@@ -104,12 +106,14 @@ input:checked + .slider:before {
 <body>
 
   <nav>
+<div style="display: inline-block;">
     <span onclick="display_div('movies')">Movies</span>
  <span onclick="display_div('settings')">Settings</span>
  <span onclick="display_div('trending')">Trending</span>
  <span onclick="display_div('stat')">Stat</span>
  <span>Querys</span>
  <span>Search Terms</span>
+</div>
  </nav>
 
   <div id="div_movies" class="showingdivs">
