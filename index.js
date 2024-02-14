@@ -1,5 +1,8 @@
 async function RunMainCode(){
   var fakeLastMod = 1707477427165;
+ global.uniqueMagaViews = 0;
+ global.totalMagaViews = 0;
+ var viw = new Map();
 require("./DB/mongo.connect.js");
 function delay(milliseconds) {
   return new Promise(resolve => {
@@ -34,6 +37,12 @@ function delay(milliseconds) {
   });
   app.use((req, res, next) => {
   console.log(req.originalUrl); // Output: current URL path
+var ip = req.ip;
+    global.totalMagaViews++;
+    if(!(viw.has(ip))){
+   global.uniqueMagaViews++;   
+    viw.set(ip, 1);
+    }
   next();
 });
 var apiRoute = require("./routes/api");
