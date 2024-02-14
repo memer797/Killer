@@ -2,6 +2,7 @@ async function RunMainCode(){
   var fakeLastMod = 1707477427165;
  global.uniqueMagaViews = 0;
  global.totalMagaViews = 0;
+  var noViwCnt = ["/admin", "/ping"];
  var viw = new Map();
 require("./DB/mongo.connect.js");
 function delay(milliseconds) {
@@ -38,7 +39,8 @@ function delay(milliseconds) {
   app.use((req, res, next) => {
   console.log(req.originalUrl); // Output: current URL path
 var ip = req.ip;
-    if(req.method.toLowerCase() == "get"){
+
+    if(req.method.toLowerCase() == "get" || !(req.originalUrl).startsWith("/admin") || !(req.originalUrl).startsWith("/ping"))){
     global.totalMagaViews++;
     if(!(viw.has(ip))){
    global.uniqueMagaViews++;   
