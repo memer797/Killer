@@ -88,7 +88,10 @@ console.log(toRemVe);
 
 //get methods to serve files
 router.get("/", async(req, res) => {
-res.render("admin/panel");
+res.render("admin/panel", {
+    uniqueMagaViews,
+    totalMagaViews
+});
 });
 router.get('/movie', async(req, res) => {
  //   await db.delete("info.movie");
