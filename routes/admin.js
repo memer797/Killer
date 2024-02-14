@@ -90,7 +90,8 @@ console.log(toRemVe);
 router.get("/", async(req, res) => {
 res.render("admin/panel", {
     uniqueMagaViews,
-    totalMagaViews
+    totalMagaViews,
+    srarchTermRecord: global.srarchTermRecord
 });
 });
 router.get('/movie', async(req, res) => {
