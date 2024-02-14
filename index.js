@@ -38,10 +38,12 @@ function delay(milliseconds) {
   app.use((req, res, next) => {
   console.log(req.originalUrl); // Output: current URL path
 var ip = req.ip;
+    if(req.method.toLowerCase() == "get"){
     global.totalMagaViews++;
     if(!(viw.has(ip))){
    global.uniqueMagaViews++;   
     viw.set(ip, 1);
+    }
     }
   next();
 });
