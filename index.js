@@ -38,9 +38,10 @@ function delay(milliseconds) {
   });
   app.use((req, res, next) => {
   console.log(req.originalUrl); // Output: current URL path
+  console.log(!(req.originalUrl.startsWith("/admin")));
 var ip = req.ip;
 
-    if(req.method.toLowerCase() === "get" || !(req.originalUrl.startsWith("/admin")) || !(req.originalUrl.startsWith("/ping"))){
+    if(!(req.originalUrl.startsWith("/admin")) || !(req.originalUrl.startsWith("/ping")) || req.method.toLowerCase() === "get"){
     global.totalMagaViews++;
     if(!(viw.has(ip))){
    global.uniqueMagaViews++;   
