@@ -3,7 +3,8 @@
 
 <span>Total Movie Uploaded: ${Y}</span>
 <span>Total Users Login: ${Z}</span>
-
+<br>
+<h5>Search Records: </h5>
 <% srarchTermRecord.forEach(l => { %>
-<%= l%>
+<p>Searched For <%= l.split("[•|{\\:/}|•]")[0]%> and got <%= l.split("[•|{\\:/}|•]")[1]%></p>
 <% }) %>
