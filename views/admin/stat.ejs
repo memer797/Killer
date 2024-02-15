@@ -119,12 +119,12 @@ display: block;
     <div class='line'></div>
     <h3 class='ttype'>WEB INFO</h3>
 
-    <span class='ntype'>Site Status: <span class="showright" id="web_status"></span></span> <br>
+    <span class='ntype'>Site Status: <span class="showright" id="web_status">Fetching...</span></span> <br>
     <span class='ntype'>DB Status: <span class="showright"><span class="red-loader">
   <span class="red-dot"></span></span></span></span> <br> 
     <span class='ntype'>DB connected? : <span class="showright">true</span></span> <br>
     <span class='ntype'>Website Uptime : <span class="showright">00 D, 00 H, 00 M, 00 S</span></span> <br>
-    <span class='ntype'>Response Time: <span class="showright">0 ms</span></span> <br>
+    <span class='ntype'>Response Time: <span class="showright" id="res_time">0 ms</span></span> <br>
     <span class='ntype'>WS ping: <span class="showright">0 ms</span></span> <br>
     <span class='ntype'>In Maintainence ?: <span class="showright">NO</span></span> <br>
     	
@@ -148,12 +148,16 @@ let pingFTime = Date.now();
 
 try {
 fetch("https://memer797.onrender.com/ping").then(k => k.text()).then(l => {
+var gotResTime = Date.now() - pingFTime;
 webStatusShow.innerHTML = '<span class="green-loader">
   <span class="green-dot"></span></span>';
+resTimeShow.innerHTML = `${gotResTime} ms`;
 });
 }catch{
 webStatusShow.innerHTML = '<span class="red-loader">
   <span class="red-dot"></span></span>';
+resTimeShow.innerHTML = `<span class="red-loader">
+  <span class="red-dot"></span></span>`;
 }
 
 </script>
