@@ -84,6 +84,7 @@ var val = req.query.value;
   */
 app.get("/", async (req, res) => {
     var data = await db.getArray("info.movie");
+    var trendDataNow =  await db.getArray("trend.movie");
 var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
   category.forEach(category => {
   acc[category] = acc[category] || { category, items: [] };
@@ -91,8 +92,14 @@ var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
   });
   return acc;
 }, {}));
-
-  res.render('index', { data: result, allData: data });
+let tmdtal = [];
+  trendDataNow.forEach(g => {
+var udf = data.filter(j => j.id === g);
+    if(udf > 0){
+      tmdtal.push({name: tmdal[0].name, id: tmdal[0].id, img: tmdal[0].img }); 
+    }
+  });
+  res.render('index', { data: result, allData: data, trend: tmdtal });
 });
   
 app.get("/suggest", async(req, res) => {
