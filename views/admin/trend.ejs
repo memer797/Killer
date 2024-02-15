@@ -54,7 +54,7 @@
 
 if(!movIdAdd.value || movIdAdd.value.trim() === "") return;
 console.log(movIdAdd.value);
-movIdAdd.value = "";
+//movIdAdd.value = "";
 
 fetch("/admin/data/save/trend/movie", {
 	method: "POST",
@@ -66,6 +66,7 @@ trmv.id = res.id;
 trmv.innerHTML = `${res.name} <a class="rmvBtnTrend" onclick="rmvTrend(${res.id})">Remove</a></span> <div class="line2"></div>`;
 document.querySelector(".trendList").appendChild(trmv);
 });
+movIdAdd.value = "";
 });
 
 function rmvTrend(id) {
