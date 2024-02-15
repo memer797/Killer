@@ -98,8 +98,10 @@ var udf = data.filter(j => j.id === g);
     if(udf > 0){
       tmdtal.push({name: tmdal[0].name, id: tmdal[0].id, img: tmdal[0].img }); 
     }
+    console.log(udf)
   });
-  res.render('index', { data: result, allData: data, trend: tmdtal });
+  res.render('index', { data: result, trend: tmdtal });
+  console.log(tmdtal);
 });
   
 app.get("/suggest", async(req, res) => {
