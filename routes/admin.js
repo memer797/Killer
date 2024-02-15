@@ -18,6 +18,22 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
 next();
  });
 //post routes for data handling
+router.post("/data/save/trend/movie", async(req, res) => {
+var id = req.body.id;
+    if(!id || id.trim() === ""){
+   return res.json({error: "invalid ${id}"});
+    }
+    var check = await db.getArray("info.movie");
+var reallyAva = check.filter(d => d.id === id);
+    if(reallyAva.length === 0){
+ return res.json({error: "not found"});
+    }
+    res.json({success: true, data: {
+        name: reallyAva.name,
+        id: id
+    }});
+    await db.push("trend.movie", id);
+});
 router.post("/data/save/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
