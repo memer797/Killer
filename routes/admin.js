@@ -133,7 +133,8 @@ router.get("/", async(req, res) => {
 res.render("admin/panel", {
     uniqueMagaViews,
     totalMagaViews,
-    srarchTermRecord: global.srarchTermRecord
+    srarchTermRecord: global.srarchTermRecord,
+    uptime: Date.now() - global.server.startTime
 });
 });
 router.get('/movie', async(req, res) => {
