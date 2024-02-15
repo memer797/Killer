@@ -139,7 +139,7 @@ display: block;
         <span class='ntype'>Total  Views: <span class="showright"><%= totalMagaViews%></span></span> <br>
         <span class='ntype'>Unique Views: <span class="showright"><%= uniqueMagaViews%></span></span> <br>
         <span class='ntype'>Total Searches: <span class="showright"><%= srarchTermRecord.length%></span></span> <br>
-
+</div>
 
 <script>
 var webStatusShow = document.querySelector("#web_status");
@@ -149,15 +149,25 @@ let pingFTime = Date.now();
 try {
 fetch("https://memer797.onrender.com/ping").then(k => k.text()).then(l => {
 var gotResTime = Date.now() - pingFTime;
-webStatusShow.innerHTML = '<span class="green-loader">
-  <span class="green-dot"></span></span>';
+webStatusShow.innerHTML = '<span class="green-loader"><span class="green-dot"></span></span>';
 resTimeShow.innerHTML = `${gotResTime} ms`;
 });
 }catch{
-webStatusShow.innerHTML = '<span class="red-loader">
-  <span class="red-dot"></span></span>';
-resTimeShow.innerHTML = `<span class="red-loader">
-  <span class="red-dot"></span></span>`;
+webStatusShow.innerHTML = '<span class="red-loader"><span class="red-dot"></span></span>';
+resTimeShow.innerHTML = `<span class="red-loader"><span class="red-dot"></span></span>`;
 }
+
+setInterval(() => {
+    try {
+fetch("https://memer797.onrender.com/ping").then(k => k.text()).then(l => {
+var gotResTime = Date.now() - pingFTime;
+webStatusShow.innerHTML = '<span class="green-loader"><span class="green-dot"></span></span>';
+resTimeShow.innerHTML = `${gotResTime} ms`;
+});
+}catch{
+webStatusShow.innerHTML = '<span class="red-loader"><span class="red-dot"></span></span>';
+resTimeShow.innerHTML = `<span class="red-loader"><span class="red-dot"></span></span>`;
+        }
+}, 30*1000);
 
 </script>
