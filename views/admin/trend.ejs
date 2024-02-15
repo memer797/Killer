@@ -84,12 +84,14 @@ headers: {
 		document.getElementById(id).style.display = "none";
 	}
 	
-	fetch("/admin/data/get/trend/movie").then(jo => jo.json()).then(lo => {
+	fetch("/admin/data/get/trend/movie").then(jo => jo.json()).then(lol => {
+lol.forEach(lo => {
 		var name = lo.name;
 		var id = lo.id;
 		var trmv = document.createElement("span");
 trmv.id = id;
 trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend(${id})">Remove</a></span> <div class="line2"></div>`;
 document.querySelector(".trendList").appendChild(trmv);
-		});
+});		
+});
 			</script>
