@@ -132,7 +132,7 @@ border-radius: 4px;
     <div style = "font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
   </div>
   <div id="trending">
-<% allData.forEach(data => { %>
+<% trend.forEach(data => { %>
     <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
       <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
       <div class="movie-name"><%= data.name%></div>
