@@ -121,9 +121,11 @@ function getRandomColor() {
 <%= data.name%>
 </a>
 </h3>
+<% data.category.forEach(omg => { %>
 <div class="movie-category" style="background-color: <%= getRandomColor()%>">
-<%= data.category%>
-</div></div></div>
+<%= omg%>
+</div>
+<% }); %></div></div>
         <% }); %>
 </div>
 </div>
