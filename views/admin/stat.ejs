@@ -1,10 +1,144 @@
-<h5>Total Views: <%= totalMagaViews%></h5>
-<h5>Unique Views: <%= uniqueMagaViews%></h5>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #252525;
+            color: white;
+            width: 100%;
+            height: 100%;
+        }
+        .line {
+            border: 1px solid gray;
+            width: 90%;
+            border-radius: 4px;
+            margin: 0 auto;
+            margin-bottom: 15px;
+        }
+        .showright {
+            float: right;
+        }
+        .ntype {
+        	font-size: 20px;
+           display: block;
+           padding: 8px;
+        }
+        .ttype {
+        	margin: 0 auto; 
+margin-bottom: 20px; 
+display: block;
+ text-align: center;
+        text-decoration: underline;
+        }
+        
+        .green-loader {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  position: relative;
+}
+.green-loader::before {
+  content: '';  
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #03fc13;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: -5px;
+  animation: animloader 1.5s linear infinite;
+}
+.green-loader::after {
+  animation-delay: 1s;
+}
 
-<span>Total Movie Uploaded: ${Y}</span>
-<span>Total Users Login: ${Z}</span>
-<br>
-<h5>Search Records: </h5>
-<% srarchTermRecord.forEach(l => { %>
-<p>Searched For <strong><%= l.split("[•|{\\:/}|•]")[0]%></strong> and got <strong><%= l.split("[•|{\\:/}|•]")[1]%></strong></p>
-<% }) %>
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.green-dot {
+  width: 5px;
+  height: 5px;
+  background: #03fc13;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  transform: translate(-50%, -50%);
+}
+
+
+
+   .red-loader {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  position: relative;
+}
+.red-loader::before {
+  content: '';  
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: -5px;
+  animation: animloader 1.5s linear infinite;
+}
+.red-loader::after {
+  animation-delay: 1s;
+}
+
+.red-dot {
+  width: 5px;
+  height: 5px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  transform: translate(-50%, -50%);
+}
+    </style>
+</head>
+<body>
+    <h2 style='text-align: center;''>ADMIN WEB STATUS</h2>
+
+    <div class='line'></div>
+    <h3 class='ttype'>WEB INFO</h3>
+
+    <span class='ntype'>Site Status: <span class="showright"><span class="green-loader">
+  <span class="green-dot"></span></span></span></span> <br>
+    <span class='ntype'>DB Status: <span class="showright"><span class="red-loader">
+  <span class="red-dot"></span></span></span></span> <br> 
+    <span class='ntype'>DB connected? : <span class="showright">true</span></span> <br>
+    <span class='ntype'>Website Uptime : <span class="showright">00 D, 00 H, 00 M, 00 S</span></span> <br>
+    <span class='ntype'>Response TIme: <span class="showright">0 ms</span></span> <br>
+    <span class='ntype'>WS ping: <span class="showright">0 ms</span></span> <br>
+    <span class='ntype'>In Maintainence ?: <span class="showright">NO</span></span> <br>
+    	
+    <div class='line' style='margin-top: 10px;'></div>
+        <h3 class='ttype'>MOVIES INFO</h3>
+        <span class='ntype'>Total Movies: <span class="showright">0</span></span> <br>
+        <span class='ntype'>Trending Movies: <span class="showright">0</span></span> <br>
+  
+
+    <div class='line' style='margin-top: 10px;'></div>
+        <h3  class='ttype'>USERS INFO</h3>
+        <span class='ntype'>Total  Views: <span class="showright"><%= totalMagaViews%></span></span> <br>
+        <span class='ntype'>Unique Views: <span class="showright"><%= uniqueMagaViews%></span></span> <br>
+        <span class='ntype'>Total Searches: <span class="showright"><%= srarchTermRecord.length%></span></span> <br>
+       
