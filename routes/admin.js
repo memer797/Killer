@@ -44,6 +44,20 @@ res.json({success: true});
     }catch{}
 });
 
+router.get("/data/get/trend/movie", async(req, res) => {
+var dtaAAA = await db.getArray("trend.movie");
+var dtaBBB = await db.getArray("info.movie");
+let WhatToSend = [];
+    staAAA.forEach(w => {
+  var lop = dtaBBB.filter(n => n.id === w);
+        if(lop.length > 0){
+            WhatToSend.push({ name: lop[0].name, id: lop[0].id });
+        }
+    });
+    res.json(WhatToSend);
+});
+
+        
 
 
 router.post("/data/save/movie", async(req, res) => {
