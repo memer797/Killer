@@ -96,12 +96,10 @@ let tmdtal = [];
   trendDataNow.forEach(g => {
 var udf = data.filter(j => j.id === g);
     if(udf.length > 0){
-      tmdtal.push({name: tmdal[0].name, id: tmdal[0].id, img: tmdal[0].img }); 
+      tmdtal.push({name: udf[0].name, id: udf[0].id, img: udf[0].img }); 
     }
-    console.log(udf)
   });
   res.render('index', { data: result, trend: tmdtal });
-  console.log(tmdtal);
 });
   
 app.get("/suggest", async(req, res) => {
