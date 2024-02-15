@@ -58,6 +58,9 @@ console.log(movIdAdd.value);
 
 fetch("/admin/data/save/trend/movie", {
 	method: "POST",
+headers: {
+    'Content-Type': 'application/json'
+},
     body: JSON.stringify({id: movIdAdd.value})
 	}).then(res => res.json()).then(res => {
 		if(!res.success) return;
@@ -73,6 +76,9 @@ function rmvTrend(id) {
 if(!id || id.trim() === "") return;
 	fetch("/admin/data/delete/trend/movie", {
 	method: "POST",
+headers: {
+    'Content-Type': 'application/json'
+},
     body: JSON.stringify({ id: id })	
 		});
 		document.getElementById(id).style.display = "none";
