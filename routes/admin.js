@@ -29,7 +29,7 @@ var reallyAva = check.filter(d => d.id === id);
  return res.json({error: "not found"});
     }
     res.json({success: true, data: {
-        name: reallyAva.name,
+        name: reallyAva[0].name,
         id: id
     }});
     await db.push("trend.movie", id);
