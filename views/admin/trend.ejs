@@ -1,18 +1,4 @@
 <style>
-			html, body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-}	
-        .line {
-            border: 1px solid gray;
-            width: 90%;
-            border-radius: 4px;
-            margin: 0 auto;
-            margin-bottom: 15px;
-            margin-top: 10px;
-        }
                 .line2 {
             border: 1px solid gray;
             width: 100%;
@@ -70,7 +56,7 @@ if(!movIdAdd.value || movIdAdd.value.trim() === "") return;
 console.log(movIdAdd.value);
 movIdAdd.value = "";
 
-fetch("/data/save/trend/movie", {
+fetch("/admin/data/save/trend/movie", {
 	method: "POST",
     body: JSON.stringify({id: movIdAdd.value})
 	}).then(res => res.json()).then(res => {
@@ -84,14 +70,14 @@ document.querySelector(".trendList").appendChild(trmv);
 
 function rmvTrend(id) {
 if(!id || id.trim() === "") return;
-	fetch("/data/delete/trend/movie", {
+	fetch("/admin/data/delete/trend/movie", {
 	method: "POST",
     body: JSON.stringify({ id: id })	
 		});
 		document.getElementById(id).style.display = "none";
 	}
 	
-	fetch("/data/get/trend/movie").then(jo => jo.json()).then(lo => {
+	fetch("/admin/data/get/trend/movie").then(jo => jo.json()).then(lo => {
 		var name = lo.name;
 		var id = lo.id;
 		var trmv = document.createElement("span");
