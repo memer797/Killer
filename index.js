@@ -95,7 +95,7 @@ var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
 let tmdtal = [];
   trendDataNow.forEach(g => {
 var udf = data.filter(j => j.id === g);
-    if(udf > 0){
+    if(udf.length > 0){
       tmdtal.push({name: tmdal[0].name, id: tmdal[0].id, img: tmdal[0].img }); 
     }
     console.log(udf)
