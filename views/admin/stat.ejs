@@ -146,6 +146,7 @@ var resTimeShow = document.querySelector("#res_time");
 let pingFTime = Date.now();
 
 try {
+pingFTime = Date.now();
 fetch("https://memer797.onrender.com/ping").then(k => k.text()).then(l => {
 var gotResTime = Date.now() - pingFTime;
 webStatusShow.innerHTML = '<span class="green-loader"><span class="green-dot"></span></span>';
@@ -158,6 +159,7 @@ resTimeShow.innerHTML = `<span class="red-loader"><span class="red-dot"></span><
 
 setInterval(() => {
     try {
+pingFTime = Date.now();
 fetch("https://memer797.onrender.com/ping").then(k => k.text()).then(l => {
 var gotResTime = Date.now() - pingFTime;
 webStatusShow.innerHTML = '<span class="green-loader"><span class="green-dot"></span></span>';
