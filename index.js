@@ -1,5 +1,8 @@
 async function RunMainCode(){
   var fakeLastMod = 1707477427165;
+ global.server = {
+   startTime: Date.now()
+ };
  global.uniqueMagaViews = 0;
  global.totalMagaViews = 0;
  global.srarchTermRecord = [];
