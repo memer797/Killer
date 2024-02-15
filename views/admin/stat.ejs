@@ -1,5 +1,23 @@
 <script>
-var uptime = "<%= uptime%>";
+let uptime = <%= uptime%>;
+function ms(milliseconds){
+    const roundTowardsZero = milliseconds > 0 ? Math.floor : Math.ceil;
+	return {
+		days: roundTowardsZero(milliseconds / 86400000),
+		hours: roundTowardsZero(milliseconds / 3600000) % 24,
+		minutes: roundTowardsZero(milliseconds / 60000) % 60,
+		seconds: roundTowardsZero(milliseconds / 1000) % 60,
+		milliseconds: roundTowardsZero(milliseconds) % 1000,
+		microseconds: roundTowardsZero(milliseconds * 1000) % 1000,
+		nanoseconds: roundTowardsZero(milliseconds * 1e6) % 1000
+	};
+}
+let uptmMsg = document.getElementById("uptime");
+uptmMsg.innerHTML = `${ms(uptime).days} D, ${ms(uptime).hours} H, ${ms(uptime).minutes} M, ${ms(uptime).seconds} S`;
+setInterval(() => {
+uptime = uptime + 1000;
+uptmMsg.innerHTML = `${ms(uptime).days} D, ${ms(uptime).hours} H, ${ms(uptime).minutes} M, ${ms(uptime).seconds} S`;
+}, 1000);
 </script>
 <style>
         .statDiv {
@@ -125,7 +143,7 @@ display: block;
     <span class='ntype'>DB Status: <span class="showright"><span class="red-loader">
   <span class="red-dot"></span></span></span></span> <br> 
     <span class='ntype'>DB connected? : <span class="showright">true</span></span> <br>
-    <span class='ntype'>Website Uptime : <span class="showright">00 D, 00 H, 00 M, 00 S</span></span> <br>
+    <span class='ntype'>Website Uptime : <span class="showright" style="font-size: 15px;" id="uptime">000..</span></span> <br>
     <span class='ntype'>Response Time: <span class="showright" id="res_time">0 ms</span></span> <br>
     <span class='ntype'>WS ping: <span class="showright">0 ms</span></span> <br>
     <span class='ntype'>In Maintainence ?: <span class="showright">NO</span></span> <br>
