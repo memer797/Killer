@@ -46,7 +46,7 @@ function delay(milliseconds) {
 var ip = req.ip;
 
     if(req.method.toLowerCase() === "get"){
-      if(!(req.originalUrl.startsWith("/admin"))){
+      if(!(req.originalUrl.startsWith("/admin")) || !(req.originalUrl.startsWith("/ping"))){
       global.totalMagaViews++;
     if(!(viw.has(ip))){
    global.uniqueMagaViews++;   
