@@ -58,11 +58,13 @@ var ip = req.ip;
 });
 var apiRoute = require("./routes/api");
 var adminRoute = require("./routes/admin");
+var allPagesRoute = require("./routes/pages");
 var siteMapsRouter = require("./routes/site-maps");
 let disabled = false;
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
   app.use("/sitemap", siteMapsRouter);
+  app.use('/pages', allPagesRoute);
 
   if(disabled){
     app.use("*", async(req, res, next) => {
