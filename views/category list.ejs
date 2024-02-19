@@ -6,7 +6,7 @@
   <%- include('./includes/fav icon')%>
 <link rel="stylesheet" type="text/css" href="/global.css"/>
 <style>
-        .header {
+                .header {
             background-color: #000; /* Darker header background color */
             color: #fff;
             padding: 10px;
@@ -36,7 +36,10 @@
         .movie {
             display: flex;
             margin: 10px -10px;
-            padding: 10px;
+            padding-left: 3px;
+            padding-right: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #555; /* Darker movie background color */
@@ -53,16 +56,21 @@ width: auto;
         border-radius: 4px;
 /*object-fit: cover;*/
         }
+.movie a {
+padding: 0;
+height: 83.7422px;
+}
 
         .movie-details {
             text-align: left;
-            overflow: hidden;
+height: auto;
         }
 
         .movie-name {
-            margin-top: 0;
+            margin-top: 2px;
             word-wrap: break-word;
             color: #999; /* Light gray color for the movie name */
+        height: 10px;
         }
 
         .movie-name a {
@@ -93,7 +101,6 @@ width: auto;
     border: 1px solid #fff; /* White border around the text */
 }
 
-        
     </style>
     <title><%= category%> Movies</title>
 </head>
