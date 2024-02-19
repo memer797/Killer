@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="/global.css"/>
 <%- include('./includes/fav icon')%>
 <style>
-        .header {
+                .header {
             background-color: #000; /* Darker header background color */
             color: #fff;
             padding: 10px;
@@ -48,11 +48,18 @@
 
         .movie img {
             max-width: 146.6664px;
-             max-height: 80px;
-            height: auto;
+             max-height: 83.7422px;
+height: 83.7422px;
+width: auto;
+          /*  height: auto;*/
             margin-right: 10px;
         border-radius: 4px;
+/*object-fit: cover;*/
         }
+.movie a {
+padding: 0;
+height: 83.7422px;
+}
 
         .movie-details {
             text-align: left;
@@ -94,7 +101,6 @@ height: auto;
     border: 1px solid #fff; /* White border around the text */
 }
 
-        
     </style>
     <title>Search result for <%= term%></title>
 </head>
