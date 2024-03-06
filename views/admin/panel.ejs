@@ -111,8 +111,8 @@ input:checked + .slider:before {
  <span onclick="display_div('settings')">Settings</span>
  <span onclick="display_div('trending')">Trending</span>
  <span onclick="display_div('stat')">Stat</span>
+ <span onclick="display_div('st')">Search Terms</span>
  <span>Querys</span>
- <span>Search Terms</span>
 </div>
  </nav>
 
@@ -131,6 +131,10 @@ Settings For Whole Website <label class="switch">
 <div id="div_stat" class="showingdivs">
 <%- include("stat")%>
 </div>
+<div id="div_st" class="showingdivs">
+<%- include("search term")%>
+</div>
+
 <script>
 function display_div(item) {
 var all = document.querySelectorAll(`div[id^="div_"]`);
