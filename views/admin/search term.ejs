@@ -2,10 +2,11 @@
 console.log("<%= srarchTermRecord%>");
 </script>
 
-<% srarchTermRecord.forEach(data => {
-var ndata = data.split("[•|{\:/}|•]");
-if(ndata || ndata[0]) { %>
-<%= console.log(ndata);%>
-<%= ndata[0]%> => <%= ndata[1]%>
-<% }
- }); %>
+<% searchTermRecord.forEach(data => {
+    var ndata = data.split("[•|{\\:/}|•]");
+    if (ndata && ndata.length > 1) { %>
+        <%= console.log(ndata); %>
+        <%= ndata[0] %> => <%= ndata[1] %>
+<%   }
+}); %>
+
