@@ -2,7 +2,7 @@
 console.log("<%= srarchTermRecord%>");
 </script>
 
-<% searchTermRecord.forEach(data => {
+<% srarchTermRecord.forEach(data => {
     var ndata = data.split("[•|{\\:/}|•]");
     if (ndata && ndata.length > 1) { %>
         <%= console.log(ndata); %>
