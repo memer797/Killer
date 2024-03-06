@@ -1,3 +1,10 @@
 <script>
 console.log("<%= srarchTermRecord%>");
 </script>
+
+<% srarchTermRecord.forEach(data => {
+var ndata = data.split("[•|{\:/}|•]");
+if(ndata || ndata[0]) { %>
+<%= ndata[0]%> => <%= ndata[1]%>
+<% }
+ }); %>
