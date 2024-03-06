@@ -6,7 +6,7 @@ console.log("<%= srarchTermRecord%>");
     var ndata = data.split("[•|{\\:/}|•]");
     if (ndata && ndata.length > 1) { %>
         <%= console.log(ndata); %>
-        <%= ndata[0] %> => <%= ndata[1] %>
+        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><br>
 <%   }
 }); %>
 
