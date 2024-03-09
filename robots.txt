@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Allow: /
+Allow: /movies/*
+Allow: /see-all
+Allow: /contact-us
