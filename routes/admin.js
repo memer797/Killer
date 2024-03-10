@@ -132,6 +132,8 @@ console.log(toRemVe);
 router.get("/", async(req, res) => {
     var ttlMov = await db.getArray("info.movie").length;
     var ttlTrendMov = await db.getArray("trend.movie").length;
+    console.log(ttlMov);
+    console.log("^^");
 res.render("admin/panel", {
     uniqueMagaViews,
     totalMagaViews,
