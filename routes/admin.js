@@ -134,7 +134,9 @@ res.render("admin/panel", {
     uniqueMagaViews,
     totalMagaViews,
     srarchTermRecord: global.srarchTermRecord,
-    uptime: Date.now() - global.server.startTime
+    uptime: Date.now() - global.server.startTime,
+    totalMovCount: await db.getArray("info.movie").length,
+    totalTrendCount: await db.getArray("trend.movie").length
 });
 });
 router.get('/movie', async(req, res) => {
