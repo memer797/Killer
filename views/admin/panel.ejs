@@ -126,12 +126,13 @@ Disable Site:
   <span class="slider round"></span>
 </label>
 <script>
+
 //admin/data/settings
 //isInMaintainance
+var checkbox = document.querySelector("#bla");
 fetch("https://memer797.onrender.com/admin/data/settings")
 .then(res => res.json())
 .then(data => {
-var checkbox = document.querySelector("bla");
 checkbox.checked = data.isInMaintainance;
 });
 checkbox.addEventListener("click", function() {
@@ -142,6 +143,7 @@ te: checkbox.checked
 })
 });
     });
+
 </script>
 </div>
 <div id="div_trending" class="showingdivs">
