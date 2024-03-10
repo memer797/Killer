@@ -21,12 +21,14 @@ next();
 //settings route
 router.get("/data/settings", async(req, res) => {
 res.send({
-
+isInMaintainance = global.webDisabled
 });
 });
 router.post("/data/settings", async(req, res) => {
+var dat = req.body.te;
+    global.webDisabled = dat;
 res.send({
-    
+    success: true
 });
 });
 //post routes for data handling
