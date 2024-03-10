@@ -138,6 +138,9 @@ checkbox.checked = data.isInMaintainance;
 checkbox.addEventListener("click", function() {
     fetch("https://memer797.onrender.com/admin/data/settings", {
 method: "POST",
+headers: {
+    'Content-Type': 'application/json'
+  },
 body: JSON.stringify({
 te: checkbox.checked
 })
