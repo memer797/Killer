@@ -74,6 +74,10 @@ movIdAdd.value = "";
 
 function rmvTrend(id) {
 if(!id || id.trim() === "") return;
+var isconfirmed = confirm("are you sure dude?");
+if(isconfirmed === false){
+return;
+}
 	fetch("/admin/data/delete/trend/movie", {
 	method: "POST",
 headers: {
