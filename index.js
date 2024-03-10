@@ -61,12 +61,14 @@ var adminRoute = require("./routes/admin");
 var allPagesRoute = require("./routes/pages");
 var siteMapsRouter = require("./routes/site-maps");
 var loginRoute = require('./routes/login');
+var adminDM = require("./routes/adminDM");
 global.webDisabled = false;
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
   app.use("/sitemap", siteMapsRouter);
   app.use('/pages', allPagesRoute);
   app.use('/login', loginRoute);
+  app.use('/dm/admin', adminDM);
 
 app.use("*", async(req, res, next) => {
 if(global.webDisabled){
