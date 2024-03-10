@@ -131,7 +131,8 @@ Disable Site:
 fetch("https://memer797.onrender.com/admin/data/settings")
 .then(res => res.json())
 .then(data => {
-
+var checkbox = document.querySelector("bla");
+checkbox.checked = data.isInMaintainance;
 });
 </script>
 </div>
