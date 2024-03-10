@@ -134,6 +134,14 @@ fetch("https://memer797.onrender.com/admin/data/settings")
 var checkbox = document.querySelector("bla");
 checkbox.checked = data.isInMaintainance;
 });
+checkbox.addEventListener("click", function() {
+    fetch("https://memer797.onrender.com/admin/data/settings", {
+method: "POST",
+body: JSON.stringify({
+checkbox.checked
+})
+});
+    });
 </script>
 </div>
 <div id="div_trending" class="showingdivs">
