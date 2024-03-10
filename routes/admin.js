@@ -155,7 +155,8 @@ res.render("admin/panel", {
     srarchTermRecord: global.srarchTermRecord,
     uptime: Date.now() - global.server.startTime,
     totalMovCount: ttlMov.length,
-    totalTrendCount: ttlTrendMov.length
+    totalTrendCount: ttlTrendMov.length,
+    isInMaintainance: global.webDisabled
 });
 });
 router.get('/movie', async(req, res) => {
