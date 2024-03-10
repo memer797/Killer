@@ -17,6 +17,18 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  }
 next();
  });
+
+//settings route
+router.get("/data/settings", async(req, res) => {
+res.send({
+
+});
+});
+router.post("/data/settings", async(req, res) => {
+res.send({
+    
+});
+});
 //post routes for data handling
 router.post("/data/save/trend/movie", async(req, res) => {
 var id = req.body.id;
