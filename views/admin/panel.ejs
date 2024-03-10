@@ -120,10 +120,20 @@ input:checked + .slider:before {
  <%- include("./movie.ejs")%>
 </div>
 <div id="div_settings" class="showingdivs">
-Settings For Whole Website <label class="switch">
-  <input type="checkbox">
+Disable Site:
+<label class="switch">
+  <input id="bla" type="checkbox">
   <span class="slider round"></span>
 </label>
+<script>
+//admin/data/settings
+//isInMaintainance
+fetch("https://memer797.onrender.com/admin/data/settings")
+.then(res => res.json())
+.then(data => {
+
+});
+</script>
 </div>
 <div id="div_trending" class="showingdivs">
 <%- include("trend")%>
