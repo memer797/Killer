@@ -130,17 +130,15 @@ console.log(toRemVe);
 
 //get methods to serve files
 router.get("/", async(req, res) => {
-    var ttlMov = await db.getArray("info.movie").length;
-    var ttlTrendMov = await db.getArray("trend.movie").length;
-    console.log(ttlMov);
-    console.log("^^");
+    var ttlMov = await db.getArray("info.movie");
+    var ttlTrendMov = await db.getArray("trend.movie");
 res.render("admin/panel", {
     uniqueMagaViews,
     totalMagaViews,
     srarchTermRecord: global.srarchTermRecord,
     uptime: Date.now() - global.server.startTime,
-    totalMovCount: ttlMov,
-    totalTrendCount: ttlTrendMov
+    totalMovCount: ttlMov.length,
+    totalTrendCount: ttlTrendMov.length
 });
 });
 router.get('/movie', async(req, res) => {
