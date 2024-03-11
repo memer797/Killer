@@ -166,5 +166,12 @@ all.forEach(divs => divs.style.display = "none");
 document.querySelector(`#div_${item}`).style.display = 'block';
 }
 </script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io("/ws/dm/admin");
+socket.on("new.query", async(msg) => {
+console.log(msg);
+});
+</script>
 </body>
 </html>
