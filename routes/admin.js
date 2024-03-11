@@ -21,7 +21,6 @@ next();
 //settings route
 router.get("/data/settings", async(req, res) => {
 let gwd = global.webDisabled;
-    console.log(">" + gwd);
     res.json({
 isInMaintainance: gwd
 });
@@ -29,7 +28,6 @@ isInMaintainance: gwd
 router.post("/data/settings", async(req, res) => {
 var dat = req.body.te;
     global.webDisabled = dat;
-    console.log(dat);
 res.json({
     success: true
 });
@@ -149,6 +147,7 @@ console.log(toRemVe);
 router.get("/", async(req, res) => {
     var ttlMov = await db.getArray("info.movie");
     var ttlTrendMov = await db.getArray("trend.movie");
+    var queryCount = await db.getArray("user.query");
 res.render("admin/panel", {
     uniqueMagaViews,
     totalMagaViews,
@@ -156,7 +155,8 @@ res.render("admin/panel", {
     uptime: Date.now() - global.server.startTime,
     totalMovCount: ttlMov.length,
     totalTrendCount: ttlTrendMov.length,
-    isInMaintainance: global.webDisabled
+    isInMaintainance: global.webDisabled,
+    queryCount: queryCount.count
 });
 });
 router.get('/movie', async(req, res) => {
