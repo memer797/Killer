@@ -80,10 +80,12 @@ if(r == null){  return [];  }else{ return r.arrayValue }
   if(!key){
     return `provide a key`
   }
-     var r = await mdb?.test?.findOne({ id: key })
-
-if(r == null){  return [];  }else{ return r.arrayValue }
-  },
+     await mdb?.test?.updateOne({ id: key }, {
+                $set: {
+                  arrayValue: arry
+                }
+              }, { upsert: true }).catch(e => { console.log(e) });
+ },
 
   async all() {
 
