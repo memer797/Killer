@@ -16,7 +16,7 @@ var query = req.body.q;
     msg: "query has been submitted"
   });
   setInterval(() => {
-  wsAdminDm.emit("new.query", { sender: senderName });
+  wsAdminDm.emit("new.query", { sender: senderName, query: query });
   }, 2000);
     await db.push("user.query", {
     sender: senderName,
