@@ -190,6 +190,7 @@ document.querySelector(`#div_${item}`).style.display = 'block';
 <script>
   const socket = io("/ws/dm/admin");
 socket.on("new.query", async(msg) => {
+document.querySelector("#queryCount").innerHTML += 1;
 console.log(msg);
 });
 </script>
