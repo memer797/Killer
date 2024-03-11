@@ -76,16 +76,30 @@ if(r == null){  return null;  }else{ return r.value }
 if(r == null){  return [];  }else{ return r.arrayValue }
   },
 
-    async editArray(key, track, toset) {
+ /*   async editArray(key, track, toset) {
   if(!key){
     return `provide a key`
   }
      await mdb?.test?.updateOne({ id: key }, {
                 $set: {
-                  arrayValue: arry
+                  [`arrayValue.$[elem].${track}`]: toset
                 }
               }, { upsert: true }).catch(e => { console.log(e) });
- },
+      *
+      var name = "op";
+var itemName = "yt";
+
+var arrayFilters = [{ [`elem.${name}`]: itemName }];
+
+db.collection.updateOne(
+  { "id": "op" }, // Filter documents with the specified id
+  { 
+    "$set": { [`arrayValue.$[elem].type`]: false } // Set the type field to false for matched items
+  },
+  { arrayFilters: arrayFilters } // Specify the array filter dynamically
+)
+*
+ },*/
 
   async all() {
 
