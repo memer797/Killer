@@ -22,6 +22,7 @@ function delay(milliseconds) {
     app = express(),
     server = app.listen(3000),
     io = require('socket.io')(server);
+  global.socketIo = io;
   const searchAlgo__ = require("./search algorithm .js");
 
  app
