@@ -12,8 +12,11 @@ var query = req.body.q;
   }
   res.json({
     success: true,
-    msg: "query have been submitted",
-    done: false
+    msg: "query has been submitted"
+  });
+  await db.push("user.query", {
+    sender: senderName,
+    query: query
   });
 })
 
