@@ -76,7 +76,7 @@ if(r == null){  return null;  }else{ return r.value }
 if(r == null){  return [];  }else{ return r.arrayValue }
   },
 
-    async editArray(key) {
+    async editArray(key, track, toset) {
   if(!key){
     return `provide a key`
   }
