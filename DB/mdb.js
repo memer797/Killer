@@ -66,7 +66,17 @@ return "Array";
 
 if(r == null){  return null;  }else{ return r.value }
   },
-        async getArray(key) {
+  
+  async getArray(key) {
+  if(!key){
+    return `provide a key`
+  }
+     var r = await mdb?.test?.findOne({ id: key })
+
+if(r == null){  return [];  }else{ return r.arrayValue }
+  },
+
+    async editArray(key) {
   if(!key){
     return `provide a key`
   }
