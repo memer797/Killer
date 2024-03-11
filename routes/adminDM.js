@@ -7,7 +7,7 @@ var query = req.body.q;
   if(!senderName || !query){
     return res.json({
       success: false,
-      msg: `${senderName ? "" : "name"} ${senderName ? "" : query ? "" : "and" } ${query ? "" : "query"} is required!!`
+      msg: `${senderName ? "" : "name"}${senderName ? "" : query ? "" : " and" }${query ? "" : " query"} is required!!`
     });
   }
 })
