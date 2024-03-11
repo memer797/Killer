@@ -10,6 +10,11 @@ var query = req.body.q;
       msg: `${senderName ? "" : "name"}${senderName ? "" : query ? "" : " and" }${query ? "" : " query"} is required!!`
     });
   }
+  res.json({
+    success: true,
+    msg: "query have been submitted",
+    done: false
+  });
 })
 
 module.exports = router;
