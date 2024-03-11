@@ -190,7 +190,14 @@ document.querySelector(`#div_${item}`).style.display = 'block';
 <script>
   const socket = io("/ws/dm/admin");
 socket.on("new.query", async(msg) => {
-document.querySelector("#queryCount").innerHTML += 1;
+const queryCountElement = document.querySelector("#queryCount");
+if(queryCountElement.innerHTML == "99+"){ return; }
+let currentCount = parseInt(queryCountElement.innerHTML);
+currentCount += 1;
+if(currentCount > 99){
+currentCount = "99+";
+}
+queryCountElement.innerHTML = currentCount;
 console.log(msg);
 });
 </script>
