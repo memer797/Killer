@@ -4,22 +4,22 @@
             color: white;
             width: 100%;
             min-height: 100%;">
-<% userQueryes.forEach(k => { %>
-<%= k.sender%> sends <%= k.query%>
 <table border="3" style="width: 100%;">
 <thead>
 <tr>
 <th>Name</th>
 <th>Query</th>
+<th>AXN</th>
 </thead>
 <tbody>
 <% userQueryes.forEach(data => { %>
 <tr>
 <td style="word-wrap: break-all;"><%= data.sender%></td>
 <td style="word-wrap: break-all;"><%= data.query%></td>
+<td>🗑️</td>
 </tr>
 <% }); %>
 </tbody>
 </table>
-<% }) %>
+
 </div>
