@@ -156,7 +156,8 @@ res.render("admin/panel", {
     totalMovCount: ttlMov.length,
     totalTrendCount: ttlTrendMov.length,
     isInMaintainance: global.webDisabled,
-    queryCount: queryCount.length
+    queryCount: queryCount.length,
+    userQueryes: queryCount
 });
 });
 router.get('/movie', async(req, res) => {
