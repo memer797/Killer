@@ -23,8 +23,19 @@
 </table>
 
 </div>
+
 <script>
-socket.on("new.query", async(data) => {
+ const querySocket = io("/ws/dm/admin");
+querySocket.on("new.query", async(data) => {
+const queryCountElement = document.querySelector("#queryCount");
+if(queryCountElement.innerHTML == "99+"){ return; }
+let currentCount = parseInt(queryCountElement.innerHTML);
+currentCount += 1;
+if(currentCount > 99){
+currentCount = "99+";
+}
+queryCountElement.innerHTML = currentCount;
+console.log(data);
 var tbody = document.querySelector("tbody");
 var tr = document.createElement("tr");
 var td1 = document.createElement("td");
@@ -38,4 +49,5 @@ td3.innerHTML = "🗑️";
 tr.appendChild(td3);
 tbody.appendChild(tr);
 });
+
 </script>
