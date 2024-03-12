@@ -16,7 +16,7 @@
 <tr>
 <td style="word-break: break-all;"><%= data.sender%></td>
 <td style="word-break: break-all;"><%= data.query%></td>
-<td style="width: 5px;">🗑️</td>
+<td style="width: 5px;" onclick = 'deleteQuery("<%= data.sender%>", "<%= data.query%>")'>🗑️</td>
 </tr>
 <% }); %>
 </tbody>
@@ -45,9 +45,12 @@ var td2 = document.createElement("td");
 td2.innerHTML = data.query;
 tr.appendChild(td2);
 var td3 = document.createElement("td");
+td3.onclick = `deleteQuery("${data.sender}", "${data.query}")`;
 td3.innerHTML = "🗑️";
 tr.appendChild(td3);
 tbody.appendChild(tr);
 });
-
+function deleteQuery(name, query){
+console.log(name, query);
+};
 </script>
