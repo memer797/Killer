@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel</title>
+<script src="/socket.io/socket.io.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -188,21 +189,6 @@ var all = document.querySelectorAll(`div[id^="div_"]`);
 all.forEach(divs => divs.style.display = "none");
 document.querySelector(`#div_${item}`).style.display = 'block';
 }
-</script>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  const socket = io("/ws/dm/admin");
-socket.on("new.query", async(msg) => {
-const queryCountElement = document.querySelector("#queryCount");
-if(queryCountElement.innerHTML == "99+"){ return; }
-let currentCount = parseInt(queryCountElement.innerHTML);
-currentCount += 1;
-if(currentCount > 99){
-currentCount = "99+";
-}
-queryCountElement.innerHTML = currentCount;
-console.log(msg);
-});
 </script>
 </body>
 </html>
