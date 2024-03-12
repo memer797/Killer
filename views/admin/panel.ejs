@@ -128,7 +128,7 @@ input:checked + .slider:before {
  <span onclick="display_div('trending')">Trending</span>
  <span onclick="display_div('stat')">Stat</span>
  <span onclick="display_div('st')">Search Terms</span>
- <span class="noticount">Querys
+ <span class="noticount" onclick="display_div('query')">Querys
 <% if(queryCount){ %>
 <span class="noticount__badge" id="queryCount"><%= queryCount%></span>
 <% } %>
@@ -177,6 +177,9 @@ te: checkbox.checked
 </div>
 <div id="div_st" class="showingdivs">
 <%- include("search term")%>
+</div>
+<div id="div_query" class="showingdivs">
+<%- include("query")%>
 </div>
 
 <script>
