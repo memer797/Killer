@@ -30,6 +30,7 @@ var query = req.query.q;
       success: false,
       msg: `${senderName ? "" : "name"}${senderName ? "" : query ? "" : " and" }${query ? "" : " query"} is required!!`
     });
+  }
   res.json({
     success: true,
     msg: "query has been deleted"
