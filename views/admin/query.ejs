@@ -23,3 +23,19 @@
 </table>
 
 </div>
+<script>
+socket.on("", async(data) => {
+var tbody = document.querySelector("tbody");
+var tr = document.createElement("tr");
+var td1 = document.createElement("td");
+td1.innerHTML = data.sender;
+tr.appendChild(td1);
+var td2 = document.createElement("td");
+td2.innerHTML = data.query;
+tr.appendChild(td2);
+var td3 = document.createElement("td");
+td3.innerHTML = "🗑️";
+tr.appendChild(td3);
+tbody.appendChild(tr);
+});
+</script>
