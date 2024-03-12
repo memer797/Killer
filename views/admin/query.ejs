@@ -13,10 +13,12 @@
 <th>Query</th>
 </thead>
 <tbody>
+<% userQueryes.forEach(data => { %>
 <tr>
-<td>test</td>
-<td>test</td>
+<td style="word-wrap: break-all;"><%= data.sender%></td>
+<td style="word-wrap: break-all;"><%= data.query%></td>
 </tr>
+<% }); %>
 </tbody>
 </table>
 <% }) %>
