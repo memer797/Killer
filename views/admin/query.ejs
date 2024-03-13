@@ -55,7 +55,7 @@ console.log(name, query);
 var parent = btn.parentNode;
     parent.remove();
 
-fetch(`/dm/admin/query?`, {
+fetch(`/dm/admin/query?name=${name}&q=${query}`, {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json'
