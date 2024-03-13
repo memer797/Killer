@@ -37,13 +37,23 @@ currentCount = "99+";
 }
 queryCountElement.innerHTML = currentCount;
                         } catch {
-/*let currentCount = parseInt(queryCountElement.innerHTML);
+const spanElement = document.createElement("span");
+spanElement.id = "queryCount";
+spanElement.className = "noticount__badge";
+const noticountElements = document.getElementsByClassName("noticount");
+if (noticountElements.length > 0) {
+    noticountElements[0].appendChild(spanElement);
+} else {
+    console.error("Element with class 'noticount' not found.");
+}
+         queryCountElement = spanElement;
+let currentCount = parseInt(queryCountElement.innerHTML);
 currentCount += 1;
 if(currentCount > 99){
 currentCount = "99+";
 }
 queryCountElement.innerHTML = currentCount;
-*/                        }
+                        }
 console.log(data);
 var tbody = document.querySelector("tbody");
 var tr = document.createElement("tr");
