@@ -23,8 +23,8 @@ var query = req.body.q;
 });
 
 router.delete("/query", async(req, res) => {
-var senderName = req.query.name;
-var query = req.query.q;
+var senderName = req.body.name;
+var query = req.body.q;
   if(!senderName || !query){
     return res.json({
       success: false,
