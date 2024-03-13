@@ -81,7 +81,7 @@ if(isNaN(currentCount)){
 return;
 }
 currentCount -= 1;
-queryCountElement.innerHTML = currentCount;
+document.querySelector("#queryCount").innerHTML = currentCount;
                         
 fetch(`/dm/admin/query?name=${name}&q=${query}`, {
   method: 'DELETE',
