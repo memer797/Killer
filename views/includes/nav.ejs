@@ -178,6 +178,7 @@ header {
     <a href="/contact-us">🛰️ • Contact Us</a>
     <a href="/about-us">👨🏻‍🏫 • About Us</a>
     <a href="/privacy-policy">🔏 • Privacy Policy</a>
+    <a onclick="submitFeedback()">🤙🏻 • Feedback</a>
  <!---   <a href="#">Trending</a>
     <a href="#">LOGIN</a>--->
   </nav>
@@ -272,5 +273,26 @@ function searchClicked(){
 document.querySelector('#searchInput').focus();
 document.querySelector('nav').style.display='none';
 document.querySelector('.menu-icon').innerHTML = '&#9776;';     
+}
+function submitFeedback(){
+var q = prompt("Tell Your Query / report / feedback");
+var name = prompt("Enter your name");
+if(!q || !name){ return; }
+var data = {
+  name: name,
+  q: q
+};
+
+fetch('/dm/admin/query', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+})
+.catch(error => {
+  console.error('There was a problem while submitting your query');
+});
+
 }
   </script>
