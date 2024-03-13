@@ -48,6 +48,9 @@ if (noticountElements.length > 0) {
 }
          queryCountElement = spanElement;
 let currentCount = parseInt(queryCountElement.innerHTML);
+if(isNaN(currentCount)){
+currentCount = 0;
+}
 currentCount += 1;
 if(currentCount > 99){
 currentCount = "99+";
@@ -73,7 +76,13 @@ function deleteQuery(name, query, btn){
 console.log(name, query);
 var parent = btn.parentNode;
     parent.remove();
-
+let currentCount = parseInt(queryCountElement.innerHTML);
+if(isNaN(currentCount)){
+return;
+}
+currentCount -= 1;
+queryCountElement.innerHTML = currentCount;
+                        
 fetch(`/dm/admin/query?name=${name}&q=${query}`, {
   method: 'DELETE',
   headers: {
