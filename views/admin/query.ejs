@@ -84,11 +84,15 @@ if(isNaN(currentCount)){
 currentCount -= 1;
 document.querySelector("#queryCount").innerHTML = currentCount;
                        } 
-fetch(`/dm/admin/query?name=${name}&q=${query}`, {
+fetch(`/dm/admin/query`, {
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  body : JSON.stringify({
+name: name,
+q: query
+})
 })
 .catch(error => {
   console.error('There was a problem with the fetch operation:', error);
