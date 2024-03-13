@@ -29,13 +29,14 @@
 querySocket.on("new.query", async(data) => {
 let queryCountElement = document.querySelector("#queryCount");
 try {
-if(queryCountElement.innerHTML == "99+"){ return; }
+if(queryCountElement.innerHTML == "99+"){  }else{
 let currentCount = parseInt(queryCountElement.innerHTML);
 currentCount += 1;
 if(currentCount > 99){
 currentCount = "99+";
 }
 queryCountElement.innerHTML = currentCount;
+}
                         } catch {
 const spanElement = document.createElement("span");
 spanElement.id = "queryCount";
@@ -78,11 +79,11 @@ var parent = btn.parentNode;
     parent.remove();
 let currentCount = parseInt(document.querySelector("#queryCount").innerHTML);
 if(isNaN(currentCount)){
-return;
-}
+
+}else{
 currentCount -= 1;
 document.querySelector("#queryCount").innerHTML = currentCount;
-                        
+                       } 
 fetch(`/dm/admin/query?name=${name}&q=${query}`, {
   method: 'DELETE',
   headers: {
