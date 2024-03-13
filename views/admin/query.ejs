@@ -76,7 +76,7 @@ function deleteQuery(name, query, btn){
 console.log(name, query);
 var parent = btn.parentNode;
     parent.remove();
-let currentCount = parseInt(queryCountElement.innerHTML);
+let currentCount = parseInt(document.querySelector("#queryCount").innerHTML);
 if(isNaN(currentCount)){
 return;
 }
