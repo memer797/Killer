@@ -168,4 +168,13 @@ router.get("/stat", async(req, res) => {
 res.render("admin/stat");
 });
 
+//db view and dounload
+router.get("/db/view", async(req, res) => {
+var all = await db.all();
+    res.json(all);
+});
+router.get("/db/dounload", async(req, res) => {
+    //soon
+});
+
 module.exports = router;
