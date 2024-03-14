@@ -174,7 +174,10 @@ var all = await db.all();
     res.json(all);
 });
 router.get("/db/dounload", async(req, res) => {
-    //soon
+    res.setHeader('Content-disposition', 'attachment; filename=data.json');
+  res.setHeader('Content-type', 'application/json');
+    var all = await db.all();
+    res.json(all);
 });
 
 module.exports = router;
