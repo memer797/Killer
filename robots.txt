@@ -5,3 +5,5 @@ Allow: /movie/
 Allow: /movie/*
 Allow: /see-all
 Allow: /contact-us
+
+Sitemap: https://memer797.onrender.com/sitemap/dynamic/all-movies.xml
