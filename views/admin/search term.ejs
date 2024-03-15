@@ -2,6 +2,7 @@
 console.log("<%= srarchTermRecord%>");
 </script>
 
+<% srarchTermRecord.reverse(); %>
 <% srarchTermRecord.forEach(data => {
     var ndata = data.split("[•|{\\:/}|•]");
     if (ndata && ndata.length > 1) { %>
