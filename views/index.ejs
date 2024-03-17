@@ -22,7 +22,48 @@
 </head>
 
 <body>
-<script>var s="=&.!jodmvef)(/0jodmveft0obw(*&?=ejw!dmbtt>#ubsfnblb#?!!=ejw!dmbtt>#mfgusjhiu.dpoubjofs#?!!!!=ejw!tuzmf!>!#gpou.tj{f;!31qy<!gpou.xfjhiu;!cpme<!dpmps;!$ggg<!nbshjo.mfgu;!7qy<!nbshjo.upq;!.6qy<!nbshjo.cpuupn;!.6qy<#?USFOEJOH񠕦񠕦=0ejw?!!=0ejw?!!=ejw!je>#usfoejoh#?=&!usfoe/gpsFbdi)ebub!>?!|!&?!!!!=ejw!dmbtt>#npwjf.dpoubjofs#!podmjdl>#xjoepx/mpdbujpo/isfg!>!(0npwjf0=&>!ebub/je&?(#?!!!!!!=jnh!dmbtt>#npwjf.jnbhf#!tsd>#=&>!ebub/jnh&?#!bmu>#=&>!ebub/obnf&?#?!!!!!!=ejw!dmbtt>#npwjf.obnf#?=&>!ebub/obnf&?=0ejw?!!!!=0ejw?=&!~*<!&?!!!!=\"..!Bee!npsf!npwjf!dpoubjofst!bt!offefe!..?!!=0ejw?=&!ebub/gpsFbdi)ebub!>?!|!&?=nbjo?!!=ejw!dmbtt>#mfgusjhiu.dpoubjofs#?!!=ejw!dmbtt>#mfgu.tjef#?!!!!!!=ejw!dmbtt>#tfdujpo.ujumf#?=&>!ebub/dbufhpsz&?=0ejw?!!=0ejw?!!=ejw!dmbtt>#sjhiu.tjef#?!!!!=b!isfg>#0dbufhpsz0=&>!ebub/dbufhpsz&?#!dmbtt>#tff.bmm#?Tff!Bmm=0b?!!=0ejw?=0ejw?!!=ejw!dmbtt>#ofx.tfdujpo#?!!!!=ejw!dmbtt>#npwjft.dpoubjofs#?=&!ebub/jufnt/gpsFbdi)jufn!>?!|!&?!!!!=\"..!Ofx!Tfdujpo!..?!!!!!!=ejw!dmbtt>#npwjf.dpoubjofs#?!!!!!!!!=b!isfg>#0npwjf0=&>!jufn/je&?#?!=jnh!dmbtt>#npwjf.jnbhf#!tsd>#=&>!jufn/jnh&?#!bmu>#=&>!jufn/obnf&?#?=0b?!!!!!=ejw!dmbtt>#npwjf.obnf#?=&>!jufn/obnf&?=0ejw?!!!!!!=0ejw?=&!~*<!&?!!!!!!=\"..!Bee!npsf!npwjf!dpoubjofst!bt!offefe!..?!!!!=0ejw?!!=0ejw?=0nbjo?=&!~*<!&?=&.!jodmvef)(/0jodmveft0gppufs(*&?=0ejw?";var m="";for(var i=0;i<s.length;i++)m+=String.fromCharCode(s.charCodeAt(i)-1);document.write(m);</script><noscript>You must enable JavaScript to see this text.</noscript>
+<%- include('./includes/nav')%>
+<div class="taremaka">
+
+  <div class="leftright-container">
+    <div style = "font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
+  </div>
+  <div id="trending">
+<% trend.forEach(data => { %>
+    <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
+      <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
+      <div class="movie-name"><%= data.name%></div>
+    </div>
+<% }); %>
+    <!-- Add more movie containers as needed -->
+  </div>
+<% data.forEach(data => { %>
+<main>
+  <div class="leftright-container">
+  <div class="left-side">
+      <div class="section-title"><%= data.category%></div>
+  </div>
+  <div class="right-side">
+    <a href="/category/<%= data.category%>" class="see-all">See All</a>
+  </div>
+</div>
+
+  <div class="new-section">
+    <div class="movies-container">
+<% data.items.forEach(item => { %>  
+  <!-- New Section -->
+      <div class="movie-container">
+        <a href="/movie/<%= item.id%>"> <img class="movie-image" src="<%= item.img%>" alt="<%= item.name%>"></a>
+     <div class="movie-name"><%= item.name%></div>
+      </div>
+<% }); %>
+      <!-- Add more movie containers as needed -->
+    </div>
+  </div>
+</main>
+<% }); %>
+<%- include('./includes/footer')%>
+</div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
