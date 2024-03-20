@@ -250,11 +250,12 @@ var data = await db.getArray("info.movie");
 
 //💩 hagna start
   //post methods
+  var reqsec = new Map();
 app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
 var pwd = req.body.password;
- console.log(req.body);
- console.log(usr, pwd);
+var ip = req.ip;
+  
  if(!usr || !pwd){
  return res.send(false);
  }
