@@ -250,13 +250,38 @@ var data = await db.getArray("info.movie");
 
 //💩 hagna start
   //post methods
-  var reqsec = new Map();
-app.post("/login/admin", async(req, res) => {
+  var reqsec = new Map();  //set(key, value), get(key), has(key), delete(delete)
+
+  app.post("/login/admin", async(req, res) => {
 var usr = req.body.user;
 var pwd = req.body.password;
 var ip = req.ip;
-  
+var NowT = Date.now();
+var TimeSt5min = NowT + (1000 * 60 * 5);
+    
  if(!usr || !pwd){
+   if(reqsec.has(ip)){
+      if((reqsec.get(ip)).ttime > NowT){
+        if((reqsec.get(ip)).n > 5){
+       return res.send(false);
+        }else{
+        reqsec.set(ip, {
+        ttime: TimeSt5min,
+        n: (reqsec.get(ip)).n + 1
+      });
+        }
+      }else{
+      reqsec.set(ip, {
+        ttime: TimeSt5min,
+        n: 1
+      });
+      }
+    }else{
+      reqsec.set(ip, {
+        ttime: TimeSt5min,
+        n: 1
+      });
+   }
  return res.send(false);
  }
  if(usr == process.env.admin_user || pwd == process.env.admin_pass){
@@ -268,6 +293,28 @@ res.cookie('admin_key', process.env.admin_login_cookie, {
   console.log("last");
   return res.send(true);
  }
+    if(reqsec.has(ip)){
+      if((reqsec.get(ip)).ttime > NowT){
+        if((reqsec.get(ip)).n > 5){
+       return res.send(false);
+        }else{
+        reqsec.set(ip, {
+        ttime: TimeSt5min,
+        n: (reqsec.get(ip)).n + 1
+      });
+        }
+      }else{
+      reqsec.set(ip, {
+        ttime: TimeSt5min,
+        n: 1
+      });
+      }
+    }else{
+      reqsec.set(ip, {
+        ttime: TimeSt5min,
+        n: 1
+      });
+    }
  res.send(false);
 });
 
