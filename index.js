@@ -257,46 +257,12 @@ var usr = req.body.user;
 var pwd = req.body.password;
 var ip = req.ip;
 var NowT = Date.now();
+    console.log(reqsec.get(ip));
 var TimeSt5min = NowT + (1000 * 60 * 5);
-    
- if(!usr || !pwd){
-   if(reqsec.has(ip)){
-      if((reqsec.get(ip)).ttime > NowT){
-        if((reqsec.get(ip)).n > 5){
-       return res.send(false);
-        }else{
-        reqsec.set(ip, {
-        ttime: TimeSt5min,
-        n: (reqsec.get(ip)).n + 1
-      });
-        }
-      }else{
-      reqsec.set(ip, {
-        ttime: TimeSt5min,
-        n: 1
-      });
-      }
-    }else{
-      reqsec.set(ip, {
-        ttime: TimeSt5min,
-        n: 1
-      });
-   }
- return res.send(false);
- }
- if(usr == process.env.admin_user || pwd == process.env.admin_pass){
-res.cookie('admin_key', process.env.admin_login_cookie, {
-      maxAge: 1000 * 3600 * 12,
-      secure: true,
-      httpOnly: true,
-    });
-  console.log("last");
-  return res.send(true);
- }
     if(reqsec.has(ip)){
       if((reqsec.get(ip)).ttime > NowT){
         if((reqsec.get(ip)).n > 5){
-       return res.send(false);
+       return res.send("timeOut");
         }else{
         reqsec.set(ip, {
         ttime: TimeSt5min,
@@ -315,6 +281,19 @@ res.cookie('admin_key', process.env.admin_login_cookie, {
         n: 1
       });
     }
+    
+ if(!usr || !pwd){
+ return res.send(false);
+ }
+ if(usr == process.env.admin_user || pwd == process.env.admin_pass){
+res.cookie('admin_key', process.env.admin_login_cookie, {
+      maxAge: 1000 * 3600 * 12,
+      secure: true,
+      httpOnly: true,
+    });
+  console.log("last");
+  return res.send(true);
+ }
  res.send(false);
 });
 
