@@ -257,7 +257,7 @@ var usr = req.body.user;
 var pwd = req.body.password;
 var ip = req.ip;
 var NowT = Date.now();
-    console.log(reqsec.get(ip));
+    console.log(reqsec.get(ip).n);
 var TimeSt5min = NowT + (1000 * 60 * 5);
     if(reqsec.has(ip)){
       if((reqsec.get(ip)).ttime > NowT){
