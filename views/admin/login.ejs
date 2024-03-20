@@ -88,11 +88,10 @@ localStorage.setItem("username_store", typed);
       password: password
     })
   }).then(res => res.text()).then(d => {
-    if (d = true) {
+    if (d == true) {
       return window.location.reload();
     }
 
-    document.getElementById("username").value = "";
     document.getElementById("password").value = "";
   }).catch();
 }
