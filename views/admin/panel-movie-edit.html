@@ -1,4 +1,4 @@
-  <div id="myModal" class="modal" style="overflow-y: auto;">
+  <div id="myEditModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
       <button class="close-button" onclick="closeModal()">X</button>
       <button class="clear-button" onclick="clearInp()">🗑️</button>
@@ -151,26 +151,7 @@ ary.size = document.querySelector(`#size_${i}`).value;
 ary.note = document.querySelector(`#note_${i}`).value;
 ary.quality = document.querySelector(`#qual_${i}`).value;
 finalData.links.push(ary);
-}
-
-fetch("/admin/data/save/movie", {
-method: "POST",
-headers: {
-        "Content-Type": "application/json"
-    },
-body: JSON.stringify(finalData),
-
-}).then(d => d.json()).then(gotData => {
-var gotId = gotData.id;
-
-addCard({
-	name: finalData.name,
-	description: finalData.description,
-	category_txt: (finalData.category),
-	id: gotId,
-	img: finalData.imageUrl
-	});
-}).catch(console.log);
+	}
 
       // Clear input fields and tags container
       document.querySelector("#tags").value = '';
@@ -183,6 +164,8 @@ function editMovie(id){
 if(!id || id.trim() === ""){
 return;
 }
-console.log(`Editing ${id}`);
+fetch(`/admin/data/get/movie/${id}`).then(data => data.json).then(data => {
+document.querySelector("#myEditModal")
+}).catch();
 }
 </script>
