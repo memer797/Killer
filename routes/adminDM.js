@@ -6,6 +6,7 @@ router.post("/query", async(req, res) => {
 var senderName = req.body.name;
 var query = req.body.q;
 var ip = req.ip || '0.0.0.0';
+  console.log(ip);
   if(!senderName || !query){
     return res.json({
       success: false,
