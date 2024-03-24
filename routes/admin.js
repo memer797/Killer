@@ -67,7 +67,9 @@ let WhatToSend = [];
   var lop = dtaBBB.filter(n => n.id === w);
         if(lop.length > 0){
             WhatToSend.push({ name: lop[0].name, id: lop[0].id });
-        }
+        }else{
+            WhatToSend.push({ name: `[outdated] ${w}`, id: w });
+          }
     });
     res.json(WhatToSend);
 });
