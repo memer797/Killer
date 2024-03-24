@@ -5,7 +5,6 @@ var wsAdminDm = socketIo.of("/ws/dm/admin");
 router.post("/query", async(req, res) => {
 var senderName = req.body.name;
 var query = req.body.q;
-  console.log(ip);
   if(!senderName || !query){
     return res.json({
       success: false,
