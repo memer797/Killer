@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-app.get("/movie/:id", async(req, res) => {
-  if(!req.params.id || req.params.id.trim() === ""){
-   return res.send(`4** error, id parameter is required to fetch the movie example:: /movie/Jfo48BKue`);
+app.get("/download/:name", async(req, res) => {
+  if(!req.params.name || req.params.namw.trim() === ""){
+   return res.send(`4** error, name parameter is required to fetch the movie example:: /movie/download/jawan`);
   }
-var id = req.params.id;
+var name = req.params.name;
   var movie_info = await db.getArray("info.movie");
-  var movie_info = movie_info.filter(i => i.id === id);
+  var movie_info = movie_info.filter(i => ((i.name).toLowerCase()) === (id.toLowerCase());
   if(!movie_info || movie_info.length < 1){
-    return res.send(`4** error, N 0 Movie F()und With ${id} id`);
+    return res.send(`4** error, N 0 Movie F()und With ${name} name`);
   }
   console.log(movie_info);
   var name = movie_info[0].name;
