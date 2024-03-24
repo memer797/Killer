@@ -74,7 +74,7 @@ let WhatToSend = [];
 
         
 
-
+//save movie
 router.post("/data/save/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
@@ -110,6 +110,49 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
     
  res.json({success: true, msg: "movie saves successfully", id: rID});
 });
+
+//edit movie
+router.post("/data/save/movie", async(req, res) => {
+if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
+ return res.json({success: false, msg: " err_authontication"});
+}
+ var name = req.body.name;
+ var category = req.body.category;
+if(!name || name.trim() === ""){ return res.json({success: false, msg: "name is required" }); };
+if(!category || category.length == 0){ return res.json({success: false, msg: "atlease one category is required!" });}
+ var description = req.body.description ? req.body.description : "No Description Provided";
+ var tags = req.body.tags ? req.body.tags : [];
+ var img = req.body.imageUrl ? req.body.imageUrl : "https://placekitten.com/200/100";
+ var duration = req.body.duration ? req.body.duration : "00:00:00";
+ var language = req.body.language ? req.body.language : ["unknown"];
+ var release_date = req.body.release_date ? req.body.release_date : "No Date Specified!";
+ var cast = req.body.cast ? req.body.cast : "!";
+ var links = req.body.links ? req.body.links : [];
+ var rID = req.body.id;
+ var criUpdate = 
+ var lastMod = Date.now();
+    if(!rID || rID.trim() === ""){
+        return res.json({success: false, msg: "err id provided"});
+    }
+ await db.push("info.movie", {
+     name: name,
+     description: description,
+     tags: tags,
+     category: category,
+     img: img,
+     id: rID,
+     duration: duration,
+     language: language,
+     release_date: release_date,
+     cast: cast,
+     links: links,
+     lastMod: lastMod
+     });
+    
+ res.json({success: true, msg: "movie edited successfully", id: rID});
+});
+
+//get movie
 router.post("/data/get/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
