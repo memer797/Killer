@@ -14,9 +14,9 @@
 <tbody>
 <% userQueryes.forEach(data => { %>
 <tr>
-<td onclick="userDetails(<%= data.io%>)" style="word-break: break-all;"><%= data.sender%></td>
+<td onclick="userDetails(<%= data.ip%>)" style="word-break: break-all;"><%= data.sender%></td>
 <td style="word-break: break-all;"><%= data.query%></td>
-<td style="width: 5px;" onclick = 'deleteQuery("<%= data.sender%>", "<%= data.query%>", <%= data.ip || 0.0.0.0%>, this)'>🗑️</td>
+<td style="width: 5px;" onclick = 'deleteQuery("<%= data.sender%>", "<%= data.query%>", <%= data.ip || '0.0.0.0'%>, this)'>🗑️</td>
 </tr>
 <% }); %>
 </tbody>
