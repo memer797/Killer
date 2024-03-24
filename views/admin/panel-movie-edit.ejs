@@ -171,14 +171,14 @@ if(!id || id.trim() === ""){
 return;
 }
 fetch(`/admin/data/get/movie/${id}`).then(data => data.json).then(data => {
-if(data.success){
+if(data.success === false || data.success == 'false' || !data.success){
+return;
+}
 document.querySelector("#myEditModal").style.display = "flex";
 document.querySelector("#edit_name").value = data.name;
 document.querySelector("#edit_imageUrl").value = data.img;
 document.querySelector("#edit_description").value = data.description;
 document.querySelector("#edit_duration").value = data.duration;
-}else{
-}return;
 }).catch();
 }
 </script>
