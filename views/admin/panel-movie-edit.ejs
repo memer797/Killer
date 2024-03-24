@@ -1,6 +1,6 @@
   <div id="myEditModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
-      <button class="close-button" onclick="closeEditModal()">❌</button>
+      <button class="close-button" onclick="closeEditModal()">X</button>
       <button class="clear-button" onclick="clearEditInp()">🗑️</button>
       <h2>Edit Movie</h2>
       <label for="edit_name">Name:</label>
@@ -133,6 +133,7 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 }
 }
     function editSave() {
+return;
 let finalData = {};
 finalData.name = document.querySelector("#name").value;
 finalData.imageUrl = document.querySelector("#imageUrl").value;
@@ -156,7 +157,7 @@ finalData.links.push(ary);
       // Clear input fields and tags container
       document.querySelector("#tags").value = '';
       document.querySelector("#tagContainer").innerHTML = '';
-      closeModal(); // Close the modal after adding the card
+      closeEditModal(); // Close the modal after adding the card
     }
 
 //close button press function
@@ -171,6 +172,10 @@ return;
 }
 fetch(`/admin/data/get/movie/${id}`).then(data => data.json).then(data => {
 document.querySelector("#myEditModal").style.display = "flex";
+document.querySelector("#edit_name").value = data.name;
+document.querySelector("#edit_imageUrl").value = data.name;
+document.querySelector("#edit_description").value = data.name;
+document.querySelector("#edit_duration").value = data.name;
 }).catch();
 }
 </script>
