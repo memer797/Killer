@@ -40,12 +40,12 @@ viewLink.onclick = function() {
     viewCard(id);
 };**/
 
-/*var editLink = document.createElement('a');
+var editLink = document.createElement('a');
 editLink.href = '#';
 editLink.textContent = 'Edit';
 editLink.onclick = function() {
-    editCard(id);
-};*/
+    editMovie(id);
+};
 
 var deleteLink = document.createElement('a');
 deleteLink.href = '#';
@@ -56,7 +56,7 @@ deleteLink.onclick = function() {
 };
 
 //optionsMenu.appendChild(viewLink);
-//optionsMenu.appendChild(editLink);
+optionsMenu.appendChild(editLink);
 optionsMenu.appendChild(deleteLink);
 
 var imageContainer = document.createElement('div');
