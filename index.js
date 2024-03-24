@@ -63,6 +63,7 @@ var allPagesRoute = require("./routes/pages");
 var siteMapsRouter = require("./routes/site-maps");
 var loginRoute = require('./routes/login');
 var adminDM = require("./routes/adminDM");
+var movieRoute = require("./routes/movie");
 global.webDisabled = false;
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
@@ -70,7 +71,7 @@ global.webDisabled = false;
   app.use('/pages', allPagesRoute);
   app.use('/login', loginRoute);
   app.use('/dm/admin', adminDM);
-
+  app.use('/movie', movieRoute);
 app.use("*", async(req, res, next) => {
 if(global.webDisabled){
       if(req.originalUrl == '/login/admin'){ return next(); }else if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
@@ -164,42 +165,6 @@ var data = await db.getArray("info.movie");
   global.srarchTermRecord.push(`${query} [•|{\\:/}|•] ${result[0] ? result[0].item.name : "404"}`); 
  });
 
-app.get("/movie/:id", async(req, res) => {
-  if(!req.params.id || req.params.id.trim() === ""){
-   return res.send(`4** error, id parameter is required to fetch the movie example:: /movie/Jfo48BKue`);
-  }
-var id = req.params.id;
-  var movie_info = await db.getArray("info.movie");
-  var movie_info = movie_info.filter(i => i.id === id);
-  if(!movie_info || movie_info.length < 1){
-    return res.send(`4** error, N 0 Movie F()und With ${id} id`);
-  }
-  console.log(movie_info);
-  var name = movie_info[0].name;
-  var description = movie_info[0].description;
-  var img = movie_info[0].img;
-  var category = movie_info[0].category;
-  var tags = movie_info[0].tags;
-  var duration = movie_info[0].duration;
-  var language = movie_info[0].language;
-  var release_date = movie_info[0].release_date;
-  var cast = movie_info[0].cast;
-  var links = movie_info[0].links;
-  res.render("show_movie", {
-    name: name,
-    banner: {
-      jpg: img
-    },
-    release_date: release_date,
-    duration: duration,
-    category: category,
-    actors: cast,
-    language: language,
-    description: description,
-    downloads: links,
-    tags
-  });
-});
 //get all movie with related tag
 app.get("/tag/:tagToSe", async(req, res) => {
 var tagToSearch = req.params.tagToSe;
