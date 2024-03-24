@@ -1,19 +1,19 @@
   <div id="myEditModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
-      <button class="close-button" onclick="closeModal()">X</button>
-      <button class="clear-button" onclick="clearInp()">🗑️</button>
-      <h2>Add Item</h2>
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Enter Name">
+      <button class="close-button" onclick="closeEditModal()">❌</button>
+      <button class="clear-button" onclick="clearEditInp()">🗑️</button>
+      <h2>Edit Movie</h2>
+      <label for="edit_name">Name:</label>
+      <input type="text" id="edit_name" placeholder="Enter Name">
 
-      <label for="imageUrl">Image URL:</label>
-      <input type="text" id="imageUrl" placeholder="Enter Image URL">
+      <label for="edit_imageUrl">Image URL:</label>
+      <input type="text" id="edit_imageUrl" placeholder="Enter Image URL">
 
-      <label for="description">Description:</label>
-      <textarea id="description" placeholder="Enter Description"></textarea>
+      <label for="edit_description">Description:</label>
+      <textarea id="edit_description" placeholder="Enter Description"></textarea>
 
-      <label for="category">Category:</label>
-      <select id="category" multiple>
+      <label for="edit_category">Category:</label>
+      <select id="edit_category" multiple>
 <option value="Action">Action</option>
     <option value="Adventure">Adventure</option>
     <option value="Animation">Animation</option>
@@ -36,30 +36,30 @@
     <option value="Western">Western</option>
       </select>
 
-     <label for="duration">Duration:</label>
-      <input id="duration" type="test" placeholder="2.5 min"/>
+     <label for="edit_duration">Duration:</label>
+      <input id="edit_duration" type="test" placeholder="2.5 min"/>
 	
-      <label for="release_date">Release Date:</label>
-      <input id="release_date" type="date" />
+      <label for="edit_release_date">Release Date:</label>
+      <input id="edit_release_date" type="date" />
     
-      <label for="language">Language:</label>
-      <select id="language" multiple> 
+      <label for="edit_language">Language:</label>
+      <select id="edit_language" multiple> 
      <option value="Hindi">Hindi</option>
      <option value="English">English</option>
      <option value="Bengali">Bengali</option>
       </select>
 
-      <label for="starCast">Star Cast:</label>
-      <input id="starCast" type="text" placeholder="Rahul, Sujoy" />
+      <label for="edit_starCast">Star Cast:</label>
+      <input id="edit_starCast" type="text" placeholder="Rahul, Sujoy" />
 	
       <button onclick="addDounload()"><strong>➕</strong></button>      <button onclick="removeDownload()"><strong>📛</strong></button>
   <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
-<label for="tags">Tags:</label>
-      <input type="text" id="tags" placeholder="Enter Tags and write ,">
+<label for="edit_tags">Tags:</label>
+      <input type="text" id="edit_tags" placeholder="Enter Tags and write ,">
       <div class="tag-container" id="tagContainer"></div>
 
-      <button onclick="addCardFu()" k="test()" class="add-button" style="margin-top: 15px;">Add</button>
+      <button onclick="addCardFu()" class="add-button" style="margin-top: 15px;">Add</button>
     </div>
   </div>
 
@@ -122,13 +122,13 @@ function removeDownload() {
       }
     }
 
-function clearInp() {
+function clearEditInp() {
 var i = confirm("🗑️ Are you sure to clear all inputs?");
 if(i){
 var ii = confirm("clearing all inputs... 🗑️");
 if(ii){
-document.querySelectorAll("input").forEach(lak => lak.value = "");
-document.querySelectorAll("testarea").forEach(lak => lak.value = "");
+document.querySelectorAll("input[id^='edit_']").forEach(lak => lak.value = "");
+document.querySelectorAll("testarea[id^='edit_']").forEach(lak => lak.value = "");
 }
 }
 }
