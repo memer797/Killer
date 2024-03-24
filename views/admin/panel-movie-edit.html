@@ -52,44 +52,44 @@
       <label for="edit_starCast">Star Cast:</label>
       <input id="edit_starCast" type="text" placeholder="Rahul, Sujoy" />
 	
-      <button onclick="addDounload()"><strong>➕</strong></button>      <button onclick="removeDownload()"><strong>📛</strong></button>
-  <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
+      <button onclick="addEditDounload()"><strong>➕</strong></button>      <button onclick="removeEditDownload()"><strong>📛</strong></button>
+  <div id="additionalEditInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
 <label for="edit_tags">Tags:</label>
       <input type="text" id="edit_tags" placeholder="Enter Tags and write ,">
       <div class="tag-container" id="tagContainer"></div>
 
-      <button onclick="addCardFu()" class="add-button" style="margin-top: 15px;">Add</button>
+      <button onclick="editCardFu()" class="add-button" style="margin-top: 15px;">Save</button>
     </div>
   </div>
 
 
 <script>
-let downloadCount = 0;
-    function addDounload() {
-downloadCount++;
-      const additionalInputs = document.getElementById('additionalInputs');
-additionalInputs.appendChild(document.createElement('br'));
-     var ctext = document.createElement('span');
-ctext.style = "margin: 0 auto; margin-top: 10px;";
-ctext.innerHTML = `Link ${downloadCount}`;
-additionalInputs.appendChild(ctext);
-      // Create input fields for download link, size, and quality
-   
-      const downloadLinkInput = document.createElement('input');
-      downloadLinkInput.type = 'text';
-      downloadLinkInput.id = `downLink_${downloadCount}`;
-      downloadLinkInput.placeholder = `Enter Download Link for link #${downloadCount}`;
-      additionalInputs.appendChild(downloadLinkInput);
+let editDownloadCount = 0;
+    function addEditDounload() {
+editDownloadCount++;
+      const additionalEditInputs = document.getElementById('additionalEditInputs');
+additionalEditInputs.appendChild(document.createElement('br'));
+     var cedittext = document.createElement('span');
+cedittext.style = "margin: 0 auto; margin-top: 10px;";
+cEdittext.innerHTML = `Link ${downloadCount}`;
+additionalEditInputs.appendChild(cedittext);
+	    
+      // Create input fields for download link, size, and quality  
+      const editDownloadLinkInput = document.createElement('input');
+      editDownloadLinkInput.type = 'text';
+      editDownloadLinkInput.id = `downLink_${editDownloadCount}`;
+      editDownloadLinkInput.placeholder = `Enter Download Link for link #${editDownloadCount}`;
+      additionalEditInputs.appendChild(editDownloadLinkInput);
 
-      const sizeInput = document.createElement('input');
-      sizeInput.type = 'text';
-      sizeInput.id = `size_${downloadCount}`;
-      sizeInput.placeholder = `Enter Size for link #${downloadCount}`;
-      additionalInputs.appendChild(sizeInput);
+      const sizeEditInput = document.createElement('input');
+      sizeEditInput.type = 'text';
+      sizeEditInput.id = `size_${editDownloadCount}`;
+      sizeEditInput.placeholder = `Enter Size for link #${editDownloadCount}`;
+      additionalEditInputs.appendChild(sizeEditInput);
 
-      const qualityInput = document.createElement('select');
-      qualityInput.innerHTML = `
+      const qualityEditInput = document.createElement('select');
+      qualityEditInput.innerHTML = `
         <option value="144p">144p</option>
         <option value="360p">360p</option>
         <option value="480p">480p</option>
@@ -98,16 +98,16 @@ additionalInputs.appendChild(ctext);
         <option value="2k">2k</option>
         <option value="4k">4k</option>
       `;
-      qualityInput.id = `qual_${downloadCount}`;
-      additionalInputs.appendChild(qualityInput);
+      qualityEditInput.id = `qual_${editDownloadCount}`;
+      additionalEditInputs.appendChild(qualityEditInput);
    
-      const noteInput = document.createElement('input');
-      noteInput.type = 'text';
-      noteInput.placeholder = `eg. parts (optional) for link #${downloadCount}`;
-      noteInput.id = `note_${downloadCount}`;
-      additionalInputs.appendChild(noteInput);
+      const noteEditInput = document.createElement('input');
+      noteEditInput.type = 'text';
+      noteEditInput.placeholder = `eg. parts (optional) for link #${editDownloadCount}`;
+      noteEditInput.id = `note_${editDownloadCount}`;
+      additionalEditInputs.appendChild(noteEditInput);
 
-additionalInputs.scrollTop = additionalInputs.scrollHeight;
+additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
 
     }
 function removeDownload() {
