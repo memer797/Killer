@@ -182,7 +182,8 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
    var movAray = movAray.filter(s => s.id === req.params.id);
     if(!movAray || movAray < 1){
         return res.json({success: false, msg: "Invalid or Unknown Movie Id provided!"});
-    }    
+    }
+        var movAray = movAray[0];
  res.json({success: true, data: movAray});
     }catch{
         res.json({success: false, msg: "error***"});
