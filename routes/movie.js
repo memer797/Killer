@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 router.get("/download/:name", async(req, res) => {
-  if(!req.params.name || req.params.namw.trim() === ""){
+  if(!req.params.name || req.params.name.trim() === ""){
    return res.send(`4** error, name parameter is required to fetch the movie example:: /movie/download/jawan`);
   }
 var name = req.params.name;
