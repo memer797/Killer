@@ -11,9 +11,6 @@
             color: #fff;
             padding: 10px;
             margin-top: -10px;
-         /*   text-align: left;
-            display: flex;
-            align-items: center;*/
         }
 
         .back-link {
@@ -123,11 +120,11 @@ function getRandomColor() {
 <div class="container">
     <div id="movies-container">
 <% list.forEach(data => { %>
-<div class="movie" onclick="window.location.href='https://memer797.onrender.com/movie/<%= data.id%>'">
-<a href="https://memer797.onrender.com/movie/<%= data.id%>"><img style="border-radius: 4px;" src="<%= data.img%>" alt="<%= data.name%> movie banner"></a>
+<div class="movie" onclick="window.location.href='https://memer797.onrender.com/movie/download/<%= data.name%>'">
+<a href="https://memer797.onrender.com/movie/download/<%= data.name%>"><img style="border-radius: 4px;" src="<%= data.img%>" alt="<%= data.name%> movie banner"></a>
 <div class="movie-details">
 <h3 class="movie-name">
-<a href="https://memer797.onrender.com/movie/<%= data.id%>" style="color: <%= getRandomColor()%>">
+<a href="https://memer797.onrender.com/movie/download/<%= data.name%>" style="color: <%= getRandomColor()%>">
 <%= data.name%>
 </a>
 </h3>
@@ -142,57 +139,5 @@ function getRandomColor() {
 </div>
 </div>
 <%- include('./includes/footer')%>
-<script>
-/*    document.addEventListener('DOMContentLoaded', function () {
-        const moviesContainer = document.getElementById('movies-container');
-
-        // Sample movie data for the Action category
-        const movies = [
-            { name: 'Movie bsnnsnshsjjshz1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
-                        { name: 'Movie bsnnsnshsjjshz1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
-                                    { name: 'Movie bsnnsnshsjjshz1', image: 'movie1.jpg', link: 'https://example.com/movie1', category: 'Action' },
-            { name: 'Movie 2', image: 'movie2.jpg', link: 'https://example.com/movie2', category: 'Comedy' },
-            // Add more movies as needed
-        ];
-
-        // Display movies
-        movies.forEach(movie => {
-            const movieElement = document.createElement('div');
-            movieElement.classList.add('movie');
-
-            const imageElement = document.createElement('img');
-            imageElement.src = movie.image;
-
-            const detailsElement = document.createElement('div');
-            detailsElement.classList.add('movie-details');
-
-            const nameElement = document.createElement('h3');
-            const anchorElement = document.createElement('a');
-            anchorElement.href = movie.link;
-            anchorElement.textContent = movie.name;
-            anchorElement.style.color = getRandomColor();
-
-            const categoryElement = document.createElement('div');
-            categoryElement.classList.add('movie-category');
-            categoryElement.textContent = movie.category;
-            categoryElement.style.backgroundColor = getRandomColor();
-
-            nameElement.classList.add('movie-name');
-            nameElement.appendChild(anchorElement);
-            detailsElement.appendChild(nameElement);
-            detailsElement.appendChild(categoryElement);
-
-            movieElement.appendChild(imageElement);
-            movieElement.appendChild(detailsElement);
-            moviesContainer.appendChild(movieElement);
-        });
-
-        function getRandomColor() {
-            const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];            
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-    });*/
-</script>
-
 </body>
 </html>
