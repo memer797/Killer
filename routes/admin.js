@@ -129,11 +129,17 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
  var rID = req.body.id;
- var criUpdate = 
- var lastMod = Date.now();
+ var majorUpdate = req.body.majorUpdate;
+// var lastMod = Date.now();
     if(!rID || rID.trim() === ""){
         return res.json({success: false, msg: "err id provided"});
     }
+    var allData = await db.getArray("info.movie");
+    var lastData = allData.filter(f => f.id === rID);
+    if(!lastData || lastData < 1){
+   return res.json({success: false, msg: "Id not found"});
+    }
+    var lastData = lastData[0];
  await db.push("info.movie", {
      name: name,
      description: description,
