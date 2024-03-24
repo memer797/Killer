@@ -159,13 +159,18 @@ finalData.links.push(ary);
       closeModal(); // Close the modal after adding the card
     }
 
+//close button press function
+function closeEditModal(){
+document.querySelector("#myEditModal").style.display = "none";
+}
+
 //function to get movie details from id and then open edit modal 🙂
 function editMovie(id){
 if(!id || id.trim() === ""){
 return;
 }
 fetch(`/admin/data/get/movie/${id}`).then(data => data.json).then(data => {
-document.querySelector("#myEditModal")
+document.querySelector("#myEditModal").style.display = "flex";
 }).catch();
 }
 </script>
