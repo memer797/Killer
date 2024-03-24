@@ -14,9 +14,9 @@
 <tbody>
 <% userQueryes.forEach(data => { %>
 <tr>
-<td onclick="userDetails('<%= data.ip%>')" style="word-break: break-all;"><%= data.sender%></td>
+<td style="word-break: break-all;"><%= data.sender%></td>
 <td style="word-break: break-all;"><%= data.query%></td>
-<td style="width: 5px;" onclick = 'deleteQuery("<%= data.sender%>", "<%= data.query%>", '<%= data.ip || '0.0.0.0'%>", this)'>🗑️</td>
+<td style="width: 5px;" onclick = 'deleteQuery("<%= data.sender%>", "<%= data.query%>", this)'>🗑️</td>
 </tr>
 <% }); %>
 </tbody>
@@ -73,7 +73,7 @@ td3.innerHTML = "🗑️";
 tr.appendChild(td3);
 tbody.appendChild(tr);
 });
-function deleteQuery(name, query, ip, btn){
+function deleteQuery(name, query, btn){
 console.log(name, query);
 var parent = btn.parentNode;
     parent.remove();
@@ -91,8 +91,7 @@ fetch(`/dm/admin/query`, {
   },
   body : JSON.stringify({
 name: name,
-q: query,
-ip: ip
+q: query
 })
 })
 .catch(error => {
@@ -101,7 +100,4 @@ ip: ip
 
 };
 
-function userDetails(oip){
-alert(`$SENDER IP: ${oip}`);
-}
 </script>
