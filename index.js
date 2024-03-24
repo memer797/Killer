@@ -96,13 +96,29 @@ var val = req.query.value;
  res.json(data);
   });
   */
+  function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+  }
 app.get("/", async (req, res) => {
     var data = await db.getArray("info.movie");
     var trendDataNow =  await db.getArray("trend.movie");
-var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
+/*var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
   category.forEach(category => {
   acc[category] = acc[category] || { category, items: [] };
   acc[category].items.push({ name, img, id });
+  });
+  return acc;
+}, {}));*/
+  const result = Object.values(data.reduce((acc, { name, category, img, id }) => {
+  category.forEach(category => {
+    acc[category] = acc[category] || { category, items: [] };
+    acc[category].items.push({ name, img, id });
+    // Shuffle the items array and keep only the first 5 items
+    acc[category].items = shuffle(acc[category].items).slice(0, 5);
   });
   return acc;
 }, {}));
