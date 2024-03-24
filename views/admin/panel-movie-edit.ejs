@@ -175,16 +175,14 @@ addCard({
       // Clear input fields and tags container
       document.querySelector("#tags").value = '';
       document.querySelector("#tagContainer").innerHTML = '';
-/*if(!tags || tags.length < 1 || tags[0].trim() === "") return;
-      // Add tags to the tag container
-      tags.forEach(tag => {
-        const tagElement = document.createElement('div');
-        tagElement.classList.add('tag');
-        tagElement.innerText = tag;
-        tagElement.addEventListener('click', () => removeTag(tagElement));
-        tagsContainer.appendChild(tagElement);
-      });*/
-
       closeModal(); // Close the modal after adding the card
     }
+
+//function to get movie details from id and then open edit modal 🙂
+function editMovie(id){
+if(!id || id.trim() === ""){
+return;
+}
+console.log(`Editing ${id}`);
+}
 </script>
