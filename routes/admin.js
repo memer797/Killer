@@ -130,7 +130,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var links = req.body.links ? req.body.links : [];
  var rID = req.body.id;
  var majorUpdate = req.body.majorUpdate;
-// var lastMod = Date.now();
+ var lastMod;
     if(!rID || rID.trim() === ""){
         return res.json({success: false, msg: "err id provided"});
     }
@@ -140,6 +140,11 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
    return res.json({success: false, msg: "Id not found"});
     }
     var lastData = lastData[0];
+    if(majorUpdate){
+        var lastMod = Date.now();
+    }else{
+        var lastMod = lastdata.lastMod || Date.now();
+    }
  await db.push("info.movie", {
      name: name,
      description: description,
