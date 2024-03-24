@@ -23,7 +23,7 @@ router.get("/dynamic/all-movies.xml", async(req, res) => {
 res.header('Content-Type', 'application/xml');
   res.send(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 ${movieDataToMap.map(data =>`<url>
-<loc>https://memer797.onrender.com/movie/${data.id}</loc>
+<loc>https://memer797.onrender.com/movie/download/${data.name}</loc>
 <lastmod>${formatDateForSitemap(new Date(data.lastMod))}</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.80</priority>
