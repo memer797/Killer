@@ -107,17 +107,10 @@ var val = req.query.value;
 app.get("/", async (req, res) => {
     var data = await db.getArray("info.movie");
     var trendDataNow =  await db.getArray("trend.movie");
-/*var result = Object.values(data.reduce((acc, { name, category, img, id }) => {
-  category.forEach(category => {
-  acc[category] = acc[category] || { category, items: [] };
-  acc[category].items.push({ name, img, id });
-  });
-  return acc;
-}, {}));*/
-  const result = Object.values(data.reduce((acc, { name, category, img, id }) => {
+  const result = Object.values(data.reduce((acc, { name, category, img }) => {
   category.forEach(category => {
     acc[category] = acc[category] || { category, items: [] };
-    acc[category].items.push({ name, img, id });
+    acc[category].items.push({ name, img });
     // Shuffle the items array and keep only the first 5 items
     acc[category].items = shuffle(acc[category].items).slice(0, 5);
   });
@@ -125,9 +118,9 @@ app.get("/", async (req, res) => {
 }, {}));
 let tmdtal = [];
   trendDataNow.forEach(g => {
-var udf = data.filter(j => j.id === g);
+var udf = data.filter(j => j.name === g);
     if(udf.length > 0){
-      tmdtal.push({name: udf[0].name, id: udf[0].id, img: udf[0].img }); 
+      tmdtal.push({name: udf[0].name, img: udf[0].img }); 
     }
   });
   res.render('index', { data: result, trend: tmdtal });
@@ -144,7 +137,7 @@ var query = req.query.q ? req.query.q : "";
 
       var fuse = new searchAlgo__(data, options_s);
       var result = fuse.search(query);
-      res.json(result.map(item => ({name: item.item.name, id: item.item.id})));
+      res.json(result.map(item => ({name: item.item.name})));
 });
   
 app.get("/search/:term", async(req, res) => {
@@ -152,14 +145,14 @@ var query = req.params.term;
 var data = await db.getArray("info.movie");
 //console.log(data);  
   var options_s = {
-        keys: ["name", "description", "tags", "category", "id"],
+        keys: ["name", "description", "tags", "category"],
         includeScore: false,
         threshold: 0.4, // Adjust the threshold as needed
       };
 
       var fuse = new searchAlgo__(data, options_s);
       var result = fuse.search(query);
-     res.render("search list", {list: result.map(item => ({name: item.item.name, id: item.item.id, category: item.item.category, img: item.item.img})), term: query});
+     res.render("search list", {list: result.map(item => ({name: item.item.name, category: item.item.category, img: item.item.img})), term: query});
      //res.json(result.map(item => ({name: item.item.name, id: item.item.id})));
 
   global.srarchTermRecord.push(`${query} [•|{\\:/}|•] ${result[0] ? result[0].item.name : "404"}`); 
