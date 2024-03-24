@@ -59,7 +59,7 @@
       <input type="text" id="edit_tags" placeholder="Enter Tags and write ,">
       <div class="tag-container" id="tagContainer"></div>
 
-      <button onclick="editCardFu()" class="add-button" style="margin-top: 15px;">Save</button>
+      <button onclick="editSave()" class="add-button" style="margin-top: 15px;">Save</button>
     </div>
   </div>
 
@@ -110,15 +110,15 @@ additionalEditInputs.appendChild(cedittext);
 additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
 
     }
-function removeDownload() {
-      const additionalInputs = document.getElementById('additionalInputs');
+function removeEditDownload() {
+      const additionalEditInputs = document.getElementById('additionalEditInputs');
 
       // Remove the last set of inputs if there are more than one set
-      if (downloadCount > 0) {
+      if (editDownloadCount > 0) {
         for (let i = 0; i < 6; i++) {
-          additionalInputs.removeChild(additionalInputs.lastChild);
+          additionalEditInputs.removeChild(additionalEditInputs.lastChild);
         }
-        downloadCount--;
+        editDownloadCount--;
       }
     }
 
@@ -132,7 +132,7 @@ document.querySelectorAll("testarea[id^='edit_']").forEach(lak => lak.value = ""
 }
 }
 }
-    function addCardFu() {
+    function editSave() {
 let finalData = {};
 finalData.name = document.querySelector("#name").value;
 finalData.imageUrl = document.querySelector("#imageUrl").value;
