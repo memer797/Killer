@@ -47,6 +47,7 @@
      <option value="Hindi">Hindi</option>
      <option value="English">English</option>
      <option value="Bengali">Bengali</option>
+     <option value="Tamil">Tamil</option>
       </select>
 
       <label for="edit_starCast">Star Cast:</label>
@@ -247,11 +248,11 @@ data.data.language.forEach(lang => {
 //adding categories 
 var catInpEdited = document.querySelector("#edit_category");
 data.data.category.forEach(cat => {
-  var optionToSelec = langInpEdited.querySelector(`option[value="${cat}"]`);
+  var optionToSelec = catInpEdited.querySelector(`option[value="${cat}"]`);
   if (optionToSelec) {
     optionToSelec.selected = true;
   }
 });
-}).catch();
+}).catch(console.log);
 }
 </script>
