@@ -170,15 +170,16 @@ function editMovie(name){
 if(!name || name.trim() === ""){
 return;
 }
-fetch(`/admin/data/get/movie/${name}`).then(data => data.json).then(data => {
+fetch(`/admin/data/get/movie/${name}`).then(data => data.json()).then(data => {
 if(!data.success || data.success !== true){
 return;
 }
 document.querySelector("#myEditModal").style.display = "flex";
-document.querySelector("#edit_name").value = data.name;
-document.querySelector("#edit_imageUrl").value = data.img;
-document.querySelector("#edit_description").value = data.description;
-document.querySelector("#edit_duration").value = data.duration;
+document.querySelector("#edit_name").value = data.data.name;
+document.querySelector("#edit_imageUrl").value = data.data.img;
+document.querySelector("#edit_description").value = data.data.description;
+document.querySelector("#edit_duration").value = data.data.duration;
+document.querySelectoe("#edit_release_date").value = data.data.release_date;
 }).catch();
 }
 </script>
