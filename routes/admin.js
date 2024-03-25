@@ -34,28 +34,27 @@ res.json({
 });
 //post routes for data handling
 router.post("/data/save/trend/movie", async(req, res) => {
-var id = req.body.id;
-    if(!id || id.trim() === ""){
-   return res.json({error: "invalid ${id}"});
+var name = req.body.name;
+    if(!name || name.trim() === ""){
+   return res.json({error: "invalid ${name}"});
     }
     var check = await db.getArray("info.movie");
-var reallyAva = check.filter(d => d.id === id);
+var reallyAva = check.filter(d => ((d.name).toLowerCase()) === ((name).toLowerCase()));
     if(reallyAva.length === 0){
  return res.json({error: "not found"});
     }
     res.json({success: true, data: {
         name: reallyAva[0].name,
-        id: id
     }});
-    await db.push("trend.movie", id);
+    await db.push("trend.movie", reallyAva[0].name);
 });
 
 router.post("/data/delete/trend/movie", async(req, res) => {
-var id = req.body.id;
-    if(!id || id.trim() === "") return;
+var name = req.body.name;
+    if(!name || name.trim() === "") return;
 res.json({success: true});  
     try{
- await db.pull("trend.movie", id);
+ await db.pull("trend.movie", name);
     }catch{}
 });
 
@@ -64,11 +63,11 @@ var dtaAAA = await db.getArray("trend.movie");
 var dtaBBB = await db.getArray("info.movie");
 let WhatToSend = [];
     dtaAAA.forEach(w => {
-  var lop = dtaBBB.filter(n => n.id === w);
+  var lop = dtaBBB.filter(n => ((n.name).toLowerCase()) === ((w).toLowerCase()));
         if(lop.length > 0){
-            WhatToSend.push({ name: lop[0].name, id: lop[0].id });
+            WhatToSend.push({ name: lop[0].name });
         }else{
-            WhatToSend.push({ name: `[outdated] ${w}`, id: w });
+            WhatToSend.push({ name: `[outdated] ${w}`, action: w});
           }
     });
     res.json(WhatToSend);
