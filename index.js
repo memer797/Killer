@@ -36,14 +36,14 @@ function delay(milliseconds) {
     .set("view engine", "ejs")
     .use(express.static(path.join(__dirname, "/public")))
     .set("views", path.join(__dirname, "/views"))
+    .enable('trust proxy');
   io.use((socket, next) => {
     const sockcookies = socket.request.headers.cookie;
     socket.cookies = sockcookies;
     next();
   });
   app.use((req, res, next) => {
-    var iip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    console.log(iip);
+    console.log(req.ip);
   console.log(req.originalUrl); // Output: current URL path
   console.log(!(req.originalUrl.startsWith("/admin")));
 var ip = req.ip;
