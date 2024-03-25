@@ -235,10 +235,19 @@ additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
 
     });
 
-//adding categories
+//adding language 
 var langInpEdited = document.querySelector("#edit_language");
-data.data.languagw.forEach(lang => {
+data.data.language.forEach(lang => {
   var optionToSelec = langInpEdited.querySelector(`option[value="${lang}"]`);
+  if (optionToSelec) {
+    optionToSelec.selected = true;
+  }
+});
+
+//adding categories 
+var catInpEdited = document.querySelector("#edit_category");
+data.data.category.forEach(cat => {
+  var optionToSelec = langInpEdited.querySelector(`option[value="${cat}"]`);
   if (optionToSelec) {
     optionToSelec.selected = true;
   }
