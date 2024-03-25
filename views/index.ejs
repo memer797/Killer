@@ -10,14 +10,11 @@
   <meta property="og:image" content="https://memer797.onrender.com/favicon.ico">
   <meta property="og:url" content="https://memer797.onrender.com">
   <meta property="og:type" content="website">
-<link rel="stylesheet" type="text/css" href="/global.css"/>
+<!---<link rel="stylesheet" type="text/css" href="/global.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<script>
-(%C2%A0 %C2%A0 () => {%C2%A0 %C2%A0 %C2%A0 %C2%A0 var script = document.createElement('script');%C2%A0 %C2%A0 %C2%A0 %C2%A0 script.src = "//cdn.jsdelivr.net/npm/eruda";%C2%A0 %C2%A0 %C2%A0 %C2%A0 document.body.appendChild(script);%C2%A0 %C2%A0 %C2%A0 %C2%A0 script.onload = (() => eruda.init());%C2%A0 %C2%A0 })()
- </script>
-<style>
+---><style>
     #trending {
       background-color: transparent;
     }
@@ -134,7 +131,7 @@ border-radius: 4px;
   </div>
   <div id="trending">
 <% trend.forEach(data => { %>
-    <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
+    <div class="movie-container" onclick="window.location.href = '/movie/download/<%= data.name%>'">
       <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
       <div class="movie-name"><%= data.name%></div>
     </div>
@@ -167,7 +164,7 @@ border-radius: 4px;
 </main>
 <% }); %>
 </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <!--- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
   <script>
@@ -183,6 +180,6 @@ border-radius: 4px;
       arrows: false // Set arrows to false to hide them
     });
   });
-  </script>
+  </script>--->
 </body>
 </html>
