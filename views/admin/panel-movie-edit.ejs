@@ -197,12 +197,14 @@ additionalEditInputs.appendChild(cedittext);
       editDownloadLinkInput.type = 'text';
       editDownloadLinkInput.id = `downLink_${editDownloadCount}`;
       editDownloadLinkInput.placeholder = `Enter Download Link for link #${editDownloadCount}`;
+      editDownloadLinkInput.value = nata.download;
       additionalEditInputs.appendChild(editDownloadLinkInput);
 
       const sizeEditInput = document.createElement('input');
       sizeEditInput.type = 'text';
       sizeEditInput.id = `size_${editDownloadCount}`;
       sizeEditInput.placeholder = `Enter Size for link #${editDownloadCount}`;
+      sizeEditInput.value = nata.size;
       additionalEditInputs.appendChild(sizeEditInput);
 
       const qualityEditInput = document.createElement('select');
@@ -222,6 +224,7 @@ additionalEditInputs.appendChild(cedittext);
       noteEditInput.type = 'text';
       noteEditInput.placeholder = `eg. parts (optional) for link #${editDownloadCount}`;
       noteEditInput.id = `note_${editDownloadCount}`;
+      noteEditInput.value = nata.note;
       additionalEditInputs.appendChild(noteEditInput);
 
 additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
