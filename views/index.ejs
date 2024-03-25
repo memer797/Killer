@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
+  <title>Memer797 • Movies Home Page</title>
+<%- include('./includes/fav icon')%>
+<meta property="og:title" content="memer797 • All Movie In One Place">
+<meta property="og:site_name" content="memer797">
+  <meta property="og:description" content="Explore a vast library of free movies, captivating web series, and exclusive premium content. Immerse yourself in a world of entertainment with our diverse selection of genres and titles, all available for your viewing pleasure. Discover new stories, indulge in your favorite genres, and elevate your entertainment experience with us. Start streaming now and unlock a world of cinematic wonders.">
+  <meta property="og:image" content="https://memer797.onrender.com/favicon.ico">
+  <meta property="og:url" content="https://memer797.onrender.com">
+  <meta property="og:type" content="website">
+<link rel="stylesheet" type="text/css" href="/global.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
     #trending {
       background-color: transparent;
     }
@@ -18,7 +29,7 @@ background-color: transparent;
 
 #trending .movie-image {
   width: 100%; /* Make the image fill the container */
-  height: 32.68%; /*160px Adjust the height as needed */
+  height: 160px; /*160px Adjust the height as needed */
 object-fit: cover;
   border-radius: 10px;
 }
@@ -114,15 +125,27 @@ border-radius: 4px;
 </head>
 
 <body>
+<%- include('./includes/nav')%>
 <div class="taremaka">
 
-  <div class="leftright-container">
-    <div style = "font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
-  </div>
-  <div id="trending">
-
-    <!-- Add more movie containers as needed -->
-  </div>
+<%- include('./includes/footer')%>
 </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script>
+  // Initialize Slick slider
+  $(document).ready(function(){
+    $('#trending').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000, // Adjust the speed as needed
+      pauseOnHover: false,
+      arrows: false // Set arrows to false to hide them
+    });
+  });
+  </script>
 </body>
 </html>
