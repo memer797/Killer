@@ -92,15 +92,26 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var release_date = req.body.release_date ? req.body.release_date : "No Date Specified!";
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
- var rID = generateRandomString(20);
  var lastMod = Date.now();
+    var validarray = await db.getArray("info.movies");
+    var validarray = validarray.filter(k => ((k.name).toLowerCase()) === ((name).toLowerCase()));
+    if(validarray.length > 0){
+return res.json({
+    success: false,
+    msg: "Name Already aivalable",
+    toast: {
+        msg: `${name} this Movie is already aivalable in our DB`,
+        type: "warning",
+        time: 5000
+    }
+});
+    }
  await db.push("info.movie", {
      name: name,
      description: description,
      tags: tags,
      category: category,
      img: img,
-     id: rID,
      duration: duration,
      language: language,
      release_date: release_date,
