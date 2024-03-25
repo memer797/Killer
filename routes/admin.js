@@ -120,11 +120,11 @@ return res.json({
      lastMod: lastMod
      });
     
- res.json({success: true, msg: "movie saves successfully", id: rID});
+ res.json({success: true, msg: "movie saves successfully"});
 });
 
 //edit movie
-router.post("/data/save/movie", async(req, res) => {
+router.post("/data/sav/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
 }
@@ -209,7 +209,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
     }
  if(!req.body || !req.body.name || req.body.name.trim() === ''){
-return res.json({success: false, msg: 'id is not provided!'});
+return res.json({success: false, msg: 'name is not provided!'});
  }
     var toRemVe = (await db.getArray('info.movie')).filter(i => ((i.name).toLowerCase()) === ((req.body.name).toLowerCase()));
     if(!toRemVe || toRemVe.length < 1) {
