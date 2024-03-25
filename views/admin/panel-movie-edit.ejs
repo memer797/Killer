@@ -171,7 +171,7 @@ if(!name || name.trim() === ""){
 return;
 }
 fetch(`/admin/data/get/movie/${name}`).then(data => data.json).then(data => {
-if(data.success === false || data.success == 'false' || !data.success){
+if(!data.success || data.success !== true){
 return;
 }
 document.querySelector("#myEditModal").style.display = "flex";
