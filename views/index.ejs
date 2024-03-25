@@ -3,18 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>memer797 • Movies Home Page</title>
-<meta property="og:title" content="memer797 • All Movie In One Place">
-<meta property="og:site_name" content="memer797">
-  <meta property="og:description" content="Explore a vast library of free movies, captivating web series, and exclusive premium content. Immerse yourself in a world of entertainment with our diverse selection of genres and titles, all available for your viewing pleasure. Discover new stories, indulge in your favorite genres, and elevate your entertainment experience with us. Start streaming now and unlock a world of cinematic wonders.">
-  <meta property="og:image" content="https://memer797.onrender.com/favicon.ico">
-  <meta property="og:url" content="https://memer797.onrender.com">
-  <meta property="og:type" content="website">
-<!---<link rel="stylesheet" type="text/css" href="/global.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
----><style>
+
+<style>
     #trending {
       background-color: transparent;
     }
@@ -130,56 +120,9 @@ border-radius: 4px;
     <div style = "font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
   </div>
   <div id="trending">
-<% trend.forEach(data => { %>
-    <div class="movie-container" onclick="window.location.href = '/movie/download/<%= data.name%>'">
-      <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
-      <div class="movie-name"><%= data.name%></div>
-    </div>
-<% }); %>
+
     <!-- Add more movie containers as needed -->
   </div>
-<% data.forEach(data => { %>
-<main>
-  <div class="leftright-container">
-  <div class="left-side">
-      <div class="section-title"><%= data.category%></div>
-  </div>
-  <div class="right-side">
-    <a href="/category/<%= data.category%>" class="see-all">See All</a>
-  </div>
 </div>
-
-  <div class="new-section">
-    <div class="movies-container">
-<% data.items.forEach(item => { %>  
-  <!-- New Section -->
-      <div class="movie-container">
-        <a href="/movie/download/<%= item.name%>"> <img class="movie-image" src="<%= item.img%>" alt="<%= item.name%>"></a>
-     <div class="movie-name"><%= item.name%></div>
-      </div>
-<% }); %>
-      <!-- Add more movie containers as needed -->
-    </div>
-  </div>
-</main>
-<% }); %>
-</div>
- <!--- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-  <script>
-  // Initialize Slick slider
-  $(document).ready(function(){
-    $('#trending').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000, // Adjust the speed as needed
-      pauseOnHover: false,
-      arrows: false // Set arrows to false to hide them
-    });
-  });
-  </script>--->
 </body>
 </html>
