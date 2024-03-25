@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memer797 • Movies Home Page</title>
+  <title>memer797 • Movies Home Page</title>
 <%- include('./includes/fav icon')%>
 <meta property="og:title" content="memer797 • All Movie In One Place">
 <meta property="og:site_name" content="memer797">
@@ -29,7 +29,7 @@ background-color: transparent;
 
 #trending .movie-image {
   width: 100%; /* Make the image fill the container */
-  height: 160px; /*160px Adjust the height as needed */
+  height: 32.68%; /*160px Adjust the height as needed */
 object-fit: cover;
   border-radius: 10px;
 }
@@ -127,8 +127,17 @@ border-radius: 4px;
 <body>
 <%- include('./includes/nav')%>
 <div class="taremaka">
-  <div id="trending">
 
+  <div class="leftright-container">
+    <div style = "font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
+  </div>
+  <div id="trending">
+<% trend.forEach(data => { %>
+    <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
+      <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
+      <div class="movie-name"><%= data.name%></div>
+    </div>
+<% }); %>
     <!-- Add more movie containers as needed -->
   </div>
 <% data.forEach(data => { %>
@@ -147,7 +156,7 @@ border-radius: 4px;
 <% data.items.forEach(item => { %>  
   <!-- New Section -->
       <div class="movie-container">
-        <a href="/movie/<%= item.id%>"> <img class="movie-image" src="<%= item.img%>" alt="<%= item.name%>"></a>
+        <a href="/movie/download/<%= item.name%>"> <img class="movie-image" src="<%= item.img%>" alt="<%= item.name%>"></a>
      <div class="movie-name"><%= item.name%></div>
       </div>
 <% }); %>
