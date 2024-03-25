@@ -38,8 +38,8 @@ thi.style.animationPlayState = 'paused';
     activatedToasts.push(box);
   var fto =  box.childNodes[2];
   var fthe = fto.childNodes[5];
-  fthe.addEventListener("animationend", () => {
-  	runNext();
+  fthe.addEventListener("animationend", (event) => {
+  	closeToast(event.target);
   });
     };
 function closeToast(me){
