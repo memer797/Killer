@@ -197,19 +197,16 @@ router.post("/data/delete/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
     }
- if(!req.body || !req.body.id || req.body.id.trim() === ''){
+ if(!req.body || !req.body.name || req.body.name.trim() === ''){
 return res.json({success: false, msg: 'id is not provided!'});
  }
-    var toRemVe = (await db.getArray('info.movie')).filter(i => i.id === req.body.id);
+    var toRemVe = (await db.getArray('info.movie')).filter(i => ((i.name).toLowerCase()) === ((req.body.name).toLowerCase()));
     if(!toRemVe || toRemVe.length < 1) {
-        return res.json({success: false, msg: "no Movie Found With This Id"});
+        return res.json({success: false, msg: "no Movie Found With This name"});
     }
 console.log(toRemVe);
-//   return res.json(toRemVe);
-    console.log(await db.getArray("info.movie"));
  await db.pull("info.movie", toRemVe[0]);
-        console.log(await db.getArray("info.movie"));
- res.json({success: true, msg: `movie ${req.body.id} removed successfully`});
+ res.json({success: true, msg: `movie ${req.body.name} removed successfully`});
 });
 
 
