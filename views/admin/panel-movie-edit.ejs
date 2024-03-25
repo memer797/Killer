@@ -166,11 +166,11 @@ document.querySelector("#myEditModal").style.display = "none";
 }
 
 //function to get movie details from id and then open edit modal 🙂
-function editMovie(id){
-if(!id || id.trim() === ""){
+function editMovie(name){
+if(!name || name.trim() === ""){
 return;
 }
-fetch(`/admin/data/get/movie/${id}`).then(data => data.json).then(data => {
+fetch(`/admin/data/get/movie/${name}`).then(data => data.json).then(data => {
 if(data.success === false || data.success == 'false' || !data.success){
 return;
 }
