@@ -39,7 +39,10 @@ thi.style.animationPlayState = 'paused';
   var fto =  box.childNodes[2];
   var fthe = fto.childNodes[5];
   fthe.addEventListener("animationend", (event) => {
-  	closeToast(event.target);
+  	var fp = (event.target).parentElement;
+	  var sp = fp.parentElement;
+	  sp.remove();
+	  runNext();
   });
     };
 function closeToast(me){
