@@ -42,6 +42,8 @@ function delay(milliseconds) {
     next();
   });
   app.use((req, res, next) => {
+    var iip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log(iip);
   console.log(req.originalUrl); // Output: current URL path
   console.log(!(req.originalUrl.startsWith("/admin")));
 var ip = req.ip;
