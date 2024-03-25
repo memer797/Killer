@@ -97,7 +97,11 @@ but.parentNode.nextElementSibling.style.display = "none";
 lol.forEach(lo => {
 		var name = lo.name;
 		var trmv = document.createElement("span");
-trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${id}', this)">Remove</a></span> <div class="line2"></div>`;
+if(lo.action){
+trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${action}', this)">Remove</a></span> <div class="line2"></div>`;
+}else{
+trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${name}', this)">Remove</a></span> <div class="line2"></div>`;
+}
 document.querySelector(".trendList").appendChild(trmv);
 });		
 });
