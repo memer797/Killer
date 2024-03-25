@@ -166,6 +166,9 @@ if(!gotData.success && gotData.toast){
 showToast(gotData.toast.msg, gotData.toast.type || 'info', gotData.toast.time || 7000);
 return;
 }
+if(!gotData.success){
+return showToast(gotData.msg, "info", 5000);
+}
 addCard({
 	name: finalData.name,
 	description: finalData.description,
