@@ -93,7 +93,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
  var lastMod = Date.now();
-    var validarray = await db.getArray("info.movies");
+    var validarray = await db.getArray("info.movie");
     var validarray = validarray.filter(k => ((k.name).toLowerCase()) === ((name).toLowerCase()));
     if(validarray.length > 0){
 return res.json({
