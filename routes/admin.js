@@ -124,7 +124,7 @@ return res.json({
 });
 
 //edit movie
-router.post("/data/sav/movie", async(req, res) => {
+router.post("/data/edit/movie", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
 }
@@ -185,15 +185,15 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
 });
 
 //get aprticular movie
-router.get("/data/get/movie/:id", async(req, res) => {
+router.get("/data/get/movie/:name", async(req, res) => {
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
 }
     try {
  var movAray = await db.getArray("info.movie");
-   var movAray = movAray.filter(s => s.id === req.params.id);
+   var movAray = movAray.filter(s => (s.name).toLowerCase()) === ((req.params.name).toLowerCase()));
     if(!movAray || movAray < 1){
-        return res.json({success: false, msg: "Invalid or Unknown Movie Id provided!"});
+        return res.json({success: false, msg: "Invalid or Unknown Movie Name provided!"});
     }
         var movAray = movAray[0];
  res.json({success: true, data: movAray});
