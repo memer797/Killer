@@ -98,7 +98,7 @@ lol.forEach(lo => {
 		var name = lo.name;
 		var trmv = document.createElement("span");
 if(lo.action){
-trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${action}', this)">Remove</a></span> <div class="line2"></div>`;
+trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${lo.action}', this)">Remove</a></span> <div class="line2"></div>`;
 }else{
 trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${name}', this)">Remove</a></span> <div class="line2"></div>`;
 }
