@@ -128,12 +128,7 @@ border-radius: 4px;
 <%- include('./includes/nav')%>
 <div class="taremaka">
   <div id="trending">
-<% allData.forEach(data => { %>
-    <div class="movie-container" onclick="window.location.href = '/movie/<%= data.id%>'">
-      <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
-      <div class="movie-name"><%= data.name%></div>
-    </div>
-<% }); %>
+
     <!-- Add more movie containers as needed -->
   </div>
 <% data.forEach(data => { %>
