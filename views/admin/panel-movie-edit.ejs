@@ -218,6 +218,10 @@ additionalEditInputs.appendChild(cedittext);
         <option value="4k">4k</option>
       `;
       qualityEditInput.id = `qual_${editDownloadCount}`;
+      var optionToSelect = qualityEditInput.querySelector(`option[value="${nata.}"]`);
+if (optionToSelect) {
+  optionToSelect.selected = true;
+}
       additionalEditInputs.appendChild(qualityEditInput);
    
       const noteEditInput = document.createElement('input');
