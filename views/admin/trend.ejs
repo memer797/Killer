@@ -42,7 +42,7 @@
 				</style>
 		<h2 style="text-align: center;">TRENDING PANEL</h2>
 <div class="line"></div>	
-<input type="text" class="trendInp" placeholder="movie id to make it trending" id="idMovAdd"/>
+<input type="text" class="trendInp" placeholder="movie name to make it trending" id="idMovAdd"/>
 <button class="addTrendBtn" id="addTrendBtn">Add</button>
 	<div class="trendList">
 		<div class="line2"></div>
@@ -61,19 +61,23 @@ fetch("/admin/data/save/trend/movie", {
 headers: {
     'Content-Type': 'application/json'
 },
-    body: JSON.stringify({id: movIdAdd.value})
+    body: JSON.stringify({name: movIdAdd.value})
 	}).then(res => res.json()).then(res => {
 		if(!res.success) return;
 var trmv = document.createElement("span");
-trmv.id = res.data.id;
-trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.id}')">Remove</a></span> <div class="line2"></div>`;
+if(res.data.action){
+trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.action}', this)">Remove</a></span> <div class="line2"></div>`;
+}else{
+trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.name}', this)">Remove</a></span> <div class="line2"></div>`;
+}
 document.querySelector(".trendList").appendChild(trmv);
 });
 movIdAdd.value = "";
 });
 
-function rmvTrend(id) {
-if(!id || id.trim() === "") return;
+function rmvTrend(name, but) {
+if(!name || name.trim() === "") return;
+if(!but) return;
 var isconfirmed = confirm("are you sure dude?");
 if(isconfirmed === false){
 return;
@@ -83,9 +87,9 @@ return;
 headers: {
     'Content-Type': 'application/json'
 },
-    body: JSON.stringify({ id: id })	
+    body: JSON.stringify({ name: name })	
 		});
-		document.getElementById(id).style.display = "none";
+but.parentNode.style.display = "none";
 	}
 	
 	fetch("/admin/data/get/trend/movie").then(jo => jo.json()).then(lol => {
