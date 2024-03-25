@@ -191,7 +191,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
 }
     try {
  var movAray = await db.getArray("info.movie");
-   var movAray = movAray.filter(s => (s.name).toLowerCase()) === ((req.params.name).toLowerCase()));
+   var movAray = movAray.filter(s => ((s.name).toLowerCase()) === ((req.params.name).toLowerCase()));
     if(!movAray || movAray < 1){
         return res.json({success: false, msg: "Invalid or Unknown Movie Name provided!"});
     }
