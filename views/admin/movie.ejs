@@ -17,7 +17,7 @@ function truncateString(str, maxLength) {
   }
 }
     function addCard(data){
-      var { name, description, category_txt, id, img } = data;
+      var { name, description, category_txt, img } = data;
 
     var cardContainer = document.createElement('div');
 cardContainer.classList.add('card-container');
@@ -44,7 +44,7 @@ var editLink = document.createElement('a');
 editLink.href = '#';
 editLink.textContent = 'Edit';
 editLink.onclick = function() {
-    editMovie(id);
+    editMovie(name);
 };
 
 var deleteLink = document.createElement('a');
@@ -52,7 +52,7 @@ deleteLink.href = '#';
 deleteLink.classList.add('delete');
 deleteLink.textContent = 'Delete';
 deleteLink.onclick = function() {
-    confirmDeleteCard(id);
+    confirmDeleteCard(name);
 };
 
 //optionsMenu.appendChild(viewLink);
@@ -89,7 +89,7 @@ customText.style.position = 'absolute';
 customText.style.bottom = '5px';
 customText.style.left = '5px';
 customText.style.color = '#555';
-customText.textContent = id;
+customText.textContent = "✅";
 
 textContainer.appendChild(nameHeading);
 textContainer.appendChild(descriptionParagraph);
@@ -118,15 +118,6 @@ cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
       tagsContainer.removeChild(tagElement);
     }
 
-    function viewCard() {
-      // Implement view functionality here
-      alert('Viewing card soon :)');
-    }
-
-    function editCard() {
-      // Implement edit functionality here
-      alert('Editing card function soon');
-    }
 
     function showOptionsMenu(event, card) {
       // Close any active options menu
@@ -141,21 +132,20 @@ cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
       event.stopPropagation();
     }
 
-    function confirmDeleteCard(idToDel) {
+    function confirmDeleteCard(name) {
       const isConfirmed = confirm('Are you sure you want to delete this card?');
       if (isConfirmed) {
         var lastPrompt = prompt(`say YES to delete`);
 if(lastPrompt.trim().toLowerCase() !== "yes"){
 return;
 }
-console.log(idToDel);
 fetch("/admin/data/delete/movie", {
 method: "POST",
 headers: {
         "Content-Type": "application/json"
     },
 body: JSON.stringify({
-id: idToDel
+name: name
 })
 });
         const card = activeOptionsMenu.closest('.card-container');
@@ -195,17 +185,14 @@ fetch("/admin/data/get/movie", {
 method: "POST"
 }).then(ggp => ggp.json()).then(dtta => {
 dtta.data.forEach((dosta) => {
-console.log(dosta);
       var name = dosta.name;
       var description = dosta.description;
-      var category_txt = dosta.category;;
-      var id = dosta.id;
+      var category_txt = dosta.category;
       var img = dosta.img;
 addCard({
 	name,
 	description,
 	category_txt,
-	id,
 	img
 	});
 
