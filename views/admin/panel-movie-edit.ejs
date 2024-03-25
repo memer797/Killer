@@ -181,6 +181,52 @@ document.querySelector("#edit_description").value = data.data.description;
 document.querySelector("#edit_duration").value = data.data.duration;
 document.querySelector("#edit_release_date").value = data.data.release_date;
 document.querySelector("#edit_starCast").value = data.data.cast;
+
+//adding download Links
+data.data.links.forEach(nata => {
+editDownloadCount++;
+      const additionalEditInputs = document.getElementById('additionalEditInputs');
+additionalEditInputs.appendChild(document.createElement('br'));
+     var cedittext = document.createElement('span');
+cedittext.style = "margin: 0 auto; margin-top: 10px;";
+cEdittext.innerHTML = `Link ${downloadCount}`;
+additionalEditInputs.appendChild(cedittext);
+	    
+      // Create input fields for download link, size, and quality  
+      const editDownloadLinkInput = document.createElement('input');
+      editDownloadLinkInput.type = 'text';
+      editDownloadLinkInput.id = `downLink_${editDownloadCount}`;
+      editDownloadLinkInput.placeholder = `Enter Download Link for link #${editDownloadCount}`;
+      additionalEditInputs.appendChild(editDownloadLinkInput);
+
+      const sizeEditInput = document.createElement('input');
+      sizeEditInput.type = 'text';
+      sizeEditInput.id = `size_${editDownloadCount}`;
+      sizeEditInput.placeholder = `Enter Size for link #${editDownloadCount}`;
+      additionalEditInputs.appendChild(sizeEditInput);
+
+      const qualityEditInput = document.createElement('select');
+      qualityEditInput.innerHTML = `
+        <option value="144p">144p</option>
+        <option value="360p">360p</option>
+        <option value="480p">480p</option>
+        <option value="720p">720p</option>
+        <option value="1080p">1080p</option>
+        <option value="2k">2k</option>
+        <option value="4k">4k</option>
+      `;
+      qualityEditInput.id = `qual_${editDownloadCount}`;
+      additionalEditInputs.appendChild(qualityEditInput);
+   
+      const noteEditInput = document.createElement('input');
+      noteEditInput.type = 'text';
+      noteEditInput.placeholder = `eg. parts (optional) for link #${editDownloadCount}`;
+      noteEditInput.id = `note_${editDownloadCount}`;
+      additionalEditInputs.appendChild(noteEditInput);
+
+additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
+
+    });
 }).catch();
 }
 </script>
