@@ -125,6 +125,7 @@ return res.json({
 
 //edit movie
 router.post("/data/edit/movie", async(req, res) => {
+    try{
 if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
  return res.json({success: false, msg: " err_authontication"});
 }
@@ -140,16 +141,13 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var release_date = req.body.release_date ? req.body.release_date : "No Date Specified!";
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
- var rID = req.body.id;
  var majorUpdate = req.body.majorUpdate;
  var lastMod;
-    if(!rID || rID.trim() === ""){
-        return res.json({success: false, msg: "err id provided"});
-    }
+
     var allData = await db.getArray("info.movie");
-    var lastData = allData.filter(f => f.id === rID);
+    var lastData = allData.filter(f => ((f.name).toLowerCase()) === ((rID).toLowerCase()));
     if(!lastData || lastData < 1){
-   return res.json({success: false, msg: "Id not found"});
+   return res.json({success: false, msg: "name not found"});
     }
     var lastData = lastData[0];
     if(majorUpdate){
@@ -157,13 +155,13 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
     }else{
         var lastMod = lastdata.lastMod || Date.now();
     }
+ await db.pull("info.movie", lastData[0]);
  await db.push("info.movie", {
      name: name,
      description: description,
      tags: tags,
      category: category,
      img: img,
-     id: rID,
      duration: duration,
      language: language,
      release_date: release_date,
@@ -172,8 +170,12 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
      lastMod: lastMod
      });
     
- res.json({success: true, msg: "movie edited successfully", id: rID});
-});
+ res.json({success: true, msg: "movie edited successfully"});
+    }catch(error){
+        console.log(error);
+        res.json({success: false, msg: "smt wnt wrng"});
+    }
+    });
 
 //get movie
 router.post("/data/get/movie", async(req, res) => {
