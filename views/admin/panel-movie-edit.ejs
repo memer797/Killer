@@ -58,7 +58,7 @@
 
 <label for="edit_tags">Tags:</label>
       <input type="text" id="edit_tags" placeholder="Enter Tags and write ,">
-      <div class="tag-container" id="tagContainer"></div>
+      <div class="tag-container" id="edit-tagContainer"></div>
 
       <button onclick="editSave()" class="add-button" style="margin-top: 15px;">Save</button>
     </div>
@@ -66,6 +66,7 @@
 
 
 <script>
+let Edttags = [];
 let editDownloadCount = 0;
     function addEditDounload() {
 editDownloadCount++;
@@ -144,7 +145,7 @@ finalData.duration = document.querySelector("#duration").value;
 finalData.release_date = document.querySelector("#release_date").value;
 finalData.language = Array.from(document.querySelectorAll('#language option:checked')).map(option => option.value);
 finalData.cast = document.querySelector("#starCast").value;
-finalData.tags = ttags;
+finalData.tags = Edttags;
 finalData.links = [];
 for(i=1; i<downloadCount+1; i++){
 var ary = {};
@@ -255,4 +256,29 @@ data.data.category.forEach(cat => {
 });
 }).catch(console.log);
 }
+
+//tags ke sath karnama 😤
+function removeEditedTag(tagElement) {
+      const tagsEditedContainer = document.getElementById('edit-tagContainer');
+      tagsEditedContainer.removeChild(tagElement);
+    }
+
+       document.getElementById('edit_tags').addEventListener("input", async() => {
+       	  var EagsContainer = document.getElementById('edit-tagContainer');
+       
+       var ETInput = document.getElementById('edit_tags');   
+       if(!ETInput.value.includes(",")) return;
+var Etgs = ETInput.value.split(",");
+if(!Etgs || Etgs.length < 1){
+return; 
+}
+if(!Etgs[0].length || Etgs[0].trim() === "") return;
+ const EagElement = document.createElement('div');
+        EagElement.classList.add('tag');
+        EagElement.innerText = Etgs[0];
+        EagElement.addEventListener('click', () => removeEditedTag(EagElement));
+        EagsContainer.appendChild(EagElement);
+ETInput.value = "";
+Edttags.push(tgs[0]);
+       });
 </script>
