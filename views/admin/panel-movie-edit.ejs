@@ -68,6 +68,7 @@
 <script>
 let Edttags = [];
 let editDownloadCount = 0;
+let nowEditing_;
     function addEditDounload() {
 editDownloadCount++;
       const additionalEditInputs = document.getElementById('additionalEditInputs');
@@ -168,9 +169,12 @@ document.querySelector("#myEditModal").style.display = "none";
 }
 
 //function to get movie details from id and then open edit modal 🙂
-function editMovie(name){
+function editMovie(name, this){
 if(!name || name.trim() === ""){
 return;
+}
+if(this){
+nowEditing_ = this;
 }
 fetch(`/admin/data/get/movie/${name}`).then(data => data.json()).then(data => {
 if(!data.success || data.success !== true){
