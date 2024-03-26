@@ -140,7 +140,7 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 var cardsContainer = document.querySelector("#cardsContainer");
 function editCard(data){
 try {
-    var cardContainer = nowEditing_.parentNode;
+    var cardContainer = "!"; //nowEditing_.parentNode;
 console.log(">", cardContainer);
 cardContainer.innerHTML = "";
 cardContainer.classList.add('card-container');
@@ -218,7 +218,9 @@ cardContainer.appendChild(textContainer);
 
 cardsContainer.appendChild(cardContainer);
 //cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
-  }catch(console.log);
+  }catch{
+console.log("error");
+}
 };
 
 //save edit function
