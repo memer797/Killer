@@ -130,8 +130,10 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var name = req.body.name;
+var lastName = req.body.lastName
  var category = req.body.category;
 if(!name || name.trim() === ""){ return res.json({success: false, msg: "name is required" }); };
+if(!lastName || lastName.trim() === ""){ return res.json({success: false, msg: "name is required" }); };
 if(!category || category.length == 0){ return res.json({success: false, msg: "atlease one category is required!" });}
  var description = req.body.description ? req.body.description : "No Description Provided";
  var tags = req.body.tags ? req.body.tags : [];
@@ -145,7 +147,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var lastMod;
 
     var allData = await db.getArray("info.movie");
-    var lastData = allData.filter(f => ((f.name).toLowerCase()) === ((name).toLowerCase()));
+    var lastData = allData.filter(f => ((f.name).toLowerCase()) === ((lastName).toLowerCase()));
     if(!lastData || lastData < 1){
    return res.json({success: false, msg: "name not found"});
     }
