@@ -68,7 +68,7 @@
 <script>
 let Edttags = [];
 let editDownloadCount = 0;
-let nowEditing_;
+var nowEditing_;
     function addEditDounload() {
 editDownloadCount++;
       const additionalEditInputs = document.getElementById('additionalEditInputs');
@@ -174,9 +174,9 @@ if(!name || name.trim() === ""){
 return;
 }
 if(this){
-nowEditing_ = this;
+var nowEditing_ = this;
 }else{
-nowEditing_;
+var nowEditing_;
 }
 fetch(`/admin/data/get/movie/${name}`).then(data => data.json()).then(data => {
 if(!data.success || data.success !== true){
