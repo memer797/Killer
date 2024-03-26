@@ -44,7 +44,7 @@ var editLink = document.createElement('a');
 editLink.href = '#';
 editLink.textContent = 'Edit';
 editLink.onclick = function() {
-    editMovie(name);
+    editMovie(name, this);
 };
 
 var deleteLink = document.createElement('a');
