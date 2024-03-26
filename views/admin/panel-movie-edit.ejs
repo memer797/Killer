@@ -247,6 +247,25 @@ ary.size = document.querySelector(`#size_${i}`).value;
 ary.note = document.querySelector(`#note_${i}`).value;
 ary.quality = document.querySelector(`#qual_${i}`).value;
 finalData.links.push(ary);
+
+fetch("/admin/data/edit/movie", {
+method: "POST",
+headers: {
+        "Content-Type": "application/json"
+    },
+body: JSON.stringify(finalData),
+
+}).then(d => d.json()).then(gotData => {
+if(!gotData.success){
+showToast("smt wnt wrng", 'warning', 7000);
+return;
+}
+if(!gotData.success){
+return showToast(gotData.msg, "info", 5000);
+}
+showToast("Movie Edited Successfully", "success", 5000);
+}).catch();
+
 	}
 
 editCard({
