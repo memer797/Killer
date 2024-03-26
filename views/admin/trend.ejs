@@ -66,9 +66,9 @@ headers: {
 		if(!res.success) return;
 var trmv = document.createElement("span");
 if(res.data.action){
-trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.action}', this)">Remove</a></span> <div class="line2"></div>`;
+trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.action}', this)">Remove</a> <div class="line2"></div>`;
 }else{
-trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.name}', this)">Remove</a></span> <div class="line2"></div>`;
+trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.name}', this)">Remove</a> <div class="line2"></div>`;
 }
 document.querySelector(".trendList").appendChild(trmv);
 });
@@ -90,7 +90,7 @@ headers: {
     body: JSON.stringify({ name: name })	
 		});
 but.parentNode.style.display = "none";
-but.parentNode.nextElementSibling.style.display = "none";
+//but.parentNode.nextElementSibling.style.display = "none";
 }
 	
 	fetch("/admin/data/get/trend/movie").then(jo => jo.json()).then(lol => {
@@ -98,9 +98,9 @@ lol.forEach(lo => {
 		var name = lo.name;
 		var trmv = document.createElement("span");
 if(lo.action){
-trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${lo.action}', this)">Remove</a></span> <div class="line2"></div>`;
+trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${lo.action}', this)">Remove</a> <div class="line2"></div>`;
 }else{
-trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${name}', this)">Remove</a></span> <div class="line2"></div>`;
+trmv.innerHTML = `${name} <a class="rmvBtnTrend" onclick="rmvTrend('${name}', this)">Remove</a> <div class="line2"></div>`;
 }
 document.querySelector(".trendList").appendChild(trmv);
 });		
