@@ -145,7 +145,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var lastMod;
 
     var allData = await db.getArray("info.movie");
-    var lastData = allData.filter(f => ((f.name).toLowerCase()) === ((rID).toLowerCase()));
+    var lastData = allData.filter(f => ((f.name).toLowerCase()) === ((name).toLowerCase()));
     if(!lastData || lastData < 1){
    return res.json({success: false, msg: "name not found"});
     }
