@@ -153,9 +153,9 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
     if(majorUpdate){
         var lastMod = Date.now();
     }else{
-        var lastMod = lastdata.lastMod || Date.now();
+        var lastMod = lastData.lastMod || Date.now();
     }
- await db.pull("info.movie", lastData[0]);
+ await db.pull("info.movie", lastData);
  await db.push("info.movie", {
      name: name,
      description: description,
