@@ -140,7 +140,8 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 function editCard(data){
 try {
       var { name, description, category_txt, img } = data;
-
+console.log("data");
+console.log(data);
     var cardContainer = (nowEditing_).parentNode;
 cardContainer.innerHTML = "";
 cardContainer.classList.add('card-container');
@@ -216,21 +217,21 @@ cardContainer.appendChild(optionsMenu);
 cardContainer.appendChild(imageContainer);
 cardContainer.appendChild(textContainer);
 
-cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
-  }catch{}
+//cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
+  }catch{console.log}
 };
 
 //save edit function
     function editSave() {
 let finalData = {};
-finalData.name = document.querySelector("#name").value;
-finalData.imageUrl = document.querySelector("#imageUrl").value;
-finalData.description = document.querySelector("#description").value;
-finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);
-finalData.duration = document.querySelector("#duration").value;
-finalData.release_date = document.querySelector("#release_date").value;
-finalData.language = Array.from(document.querySelectorAll('#language option:checked')).map(option => option.value);
-finalData.cast = document.querySelector("#starCast").value;
+finalData.name = document.querySelector("#edit_name").value;
+finalData.imageUrl = document.querySelector("#edit_imageUrl").value;
+finalData.description = document.querySelector("#edit_description").value;
+finalData.category = Array.from(document.querySelectorAll('#edit_category option:checked')).map(option => option.value);
+finalData.duration = document.querySelector("#edit_duration").value;
+finalData.release_date = document.querySelector("#edit_release_date").value;
+finalData.language = Array.from(document.querySelectorAll('#edit_language option:checked')).map(option => option.value);
+finalData.cast = document.querySelector("#edit_starCast").value;
 finalData.tags = Edttags;
 finalData.links = [];
 for(i=1; i<downloadCount+1; i++){
