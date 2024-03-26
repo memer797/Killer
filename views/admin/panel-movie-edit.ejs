@@ -72,6 +72,7 @@
 let Edttags = [];
 let editDownloadCount = 0;
 let nowEditing_;
+let lastNametoEdit;
     function addEditDounload() {
 editDownloadCount++;
       const additionalEditInputs = document.getElementById('additionalEditInputs');
@@ -230,6 +231,7 @@ console.log(error);
 //save edit function
     function editSave() {
 let finalData = {};
+finalData.lastName = lastNametoEdit;
 finalData.name = document.querySelector("#edit_name").value;
 finalData.imageUrl = document.querySelector("#edit_imageUrl").value;
 finalData.description = document.querySelector("#edit_description").value;
@@ -257,6 +259,7 @@ headers: {
 body: JSON.stringify(finalData),
 
 }).then(d => d.json()).then(gotData => {
+lastNametoEdit = undefined;
 if(!gotData.success){
 showToast("smt wnt wrng", 'warning', 7000);
 return;
@@ -295,6 +298,7 @@ fetch(`/admin/data/get/movie/${name}`).then(data => data.json()).then(data => {
 if(!data.success || data.success !== true){
 return;
 }
+lastNametoEdit = data.data.name;
 document.querySelector("#myEditModal").style.display = "flex";
 document.querySelector("#edit_name").value = data.data.name;
 document.querySelector("#edit_imageUrl").value = data.data.img;
