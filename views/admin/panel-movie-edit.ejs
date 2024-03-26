@@ -135,8 +135,93 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 }
 }
 }
+
+//edit card function
+function editCard(data){
+try {
+      var { name, description, category_txt, img } = data;
+
+    var cardContainer = (nowEditing_).parentNode;
+cardContainer.innerHTML = "";
+cardContainer.classList.add('card-container');
+
+var optionsButton = document.createElement('div');
+optionsButton.classList.add('options');
+optionsButton.textContent = '…';
+optionsButton.onclick = function(event) {
+    showOptionsMenu(event, cardContainer);
+};
+
+var optionsMenu = document.createElement('div');
+optionsMenu.classList.add('options-menu');
+optionsMenu.id = 'optionsMenu';
+
+var editLink = document.createElement('a');
+editLink.href = '#';
+editLink.textContent = 'Edit';
+editLink.onclick = function() {
+    editMovie(name, this);
+};
+
+var deleteLink = document.createElement('a');
+deleteLink.href = '#';
+deleteLink.classList.add('delete');
+deleteLink.textContent = 'Delete';
+deleteLink.onclick = function() {
+    confirmDeleteCard(name);
+};
+
+optionsMenu.appendChild(editLink);
+optionsMenu.appendChild(deleteLink);
+
+var imageContainer = document.createElement('div');
+imageContainer.classList.add('image-container');
+
+var imageElement = document.createElement('img');
+imageElement.src = img;
+imageElement.alt = 'Icon';
+
+imageContainer.appendChild(imageElement);
+
+var textContainer = document.createElement('div');
+textContainer.classList.add('text-container');
+
+var nameHeading = document.createElement('div');
+nameHeading.style.width = '100%';
+nameHeading.innerHTML = `<h4>${name}</h4>`;
+
+var descriptionParagraph = document.createElement('div');
+descriptionParagraph.classList.add('pd');
+descriptionParagraph.textContent = description;
+
+var category = document.createElement('div');
+category.classList.add('category');
+category.textContent = `${truncateString(category_txt.join(", "), 18)}`;
+
+var customText = document.createElement('div');
+customText.id = 'customText';
+customText.style.position = 'absolute';
+customText.style.bottom = '5px';
+customText.style.left = '5px';
+customText.style.color = '#555';
+customText.textContent = "✅";
+
+textContainer.appendChild(nameHeading);
+textContainer.appendChild(descriptionParagraph);
+textContainer.appendChild(category);
+textContainer.appendChild(customText);
+
+cardContainer.appendChild(optionsButton);
+cardContainer.appendChild(optionsMenu);
+cardContainer.appendChild(imageContainer);
+cardContainer.appendChild(textContainer);
+
+cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
+  }catch{}
+};
+
+//save edit function
     function editSave() {
-return;
 let finalData = {};
 finalData.name = document.querySelector("#name").value;
 finalData.imageUrl = document.querySelector("#imageUrl").value;
@@ -157,6 +242,12 @@ ary.quality = document.querySelector(`#qual_${i}`).value;
 finalData.links.push(ary);
 	}
 
+editCard({
+name: finalData.name,
+description: finalData.description,
+category_txt: finalData.category,
+img: finalData.imageUrl
+});
       // Clear input fields and tags container
       document.querySelector("#tags").value = '';
       document.querySelector("#tagContainer").innerHTML = '';
