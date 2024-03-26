@@ -6,7 +6,7 @@ router.get("/download/:name", async(req, res) => {
   }
 var name = req.params.name;
   var movie_info = await db.getArray("info.movie");
-  var movie_info = movie_info.filter(i => ((i.name).toLowerCase()) === (name.toLowerCase()));
+  var movie_info = movie_info.filter(i => (((i.name).toLowerCase()).replace(/ /g, "-")) === (name.toLowerCase()).replace(/ /g, "-"));
   if(!movie_info || movie_info.length < 1){
     return res.send(`4** error, N 0 Movie F()und With ${name} name`);
   }
