@@ -175,6 +175,8 @@ return;
 }
 if(this){
 nowEditing_ = this;
+}else{
+nowEditing_;
 }
 fetch(`/admin/data/get/movie/${name}`).then(data => data.json()).then(data => {
 if(!data.success || data.success !== true){
