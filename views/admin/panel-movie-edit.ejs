@@ -139,9 +139,6 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 //edit card function
 function editCard(data){
 try {
-      var { name, description, category_txt, img } = data;
-console.log("data");
-console.log(data);
     var cardContainer = (nowEditing_).parentNode;
 cardContainer.innerHTML = "";
 cardContainer.classList.add('card-container');
@@ -265,6 +262,7 @@ function editMovie(name, ths){
 if(!name || name.trim() === ""){
 return;
 }
+console.log(ths);
 if(ths){
 var nowEditing_ = ths;
 }else{
