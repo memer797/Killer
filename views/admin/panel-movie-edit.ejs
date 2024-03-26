@@ -142,6 +142,7 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 //edit card function
 var ecardsContainer = document.querySelector("#cardsContainer");
 function editCard(data){
+var { name, description, category_txt, img } = data;
 try {
     var cardContainer = nowEditing_.parentNode;
 //console.log(">", cardContainer);
