@@ -133,7 +133,7 @@ border-radius: 4px;
   </div>
   <div id="trending">
 <% trend.forEach(data => { %>
-    <div class="movie-container" onclick="window.location.href = '/movie/download/<%= (data.name).replace(/ /g, `-`%>'">
+    <div class="movie-container" onclick="window.location.href = '/movie/download/<%= (data.name).replace(/ /g, `-`)%>'">
       <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
       <div class="movie-name"><%= data.name%></div>
     </div>
