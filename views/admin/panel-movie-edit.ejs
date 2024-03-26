@@ -140,7 +140,7 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 }
 
 //edit card function
-var cardsContainer = document.querySelector("#cardsContainer");
+var ecardsContainer = document.querySelector("#cardsContainer");
 function editCard(data){
 try {
     var cardContainer = nowEditing_.parentNode;
@@ -219,7 +219,7 @@ cardContainer.appendChild(optionsMenu);
 cardContainer.appendChild(imageContainer);
 cardContainer.appendChild(textContainer);
 
-cardsContainer.appendChild(cardContainer);
+ecardsContainer.appendChild(cardContainer);
 //cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
   }catch{
 console.log("error");
