@@ -260,12 +260,12 @@ document.querySelector("#myEditModal").style.display = "none";
 }
 
 //function to get movie details from id and then open edit modal 🙂
-function editMovie(name, this){
+function editMovie(name, ths){
 if(!name || name.trim() === ""){
 return;
 }
-if(this){
-var nowEditing_ = this;
+if(ths){
+var nowEditing_ = ths;
 }else{
 var nowEditing_;
 }
