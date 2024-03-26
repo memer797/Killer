@@ -144,7 +144,7 @@ var ecardsContainer = document.querySelector("#cardsContainer");
 function editCard(data){
 var { name, description, category_txt, img } = data;
 try {
-    var cardContainer = nowEditing_.parentNode;
+    var cardContainer = nowEditing_.parentNode.parentNode;
 //console.log(">", cardContainer);
 cardContainer.innerHTML = "";
 cardContainer.classList.add('card-container');
@@ -220,7 +220,7 @@ cardContainer.appendChild(optionsMenu);
 cardContainer.appendChild(imageContainer);
 cardContainer.appendChild(textContainer);
 
-ecardsContainer.appendChild(cardContainer);
+ecardsContainer.innerHTML = cardContainer;
 //cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
   }catch(error){
 console.log(error);
