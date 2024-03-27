@@ -124,7 +124,7 @@ function getRandomColor() {
     <div id="movies-container">
 <% list.forEach(data => { %>
 <div class="movie">
-<a href="https://memer797.onrender.com/movie/download<%= (data.name).replace(/ /g, '-')%>"><img style="border-radius: 4px;" src="<%= data.img%>" alt="<%= data.name%> movie from <% category%> category"></a>
+<a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>"><img style="border-radius: 4px;" src="<%= data.img%>" alt="<%= data.name%> movie from <% category%> category"></a>
 <div class="movie-details">
 <h3 class="movie-name">
 <a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>" style="color: <%= getRandomColor()%>">
