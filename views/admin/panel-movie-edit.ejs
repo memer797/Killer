@@ -295,6 +295,12 @@ nowEditing_ = ths;
 nowEditing_ = undefined;
 }
 fetch(`/admin/data/get/movie/${name}`).then(data => data.json()).then(data => {
+try {
+editDownloadCount = 0;
+document.getElementById('additionalEditInputs').value = "";
+}catch{
+console.log("failed to clear inputs...");
+}
 if(!data.success || data.success !== true){
 return;
 }
