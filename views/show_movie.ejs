@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= name%> Movie Download Page</title>
   <meta name="description" content="Download <%= name%> Movie For free In our website! We Provide <%= name%> movies direct download link - memer797 all movies for free">
-  <meta name="keywords" content="<%= tags.join(', ') + ','%> memer797, m7, ">
+  <meta name="keywords" content="<% if(tags && tags.length > 0){ %> <%= tags.join(', ') + ','%> <% } %> memer797, m7, <%= name%> Full Movie Download, <%= name%> Download in free, <%= name%> Download">
   <%- include('./includes/fav icon')%>
 <link rel="stylesheet" type="text/css" href="/global.css"/>
 <style>     
@@ -162,6 +162,9 @@ button {
       <% tags.forEach(tag => { %>
            <li onclick="goToTag('<%= tag%>')"><%= tag%></li>	
     <%  }); %>
+<li><%= name%> Full Movie Download</li>
+<li><%= name%> Download in free</li>
+<li><%= name%> Download</li>
 <li>memer797.onrender.com</li>
 <li>memer797</li>
 <li>m7</li>
