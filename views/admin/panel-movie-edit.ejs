@@ -331,8 +331,10 @@ document.querySelector("#edit_duration").value = data.data.duration;
 document.querySelector("#edit_release_date").value = data.data.release_date;
 document.querySelector("#edit_starCast").value = data.data.cast;
 try {
+document.getElementById('edit-tagContainer').innerHTML = "";
+Edttags = [];
 var taggToSett = data.data.tags.join(", ");
-document.getElementById('edit_tags').value = taggToSett + ",";
+document.getElementById('edit_tags').value = taggToSett;
 }catch{}
 
 //adding download Links
@@ -425,6 +427,7 @@ return;
 }
 if(!Etgs[0].length || Etgs[0].trim() === "") return;
 	       Etgs.forEach(tag => {
+if(!tag || tag.trim() === "") return;
  const EagElement = document.createElement('div');
         EagElement.classList.add('tag');
         EagElement.innerText = tag;
