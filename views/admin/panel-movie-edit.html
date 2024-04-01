@@ -330,6 +330,10 @@ document.querySelector("#edit_description").value = data.data.description;
 document.querySelector("#edit_duration").value = data.data.duration;
 document.querySelector("#edit_release_date").value = data.data.release_date;
 document.querySelector("#edit_starCast").value = data.data.cast;
+try {
+var taggToSett = data.data.tags.join(", ");
+document.getElementById('edit_tags').value = taggToSett;
+}catch{}
 
 //adding download Links
 data.data.links.forEach(nata => {
@@ -420,13 +424,15 @@ if(!Etgs || Etgs.length < 1){
 return; 
 }
 if(!Etgs[0].length || Etgs[0].trim() === "") return;
+	       Etags.forEach(tag => {
  const EagElement = document.createElement('div');
         EagElement.classList.add('tag');
-        EagElement.innerText = Etgs[0];
+        EagElement.innerText = tag;
         EagElement.addEventListener('click', () => removeEditedTag(EagElement));
         EagsContainer.appendChild(EagElement);
 ETInput.value = "";
-Edttags.push(Etgs[0]);
+Edttags.push(tag);
+	       });
        });
 </script>
 
