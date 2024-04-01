@@ -171,6 +171,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
      links: links,
      lastMod: lastMod
      });
+        console.log(tags);
     
  res.json({success: true, msg: "movie edited successfully"});
     }catch(error){
