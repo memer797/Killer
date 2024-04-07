@@ -23,12 +23,12 @@ async set(key, val) {
 return "Array";
   }
 
+  dbData[key] = val;
              await mdb?.test?.updateOne({ id: key }, {
                 $set: {
                   value: val
                 }
-              }, { upsert: true }).catch(e => { console.log(e)}
-)
+              }, { upsert: true }).catch(e => { console.log(e)});
   return true;
 },
         async push(key, arry) {
@@ -64,10 +64,13 @@ return "Array";
   if(!key){
     return `provide a key`
   }
-     var r = await mdb?.test?.findOne({ id: key })
+   /*  var r = await mdb?.test?.findOne({ id: key })
 
 if(r == null){  return null;  }else{ return r.value }
-  },
+ */
+    var r = dbData[key];
+  if(!r){  return null;  }else{ return r }  
+   },
   
   async getArray(key) {
   if(!key){
@@ -104,19 +107,18 @@ db.collection.updateOne(
  },*/
 
   async all() {
-
-     var r = await mdb?.test?.find()
-
-if(r == null){  return null;  }else{ return r }
+var r = dbData;
+ /*    var r = await mdb?.test?.find()
+*/
+if(!r){  return null;  }else{ return r }
   },
 
   async delete(key) {
-     var r = await mdb?.test?.findOne({ id:key });
-    if(r == null) return `${key} not found`;
+ var r = dbData[key];   
+ //    var r = await mdb?.test?.findOne({ id:key });
+    if(!r) return `${key} not found`;
 await mdb?.test.deleteOne({ id: key })
-
     return true;
-
   },
 
   async deleteAll(pass) {
