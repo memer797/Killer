@@ -9,6 +9,12 @@
       <label for="edit_name">Name:</label>
       <input type="text" id="edit_name" placeholder="Enter Name">
 
+     <label for="edit_h_type">TYPE:</label>
+      <select id="edit_h_type">
+<option value="HD">HD</option>
+<option value="HQ-CAM">HQ-CAM</option>
+       </select>
+
       <label for="edit_imageUrl">Image URL:</label>
       <input type="text" id="edit_imageUrl" placeholder="Enter Image URL">
 
@@ -251,6 +257,7 @@ console.log(error);
 let finalData = {};
 finalData.lastName = lastNametoEdit;
 finalData.name = document.querySelector("#edit_name").value;
+finalData.h_type = document.querySelector("#edit_h_type").value || "Not Provided";
 finalData.imageUrl = document.querySelector("#edit_imageUrl").value;
 finalData.description = document.querySelector("#edit_description").value;
 finalData.category = Array.from(document.querySelectorAll('#edit_category option:checked')).map(option => option.value);
@@ -330,6 +337,13 @@ document.querySelector("#edit_description").value = data.data.description;
 document.querySelector("#edit_duration").value = data.data.duration;
 document.querySelector("#edit_release_date").value = data.data.release_date;
 document.querySelector("#edit_starCast").value = data.data.cast;
+try {
+var editTypeselectElement = document.getElementById("edit_h_type");
+var editTypeoptionToSelect = editTypeselectElement.querySelector(`option[value='${data.data.h_type}']`);
+editTypeoptionToSelect.selected = true;
+}catch{
+document.querySelector("#edit_h_type").value="no";
+}
 try {
 document.getElementById('edit-tagContainer').innerHTML = "";
 Edttags = [];
