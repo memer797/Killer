@@ -160,6 +160,7 @@ document.querySelectorAll("textarea").forEach(lak => lak.value = "");
     function addCardFu() {
 let finalData = {};
 finalData.name = document.querySelector("#name").value;
+finalData.h_type = document.querySelector("#h_type").value;
 finalData.imageUrl = document.querySelector("#imageUrl").value;
 finalData.description = document.querySelector("#description").value;
 finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);
