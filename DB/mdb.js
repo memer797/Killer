@@ -93,8 +93,9 @@ if(r == null){  return null;  }else{ return r.value }
   if(!key){
     return `provide a key`
   }
-     var r = await mdb?.test?.findOne({ id: key })
-
+  //   var r = await mdb?.test?.findOne({ id: key })
+var r = dbData[key].arrayValue;
+    
 if(r == null){  return [];  }else{ return r.arrayValue }
   },
 
