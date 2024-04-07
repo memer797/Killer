@@ -36,6 +36,7 @@ async set(key, val) {
   if(!key){
     return `provide a key`
   }
+       try{
          if(!dbData[key].arrayValue){
           dbData[key].arrayValue = [];
           }
@@ -45,6 +46,7 @@ async set(key, val) {
           if(!(dbData[key].arrayValue).includes(arry)){
          dbData[key].arrayValue = arry;   
           }
+        }catch{}
     await mdb?.test?.updateOne({ id: key }, {
                 $addToSet: {
                   arrayValue: arry
@@ -56,7 +58,12 @@ async set(key, val) {
   if (!key || valToRemove === undefined) {
     return `Provide a key and value to remove.`;
   }
+try {
+  if(!dbData[key].arrayValue || !(dbData[key].arrayValue).includes(valToRemove)){
+ return false;   
+  };
 
+}catch{};
   try {
     await mdb?.test?.updateOne({ id: key }, {
       $pull: {
