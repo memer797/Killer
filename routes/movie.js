@@ -21,7 +21,7 @@ var name = req.params.name;
   var release_date = movie_info[0].release_date;
   var cast = movie_info[0].cast;
   var links = movie_info[0].links;
-  var h_type = movie_info[0].h_type;
+  var h_type = movie_info[0].h_type ?? "Not Provided";
   res.render("show_movie", {
     name: name,
     banner: {
