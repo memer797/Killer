@@ -62,7 +62,7 @@ try {
   if(!dbData[key].arrayValue || !(dbData[key].arrayValue).includes(valToRemove)){
  return false;   
   };
-
+dbData[key].arrayValue = (dbData[key].arrayValue).filter(i => i !== valToRemove);
 }catch{};
   try {
     await mdb?.test?.updateOne({ id: key }, {
