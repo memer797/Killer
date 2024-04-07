@@ -41,12 +41,14 @@ async set(key, val) {
           dbData[key].arrayValue = [];
           }
           if(!Array.isArray(dbData[key].arrayValue)){
+            console.log("not an array");
           return "err... Not An Array";
           }
           if(!(dbData[key].arrayValue).includes(arry)){
          dbData[key].arrayValue = arry;   
           }
-        }catch{}
+        }catch(i){console.log(i);}
+          console.log(dbData);
     await mdb?.test?.updateOne({ id: key }, {
                 $addToSet: {
                   arrayValue: arry
