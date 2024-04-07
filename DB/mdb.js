@@ -36,6 +36,15 @@ async set(key, val) {
   if(!key){
     return `provide a key`
   }
+         if(!dbData[key].arrayValue){
+          dbData[key].arrayValue = [];
+          }
+          if(!Array.isArray(dbData[key].arrayValue)){
+          return "err... Not An Array";
+          }
+          if(!(dbData[key].arrayValue).includes(arry)){
+         dbData[key].arrayValue = arry;   
+          }
     await mdb?.test?.updateOne({ id: key }, {
                 $addToSet: {
                   arrayValue: arry
