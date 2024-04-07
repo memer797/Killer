@@ -1,7 +1,11 @@
 const { Schema, model } = require("mongoose");
 
 let dbData = {};
-
+/* sample = {
+id: String,
+value: String,
+arrayValue: Array
+} */
 const scma = Schema({
   id: String,
   value: String,
