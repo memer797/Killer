@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
 
+let dbData = {};
+
 const scma = Schema({
   id: String,
   value: String,
