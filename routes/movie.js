@@ -21,6 +21,7 @@ var name = req.params.name;
   var release_date = movie_info[0].release_date;
   var cast = movie_info[0].cast;
   var links = movie_info[0].links;
+  var h_type = movie_info[0].h_type;
   res.render("show_movie", {
     name: name,
     banner: {
@@ -33,7 +34,8 @@ var name = req.params.name;
     language: language,
     description: description,
     downloads: links,
-    tags
+    tags,
+    h_type
   });
 });
 module.exports = router;
