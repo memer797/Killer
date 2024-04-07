@@ -37,6 +37,9 @@ async set(key, val) {
     return `provide a key`
   }
        try{
+         if(!dbData[key]){
+           dbData[key] = {};
+         }
          if(!dbData[key] || !dbData[key].arrayValue){
           dbData[key].arrayValue = [];
           }
