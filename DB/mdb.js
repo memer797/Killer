@@ -23,11 +23,8 @@ global.db = {
 
 async set(key, val) {
   if(!key || !val){ return `provide a ${key? "value" : "key" }`}
-  if(val == Array){
-return "Array";
-  }
 
-  dbData[key] = val;
+  dbData[key].value = val;
              await mdb?.test?.updateOne({ id: key }, {
                 $set: {
                   value: val
@@ -72,7 +69,7 @@ return "Array";
 
 if(r == null){  return null;  }else{ return r.value }
  */
-    var r = dbData[key];
+    var r = dbData[key].value;
   if(!r){  return null;  }else{ return r }  
    },
   
