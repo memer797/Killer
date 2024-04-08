@@ -48,7 +48,7 @@ async set(key, val) {
           return "err... Not An Array";
           }
           if(!(dbData[key].arrayValue).includes(arry)){
-         dbData[key].arrayValue = arry;   
+         (dbData[key].arrayValue).push(arry);   
           }
         }catch(i){console.log(i);}
           console.log(dbData);
