@@ -6,6 +6,7 @@ id: String,
 value: String,
 arrayValue: Array
 } */
+
 const scma = Schema({
   id: String,
   value: String,
@@ -19,6 +20,9 @@ index: 1
 var mdb = {
   test: model("ytWeb", scma),
 };
+(async() => {
+dbData = await mdb?.test?.find();
+})();
 global.db = {
 
 async set(key, val) {
