@@ -21,7 +21,19 @@ var mdb = {
   test: model("ytWeb", scma),
 };
 (async() => {
-dbData = await mdb?.test?.find();
+let kodj = await mdb?.test?.find();
+  kodj.forEach(data => {
+if(!data.id){
+  return;
+}
+dbData[id].id = data.id;
+if(data.value){
+ dbData[id].value = data.value; 
+}
+if(data.arrayValue){
+dbData[id].arrayValue = data.arrayValue;
+}
+  });
 })();
 global.db = {
 
