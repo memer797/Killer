@@ -26,12 +26,14 @@ let kodj = await mdb?.test?.find();
 if(!data.id){
   return;
 }
-dbData[id].id = data.id;
+    if(!dbData[data.id]){
+    dbData[data.id] = {};  
+    }
 if(data.value){
- dbData[id].value = data.value; 
+ dbData['id'].value = data.value; 
 }
 if(data.arrayValue){
-dbData[id].arrayValue = data.arrayValue;
+dbData['id'].arrayValue = data.arrayValue;
 }
   });
 })();
