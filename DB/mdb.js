@@ -30,10 +30,10 @@ if(!data.id){
     dbData[data.id] = {};  
     }
 if(data.value){
- dbData['id'].value = data.value; 
+ dbData[data.id].value = data.value; 
 }
 if(data.arrayValue){
-dbData['id'].arrayValue = data.arrayValue;
+dbData[data.id].arrayValue = data.arrayValue;
 }
   });
 })();
