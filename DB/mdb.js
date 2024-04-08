@@ -98,10 +98,15 @@ if(r == null){  return null;  }else{ return r.value }
   if(!key){
     return `provide a key`
   }
-  //   var r = await mdb?.test?.findOne({ id: key })
-var r = dbData[key];
-    
-if(!r){  return [];  }else{ return r.arrayValue }
+  //   var r = await mdb?.test?.findOne({ id: 
+    if(!dbData[key]){
+     return []; 
+    }
+    if(!dbData[key].arrayValue){
+    return [];
+    }
+  var r = dbData[key].arrayValue;  
+if(!r){  return [];  }else{ return r }
   },
 
  /*   async editArray(key, track, toset) {
