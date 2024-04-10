@@ -413,6 +413,15 @@ data.data.language.forEach(lang => {
   }
 });
 
+//removing previous categorys
+var catToRemove_ = document.querySelector("#edit_category");
+var catToRemove_ = catToRemove_.options;
+for(let i=0; i<catToRemove_.length; i++){
+if(catToRemove_[i].selected){
+catToRemove_[i].selected = false;
+}
+}
+
 //adding categories 
 var catInpEdited = document.querySelector("#edit_category");
 data.data.category.forEach(cat => {
