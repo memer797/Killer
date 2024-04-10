@@ -349,6 +349,7 @@ document.getElementById('edit-tagContainer').innerHTML = "";
 Edttags = [];
 var taggToSett = data.data.tags.join(", ");
 document.getElementById('edit_tags').value = taggToSett;
+document.getElementById('edit_tags').dispatchEvent(new Event('input'));
 }catch{}
 
 //adding download Links
