@@ -404,6 +404,15 @@ additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
 
     });
 
+//removing previous language
+var langToRemove_ = document.querySelector("#edit_language");
+var langToRemove_ = langToRemove_.options;
+for(let i=0; i<langToRemove_.length; i++){
+if(langToRemove_[i].selected){
+langToRemove_[i].selected = false;
+}
+}
+
 //adding language 
 var langInpEdited = document.querySelector("#edit_language");
 data.data.language.forEach(lang => {
