@@ -1,4 +1,12 @@
-
+<% try {
+if(isAdmin === false){ %>
+<script>
+setInterval(() => {
+console.log("not an admin");
+}, 1000);
+</script>
+<% }
+}catch{} %>
 <style>
 header {
       background-color: #252525;
