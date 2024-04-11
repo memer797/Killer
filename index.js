@@ -133,7 +133,7 @@ var udf = data.filter(j => j.name === g);
       tmdtal.push({name: udf[0].name, img: udf[0].img }); 
     }
   });
-  res.render('index', { data: result, trend: tmdtal });
+  res.render('index', { data: result, trend: tmdtal, isAdmin: res.locals.isAdmin });
 });
   
 app.get("/suggest", async(req, res) => {
