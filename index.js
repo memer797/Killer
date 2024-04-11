@@ -57,6 +57,14 @@ var ip = req.ip;
     }
     }
     }
+    var usrAdmnCokk = req.cookies.admin_key;
+    let isUserAdmin = false;
+    if(!usrAdmnCokk || usrAdmnCokk !== process.env.admin_login_cookie){
+      isUserAdmin = false;
+    }else{
+      isUserAdmin = true;
+    }
+    res.locals.isAdmin = isUserAdmin;
   next();
 });
 var apiRoute = require("./routes/api");
