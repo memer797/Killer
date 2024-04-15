@@ -1,17 +1,19 @@
+<% try {
+if(isAdmin === false){ %>
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="57718" async data-cfasync="false"></script>
+<% }
+}catch{} %>
 <style>
 header {
       background-color: #252525;
-      /*padding-right: 10px;
-      padding-left: 10px;*/
+      padding-right: 10px;
+      padding-left: 10px;
       padding-top: 5px;
       padding-bottom: 2px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      width: 100%;
-      position: fixed;
-      z-index: 999;
 }
     header img {
       width: 100px;
@@ -161,7 +163,8 @@ header {
   }
 }
   }
-          </style>
+</style>
+<div id="kbt" style="width: 100%; position: fixed; z-index: 999; padding-bottom: 5px; margin-bottom: 0px !important;">
 <header>
     <div class="logo-container">
       <div class="logo">
@@ -190,7 +193,7 @@ header {
     <span style="padding: 6px; font-sixe: 13px;" onclick="performSearch()">&#128269;</span>
   </div>
 <div style="background-color: #252525; width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
- 
+  </div>
     <script>
 const menuIcon = document.querySelector('.menu-icon');
   const nav = document.querySelector('nav');
