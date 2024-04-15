@@ -6,7 +6,7 @@ router.get("/download/:name", async(req, res) => {
   }
 var name = req.params.name;
   if(name.includes(".html")){
-var name = name.replace(".html");
+var name = name.replace(".html", "");
   }
   var movie_info = await db.getArray("info.movie");
   var movie_info = movie_info.filter(i => (((i.name).toLowerCase()).replace(/ /g, "-")) === (name.toLowerCase()).replace(/ /g, "-"));
