@@ -43,7 +43,7 @@ router.get("/download/:name.html", async(req, res) => {
   if(!req.params.name || req.params.name.trim() === ""){
    return res.send(`4** error, name parameter is required to fetch the movie example:: /movie/download/jawan`);
   }
-var name = req.params.name;
+var name = (req.params.name).replace(".html", '');
   var movie_info = await db.getArray("info.movie");
   var movie_info = movie_info.filter(i => (((i.name).toLowerCase()).replace(/ /g, "-")) === (name.toLowerCase()).replace(/ /g, "-"));
   if(!movie_info || movie_info.length < 1){
