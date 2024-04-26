@@ -8,6 +8,7 @@ router.get('/generate/download/:name', async(req, res) => {
    succcess: false,
    msg: `name is not provided, try to refresh your page`
    });
+  }
 
 var name = req.params.name;
   var movie_info = await db.getArray("info.movie");
@@ -23,7 +24,6 @@ var name = req.params.name;
     res.json({
       links: links
     });
-  }
 });
 
 // movie download link page
