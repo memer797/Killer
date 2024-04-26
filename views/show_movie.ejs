@@ -146,13 +146,6 @@ button {
   <!--- <p><a href="download-link-480p">Download 480p</a></p>
    <p><a href="download-link-720p">Download 720p</a></p>
    <p><a href="download-link-1080p">Download 1080p</a></p>--->
-
-    <% if(!downloads || downloads.length === 0){ %>
-<p> No Download Links Provided</p>
-   <% } %>
-    <% downloads.forEach(data => { %>
-  <p><a href="<%= data.download %>">Download  <%= data.quality %> (<%= data.size %>) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>
-<% }); %>
   </div>
 
   <div class="tags">
@@ -184,10 +177,12 @@ button {
 document.querySelector("#generateLinkBtn").addEventListener("click", () => {
 document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> <br> <div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div>`;
 fetch("https://memer797.onrender.com/movie/generate/download/<%= name%>").then(r => r.json()).then(data => {
+setTimeout(() => {
 document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> `;
 data.links.forEach((detai) => {
 document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}">Download  ${detai.quality} ( ${detai.size} ) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>`
 });
+}, 1500);
 });
 });
 	function goToTag(tag) {
