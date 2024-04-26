@@ -14,7 +14,9 @@ function delay(milliseconds) {
     setTimeout(resolve, milliseconds);
   });
 };
-
+console.log("sleeping for 5 second");
+  await delay(5000);
+  console.log("Restarting...");
  const express = require("express"),
     bodyParser = require('body-parser'),
     path = require("path"),
