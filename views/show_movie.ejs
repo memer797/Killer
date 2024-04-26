@@ -185,7 +185,9 @@ document.querySelector("#generateLinkBtn").addEventListener("click", () => {
 document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> <br> <div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div>`;
 fetch("https://memer797.onrender.com/movie/generate/download/<%= name%>").then(r => r.json()).then(data => {
 document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> `;
-document.innerHTML += "Linksss";
+data.links.forEach((detai) => {
+document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}">Download  ${detai.quality} ( ${detai.size} ) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>`
+});
 });
 });
 	function goToTag(tag) {
