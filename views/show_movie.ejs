@@ -182,7 +182,7 @@ button {
 </div>
 <script>
 document.querySelector("#generateLinkBtn").addEventListener("click", () => {
-
+document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> <div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div>`;
 });
 	function goToTag(tag) {
 		window.location.href = `/tag/${tag}`;
