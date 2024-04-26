@@ -8,6 +8,21 @@ router.get('/generate/download/:name', async(req, res) => {
    succcess: false,
    msg: `name is not provided, try to refresh your page`
    });
+
+var name = req.params.name;
+  var movie_info = await db.getArray("info.movie");
+  var movie_info = movie_info.filter(i => (((i.name).toLowerCase()).replace(/ /g, "-")) === (name.toLowerCase()).replace(/ /g, "-"));
+  if(!movie_info || movie_info.length < 1){
+    return res.json({
+      success: false,
+      msg: `${name} movie not found`
+    });
+  }
+  // console.log(movie_info); //var links = movie_info[0].links;
+    var links = movie_info[0].links;
+    res.json({
+      links: links
+    });
   }
 });
 
