@@ -8,7 +8,7 @@ async function RunMainCode(){
  global.srarchTermRecord = [];
   var noViwCnt = ["/admin", "/ping"];
  var viw = new Map();
-require("./DB/mongo.connect.js");
+await require("./DB/mongo.connect.js");
 function delay(milliseconds) {
   return new Promise(resolve => {
     setTimeout(resolve, milliseconds);
