@@ -1,5 +1,17 @@
 const express = require("express");
 const router = express.Router();
+
+// generate download link route: get
+router.get('/generate/download/:name', async(req, res) => {
+  if(!req.params.name || req.params.name.trim() === ""){
+   return res.json({
+   succcess: false,
+   msg: `name is not provided, try to refresh your page`
+   });
+  }
+});
+
+// movie download link page
 router.get("/download/:name", async(req, res) => {
   if(!req.params.name || req.params.name.trim() === ""){
    return res.send(`4** error, name parameter is required to fetch the movie example:: /movie/download/jawan`);
