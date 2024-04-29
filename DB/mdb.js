@@ -81,9 +81,10 @@ async set(key, val) {
   if (!key || valToRemove === undefined) {
     return `Provide a key and value to remove.`;
   }
-try {
-  if(!dbData[key].arrayValue || !(dbData[key].arrayValue).includes(valToRemove)){
+try {  
+  console.log("pull req, to remove ↓");
 console.log(valToRemove);
+  if(!dbData[key].arrayValue || !(dbData[key].arrayValue).includes(valToRemove)){
     console.log('not found');
     return false;   
   };
