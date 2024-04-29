@@ -41,10 +41,10 @@ var query = req.body.q;
     msg: "query has been deleted"
   });
     try {
-    console.log(await db.pull("user.query", JSON.stringify({
-    sender: senderName,
-    query: query
-  })));
+      var qqtoremv = await db.getArray("user.query");
+      var qqtoremv = qqtoremv.filter(i => i.sender === "senderName" && i.query === query);
+      if(qqtoremv.length < 1) return;
+    console.log(await db.pull("user.query", qqtoremv[0]));
     }catch (i) { console.log(i); };
 });
 
