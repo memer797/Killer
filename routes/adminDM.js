@@ -25,6 +25,11 @@ var query = req.body.q;
 router.delete("/query", async(req, res) => {
 var senderName = req.body.name;
 var query = req.body.q;
+  console.log("query to delete ↓");
+  console.log({
+    sender: senderName,
+    query: query
+  });
   if(!senderName || !query){
     return res.json({
       success: false,
