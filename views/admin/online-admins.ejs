@@ -13,3 +13,14 @@ color: white;
 <div class='online-admins'>
 <h1 class='noadmins'>Now Online</h1>
 </div>
+
+<script>
+const mews = io("/ws/admin/me/online");
+mews.on("new.online", async(user) => {
+//online <!user>
+});
+mews.on("new.ofline", async(user) => {
+//ofline <!user>
+});
+
+</script>
