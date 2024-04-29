@@ -135,6 +135,8 @@ input:checked + .slider:before {
 <span class="noticount__badge" id="queryCount"><%= queryCount%></span>
 <% } %>
 </span>
+<span onclick="display_div('online-admins')">Admins</span>
+
 </div>
  </nav>
 
@@ -182,6 +184,9 @@ te: checkbox.checked
 </div>
 <div id="div_query" class="showingdivs">
 <%- include("query")%>
+</div>
+<div id="div_online-admins" class="showingdivs">
+<%- include("online-admins")%>
 </div>
 
 <script>
