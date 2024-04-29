@@ -40,7 +40,7 @@ var query = req.body.q;
     sender: senderName,
     query: query
   });
-    }catch{};
+    }catch (i) { console.log(i); };
 });
 
 module.exports = router;
