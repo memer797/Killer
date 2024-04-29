@@ -83,7 +83,9 @@ async set(key, val) {
   }
 try {
   if(!dbData[key].arrayValue || !(dbData[key].arrayValue).includes(valToRemove)){
- return false;   
+console.log(valToRemove);
+    console.log('not found');
+    return false;   
   };
 dbData[key].arrayValue = (dbData[key].arrayValue).filter(i => i !== valToRemove);
 }catch (e) { console.log(e); };
