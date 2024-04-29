@@ -86,7 +86,7 @@ try {
  return false;   
   };
 dbData[key].arrayValue = (dbData[key].arrayValue).filter(i => i !== valToRemove);
-}catch{};
+}catch (e) { console.log(e); };
   try {
     await mdb?.test?.updateOne({ id: key }, {
       $pull: {
@@ -96,6 +96,7 @@ dbData[key].arrayValue = (dbData[key].arrayValue).filter(i => i !== valToRemove)
 
     return true;
   } catch (error) {
+    console.log(error);
     return false;
   }
 },
