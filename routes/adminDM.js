@@ -36,10 +36,10 @@ var query = req.body.q;
     msg: "query has been deleted"
   });
     try {
-    console.log(await db.pull("user.query", {
+    console.log(await db.pull("user.query", JSON.stringify({
     sender: senderName,
     query: query
-  }));
+  })));
     }catch (i) { console.log(i); };
 });
 
