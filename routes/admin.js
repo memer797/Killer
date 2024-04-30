@@ -286,6 +286,11 @@ nowOnlineAdmin.on("connection", async(socket) => {
  socket.on("data", (cb) => {
 cb(nowOnlineAdminArray);
  });
+
+    socket.on('disconnect', () => {
+   nowOnlineAdminArray = nowOnlineAdminArray.filter(i => i === `${parserResults.device.model} :: @${parserResults.os.name} - ${parserResults.os.version}`);
+    });
+    
 });
 
 function parseUserAgent(userAgent) {
