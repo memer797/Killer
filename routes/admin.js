@@ -278,7 +278,8 @@ router.get("/db/dounload", async(req, res) => {
 
 nowOnlineAdmin.on("connection", async(socket) => {
       const userAgent = socket.request.headers['user-agent'];
-    const deviceInfo = parseUserAgent(userAgent);
+    let parser = new UAP(userAgent);
+    let parserResults = parser.getResult();
  nowOnlineAdminArray.push(`${deviceInfo.brand} :: deviceInfo.model`);  
  socket.on("data", (cb) => {
 cb(nowOnlineAdminArray);
