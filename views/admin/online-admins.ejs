@@ -11,10 +11,22 @@ color: white;
             width: 100%;
             min-height: 100%;">
 <h1 class='noadmins'>Now Online</h1>
+<div id="nowadon">
+
+</div>
 </div>
 
 <script>
 const mews = io("/ws/admin/me/online");
+var sour = socument.getElementById("nowadon");
+mews.emit("data", async(data) => {
+if(data.length < 1){
+return sour.innerHTML = "!!!!!!";
+}
+data.forEach(kta => {
+sour.innerHTML += `${kta} <br> <hr>`;
+});
+});
 mews.on("new.online", async(user) => {
 //online <!user>
 });
