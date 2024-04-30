@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var nowOnlineAdmin = socketIo.of("/ws/admin/me/online");
+let nowOnlineAdminArray = [];
 function generateRandomString(length) {
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let randomString = '';
@@ -273,4 +275,12 @@ router.get("/db/dounload", async(req, res) => {
     res.json(all);
 });
 
+nowOnlineAdmin.on("connection", async(socket) => {
+    nowOnlineAdminArray.push(socket.id);
+ socket.on("data", (cb) => {
+cb(nowOnlineAdminArray);
+ });
+});
+
+    
 module.exports = router;
