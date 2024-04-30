@@ -18,7 +18,7 @@ color: white;
 
 <script>
 const mews = io("/ws/admin/me/online");
-var sour = socument.getElementById("nowadon");
+var sour = document.getElementById("nowadon");
 mews.emit("data", async(data) => {
 if(data.length < 1){
 return sour.innerHTML = "!!!!!!";
