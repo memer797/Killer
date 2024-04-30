@@ -282,13 +282,13 @@ nowOnlineAdmin.on("connection", async(socket) => {
     let parserResults = parser.getResult();
     //device.model, os.name, os.version
     console.log(parserResults);
- nowOnlineAdminArray.push(`${parserResults.device.model} :: @${parserResults.os.name} - ${parserResults.os.version}`);  
+ nowOnlineAdminArray.push(`${parserResults.device.model} :: @${parserResults.os.name} - ${parserResults.os.version} > ${browser.name}`);  
  socket.on("data", (cb) => {
 cb(nowOnlineAdminArray);
  });
 
     socket.on('disconnect', () => {
-   nowOnlineAdminArray = nowOnlineAdminArray.filter(i => i === `${parserResults.device.model} :: @${parserResults.os.name} - ${parserResults.os.version}`);
+   nowOnlineAdminArray = nowOnlineAdminArray.filter(i => i !== `${parserResults.device.model} :: @${parserResults.os.name} - ${parserResults.os.version} > ${browser.name}`);
     });
     
 });
