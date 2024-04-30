@@ -276,11 +276,78 @@ router.get("/db/dounload", async(req, res) => {
 });
 
 nowOnlineAdmin.on("connection", async(socket) => {
-    nowOnlineAdminArray.push(socket.id);
+      const userAgent = socket.request.headers['user-agent'];
+    const deviceInfo = parseUserAgent(userAgent);
+ nowOnlineAdminArray.push(`${deviceInfo.brand} :: deviceInfo.model`);  
  socket.on("data", (cb) => {
 cb(nowOnlineAdminArray);
  });
 });
 
+function parseUserAgent(userAgent) {
+    const result = {
+        model: 'Unknown',
+        brand: 'Unknown',
+        os: 'Unknown',
+        browser: 'Unknown'
+    };
+
+    // Example patterns to match common device brands and models
+    const brandMatches = {
+        'iPhone': 'Apple',
+        'iPad': 'Apple',
+        'Samsung': 'Samsung',
+        'Google': 'Google'
+        // Add more patterns as needed
+    };
+
+    const osMatches = {
+        'Windows': 'Windows',
+        'Macintosh': 'Mac',
+        'Linux': 'Linux',
+        'Android': 'Android',
+        'iOS': 'iOS'
+        // Add more patterns as needed
+    };
+
+    const browserMatches = {
+        'Chrome': 'Chrome',
+        'Safari': 'Safari',
+        'Firefox': 'Firefox',
+        'Edge': 'Edge',
+        'IE': 'Internet Explorer'
+        // Add more patterns as needed
+    };
+
+    // Match user-agent string against predefined patterns
+    for (const brand in brandMatches) {
+        if (userAgent.includes(brand)) {
+            result.brand = brandMatches[brand];
+            break;
+        }
+    }
+
+    for (const os in osMatches) {
+        if (userAgent.includes(os)) {
+            result.os = osMatches[os];
+            break;
+        }
+    }
+
+    for (const browser in browserMatches) {
+        if (userAgent.includes(browser)) {
+            result.browser = browserMatches[browser];
+            break;
+        }
+    }
+
+    // Extract model name (assuming it's after the brand in the user-agent string)
+    const brandIndex = userAgent.indexOf(result.brand);
+    if (brandIndex !== -1) {
+        result.model = userAgent.substring(brandIndex + result.brand.length).trim();
+    }
+
+    return result;
+}
     
 module.exports = router;
