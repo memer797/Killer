@@ -281,6 +281,7 @@ nowOnlineAdmin.on("connection", async(socket) => {
     let parser = new UAP(userAgent);
     let parserResults = parser.getResult();
     //device.model, os.name, os.version
+    console.log(parserResults);
  nowOnlineAdminArray.push(`${parserResults.device.model} :: @${parserResults.os.name} - ${parserResults.os.version}`);  
  socket.on("data", (cb) => {
 cb(nowOnlineAdminArray);
