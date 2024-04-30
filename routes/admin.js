@@ -267,7 +267,7 @@ res.render("admin/stat");
 //db view and dounload
 router.get("/db/view", async(req, res) => {
 var all = await db.all();
-    res.status(200).json(all, { spaces: 2 });
+    res.status(200).json(all);
 });
 router.get("/db/dounload", async(req, res) => {
     res.setHeader('Content-disposition', 'attachment; filename=data.json');
