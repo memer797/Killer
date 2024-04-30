@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var UAP = require("./ua-parser.js");
 var nowOnlineAdmin = socketIo.of("/ws/admin/me/online");
 let nowOnlineAdminArray = [];
 function generateRandomString(length) {
