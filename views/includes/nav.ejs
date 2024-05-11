@@ -4,175 +4,267 @@ if(isAdmin === false){ %>
 <% }
 }catch{} %>
 <style>
-header {
-      background-color: #252525;
-      padding-right: 10px;
-      padding-left: 10px;
-      padding-top: 5px;
-      padding-bottom: 2px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-    header img {
-      width: 100px;
-      height: auto;
-    }
-.logo-container {
-      display: flex;
-      align-items: center;
-    }
-    .logo {
-      width: 40px;
-      height: 40px; 
-      margin-right: 10px; 
-    }
-    .logo img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-    }
-        .menu-icon {
-      font-size: 24px; 
-      cursor: pointer;
-      color: #fff; 
-      transition: color 0.3s ease; 
-    }
-    .menu-icon:hover {
-      color: #e50914; 
-    }
-    nav {
-      display: none;
-      background-color: #141414;
-      padding: 10px;
-      text-align: center; /* Align text to the center */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 60px;
-      right: 10px;
-      border-radius: 5px;
-      z-index: 1000;
-    }
-    nav a {
-      text-decoration: none;
-      color: #fff; /* Set your navigation text color */
-      display: block;
-      padding: 8px;
-      transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transition for hover effect */
-    }
-    nav a:hover {
-      background-color: #333; 
-      color: #e50914; /* Red color on hover */
-    }
+  header {
+    background-color: #252525;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
 
-.search-container {
-  background-color: #252525;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Added to center horizontally */
-  width: 100%;
-  height: 65px;
-}
+  header img {
+    width: 100px;
+    height: auto;
+  }
 
-    .search-input {
-  padding: 12px;
-  font-size: 16px;
-  border: 0.5px solid gray; /* Remove the border property */
-  background-color: #555; /* Dark background color for the input */
-  color: #fff;
-  border-radius: 25px;
-  outline: none;
-  transition: box-shadow 0.3s ease; /* Add smooth transition for box-shadow */
-  box-shadow: 0 0 10px 0px transparent; /* Initial transparent box-shadow */
-  margin-left: 10px;
-  flex: 1;
-}
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
 
-.search-input:focus {
-  box-shadow: 0 0 10px 0px #e50914; /* Red box-shadow on focus */
-}
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
 
-    .search-icon {
-      font-size: 20px;
-      color: #4285f4;
-      margin-left: 10px; /* Adjusted margin to place it on the right */
-      margin-right: 10px;
-      cursor: pointer;
-    }
+  .logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
 
-    .login-container {
-      text-align: right;
-    }
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
 
-    .login-button {
-      background-color: #e50914;
-      color: #fff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+  .menu-icon:hover {
+    color: #e50914;
+  }
+
+  nav {
+    display: none;
+    background-color: #141414;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  nav a:hover {
+    background-color: #333;
+    color: #e50914;
+  }
+
+  .search-container {
+    background-color: #252525;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 65px;
+  }
+
+  .search-input {
+    padding: 12px;
+    font-size: 16px;
+    border: 0.5px solid gray;
+    background-color: #555;
+    color: #fff;
+    border-radius: 25px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 10px 0px transparent;
+    margin-left: 10px;
+    flex: 1;
+  }
+
+  .search-input:focus {
+    box-shadow: 0 0 10px 0px #e50914;
+  }
+
+  .search-icon {
+    font-size: 20px;
+    color: #4285f4;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .login-container {
+    text-align: right;
+  }
+
+  .login-button {
+    background-color: #e50914;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
   .loading {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-}
-.obj {
-  width: 6px;
-  height: 0px;
-  margin: 0 3px;
-  border-radius: 10px;
-  animation: loading 1.4s infinite;
-}
-.obj:nth-child(2){
-  animation-delay: 0.15s;
-}
-.obj:nth-child(3){
-  animation-delay: 0.3s;
-}
-.obj:nth-child(4){
-  animation-delay: 0.45s;
-}
-.obj:nth-child(5){
-  animation-delay: 0.6s;
-}
-.obj:nth-child(6){
-  animation-delay: 0.75s;
-}
-.obj:nth-child(7){
-  animation-delay: 0.9s;
-}
-.obj:nth-child(8){
-  animation-delay: 1.05s;
-}
-@keyframes loading {
-  0% {
-    height: 0;
-    background-color: #ff0080;  /*pink*/
-  }
-  50% {
     height: 50px;
-        background-color: #02f006; /*green*/
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
   }
-  100% {
-    height: 0;
-        background-color: cyan;  /*cyan*/
+
+  .obj {
+    width: 6px;
+    height: 0px;
+    margin: 0 3px;
+    border-radius: 10px;
+    animation: loading 1.4s infinite;
   }
-}
+
+  .obj:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .obj:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .obj:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+
+  .obj:nth-child(5) {
+    animation-delay: 0.6s;
+  }
+
+  .obj:nth-child(6) {
+    animation-delay: 0.75s;
+  }
+
+  .obj:nth-child(7) {
+    animation-delay: 0.9s;
+  }
+
+  .obj:nth-child(8) {
+    animation-delay: 1.05s;
+  }
+
+  @keyframes loading {
+    0% {
+      height: 0;
+      background-color: #ff0080;
+    }
+
+    50% {
+      height: 50px;
+      background-color: #02f006;
+    }
+
+    100% {
+      height: 0;
+      background-color: cyan;
+    }
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: #252525;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #141414;
+    min-width: 160px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 1000;
+    animation: slideDown 0.3s ease;
+  }
+
+  .dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10px;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #333;
+    color: #e50914;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #333;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
+
 <div id="kbt" style="width: 100%; position: fixed; z-index: 999; padding-bottom: 5px; margin-bottom: 0px !important;">
-<header>
+  <header>
     <div class="logo-container">
       <div class="logo">
         <img src="/android-chrome-512x512.png" alt="Your Logo">
       </div>
       <div class="logo-text">memer797</div>
     </div>
-    
+
+    <div class="dropdown" id="dropdownMenu">
+      <button class="dropbtn" onclick="toggleDropdown()">All ▼</button>
+      <div class="dropdown-content">
+        <a href="#" onclick="selectOption('All')">All</a>
+        <a href="#" onclick="selectOption('Movies')">Movies</a>
+        <a href="#" onclick="selectOption('Web Series')">Web Series</a>
+        <a href="#" onclick="selectOption('Anime')">Anime</a>
+      </div>
+    </div>
+
     <div class="menu-icon">&#9776;</div>
   </header>
 
@@ -184,120 +276,142 @@ header {
     <a href="/about-us">👨🏻‍🏫 • About Us</a>
     <a href="/privacy-policy">🔏 • Privacy Policy</a>
     <a onclick="submitFeedback()">🤙🏻 • Feedback</a>
- <!---   <a href="#">Trending</a>
-    <a href="#">LOGIN</a>--->
   </nav>
 
   <div class="search-container">
     <input onkeydown="searchOnEnter(event)" type="search" class="search-input" id="searchInput" onfocus="sop()" placeholder="Search...">
-    <span style="padding: 6px; font-sixe: 13px;" onclick="performSearch()">&#128269;</span>
+    <span style="padding: 6px; font-size: 13px;" onclick="performSearch()">&#128269;</span>
   </div>
-<div style="background-color: #252525; width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
-  </div>
-    <script>
-const menuIcon = document.querySelector('.menu-icon');
+  <div style="background-color: #252525; width: 99%; margin: 0 auto; height: auto; max-height: 160px; border: gold 1px solid; border-radius: 8px; margin-top: 4px; display: none; color: white; overflow-y: auto;" id="sugsug"></div>
+</div>
+
+<script>
+  const menuIcon = document.querySelector('.menu-icon');
   const nav = document.querySelector('nav');
-document.addEventListener('click', function(event) {
+  const dropdown = document.getElementById('dropdownMenu');
+
+  document.addEventListener('click', function(event) {
     var userInput = document.getElementById('searchInput');
     var myDiva = document.querySelector("#sugsug a");
-if (event.target !== userInput && event.target !== myDiva) {
-        nop();
-    }
-});
-function sop(){
-if(document.querySelector("#sugsug").innerHTML !== ""){
-document.querySelector("#sugsug").style.display = "block";
-}}
-function nop(){
-document.querySelector("#sugsug").style.display = "none";
-}
-  menuIcon.addEventListener('click', function () {
-    if (nav.style.display === 'block') {
-      nav.style.display = 'none';
-      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
-    } else {
-      nav.style.display = 'block';
-      menuIcon.innerHTML = '&#10006;'; 
+    if (event.target !== userInput && event.target !== myDiva) {
+      nop();
     }
   });
 
-  // Add event listener to close the menu when clicking outside of it
-  document.addEventListener('click', function (event) {
+  function sop() {
+    if (document.querySelector("#sugsug").innerHTML !== "") {
+      document.querySelector("#sugsug").style.display = "block";
+    }
+  }
+
+  function nop() {
+    document.querySelector("#sugsug").style.display = "none";
+  }
+
+  menuIcon.addEventListener('click', function() {
+    if (nav.style.display === 'block') {
+      nav.style.display = 'none';
+      menuIcon.innerHTML = '&#9776;';
+    } else {
+      nav.style.display = 'block';
+      menuIcon.innerHTML = '&#10006;';
+    }
+  });
+
+  document.addEventListener('click', function(event) {
     const isClickInsideMenu = nav.contains(event.target);
     const isClickOnMenuIcon = menuIcon.contains(event.target);
 
     if (!isClickInsideMenu && !isClickOnMenuIcon) {
       nav.style.display = 'none';
-      menuIcon.innerHTML = '&#9776;'; /* Set the menu icon to three horizontal lines */
+      menuIcon.innerHTML = '&#9776;';
     }
   });
-    document.getElementById('searchInput').addEventListener('focus', function() {
-      this.placeholder = '';
-    });
 
-    document.getElementById('searchInput').addEventListener('blur', function() {
-      this.placeholder = 'Search...';
-    });
-function searchOnEnter(event) {
+  document.getElementById('searchInput').addEventListener('focus', function() {
+    this.placeholder = '';
+  });
+
+  document.getElementById('searchInput').addEventListener('blur', function() {
+    this.placeholder = 'Search...';
+  });
+
+  function searchOnEnter(event) {
     if (event.key === "Enter") {
-     performSearch();
-}
-  }
-    function performSearch() {
-      var searchTerm = document.getElementById('searchInput').value;
-      console.log('Search term:', searchTerm);
-if(!searchTerm || searchTerm.trim() === "") return;
-
-window.location.href=`https://memer797.onrender.com/search/${searchTerm}`
+      performSearch();
     }
+  }
 
-var searchQ = document.getElementById("searchInput");
-var sugDiv = document.querySelector("#sugsug");
-let searchTimeout;
-searchQ.addEventListener("input", async() => {
-clearTimeout(searchTimeout);
-searchTimeout = setTimeout(getSuggestion,200);
-});
-function getSuggestion() {
-if(searchQ.value.trim() === ""){
-sugDiv.style.display = "none";
-return; 
-};
-sugDiv.style.display="block";
-sugDiv.innerHTML = `<div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div>`;
-console.log(searchQ.value);
-fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.json()).then(ardata => {
-sugDiv.innerHTML = "";
-sugDiv.style.display = "block";
-ardata.forEach(ss => {
-sugDiv.innerHTML += `<strong><a href="https://memer797.onrender.com/movie/download/${(ss.name).replace(/ /g, '-')}" style="display: block; color: white; margin-bottom: 3px; padding: 3px; margin-left: 10px; -webkit-tap-highlight-color: transparent; text-decoration: none;">${ss.name}</a></strong>`;
-});
-});
-};
-function searchClicked(){
-document.querySelector('#searchInput').focus();
-document.querySelector('nav').style.display='none';
-document.querySelector('.menu-icon').innerHTML = '&#9776;';     
+  function performSearch() {
+    var searchTerm = document.getElementById('searchInput').value;
+    console.log('Search term:', searchTerm);
+    if (!searchTerm || searchTerm.trim() === "") return;
+
+    window.location.href = `https://memer797.onrender.com/search/${searchTerm}`
+  }
+
+  var searchQ = document.getElementById("searchInput");
+  var sugDiv = document.querySelector("#sugsug");
+  let searchTimeout;
+  searchQ.addEventListener("input", async() => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(getSuggestion, 200);
+  });
+
+  function getSuggestion() {
+    if (searchQ.value.trim() === "") {
+      sugDiv.style.display = "none";
+      return;
+    };
+    sugDiv.style.display = "block";
+    sugDiv.innerHTML = `<div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div>`;
+    console.log(searchQ.value);
+    fetch(`https://memer797.onrender.com/suggest?q=${searchQ.value}`).then(h => h.json()).then(ardata => {
+      sugDiv.innerHTML = "";
+      sugDiv.style.display = "block";
+      ardata.forEach(ss => {
+        sugDiv.innerHTML += `<strong><a href="https://memer797.onrender.com/movie/download/${(ss.name).replace(/ /g, '-')}" style="display: block; color: white; margin-bottom: 3px; padding: 3px; margin-left: 10px; -webkit-tap-highlight-color: transparent; text-decoration: none;">${ss.name}</a></strong>`;
+      });
+    });
+  };
+
+  function searchClicked() {
+    document.querySelector('#searchInput').focus();
+    document.querySelector('nav').style.display = 'none';
+    document.querySelector('.menu-icon').innerHTML = '&#9776;';
+  }
+
+  function submitFeedback() {
+    var q = prompt("Tell Your Query / report / feedback");
+    var name = prompt("Enter your name");
+    if (!q || !name) {
+      return;
+    }
+    var data = {
+      name: name,
+      q: q
+    };
+
+    fetch('/dm/admin/query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .catch(error => {
+        console.error('There was a problem while submitting your query');
+      });
+  }
+
+  function toggleDropdown() {
+    dropdown.classList.toggle('clicked');
+  }
+
+  function selectOption(option) {
+    const dropbtn = document.querySelector('.dropbtn');
+    dropbtn.innerHTML = `${option} ▼`;
+    dropdown.classList.remove('clicked'); // Close the dropdown
 }
-function submitFeedback(){
-var q = prompt("Tell Your Query / report / feedback");
-var name = prompt("Enter your name");
-if(!q || !name){ return; }
-var data = {
-  name: name,
-  q: q
-};
 
-fetch('/dm/admin/query', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-})
-.catch(error => {
-  console.error('There was a problem while submitting your query');
-});
-
-}
-  </script>
+</script>
