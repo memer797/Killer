@@ -6,8 +6,63 @@
 <%- include("./panel-movie-edit")%>
   <div id="cardsContainer"></div>
 
-<input type="text" id="searchInput" placeholder="Search movies...">
-<button onclick="searchMovies()">Search</button>
+<style>
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    z-index: 1;
+    display: none;
+}
+
+#suggestions div {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#suggestions div:hover {
+    background-color: #f1f1f1;
+}
+
+</style>
+
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search movies...">
+    <button onclick="searchMovies()">Search</button>
+    <div id="suggestions"></div>
+</div>
+
 
 
   <script>
@@ -18,6 +73,8 @@
     filter = input.value.toUpperCase();
     cardContainer = document.getElementById("cardsContainer");
     cards = cardContainer.getElementsByClassName("card-container");
+    const suggestionsDiv = document.getElementById("suggestions");
+    suggestionsDiv.innerHTML = "";
     for (i = 0; i < cards.length; i++) {
         h4 = cards[i].querySelector(".text-container h4");
         p = cards[i].querySelector(".text-container .pd");
@@ -26,9 +83,25 @@
             cards[i].style.display = "";
         } else {
             cards[i].style.display = "none";
+            // Add matching movie names to suggestions
+            const suggestion = document.createElement("div");
+            suggestion.textContent = txtValue;
+            suggestion.onclick = function() {
+                input.value = this.textContent;
+                suggestionsDiv.innerHTML = "";
+                searchMovies();
+            };
+            suggestionsDiv.appendChild(suggestion);
         }
     }
+    // Display suggestions if any
+    if (filter.length > 0 && suggestionsDiv.children.length > 0) {
+        suggestionsDiv.style.display = "block";
+    } else {
+        suggestionsDiv.style.display = "none";
+    }
 }
+
 
   
     let activeOptionsMenu = null;
