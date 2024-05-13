@@ -182,7 +182,7 @@ res.render("category list");
 app.get("/see-all", async(req,res) => {
 var dballmov = await db.getArray("info.movie");
   res.render("see-all", {
-    list: dballmov
+    list: dballmov.reverse()
   });
 });
   //catrgory see all router
