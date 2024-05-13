@@ -6,7 +6,31 @@
 <%- include("./panel-movie-edit")%>
   <div id="cardsContainer"></div>
 
+<input type="text" id="searchInput" placeholder="Search movies...">
+<button onclick="searchMovies()">Search</button>
+
+
   <script>
+  	
+  function searchMovies() {
+    var input, filter, cards, cardContainer, h4, p, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    cardContainer = document.getElementById("cardsContainer");
+    cards = cardContainer.getElementsByClassName("card-container");
+    for (i = 0; i < cards.length; i++) {
+        h4 = cards[i].querySelector(".text-container h4");
+        p = cards[i].querySelector(".text-container .pd");
+        txtValue = h4.textContent || h4.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1 || p.textContent.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+  
     let activeOptionsMenu = null;
     let ttags = [];
 function truncateString(str, maxLength) {
@@ -198,6 +222,7 @@ addCard({
 
 });
 }).catch();
+
+
+
   </script>
-
-
