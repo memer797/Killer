@@ -200,6 +200,18 @@ var data = await db.getArray("info.movie");
 });
 
 
+app.get("/anime", async(req, res) => {
+res.send("<h1> Anime Page Soon </h1>");
+});
+
+app.get("/web-series", async(req, res) => {
+res.send("<h1> web series Page Soon </h1>");
+});
+
+app.get("/movies", async(req, res) => {
+res.send("<h1> Movies Page Soon </h1>");
+});
+
 //💩 hagna start
   //post methods
   var reqsec = new Map();  //set(key, value), get(key), has(key), delete(delete)
