@@ -181,9 +181,10 @@ res.render("category list");
   //see all router
 app.get("/see-all", async(req,res) => {
 var dballmov = await db.getArray("info.movie");
-  var dballmov = dballmov.reverse();
+  var allmoviessw = [...dballmov];
+  var allmoviesl = allmoviessw.reverse();
   res.render("see-all", {
-    list: dballmov
+    list: allmoviesl
   });
 });
   //catrgory see all router
