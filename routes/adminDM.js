@@ -2,9 +2,11 @@ var express = require("express");
 var router = express.Router();
 var wsAdminDm = socketIo.of("/ws/dm/admin");
 
-wsAdminDm.on("ping", (cb) => {
+wsAdminDm.on("connection", (soc) => {
+  soc.on("ping", (cb) => {
 cb(true);
   console.log("Ping req");
+});
 });
 
 router.post("/query", async(req, res) => {
