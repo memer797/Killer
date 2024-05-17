@@ -15,3 +15,17 @@ router.post("", async(req, res) => {
 
 
 module.exports = router;
+
+
+/**
+* support chat data structur
+* 
+*     aupportChats:[] = items:{} => name:String, title:String, createdAt:Number, id:String
+* 
+* 
+* chat messgae store data structure
+*  
+*     sChatMessage_{id}:[] => messages:{} => cnt:String, time:Number, by:String, admin:Boolean, bot:Boolean, reply
+* 
+* 
+**/
