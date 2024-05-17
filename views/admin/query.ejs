@@ -104,7 +104,7 @@ setInterval(() => {
 let beforePingTime = Date.now();
 querySocket.emit("ping", (i) => {
 let nowWsPing = Date.now() - beforePingTime;
-
+document.querySelector("#wsPingCount").textContent = `${nowWsPing} ms`;
 });
 }, 10000);
 
