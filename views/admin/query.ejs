@@ -100,4 +100,12 @@ q: query
 
 };
 
+setInterval(() => {
+let beforePingTime = Date.now();
+querySocket.emit("ping", (i) => {
+let nowWsPing = Date.now() - beforePingTime;
+
+});
+}, 10000);
+
 </script>
