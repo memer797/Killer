@@ -4,6 +4,7 @@ var wsAdminDm = socketIo.of("/ws/dm/admin");
 
 wsAdminDm.on("ping", (cb) => {
 cb(true);
+  console.log("Ping req");
 });
 
 router.post("/query", async(req, res) => {
