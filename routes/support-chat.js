@@ -12,3 +12,6 @@ res.render(`support-chat`);
 router.post("", async(req, res) => {
  res.send({success: true, chat_id: "xyz"}); 
 });
+
+
+module.exports = router;
