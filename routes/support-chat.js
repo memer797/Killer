@@ -6,7 +6,7 @@ res.send("support chat page will show here");
 });
 
 router.get("/chat/:id", async(req, res) => {
-res.send(`opening chat id: ${req.params.id}`);
+res.render(`support-chat`);
 });
 
 router.post("", async(req, res) => {
