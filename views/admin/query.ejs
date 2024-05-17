@@ -100,12 +100,16 @@ q: query
 
 };
 
-setInterval(() => {
+function getWsPing__(){
 let beforePingTime = Date.now();
 querySocket.emit("ping", (i) => {
 let nowWsPing = Date.now() - beforePingTime;
 document.querySelector("#wsPingCount").textContent = `${nowWsPing} ms`;
 });
+}
+getWsPing__();
+setInterval(() => {
+getWsPing__();
 }, 10000);
 
 </script>
