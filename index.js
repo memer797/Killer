@@ -76,7 +76,8 @@ var siteMapsRouter = require("./routes/site-maps");
 var loginRoute = require('./routes/login');
 var adminDM = require("./routes/adminDM");
 var movieRoute = require("./routes/movie");
-global.webDisabled = false;
+var supportChat = require("./routes/support-chat");
+  global.webDisabled = false;
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
   app.use("/sitemap", siteMapsRouter);
@@ -84,6 +85,7 @@ global.webDisabled = false;
   app.use('/login', loginRoute);
   app.use('/dm/admin', adminDM);
   app.use('/movie', movieRoute);
+  app.use("/support", supportChat);
 app.use("*", async(req, res, next) => {
 if(global.webDisabled){
       if(req.originalUrl == '/login/admin'){ return next(); }else if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
