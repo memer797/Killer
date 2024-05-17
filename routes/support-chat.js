@@ -9,8 +9,12 @@ router.get("/chat/:id", async(req, res) => {
 res.render(`support-chat`);
 });
 
-router.post("", async(req, res) => {
- res.send({success: true, chat_id: "xyz"}); 
+router.post("/chat", async(req, res) => {
+  let { title, name } = req.body;
+  res.json({success: true, id: `somthing random unique id", msg: "Support Chat Created Successfully ✓ named ${title}`});
+});
+router.delete("/chat/:id", async(req, res) => {
+ res.json({success: true, msg: `${req.params.id} Chat Deleted ✓`}); 
 });
 
 
@@ -25,7 +29,7 @@ module.exports = router;
 * 
 * chat messgae store data structure
 *  
-*     sChatMessage_{id}:[] => messages:{} => cnt:String, time:Number, by:String, admin:Boolean, bot:Boolean, reply
+*     sChatMessage_{id}:[] => messages:{} => cnt:String, time:Number, by:String, admin:Boolean, bot:Boolean
 * 
 * 
 **/
