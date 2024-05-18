@@ -11,13 +11,19 @@ router.get("/", async(req, res) => {
     if(!dbDataChat){
       chat = {};
     }else{
-      chat = dbDataChat;
+      chat = dbDataChat; /*
+             {
+              "title": "Title",
+              "last_msg": "",
+              "show_indi": Boolean
+             }
+      */
     }
   }
 res.send("support chat page will show here");
 });
 
-router.get("/chat/:id", async(req, res) => {
+router.get("/chat", async(req, res) => {
   let userCok = req.cookie.guestSupportChat;
 res.render(`support-chat`);
 });
