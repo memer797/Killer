@@ -15,17 +15,29 @@ router.get("/", async(req, res) => {
              {
               "title": "Title",
               "last_msg": "",
-              "show_indi": Boolean
+              "show_indi": Boolean,
+              "status": :OPEN | CLOSED | SOLVED | PENDING:
              }
       */
     }
   }
-res.send("support chat page will show here");
+res.send("support chat page will show here", { chat });
 });
 
 router.get("/chat", async(req, res) => {
-  let userCok = req.cookie.guestSupportChat;
-res.render(`support-chat`);
+let userCok = req.cookie.guestSupportChat;
+  let chat = {};
+  if(!userCok){
+    chat = {};
+  }else{
+    let dbDataChat = await db.get(`$chat_${userCok}`);
+    if(!dbDataChat){
+      chat = {};
+    }else{
+      chat = dbDataChat;
+    }
+  }
+  res.render(`support-chat`, { chat });
 });
 
 router.post("/chat", async(req, res) => {
