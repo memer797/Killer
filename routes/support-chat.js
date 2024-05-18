@@ -21,7 +21,7 @@ router.get("/", async(req, res) => {
       */
     }
   }
-res.send("support chat page will show here", { chat });
+res.send(`support chat page will show here ${chat}`);
 });
 
 router.get("/chat", async(req, res) => {
