@@ -3,6 +3,10 @@ var router = express.Router();
 
 router.get("/", async(req, res) => {
   let userCok = req.cookie.guestSupportChat;
+  let chat = {};
+  if(!userCok){
+    chat = {}
+  }else if(await 
 res.send("support chat page will show here");
 });
 
