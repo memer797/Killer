@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get("/", async(req, res) => {
-  let userCok = req.cookie.guestSupportChat;
+  let userCok = req.cookies.guestSupportChat;
   let chat = {};
   if(!userCok){
     chat = {};
@@ -25,7 +25,7 @@ res.send("support chat page will show here", { chat });
 });
 
 router.get("/chat", async(req, res) => {
-  let userCok = req.cookie.guestSupportChat;
+  let userCok = req.cookies.guestSupportChat;
   let chatMsg = [];
   if(!userCok){
     chatMsg = [];
@@ -49,7 +49,7 @@ router.get("/chat", async(req, res) => {
 });
 
 router.post("/chat", async(req, res) => {
-  let userCok = req.cookie.guestSupportChat;
+  let userCok = req.cookies.guestSupportChat;
   let { title, name } = req.body;
   res.json({success: true, id: `somthing random unique id", msg: "Support Chat Created Successfully ✓ named ${title}`});
 });
