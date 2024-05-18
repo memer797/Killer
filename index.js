@@ -126,7 +126,7 @@ app.get("/", async (req, res) => {
     acc[category] = acc[category] || { category, items: [] };
     acc[category].items.push({ name, img });
     // Shuffle the items array and keep only the first 5 items
-    acc[category].items = shuffle(acc[category].items).slice(0, 5);
+    acc[category].items = shuffle(acc[category].items).slice(0, 10);
   });
   return acc;
 }, {}));
