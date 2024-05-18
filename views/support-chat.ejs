@@ -1,1 +1,109 @@
-<%= isAdmin%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Chat UI</title>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #252525;
+        padding: 20px;
+    }
+
+    .chat-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .message {
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    .sent .message-bubble {
+      /*  background-color: #4caf50;*/
+      background-color: rgba(0, 191, 29, 0.3);
+      box-shadow: inset 0px 0px 10px 0.5px rgb(0, 255, 0);
+      border: 0.5px solid gold;
+      border-bottom: 2px solid #00ff00; 
+        color: white;
+        float: right;
+    }
+
+    .received .message-bubble {
+        background-color: rgba(0, 255, 255, 0.2); /*#e0e0e0;*/
+        border: 0.5px solid gold;
+        border-bottom: 2px solid cyan;
+        box-shadow: inset 0px 0px 10px 0.5px cyan;
+        color: white;
+        float: left;
+    }
+        .bot .message-bubble {
+        background-color: rgba(255, 255, 0, 0.2); /*#e0e0e0;*/
+        border: 0.5px solid gold;
+        border-bottom: 2px solid gold;
+        box-shadow: inset 0px 0px 10px 0.5px rgb(255, 255, 0);
+        color: white;
+        float: left;
+    }
+
+    .message-bubble {
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 70%;
+        word-wrap: break-word;
+    }
+
+    .profile-pic {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-left: 4px;
+    }
+        .profile-you {
+        margin-right: 4px;
+        float: right;
+    }
+    
+    .admin-profile-name {
+    	        margin-left: 4px;
+    }
+</style>
+</head>
+<body>
+
+<div class="chat-container">
+	
+    <div class="message bot">
+        <img class="profile-pic" src="https://memer797.onrender.com/favicon.ico" alt="Profile Picture"><span class="admin-profile-name">BOT</span><br>
+        <div class="message-bubble">memer797 bot's message</div>
+    </div>
+    
+    <div class="message received">
+        <img class="profile-pic" src="https://tool-sphere.github.io/icons/favicon.ico" alt="Profile Picture"><span class="admin-profile-name">Sujoy</span><br>
+        <div class="message-bubble">admin's message</div>
+    </div>
+    <div class="message sent">
+    	<span class="profile-you">You</span> <br>
+        <div class="message-bubble">user's message</div>
+    </div>
+    <div class="message received">
+        <img class="profile-pic" src="https://tool-sphere.github.io/icons/favicon.ico" alt="Profile Picture"><span class="admin-profile-name">Sujoy</span><br>
+        <div class="message-bubble">admin's message</div>
+    </div>
+     <div class="message bot">
+        <img class="profile-pic" src="https://memer797.onrender.com/favicon.ico" alt="Profile Picture"><span class="admin-profile-name">BOT</span><br>
+        <div class="message-bubble">memer797 bot's message</div>
+    </div>
+</div>
+
+</body>
+</html>
