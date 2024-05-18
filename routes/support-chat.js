@@ -25,19 +25,27 @@ res.send("support chat page will show here", { chat });
 });
 
 router.get("/chat", async(req, res) => {
-let userCok = req.cookie.guestSupportChat;
-  let chat = {};
+  let userCok = req.cookie.guestSupportChat;
+  let chatMsg = [];
   if(!userCok){
-    chat = {};
+    chatMsg = [];
   }else{
-    let dbDataChat = await db.get(`$chat_${userCok}`);
-    if(!dbDataChat){
-      chat = {};
+    let dbDataChatMsg = await db.getArray(`$chat_hist_${userCok}`); 
+    if(!dbDataChatMsg || dbDataChatMsg.length === 0){
+      chatMsg = [];
     }else{
-      chat = dbDataChat;
-    }
+      chatMsg = dbDataChatMsg; /*
+                {
+                  "cnt": String,
+                  "admin": Boolean,
+                  "bot": Boolean,
+                  "time": Number,
+                  "name": String
+                }
+      */
+    }   
   }
-  res.render(`support-chat`, { chat });
+  res.render(`support-chat`, { chatMsg });
 });
 
 router.post("/chat", async(req, res) => {
