@@ -5,8 +5,15 @@ router.get("/", async(req, res) => {
   let userCok = req.cookie.guestSupportChat;
   let chat = {};
   if(!userCok){
-    chat = {}
-  }else if(await 
+    chat = {};
+  }else{
+    let dbDataChat = await db.get(`$chat_${userCok}`);
+    if(!dbDataChat){
+      chat = {};
+    }else{
+      chat = dbDataChat;
+    }
+  }
 res.send("support chat page will show here");
 });
 
