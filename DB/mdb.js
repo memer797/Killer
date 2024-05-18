@@ -9,7 +9,9 @@ arrayValue: Array
 
 const scma = Schema({
   id: String,
-  value: String,
+  value: {
+    type: Schema.Types.Mixed, // Allows any type, including JSON
+  },
 arrayValue: {
  type: Schema.Types.Mixed,
 unique: true,
