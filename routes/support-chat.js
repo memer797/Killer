@@ -5,6 +5,14 @@ router.get("/", async(req, res) => {
 res.send("support chat page will show here");
 });
 
+router.get(/chat/create', async(req, res) => {
+  res.json({});
+});
+
+router.get("/chat/confirm/:id", async(req, res) => {
+  res.json({});
+});
+
 router.get("/chat/:id", async(req, res) => {
 res.render(`support-chat`);
 });
