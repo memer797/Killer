@@ -248,7 +248,7 @@ res.render("admin/panel", {
     uniqueMagaViews,
     totalMagaViews,
     srarchTermRecord: global.srarchTermRecord,
-    uptime: Date.now() - global.server.startTime,
+    uptime: Date.now() - global.serverInfo.startTime,
     totalMovCount: ttlMov.length,
     totalTrendCount: ttlTrendMov.length,
     isInMaintainance: global.webDisabled,
