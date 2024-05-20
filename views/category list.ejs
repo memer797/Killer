@@ -109,7 +109,14 @@ height: auto;
 function getRandomColor() {
             const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
             return colors[Math.floor(Math.random() * colors.length)];
-        } %>
+        }
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+%>
 <%- include('./includes/nav')%>
 <div class="taremaka">
 <div class="header">
@@ -122,7 +129,7 @@ function getRandomColor() {
 
 <div class="container">
     <div id="movies-container">
-<% list.forEach(data => { %>
+<% shuffleArray(list).forEach(data => { %>
 <div class="movie">
 <a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>"><img style="border-radius: 4px;" src="<%= data.img%>" alt="<%= data.name%> movie from <% category%> category"></a>
 <div class="movie-details">
