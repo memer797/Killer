@@ -1,4 +1,4 @@
-module.export = server => {
+module.exports = server => {
 const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ server });
