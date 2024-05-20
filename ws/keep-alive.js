@@ -1,7 +1,7 @@
 module.exports = server => {
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ server, path: '/pwa' });
 
 wss.on('connection', (ws) => {
     console.log('New client connected');
