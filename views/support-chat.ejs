@@ -6,22 +6,12 @@
 <title>memer797 Support Chat</title>
 <link rel="stylesheet" type="text/css" href="/global.css"/>
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        color: white;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #252525;
-    }
 
     .chat-container {
-        max-width: 600px;
+        max-width: 80%;
         margin: 0 auto;
         padding: 15px;
+        overflow: scroll;
     }
 
     .message {
@@ -77,6 +67,14 @@
     .admin-profile-name {
     	        margin-left: 4px;
     }
+.messageInp {
+width: 80%;
+height: 60px;
+border-radius: 12px;
+border: 1px solid gray;
+background-color: transparent;
+color: white;
+}
 </style>
 </head>
 <body>
@@ -106,6 +104,7 @@
         <div class="message-bubble">memer797 bot's message</div>
     </div>
 </div>
+	<input type="text" class="messageInp" />
 </div>
 </body>
 </html>
