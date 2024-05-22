@@ -26,8 +26,7 @@ console.log("sleeping for 5 second");
     io = require('socket.io')(server);
   global.socketIo = io;
   const searchAlgo__ = require("./search algorithm .js");
-require("./ws/keep-alive.js")(server);
- app
+  app
     .use(cookieParser("putaMexican_WtfItsASong", {
       maxAge: 900000 * 4 * 24 * 5,
       secure: true,
