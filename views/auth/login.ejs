@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	* {
+		-webkit-tap-highlight-color: transparent;
+		}
+::placeholder { color: white;opacity: 1;}
+::-ms-input-placeholder { color: white;}
+body {font-family: Arial, Helvetica, sans-serif; background-color: #292929; color: white;}
+
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid cyan;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: white;
+  outline: none;
+box-shadow: 
+        inset 0 0 20px rgba(12, 273, 203, 0.5), 
+        inset 0 0 20px rgba(12, 273, 203, 0.2),
+         0 0 20px rgba(12, 273, 203, 0.5), 
+         0 0 20px rgba(12, 273, 203, 0.2);
+         font-size: 20px;
+}
+
+button {
+  background-color: #0cedcb;
+  color: black;
+
+  height: 40px;
+  cursor: pointer;
+  width: 90%;
+  display: block;
+  margin: 16px auto;
+  border: 1px solid #0cedcb;
+  border-radius: 4px;
+  font-size: 34px;
+  text-align: center;
+  align-items: center;
+}
+
+button:hover {
+	border-radius: 30px;
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+  border: 0.5px solid black;
+  background-color: transparent;
+  box-shadow: 0 0 20px rgba(12, 273, 203, 0.5), 
+         0 0 20px rgba(12, 273, 203, 0.8);
+}
+
+.container {
+  padding: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.container-bottom {
+  padding: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.container-bottom a {
+color: cyan;	
+	}
+
+span.psw {
+  text-align: center;
+  padding-top: 5px;
+}
+span.new{
+   text-align: center;
+ padding-top: 5px;
+}
+
+.modal-content {
+  border-radius: 8px;
+  margin: 0 auto;
+  border: 1px solid #888;
+  width: 80%; 
+  margin-top: 30px;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+</style>
+<link rel="stylesheet" href=".././my_toast_dark.css">
+</head>
+<body>
+<h1 style="text-align: center; margin: 20px auto; display: block;">Prize Pizza User Login</h1>
+  
+  <form class="modal-content animate" id="myForm" style="   border: 1px solid rgb(10, 190, 240); overflow: hidden; background-color: transparent; box-shadow: 
+        inset 0 0 20px rgba(12, 273, 203, 0.5), 
+        inset 0 0 70px rgba(12, 273, 203, 0.2),'
+         0 0 20px rgba(12, 273, 203, 0.5), 
+         0 0 20px rgba(12, 273, 203, 0.2);">
+    <div class="imgcontainer">
+
+      <img src="https://prize-pizza.onrender.com/android-chrome-192x192.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username: </b></label>
+      <input type="email" placeholder="Enter Username" name="uname" required />
+
+      <label for="psw"><b>Password: </b></label>
+      <input minlength="4" type="password" placeholder="Enter Password" name="psw" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}" title="Password must contain at least one uppercase letter, one lowercase letter, and one digit, and be at least 6 characters long" required>
+        
+      <button type="submit" class="lgnBtn">Login</button>
+    </div>
+
+    <div class="container-bottom" style="background-color:transparent; height: 30px;">
+
+      <span class="psw">Forgot <a href="#">password?</a></span>
+            <span class="new"> <a href="#">Create New Account</a></span>
+    </div>
+</div>
+<script>
+	document.getElementById("myForm").onsubmit = function(e) {
+e.preventDefault();
+};
+function validate() {
+showToast("Error Occurred Try Again", "danger", 5000);	
+	}
+	
+</script>
+
+<script src=".././my toast.js"></script>
+
+</body>
+</html>
