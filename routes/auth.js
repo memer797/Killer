@@ -5,7 +5,7 @@ router.get("*", async(req, res, next)=> {
   next();
 });
 
-router.get("/", aaync(req, res) => {
+router.get("/", async(req, res) => {
   res.send("/route for login-signup");
 });
 
