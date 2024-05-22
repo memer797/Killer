@@ -14,7 +14,7 @@ router.get("/login", async(req, res) => {
 });
 
 router.get("/signup", async(req, res) => {
-  res.send("Signup Page hobek");
+  res.send("auth/signup");
 });
 
 router.get("*", (req, res) => {
