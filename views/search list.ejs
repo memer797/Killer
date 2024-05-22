@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/global.css"/>
-<%- include('./includes/fav icon')%>
-<style>
-                .header {
+    <link rel="stylesheet" type="text/css" href="/global.css"/>
+    <%- include('./includes/fav icon')%>
+    <style>
+        .header {
             background-color: #000; /* Darker header background color */
             color: #fff;
             padding: 10px;
             margin-top: -10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .back-link {
@@ -18,6 +21,40 @@
             color: #fff;
             font-size: 20px;
             margin-right: 10px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .request-container {
+            text-align: center;
+        }
+
+        .request-button {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px; /* Reduced font size */
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            padding: 6px 12px; /* Reduced padding */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-button:hover {
+            background: linear-gradient(45deg, #f06595, #ff6b6b);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-text {
+            color: #fff;
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: center;
         }
 
         .container {
@@ -33,10 +70,7 @@
         .movie {
             display: flex;
             margin: 10px -10px;
-            padding-left: 3px;
-            padding-right: 10px;
-            padding-top: 3px;
-            padding-bottom: 3px;
+            padding: 3px 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #555; /* Darker movie background color */
@@ -45,29 +79,27 @@
 
         .movie img {
             max-width: 146.6664px;
-             max-height: 83.7422px;
-height: 83.7422px;
-width: auto;
-          /*  height: auto;*/
+            max-height: 83.7422px;
+            height: 83.7422px;
+            width: auto;
             margin-right: 10px;
-        border-radius: 4px;
-/*object-fit: cover;*/
+            border-radius: 4px;
         }
-.movie a {
-padding: 0;
-height: 83.7422px;
-}
+
+        .movie a {
+            padding: 0;
+            height: 83.7422px;
+        }
 
         .movie-details {
             text-align: left;
-height: auto;
         }
 
         .movie-name {
             margin-top: 2px;
             word-wrap: break-word;
             color: #999; /* Light gray color for the movie name */
-        height: 10px;
+            height: 10px;
         }
 
         .movie-name a {
@@ -75,7 +107,8 @@ height: auto;
             font-weight: bold;
             color: #3498db; /* Accent color for links */
         }
-.movie-name a::before {
+
+        .movie-name a::before {
             content: attr(data-text);
             position: absolute;
             top: 0;
@@ -87,57 +120,206 @@ height: auto;
             -webkit-background-clip: text;
             background-clip: text;
         }
-.movie-category {
-    font-size: 12px;
-    margin-top: 5px;
-    color: #000080; /* Navy Blue text color for category */
-    background-color: #3498db; /* Accent color for category background */
-    padding: 2px 10px;
-    border-radius: 5px;
-    display: inline-block;
-    border: 1px solid #fff; /* White border around the text */
-}
 
+        .movie-category {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #000080; /* Navy Blue text color for category */
+            background-color: #3498db; /* Accent color for category background */
+            padding: 2px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            border: 1px solid #fff; /* White border around the text */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.3s;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #2980b9;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes slideIn {
+            from {transform: translateY(-20px);}
+            to {transform: translateY(0);}
+        }
     </style>
-    <title>Search result for <%= term%></title>
+    <title>Search result for <%= term %></title>
 </head>
 <body>
-<% 
+<%
 function getRandomColor() {
-            const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
-            return colors[Math.floor(Math.random() * colors.length)];
-        } %>
+    const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+%>
 <%- include('./includes/nav')%>
 <div class="taremaka">
-<div class="header">
-    <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
-<div style="text-align: left;
-            display: flex;
-            align-items: center; background-color: transparent;">
-    <h1 style="font-size : 25px;">Search result for <%= term%></h1>
-</div></div>
+    <div class="header">
+        <div class="header-content">
+            <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
+            <h1 style="font-size: 25px; margin: 0;">Search result for <%= term %></h1>
+        </div>
+        <div class="request-container">
+            <div class="request-button" onclick="openModal()">Request</div>
+            <div class="request-text">Request for any Movie, Web-series or Anime</div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="movies-container">
+            <% list.forEach(data => { %>
+            <div class="movie" onclick="window.location.href='https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, `-`)%>'">
+                <a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>">
+                    <img src="<%= data.img %>" alt="<%= data.name %> movie banner">
+                </a>
+                <div class="movie-details">
+                    <h3 class="movie-name">
+                        <a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>" style="color: <%= getRandomColor() %>">
+                            <%= data.name %>
+                        </a>
+                    </h3>
+                    <% data.category.forEach(cat => { %>
+                    <div class="movie-category" style="background-color: <%= getRandomColor() %>">
+                        <%= cat %>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
 
-<div class="container">
-    <div id="movies-container">
-<% list.forEach(data => { %>
-<div class="movie" onclick="window.location.href='https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, `-`)%>'">
-<a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>"><img style="border-radius: 4px;" src="<%= data.img%>" alt="<%= data.name%> movie banner"></a>
-<div class="movie-details">
-<h3 class="movie-name">
-<a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>" style="color: <%= getRandomColor()%>">
-<%= data.name%>
-</a>
-</h3>
-<% data.category.forEach(cat => { %>
-<div class="movie-category" style="background-color: <%= getRandomColor()%>">
-<%= cat%>
+<!-- The Modal -->
+<div id="requestModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Request What You Want :</h2>
+        <form id="requestForm">
+            <div class="form-group">
+                <label for="movieName">Name Likh Original Wala :</label>
+                <input type="text" id="movieName" name="movieName" required>
+            </div>
+            <div class="form-group">
+                <label for="feedback">Kuch Aur Details Likhde :</label>
+                <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
-<% }); %>
-</div></div>
-        <% }); %>
-</div>
-</div>
-</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("requestModal");
+
+    // Function to open the modal
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Close the modal when clicking outside of the modal content
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Handle form submission
+    document.getElementById("requestForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Get form data
+        var movieName = document.getElementById("movieName").value;
+        var feedback = document.getElementById("feedback").value;
+
+        // Perform your form submission logic here (e.g., send data to the server)
+
+        // Close the modal after submission
+        closeModal();
+
+        // Clear the form
+        document.getElementById("requestForm").reset();
+    });
+</script>
 <%- include('./includes/footer')%>
 </body>
 </html>
