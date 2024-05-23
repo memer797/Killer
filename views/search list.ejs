@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/global.css"/>
-    <%- include('./includes/fav icon')%>
+<%- include('./includes/fav icon')%>
     <style>
         .header {
             background-color: #000; /* Darker header background color */
             color: #fff;
             padding: 10px;
-            margin-top: -10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -29,15 +28,15 @@
         }
 
         .request-container {
-            text-align: center;
+            text-align: right;
         }
 
         .request-button {
             text-decoration: none;
             color: #fff;
-            font-size: 14px; /* Reduced font size */
+            font-size: 16px; /* Reduced font size */
             background: linear-gradient(45deg, #ff6b6b, #f06595);
-            padding: 6px 12px; /* Reduced padding */
+            padding: 8px 16px; /* Reduced padding */
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -52,7 +51,7 @@
 
         .request-text {
             color: #fff;
-            font-size: 12px;
+            font-size: 14px;
             margin-top: 5px;
             text-align: center;
         }
@@ -228,13 +227,13 @@ function getRandomColor() {
 <%- include('./includes/nav')%>
 <div class="taremaka">
     <div class="header">
+        <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
         <div class="header-content">
-            <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
             <h1 style="font-size: 25px; margin: 0;">Search result for <%= term %></h1>
         </div>
         <div class="request-container">
             <div class="request-button" onclick="openModal()">Request</div>
-            <div class="request-text">Request for any Movie, Web-series or Anime</div>
+            <div class="request-text">Request for any movie, web-series or anime</div>
         </div>
     </div>
     <div class="container">
@@ -266,14 +265,14 @@ function getRandomColor() {
 <div id="requestModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Request What You Want :</h2>
+        <h2>Request a Movie</h2>
         <form id="requestForm">
             <div class="form-group">
-                <label for="movieName">Name Likh Original Wala :</label>
+                <label for="movieName">Movie Name:</label>
                 <input type="text" id="movieName" name="movieName" required>
             </div>
             <div class="form-group">
-                <label for="feedback">Kuch Aur Details Likhde :</label>
+                <label for="feedback">Feedback:</label>
                 <textarea id="feedback" name="feedback" rows="4" required></textarea>
             </div>
             <div class="form-group">
@@ -320,6 +319,5 @@ function getRandomColor() {
         document.getElementById("requestForm").reset();
     });
 </script>
-<%- include('./includes/footer')%>
 </body>
 </html>
