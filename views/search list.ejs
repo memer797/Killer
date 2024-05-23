@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/global.css"/>
-<%- include('./includes/fav icon')%>
-    <style>
+   <%- include('./includes/fav icon')%>
+<style>
         .header {
             background-color: #000; /* Darker header background color */
             color: #fff;
             padding: 10px;
+            margin-top: -10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -25,10 +26,6 @@
         .header-content {
             display: flex;
             align-items: center;
-        }
-
-        .request-container {
-            text-align: right;
         }
 
         .request-button {
@@ -215,7 +212,7 @@
             to {transform: translateY(0);}
         }
     </style>
-    <title>Search result for <%= term %></title>
+    <title>Search result for <%= term%></title>
 </head>
 <body>
 <%
@@ -231,7 +228,7 @@ function getRandomColor() {
         <div class="header-content">
             <h1 style="font-size: 25px; margin: 0;">Search result for <%= term %></h1>
         </div>
-        <div class="request-container">
+        <div>
             <div class="request-button" onclick="openModal()">Request</div>
             <div class="request-text">Request for any movie, web-series or anime</div>
         </div>
