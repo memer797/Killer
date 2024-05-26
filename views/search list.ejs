@@ -305,11 +305,11 @@ function getRandomColor() {
                 <label for="feedback">Extra Details : *Don't include any sensetive information*</label>
                 <textarea placeholder="I want <%= term%> movie please upload this movie" id="feedback" name="feedback" rows="4" required></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group form-but-on">
                 <button type="submit">Submit</button>
             </div>
             <div class="submission-note">
-                Your requested content will be uploaded to the website within 24 hours.<br>Join our <a href="https://t.me/memer797massager">telegram group</a> for update
+                Your requested content will be uploaded to the website within 24 hours.<br>Join our <a href="https://t.me/memer797massager" style="color: gray;">telegram group</a> for update
             </div>
         </form>
     </div>
@@ -339,13 +339,13 @@ function getRandomColor() {
     // Handle form submission
     document.getElementById("requestForm").addEventListener("submit", function(event) {
         event.preventDefault();
-document.querySelector(".form-group").innerHTML = "<p style='color: #03fc24;'>Your request has been submitted successfully. Your requested content will be added to the website within 24 hours, so check back again later.</p>";
+document.querySelector(".form-but-on").innerHTML = "<p style='color: #03fc24;'>Your request has been submitted successfully. Your requested content will be added to the website within 24 hours, so check back again later.</p>";
 document.getElementById("movieName").disabled = true;
 document.getElementById("feedback").disabled = true;
 
         var movieName = document.getElementById("movieName").value;
         var feedback = document.getElementById("feedback").value;
-  document.getElementById("requestForm").reset();
+  //document.getElementById("requestForm").reset();
     });
 </script>
 <%- include('./includes/footer')%>
