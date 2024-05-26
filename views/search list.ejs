@@ -339,7 +339,7 @@ function getRandomColor() {
     // Handle form submission
     document.getElementById("requestForm").addEventListener("submit", function(event) {
         event.preventDefault();
-document.querySelector("form button").innerHTML = "<p style='color: green;'>Your request has been submitted successfully. Your requested content will be added to the website within 24 hours, so check back again later.</p>";
+document.querySelector(".form-group").innerHTML = "<p style='color: #03fc24;'>Your request has been submitted successfully. Your requested content will be added to the website within 24 hours, so check back again later.</p>";
 document.getElementById("movieName").disabled = true;
 document.getElementById("feedback").disabled = true;
 
