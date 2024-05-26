@@ -27,6 +27,7 @@
             justify-content: center;
             transition: color 0.3s ease;
             padding: 5px; /* Padding for better click area */
+            margin-left: -10px; /* Move back button slightly upwards */
         }
 
         .arrow-back-button:hover {
@@ -75,7 +76,7 @@
 
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 20px auto; /* Shift the layout content down */
             text-align: center;
             background-color: #444; /* Darker container background color */
             padding: 20px;
@@ -99,6 +100,7 @@
             height: 83.7422px;
             width: auto;
             margin-right: 10px;
+            margin-left: -7px; /* Move the movie image slightly to the left */
             border-radius: 4px;
         }
 
@@ -160,7 +162,7 @@
             overflow: auto;
             background-color: rgb(0,0,0);
             background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
+            padding-top: 110px;
             animation: fadeIn 0.3s;
         }
 
@@ -225,7 +227,7 @@
             background: linear-gradient(45deg, #f06595, #ff6b6b); /* Reverse gradient on hover */
         }
         
-                .submission-note {
+        .submission-note {
             margin-top: 10px;
             font-size: 14px;
             color: #ccc; /* Light gray text for the note */
@@ -306,7 +308,7 @@ function getRandomColor() {
             <div class="form-group">
                 <button type="submit">Submit</button>
             </div>
-                        <div class="submission-note">
+            <div class="submission-note">
                 Your requested content will be uploaded to the website within 24 hours.
             </div>
         </form>
