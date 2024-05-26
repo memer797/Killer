@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/global.css"/>
-   <%- include('./includes/fav icon')%>
-<style>
+<%- include('./includes/fav icon')%>
+    <style>
         .header {
             background-color: #000; /* Darker header background color */
             color: #fff;
@@ -16,11 +16,30 @@
             align-items: center;
         }
 
-        .back-link {
-            text-decoration: none;
-            color: #fff;
-            font-size: 20px;
-            margin-right: 10px;
+        .arrow-back-button {
+            font-size: 24px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            color: #fff; /* Color for the back button */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+            padding: 5px; /* Padding for better click area */
+        }
+
+        .arrow-back-button:hover {
+            color: #45a049;
+        }
+
+        .arrow-back-button svg {
+            transition: transform 0.3s ease, fill 0.3s ease;
+        }
+
+        .arrow-back-button:hover svg {
+            transform: rotate(-45deg);
+            fill: #45a049;
         }
 
         .header-content {
@@ -35,6 +54,7 @@
             background: linear-gradient(45deg, #ff6b6b, #f06595);
             padding: 8px 16px; /* Reduced padding */
             border-radius: 5px;
+            text-align: center;
             cursor: pointer;
             transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -140,14 +160,14 @@
             overflow: auto;
             background-color: rgb(0,0,0);
             background-color: rgba(0,0,0,0.4);
-            padding-top: 80px;
+            padding-top: 60px;
             animation: fadeIn 0.3s;
         }
 
         .modal-content {
-            background-color: #fefefe;
-            margin: 0 auto;
-            margin-top: 10%;
+            background-color: #333; /* Dark background for the modal */
+            color: #fff; /* White text */
+            margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
@@ -168,7 +188,7 @@
 
         .close:hover,
         .close:focus {
-            color: #000;
+            color: #fff;
         }
 
         .form-group {
@@ -183,15 +203,16 @@
 
         .form-group input,
         .form-group textarea {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-margin: 0 auto;
+            background-color: #444; /* Darker background for inputs */
+            color: #fff; /* White text for inputs */
         }
 
         .form-group button {
-            background-color: #3498db;
+            background: linear-gradient(45deg, #ff6b6b, #f06595); /* Gradient background */
             color: #fff;
             padding: 10px 15px;
             border: none;
@@ -201,7 +222,14 @@ margin: 0 auto;
         }
 
         .form-group button:hover {
-            background-color: #2980b9;
+            background: linear-gradient(45deg, #f06595, #ff6b6b); /* Reverse gradient on hover */
+        }
+        
+                .submission-note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ccc; /* Light gray text for the note */
+            text-align: center;
         }
 
         @keyframes fadeIn {
@@ -214,7 +242,6 @@ margin: 0 auto;
             to {transform: translateY(0);}
         }
     </style>
-    <title>Search result for <%= term%></title>
 </head>
 <body>
 <%
@@ -226,9 +253,13 @@ function getRandomColor() {
 <%- include('./includes/nav')%>
 <div class="taremaka">
     <div class="header">
-        <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
+        <button class="arrow-back-button" onclick="history.go(-1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
         <div class="header-content">
-            <h1 style="font-size: 25px; margin: 0;">Search result for <%= term %></h1>
+            <h1 style="font-size: 20px; margin: 0;">Search result for <%= term %></h1>
         </div>
         <div>
             <div class="request-button" onclick="openModal()">Request</div>
@@ -239,9 +270,7 @@ function getRandomColor() {
         <div id="movies-container">
             <% list.forEach(data => { %>
             <div class="movie" onclick="window.location.href='https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, `-`)%>'">
-                <a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>">
-                    <img src="<%= data.img %>" alt="<%= data.name %> movie banner">
-                </a>
+                <a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>"><img src="<%= data.img %>" alt="<%= data.name %> movie banner"></a>
                 <div class="movie-details">
                     <h3 class="movie-name">
                         <a href="https://memer797.onrender.com/movie/download/<%= (data.name).replace(/ /g, '-')%>" style="color: <%= getRandomColor() %>">
@@ -258,29 +287,32 @@ function getRandomColor() {
             <% }); %>
         </div>
     </div>
-
+</div>
 
 <!-- The Modal -->
 <div id="requestModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Request a Movie</h2>
+        <h2>Request any Movie, Web-Series, or Anime</h2>
         <form id="requestForm">
             <div class="form-group">
-                <label for="movieName">Movie Name:</label>
+                <label for="movieName">Name :</label>
                 <input type="text" id="movieName" name="movieName" required>
             </div>
             <div class="form-group">
-                <label for="feedback">Feedback:</label>
+                <label for="feedback">Extra Details :</label>
                 <textarea id="feedback" name="feedback" rows="4" required></textarea>
             </div>
             <div class="form-group">
                 <button type="submit">Submit</button>
             </div>
+                        <div class="submission-note">
+                Your requested content will be uploaded to the website within 24 hours.
+            </div>
         </form>
     </div>
 </div>
-            </div>
+
 <script>
     // Get the modal
     var modal = document.getElementById("requestModal");
@@ -317,6 +349,7 @@ function getRandomColor() {
         // Clear the form
         document.getElementById("requestForm").reset();
     });
-</script>
+</script><%- include('./includes/footer')%>
+
 </body>
 </html>
