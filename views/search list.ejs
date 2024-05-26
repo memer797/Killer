@@ -339,19 +339,12 @@ function getRandomColor() {
     // Handle form submission
     document.getElementById("requestForm").addEventListener("submit", function(event) {
         event.preventDefault();
-        // Get form data
         var movieName = document.getElementById("movieName").value;
         var feedback = document.getElementById("feedback").value;
-
-        // Perform your form submission logic here (e.g., send data to the server)
-
-        // Close the modal after submission
-        closeModal();
-
-        // Clear the form
-        document.getElementById("requestForm").reset();
+  document.getElementById("requestForm").reset();
     });
-</script><%- include('./includes/footer')%>
+</script>
+<%- include('./includes/footer')%>
 
 </body>
 </html>
