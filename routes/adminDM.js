@@ -12,6 +12,7 @@ cb(true);
 router.post("/query", async(req, res) => {
 var senderName = req.body.name;
 var query = req.body.q;
+var qType = req.body.type || "feedback"; //newReq, feedback
   if(!senderName || !query){
     return res.json({
       success: false,
@@ -25,7 +26,8 @@ var query = req.body.q;
   wsAdminDm.emit("new.query", { sender: senderName, query: query });
     await db.push("user.query", {
     sender: senderName,
-    query: query
+    query: query,
+    type: qType
   });
 });
 
