@@ -345,7 +345,16 @@ document.getElementById("feedback").disabled = true;
 
         var movieName = document.getElementById("movieName").value;
         var feedback = document.getElementById("feedback").value;
-  //document.getElementById("requestForm").reset();
+        fetch('/dm/admin/query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .catch(error => {
+          console.error('There was a problem while submitting your query');
+        });
     });
 </script>
 <%- include('./includes/footer')%>
