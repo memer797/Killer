@@ -335,10 +335,14 @@ function getRandomColor() {
             modal.style.display = "none";
         }
     }
-
+//Your request has been submitted successfully. Your requested content will be added to the website within 24 hours, so check back again later.
     // Handle form submission
     document.getElementById("requestForm").addEventListener("submit", function(event) {
         event.preventDefault();
+document.querySelector("form button").innerHTML = "<p style='color: green;'>Your request has been submitted successfully. Your requested content will be added to the website within 24 hours, so check back again later.</p>";
+document.getElementById("movieName").disabled = true;
+document.getElementById("feedback").disabled = true;
+
         var movieName = document.getElementById("movieName").value;
         var feedback = document.getElementById("feedback").value;
   document.getElementById("requestForm").reset();
