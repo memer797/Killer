@@ -300,12 +300,13 @@
             method: "POST"
         }).then(ggp => ggp.json()).then(dtta => {
             dtta.data.forEach((dosta) => {
-                const { name, description, category, img } = dosta;
+                const { name, description, category, img, contentType } = dosta;
                 addCard({
                     name,
                     description,
                     category_txt: category,
-                    img
+                    img,
+                    id: contentType
                 });
             });
         }).catch();
