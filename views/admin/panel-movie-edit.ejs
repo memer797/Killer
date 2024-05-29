@@ -11,9 +11,9 @@
 
 <label for="edit_contentType">Content Type:</label>
       <select id="edit_contentType">
-        <option value="Movie">Movie</option>
-        <option value="Web Series">Web Series</option>
-        <option value="Anime">Anime</option>
+        <option value="movie">Movie</option>
+        <option value="webseries">Web Series</option>
+        <option value="anime">Anime</option>
       </select>
 
      <label for="edit_h_type">TYPE:</label>
@@ -264,7 +264,7 @@ console.log(error);
 let finalData = {};
 finalData.lastName = lastNametoEdit;
 finalData.name = document.querySelector("#edit_name").value;
-finalData.cType = (document.querySelector("#edit_contentType").value).toLowerCase();
+finalData.cType = document.querySelector("#edit_contentType").value;
 finalData.h_type = document.querySelector("#edit_h_type").value || "Not Provided";
 finalData.imageUrl = document.querySelector("#edit_imageUrl").value;
 finalData.description = document.querySelector("#edit_description").value;
@@ -340,7 +340,7 @@ return;
 lastNametoEdit = data.data.name;
 document.querySelector("#myEditModal").style.display = "flex";
 document.querySelector("#edit_name").value = data.data.name;
-document.querySelector("#edit_contentType").value = (data.data.contentType ?? "movie").toCamelCase();
+document.querySelector("#edit_contentType").value = data.data.contentType ?? "movie";
 document.querySelector("#edit_imageUrl").value = data.data.img;
 document.querySelector("#edit_description").value = data.data.description;
 document.querySelector("#edit_duration").value = data.data.duration;
