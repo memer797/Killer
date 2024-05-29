@@ -204,7 +204,7 @@ function addCardFu() {
         addCard({
             name: finalData.name,
             description: finalData.description,
-            category_txt: (finalData.category),
+            category_txt: (finalData.category).push(finalData.contentType),
             id: "✅",
             img: finalData.imageUrl
         });
