@@ -204,8 +204,8 @@ function addCardFu() {
         addCard({
             name: finalData.name,
             description: finalData.description,
-            category_txt: (finalData.category).push(finalData.contentType),
-            id: "✅",
+            category_txt: finalData.category,
+            id: finalData.contentType,
             img: finalData.imageUrl
         });
         showToast("Movie Has Been Added", "success", 5000);
