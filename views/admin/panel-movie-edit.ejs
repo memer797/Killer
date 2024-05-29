@@ -174,7 +174,7 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 //edit card function
 var ecardsContainer = document.querySelector("#cardsContainer");
 function editCard(data){
-var { name, description, category_txt, img } = data;
+var { name, description, category_txt, img, id } = data;
 try {
     var cardContainer = nowEditing_.parentNode.parentNode;
 //console.log(">", cardContainer);
@@ -240,7 +240,7 @@ customText.style.position = 'absolute';
 customText.style.bottom = '5px';
 customText.style.left = '5px';
 customText.style.color = '#555';
-customText.textContent = 0000000000000000;
+customText.textContent = id;
 
 textContainer.appendChild(nameHeading);
 textContainer.appendChild(descriptionParagraph);
