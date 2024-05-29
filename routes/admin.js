@@ -84,6 +84,10 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var name = req.body.name;
+ let contentType = req.body.cType;
+    if(!contentType){
+        contentType = "movie";
+    }
  var category = req.body.category;
 if(!name || name.trim() === ""){ return res.json({success: false, msg: "name is required" }); };
 if(!category || category.length == 0){ return res.json({success: false, msg: "atlease one category is required!" });}
@@ -112,6 +116,7 @@ return res.json({
     }
  await db.push("info.movie", {
      name: name,
+     contentType,
      h_type: h_type,
      description: description,
      tags: tags,
