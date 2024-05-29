@@ -73,14 +73,14 @@
 </head>
 <body>
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search movies...">
+        <input type="text" id="searchInput" placeholder="Search movies..." oninput="searchMovies()">
         <button onclick="searchMovies()">Search</button>
-<!--         <div class="filter-links">
+        <div class="filter-links">
             <a href="#" onclick="filterCategory('All')">All</a>
             <a href="#" onclick="filterCategory('Movies')">Movies</a>
             <a href="#" onclick="filterCategory('Web series')">Web series</a>
             <a href="#" onclick="filterCategory('Anime')">Anime</a>
-        </div> -->
+        </div>
         <div id="suggestions"></div>
     </div>
 
@@ -91,46 +91,47 @@
     <div id="cardsContainer"></div>
 
     <script>
-        function searchMovies() {
-            var input, filter, cards, cardContainer, h4, p, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            cardContainer = document.getElementById("cardsContainer");
-            cards = cardContainer.getElementsByClassName("card-container");
-            const suggestionsDiv = document.getElementById("suggestions");
-            suggestionsDiv.innerHTML = "";
-
-            for (i = 0; i < cards.length; i++) {
-                h4 = cards[i].querySelector(".text-container h4");
-                p = cards[i].querySelector(".text-container .pd");
-                category = cards[i].querySelector(".text-container .category").textContent;
-                txtValue = h4.textContent || h4.innerText;
-
-                if ((txtValue.toUpperCase().indexOf(filter) > -1 || p.textContent.toUpperCase().indexOf(filter) > -1) && 
-                    (selectedCategory === "All" || category.includes(selectedCategory))) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                    const suggestion = document.createElement("div");
-                    suggestion.textContent = txtValue;
-                    suggestion.onclick = function() {
-                        input.value = this.textContent;
-                        suggestionsDiv.innerHTML = "";
-                        searchMovies();
-                    };
-                    suggestionsDiv.appendChild(suggestion);
-                }
-            }
-            if (filter.length > 0 && suggestionsDiv.children.length > 0) {
-                suggestionsDiv.style.display = "block";
-            } else {
-                suggestionsDiv.style.display = "none";
-            }
-        }
-
         let activeOptionsMenu = null;
         let ttags = [];
         let selectedCategory = 'All';
+
+        function searchMovies() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const cardContainer = document.getElementById("cardsContainer");
+            const cards = cardContainer.getElementsByClassName("card-container");
+            const suggestionsDiv = document.getElementById("suggestions");
+            suggestionsDiv.innerHTML = "";
+            let matchCount = 0;
+
+            for (let i = 0; i < cards.length; i++) {
+                const h4 = cards[i].querySelector(".text-container h4");
+                const p = cards[i].querySelector(".text-container .pd");
+                const category = cards[i].querySelector(".text-container .category").textContent;
+                const txtValue = h4.textContent || h4.innerText;
+                const description = p.textContent || p.innerText;
+
+                if ((txtValue.toUpperCase().indexOf(filter) > -1 || description.toUpperCase().indexOf(filter) > -1) &&
+                    (selectedCategory === "All" || category.includes(selectedCategory))) {
+                    cards[i].style.display = "";
+                    if (filter && txtValue.toUpperCase().indexOf(filter) > -1) {
+                        const suggestion = document.createElement("div");
+                        suggestion.textContent = txtValue;
+                        suggestion.onclick = function() {
+                            input.value = this.textContent;
+                            suggestionsDiv.innerHTML = "";
+                            searchMovies();
+                        };
+                        suggestionsDiv.appendChild(suggestion);
+                        matchCount++;
+                    }
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            suggestionsDiv.style.display = matchCount > 0 ? "block" : "none";
+        }
 
         function filterCategory(category) {
             selectedCategory = category;
@@ -146,29 +147,29 @@
         }
 
         function addCard(data) {
-            var { name, description, category_txt, img } = data;
-            var cardContainer = document.createElement('div');
+            const { name, description, category_txt, img } = data;
+            const cardContainer = document.createElement('div');
             cardContainer.classList.add('card-container');
 
-            var optionsButton = document.createElement('div');
+            const optionsButton = document.createElement('div');
             optionsButton.classList.add('options');
             optionsButton.textContent = '…';
             optionsButton.onclick = function(event) {
                 showOptionsMenu(event, cardContainer);
             };
 
-            var optionsMenu = document.createElement('div');
+            const optionsMenu = document.createElement('div');
             optionsMenu.classList.add('options-menu');
             optionsMenu.id = 'optionsMenu';
 
-            var editLink = document.createElement('a');
+            const editLink = document.createElement('a');
             editLink.href = '#';
             editLink.textContent = 'Edit';
             editLink.onclick = function() {
                 editMovie(name, this);
             };
 
-            var deleteLink = document.createElement('a');
+            const deleteLink = document.createElement('a');
             deleteLink.href = '#';
             deleteLink.classList.add('delete');
             deleteLink.textContent = 'Delete';
@@ -179,31 +180,31 @@
             optionsMenu.appendChild(editLink);
             optionsMenu.appendChild(deleteLink);
 
-            var imageContainer = document.createElement('div');
+            const imageContainer = document.createElement('div');
             imageContainer.classList.add('image-container');
 
-            var imageElement = document.createElement('img');
+            const imageElement = document.createElement('img');
             imageElement.src = img;
             imageElement.alt = 'Icon';
 
             imageContainer.appendChild(imageElement);
 
-            var textContainer = document.createElement('div');
+            const textContainer = document.createElement('div');
             textContainer.classList.add('text-container');
 
-            var nameHeading = document.createElement('div');
+            const nameHeading = document.createElement('div');
             nameHeading.style.width = '100%';
             nameHeading.innerHTML = `<h4>${name}</h4>`;
 
-            var descriptionParagraph = document.createElement('div');
+            const descriptionParagraph = document.createElement('div');
             descriptionParagraph.classList.add('pd');
             descriptionParagraph.textContent = description;
 
-            var category = document.createElement('div');
+            const category = document.createElement('div');
             category.classList.add('category');
-            category.textContent = `${truncateString(category_txt.join(", "), 18)}`;
+            category.textContent = truncateString(category_txt.join(", "), 18);
 
-            var customText = document.createElement('div');
+            const customText = document.createElement('div');
             customText.id = 'customText';
             customText.style.position = 'absolute';
             customText.style.bottom = '5px';
@@ -221,6 +222,7 @@
             cardContainer.appendChild(imageContainer);
             cardContainer.appendChild(textContainer);
 
+            const cardsContainer = document.getElementById('cardsContainer');
             cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
         }
 
@@ -250,7 +252,7 @@
         function confirmDeleteCard(name) {
             const isConfirmed = confirm('Are you sure you want to delete this card?');
             if (isConfirmed) {
-                var lastPrompt = prompt(`say YES to delete`);
+                const lastPrompt = prompt('Say YES to delete');
                 if (lastPrompt.trim().toLowerCase() !== "yes") {
                     return;
                 }
@@ -276,10 +278,10 @@
         });
 
         document.getElementById('tags').addEventListener("input", async() => {
-            var tagsContainer = document.getElementById('tagContainer');
-            var TInput = document.getElementById('tags');
+            const tagsContainer = document.getElementById('tagContainer');
+            const TInput = document.getElementById('tags');
             if (!TInput.value.includes(",")) return;
-            var tgs = TInput.value.split(",");
+            const tgs = TInput.value.split(",");
             if (!tgs || tgs.length < 1) {
                 return;
             }
@@ -298,14 +300,11 @@
             method: "POST"
         }).then(ggp => ggp.json()).then(dtta => {
             dtta.data.forEach((dosta) => {
-                var name = dosta.name;
-                var description = dosta.description;
-                var category_txt = dosta.category;
-                var img = dosta.img;
+                const { name, description, category, img } = dosta;
                 addCard({
                     name,
                     description,
-                    category_txt,
+                    category_txt: category,
                     img
                 });
             });
