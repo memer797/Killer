@@ -107,7 +107,7 @@
             for (let i = 0; i < cards.length; i++) {
                 const h4 = cards[i].querySelector(".text-container h4");
                 const p = cards[i].querySelector(".text-container .pd");
-                const contentCategory = cards[i].querySelector(".text-container .category").textContent;
+                const contentCategory = cards[i].querySelector("#customText").textContent;
                 const txtValue = h4.textContent || h4.innerText;
                 const description = p.textContent || p.innerText;
 
@@ -147,7 +147,7 @@
         }
 
         function addCard(data) {
-            const { name, description, category_txt, img } = data;
+            const { name, description, category_txt, img, id } = data;
             const cardContainer = document.createElement('div');
             cardContainer.classList.add('card-container');
 
@@ -210,7 +210,7 @@
             customText.style.bottom = '5px';
             customText.style.left = '5px';
             customText.style.color = '#555';
-            customText.textContent = "✅";
+            customText.textContent = id;
 
             textContainer.appendChild(nameHeading);
             textContainer.appendChild(descriptionParagraph);
