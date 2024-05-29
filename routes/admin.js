@@ -140,7 +140,7 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var name = req.body.name;
- let contentType = req.body.cType;
+  let contentType = req.body.contentType;
     if(!contentType){
         contentType = "movie";
     }
