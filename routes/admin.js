@@ -140,6 +140,10 @@ if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_c
  return res.json({success: false, msg: " err_authontication"});
 }
  var name = req.body.name;
+ let contentType = req.body.cType;
+    if(!contentType){
+        contentType = "movie";
+    }
 var lastName = req.body.lastName;
 var h_type = req.body.h_type ? req.body.h_type : "Not Provided";
  var category = req.body.category;
@@ -171,6 +175,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  await db.pull("info.movie", lastData);
  await db.push("info.movie", {
      name: name,
+     contentType,
      h_type: h_type,
      description: description,
      tags: tags,
