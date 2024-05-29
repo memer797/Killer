@@ -4,7 +4,7 @@
 <div id="myEditModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
       <button class="close-button" onclick="closeEditModal()">X</button>
-      <button class="clear-button" onclick="clearEditInp()">ðŸ—‘ï¸</button>
+      <button class="clear-button" onclick="clearEditInp()">🗑️</button>
       <h2>Edit Movie</h2>
       <label for="edit_name">Name:</label>
       <input type="text" id="edit_name" placeholder="Enter Name">
@@ -87,7 +87,7 @@
       <label for="edit_starCast">Star Cast:</label>
       <input id="edit_starCast" type="text" placeholder="Rahul, Sujoy" />
 	
-      <button onclick="addEditDounload()"><strong>âž•</strong></button>      <button onclick="removeEditDownload()"><strong>ðŸ“›</strong></button>
+      <button onclick="addEditDounload()"><strong>➕</strong></button>      <button onclick="removeEditDownload()"><strong>📛</strong></button>
   <div id="additionalEditInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
 <label for="edit_tags">Tags:</label>
@@ -163,7 +163,7 @@ function removeEditDownload() {
 function clearEditInp() {
 var i = confirm("ðŸ—‘ï¸ Are you sure to clear all inputs?");
 if(i){
-var ii = confirm("clearing all inputs... ðŸ—‘ï¸");
+var ii = confirm("clearing all inputs... 🗑️");
 if(ii){
 document.querySelectorAll("input[id^='edit_']").forEach(lak => lak.value = "");
 document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = "");
