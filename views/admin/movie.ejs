@@ -107,12 +107,12 @@
             for (let i = 0; i < cards.length; i++) {
                 const h4 = cards[i].querySelector(".text-container h4");
                 const p = cards[i].querySelector(".text-container .pd");
-                const category = cards[i].querySelector(".text-container .category").textContent;
+                const contentCategory = cards[i].querySelector(".text-container .category").textContent;
                 const txtValue = h4.textContent || h4.innerText;
                 const description = p.textContent || p.innerText;
 
                 if ((txtValue.toUpperCase().indexOf(filter) > -1 || description.toUpperCase().indexOf(filter) > -1) &&
-                    (selectedCategoryContentType === "All" || category.includes(selectedCategoryContentType))) {
+                    (selectedCategoryContentType === "All" || contentCategory.includes(selectedCategoryContentType))) {
                     cards[i].style.display = "";
                     if (filter && txtValue.toUpperCase().indexOf(filter) > -1) {
                         const suggestion = document.createElement("div");
