@@ -9,11 +9,18 @@
       <label for="edit_name">Name:</label>
       <input type="text" id="edit_name" placeholder="Enter Name">
 
-     <label for="edit_h_type">TYPE:</label>
+<label for="edit_contentType">Content Type:</label>
+      <select id="edit_contentType">
+        <option value="Movie">Movie</option>
+        <option value="Web Series">Web Series</option>
+        <option value="Anime">Anime</option>
+      </select>
+
+      <label for="edit_h_type">TYPE:</label>
       <select id="edit_h_type">
-<option value="HD">HD</option>
-<option value="HQ-CAM">HQ-CAM</option>
-       </select>
+        <option value="HD">HD</option>
+        <option value="HQ-CAM">HQ-CAM</option>
+      </select>
 
       <label for="edit_imageUrl">Image URL:</label>
       <input type="text" id="edit_imageUrl" placeholder="Enter Image URL">
@@ -23,104 +30,107 @@
 
       <label for="edit_category">Category:</label>
       <select id="edit_category" multiple>
-<option value="Action">Action</option>
-    <option value="Adventure">Adventure</option>
-    <option value="Animation">Animation</option>
-    <option value="Biography">Biography</option>
-    <option value="Comedy">Comedy</option>
-    <option value="Crime">Crime</option>
-    <option value="Documentary">Documentary</option>
-    <option value="Drama">Drama</option>
-    <option value="Family">Family</option>
-    <option value="Fantasy">Fantasy</option>
-    <option value="Historical">Historical</option>
-    <option value="Horror">Horror</option>
-    <option value="Musical">Musical</option>
-    <option value="Mystery">Mystery</option>
-    <option value="Romance">Romance</option>
-    <option value="Science-Fiction">Science Fiction (Sci-Fi)</option>
-    <option value="Superhero">Superhero</option>
-    <option value="Thriller">Thriller</option>
-    <option value="War">War</option>
-    <option value="Western">Western</option>
+        <option value="Action">Action</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Animation">Animation</option>
+        <option value="Biography">Biography</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Crime">Crime</option>
+        <option value="Documentary">Documentary</option>
+        <option value="Drama">Drama</option>
+        <option value="Family">Family</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Historical">Historical</option>
+        <option value="Horror">Horror</option>
+        <option value="Musical">Musical</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Romance">Romance</option>
+        <option value="Science-Fiction">Science Fiction (Sci-Fi)</option>
+        <option value="Superhero">Superhero</option>
+        <option value="Thriller">Thriller</option>
+        <option value="War">War</option>
+        <option value="Western">Western</option>
       </select>
 
-     <label for="edit_duration">Duration:</label>
-      <input id="edit_duration" type="test" placeholder="2.5 min"/>
-	
+      <label for="edit_duration">Duration:</label>
+      <input id="edit_duration" type="text" placeholder="2.5 min"/>
+    
       <label for="edit_release_date">Release Date:</label>
       <input id="edit_release_date" type="date" />
     
       <label for="edit_language">Language:</label>
       <select id="edit_language" multiple> 
-     <option value="Hindi">Hindi</option>
-     <option value="English">English</option>
-     <option value="Bengali">Bengali</option>
-     <option value="Assamese">Assamese</option>
-     <option value="Bodo">Bodo</option>
-     <option value="Dogri">Dogri</option>
-     <option value="Gujarati">Gujarati</option>
-     <option value="Konkani">Konkani</option>
-     <option value="Kannada">Kannada</option>
-     <option value="Kashmiri">Kashmiri</option>
-     <option value="Maithili">Maithili</option>
-     <option value="Malayalam">Malayalam</option>
-     <option value="Manipuri">Manipuri</option>
-     <option value="Marathi">Marathi</option>
-     <option value="Nepali">Nepali</option>
-     <option value="Oriya">Oriya</option>
-     <option value="Punjabi">Punjabi</option>
-     <option value="Tamil">Tamil</option>
-     <option value="Telugu">Telugu</option>
-     <option value="Santali">Santali</option>
-     <option value="Sindhi">Sindhi</option>
-     <option value="Urdu">Urdu</option>
+        <option value="Hindi">Hindi</option>
+        <option value="English">English</option>
+        <option value="Bengali">Bengali</option>
+        <option value="Assamese">Assamese</option>
+        <option value="Bodo">Bodo</option>
+        <option value="Dogri">Dogri</option>
+        <option value="Gujarati">Gujarati</option>
+        <option value="Konkani">Konkani</option>
+        <option value="Kannada">Kannada</option>
+        <option value="Kashmiri">Kashmiri</option>
+        <option value="Maithili">Maithili</option>
+        <option value="Malayalam">Malayalam</option>
+        <option value="Manipuri">Manipuri</option>
+        <option value="Marathi">Marathi</option>
+        <option value="Nepali">Nepali</option>
+        <option value="Oriya">Oriya</option>
+        <option value="Punjabi">Punjabi</option>
+        <option value="Tamil">Tamil</option>
+        <option value="Telugu">Telugu</option>
+        <option value="Santali">Santali</option>
+        <option value="Sindhi">Sindhi</option>
+        <option value="Urdu">Urdu</option>
       </select>
+
+     
 
       <label for="edit_starCast">Star Cast:</label>
       <input id="edit_starCast" type="text" placeholder="Rahul, Sujoy" />
-	
-      <button onclick="addEditDounload()"><strong>➕</strong></button>      <button onclick="removeEditDownload()"><strong>📛</strong></button>
-  <div id="additionalEditInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
+    
+      <button onclick="addEditDounload()"><strong>➕</strong></button>
+      <button onclick="removeEditDownload()"><strong>📛</strong></button>
+      <div id="additionalEditInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
-<label for="edit_tags">Tags:</label>
+      <label for="edit_tags">Tags:</label>
       <input type="text" id="edit_tags" placeholder="Enter Tags and write ,">
       <div class="tag-container" id="edit-tagContainer"></div>
 
       <button onclick="editSave()" class="add-button" style="margin-top: 15px;">Save</button>
     </div>
-  </div>
-
+</div>
 
 <script>
 let Edttags = [];
 let editDownloadCount = 0;
 let nowEditing_;
 let lastNametoEdit;
-    function addEditDounload() {
-editDownloadCount++;
-      const additionalEditInputs = document.getElementById('additionalEditInputs');
-additionalEditInputs.appendChild(document.createElement('br'));
-     var cedittext = document.createElement('span');
-cedittext.style = "margin: 0 auto; margin-top: 10px;";
-cedittext.innerHTML = `Link ${editDownloadCount}`;
-additionalEditInputs.appendChild(cedittext);
-	    
-      // Create input fields for download link, size, and quality  
-      const editDownloadLinkInput = document.createElement('input');
-      editDownloadLinkInput.type = 'text';
-      editDownloadLinkInput.id = `downLink_${editDownloadCount}`;
-      editDownloadLinkInput.placeholder = `Enter Download Link for link #${editDownloadCount}`;
-      additionalEditInputs.appendChild(editDownloadLinkInput);
 
-      const sizeEditInput = document.createElement('input');
-      sizeEditInput.type = 'text';
-      sizeEditInput.id = `size_${editDownloadCount}`;
-      sizeEditInput.placeholder = `Enter Size for link #${editDownloadCount}`;
-      additionalEditInputs.appendChild(sizeEditInput);
+function addEditDounload() {
+    editDownloadCount++;
+    const additionalEditInputs = document.getElementById('additionalEditInputs');
+    additionalEditInputs.appendChild(document.createElement('br'));
+    var cedittext = document.createElement('span');
+    cedittext.style = "margin: 0 auto; margin-top: 10px;";
+    cedittext.innerHTML = `Link ${editDownloadCount}`;
+    additionalEditInputs.appendChild(cedittext);
+    
+    // Create input fields for download link, size, and quality  
+    const editDownloadLinkInput = document.createElement('input');
+    editDownloadLinkInput.type = 'text';
+    editDownloadLinkInput.id = `downLink_${editDownloadCount}`;
+    editDownloadLinkInput.placeholder = `Enter Download Link for link #${editDownloadCount}`;
+    additionalEditInputs.appendChild(editDownloadLinkInput);
 
-      const qualityEditInput = document.createElement('select');
-      qualityEditInput.innerHTML = `
+    const sizeEditInput = document.createElement('input');
+    sizeEditInput.type = 'text';
+    sizeEditInput.id = `size_${editDownloadCount}`;
+    sizeEditInput.placeholder = `Enter Size for link #${editDownloadCount}`;
+    additionalEditInputs.appendChild(sizeEditInput);
+
+    const qualityEditInput = document.createElement('select');
+    qualityEditInput.innerHTML = `
         <option value="144p">144p</option>
         <option value="360p">360p</option>
         <option value="480p">480p</option>
@@ -128,347 +138,271 @@ additionalEditInputs.appendChild(cedittext);
         <option value="1080p">1080p</option>
         <option value="2k">2k</option>
         <option value="4k">4k</option>
-      `;
-      qualityEditInput.id = `qual_${editDownloadCount}`;
-      additionalEditInputs.appendChild(qualityEditInput);
-   
-      const noteEditInput = document.createElement('input');
-      noteEditInput.type = 'text';
-      noteEditInput.placeholder = `eg. parts (optional) for link #${editDownloadCount}`;
-      noteEditInput.id = `note_${editDownloadCount}`;
-      additionalEditInputs.appendChild(noteEditInput);
+    `;
+    qualityEditInput.id = `qual_${editDownloadCount}`;
+    additionalEditInputs.appendChild(qualityEditInput);
 
-additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
+    const noteEditInput = document.createElement('input');
+    noteEditInput.type = 'text';
+    noteEditInput.placeholder = `eg. parts (optional) for link #${editDownloadCount}`;
+    noteEditInput.id = `note_${editDownloadCount}`;
+    additionalEditInputs.appendChild(noteEditInput);
 
-    }
+    additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
+}
+
 function removeEditDownload() {
-      const additionalEditInputs = document.getElementById('additionalEditInputs');
-
-      // Remove the last set of inputs if there are more than one set
-      if (editDownloadCount > 0) {
+    const additionalEditInputs = document.getElementById('additionalEditInputs');
+    if (editDownloadCount > 0) {
         for (let i = 0; i < 6; i++) {
-          additionalEditInputs.removeChild(additionalEditInputs.lastChild);
+            additionalEditInputs.removeChild(additionalEditInputs.lastChild);
         }
         editDownloadCount--;
-      }
     }
+}
 
 function clearEditInp() {
-var i = confirm("🗑️ Are you sure to clear all inputs?");
-if(i){
-var ii = confirm("clearing all inputs... 🗑️");
-if(ii){
-document.querySelectorAll("input[id^='edit_']").forEach(lak => lak.value = "");
-document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = "");
-}
-}
+    var i = confirm("🗑️ Are you sure to clear all inputs?");
+    if(i){
+        var ii = confirm("clearing all inputs... 🗑️");
+        if(ii){
+            document.querySelectorAll("input[id^='edit_']").forEach(lak => lak.value = "");
+            document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = "");
+        }
+    }
 }
 
 //edit card function
 var ecardsContainer = document.querySelector("#cardsContainer");
 function editCard(data){
-var { name, description, category_txt, img } = data;
-try {
-    var cardContainer = nowEditing_.parentNode.parentNode;
-//console.log(">", cardContainer);
-cardContainer.innerHTML = "";
-cardContainer.classList.add('card-container');
+    var { name, description, category_txt, img } = data;
+    try {
+        var cardContainer = nowEditing_.parentNode.parentNode;
+        cardContainer.innerHTML = "";
+        cardContainer.classList.add('card-container');
 
-var optionsButton = document.createElement('div');
-optionsButton.classList.add('options');
-optionsButton.textContent = '…';
-optionsButton.onclick = function(event) {
-    showOptionsMenu(event, cardContainer);
-};
+        var optionsButton = document.createElement('div');
+        optionsButton.classList.add('options');
+        optionsButton.textContent = '…';
+        optionsButton.onclick = function(event) {
+            showOptionsMenu(event, cardContainer);
+        };
 
-var optionsMenu = document.createElement('div');
-optionsMenu.classList.add('options-menu');
-optionsMenu.id = 'optionsMenu';
+        var optionsMenu = document.createElement('div');
+        optionsMenu.classList.add('options-menu');
+        optionsMenu.id = 'optionsMenu';
 
-var editLink = document.createElement('a');
-editLink.href = '#';
-editLink.textContent = 'Edit';
-editLink.onclick = function() {
-    editMovie(name, this);
-};
+        var editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.onclick = function() {
+            openEditModal(cardContainer);
+        };
 
-var deleteLink = document.createElement('a');
-deleteLink.href = '#';
-deleteLink.classList.add('delete');
-deleteLink.textContent = 'Delete';
-deleteLink.onclick = function() {
-    confirmDeleteCard(name);
-};
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = function() {
+            confirmDeleteCard(cardContainer);
+        };
 
-optionsMenu.appendChild(editLink);
-optionsMenu.appendChild(deleteLink);
+        optionsMenu.appendChild(editButton);
+        optionsMenu.appendChild(deleteButton);
 
-var imageContainer = document.createElement('div');
-imageContainer.classList.add('image-container');
+        var categoryList = document.createElement('ul');
+        categoryList.classList.add('category');
+        category_txt.forEach(cat => {
+            var categoryItem = document.createElement('li');
+            categoryItem.textContent = cat;
+            categoryList.appendChild(categoryItem);
+        });
 
-var imageElement = document.createElement('img');
-imageElement.src = img;
-imageElement.alt = 'Icon';
+        var imageElement = document.createElement('img');
+        imageElement.classList.add('card-img');
+        imageElement.src = img;
 
-imageContainer.appendChild(imageElement);
+        var titleElement = document.createElement('h3');
+        titleElement.classList.add('card-title');
+        titleElement.textContent = name;
 
-var textContainer = document.createElement('div');
-textContainer.classList.add('text-container');
+        var descriptionElement = document.createElement('p');
+        descriptionElement.classList.add('card-description');
+        descriptionElement.textContent = description;
 
-var nameHeading = document.createElement('div');
-nameHeading.style.width = '100%';
-nameHeading.innerHTML = `<h4>${name}</h4>`;
+        cardContainer.appendChild(optionsButton);
+        cardContainer.appendChild(optionsMenu);
+        cardContainer.appendChild(categoryList);
+        cardContainer.appendChild(imageElement);
+        cardContainer.appendChild(titleElement);
+        cardContainer.appendChild(descriptionElement);
 
-var descriptionParagraph = document.createElement('div');
-descriptionParagraph.classList.add('pd');
-descriptionParagraph.textContent = description;
-
-var category = document.createElement('div');
-category.classList.add('category');
-category.textContent = `${truncateString(category_txt.join(", "), 18)}`;
-
-var customText = document.createElement('div');
-customText.id = 'customText';
-customText.style.position = 'absolute';
-customText.style.bottom = '5px';
-customText.style.left = '5px';
-customText.style.color = '#555';
-customText.textContent = "✅";
-
-textContainer.appendChild(nameHeading);
-textContainer.appendChild(descriptionParagraph);
-textContainer.appendChild(category);
-textContainer.appendChild(customText);
-
-cardContainer.appendChild(optionsButton);
-cardContainer.appendChild(optionsMenu);
-cardContainer.appendChild(imageContainer);
-cardContainer.appendChild(textContainer);
-
-//ecardsContainer.innerHTML = cardContainer;
-//cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
-  }catch(error){
-console.log(error);
-}
-};
-
-//save edit function
-    function editSave() {
-let finalData = {};
-finalData.lastName = lastNametoEdit;
-finalData.name = document.querySelector("#edit_name").value;
-finalData.h_type = document.querySelector("#edit_h_type").value || "Not Provided";
-finalData.imageUrl = document.querySelector("#edit_imageUrl").value;
-finalData.description = document.querySelector("#edit_description").value;
-finalData.category = Array.from(document.querySelectorAll('#edit_category option:checked')).map(option => option.value);
-finalData.duration = document.querySelector("#edit_duration").value;
-finalData.release_date = document.querySelector("#edit_release_date").value;
-finalData.language = Array.from(document.querySelectorAll('#edit_language option:checked')).map(option => option.value);
-finalData.cast = document.querySelector("#edit_starCast").value;
-finalData.tags = Edttags;
-finalData.links = [];
-for(i=1; i<editDownloadCount+1; i++){
-var ary = {};
-ary.download = document.querySelector(`#downLink_${i}`).value;
-ary.size = document.querySelector(`#size_${i}`).value;
-ary.note = document.querySelector(`#note_${i}`).value;
-ary.quality = document.querySelector(`#qual_${i}`).value;
-finalData.links.push(ary);
+        ecardsContainer.appendChild(cardContainer);
+    } catch (error) {
+        console.error('Error updating the card:', error);
+    }
 }
 
-fetch("/admin/data/edit/movie", {
-method: "POST",
-headers: {
-        "Content-Type": "application/json"
-    },
-body: JSON.stringify(finalData),
-
-}).then(d => d.json()).then(gotData => {
-lastNametoEdit = undefined;
-if(!gotData.success){
-showToast("smt wnt wrng", 'warning', 7000);
-return;
+//get val by id function
+function getValById(id) {
+    var element = document.getElementById(id);
+    if (element) {
+        return element.value;
+    }
+    return null;
 }
-showToast("Movie Edited Successfully", "success", 5000);
-}).catch();
 
-editCard({
-name: finalData.name,
-description: finalData.description,
-category_txt: finalData.category,
-img: finalData.imageUrl
-});
-      // Clear input fields and tags container
-      document.querySelector("#edit_tags").value = '';
-      document.querySelector("#edit-tagContainer").innerHTML = '';
-      closeEditModal(); // Close the modal after adding the card
+// function to get all the values of a select element with multiple selection
+function getSelectValues(selectElement) {
+    const selectedOptions = Array.from(selectElement.options)
+        .filter(option => option.selected)
+        .map(option => option.value);
+    return selectedOptions;
+}
+
+function getCheckValues(containerId) {
+    var container = document.getElementById(containerId);
+    var checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
+    var values = [];
+    checkboxes.forEach(function(checkbox) {
+        values.push(checkbox.value);
+    });
+    return values;
+}
+
+function editSave(){
+    var name = getValById('edit_name');
+    var description = getValById('edit_description');
+    var img = getValById('edit_imageUrl');
+    var editType = getValById('edit_h_type');
+
+    var categories = getSelectValues(document.getElementById('edit_category'));
+    var language = getSelectValues(document.getElementById('edit_language'));
+    var duration = getValById('edit_duration');
+    var release_date = getValById('edit_release_date');
+    var star_cast = getValById('edit_starCast');
+    var contentType = getValById('edit_contentType');
+    var downloadLinks = getDownloadLinks(editDownloadCount, 'downLink_');
+    var downloadSizes = getDownloadLinks(editDownloadCount, 'size_');
+    var downloadQualities = getDownloadLinks(editDownloadCount, 'qual_');
+    var downloadNotes = getDownloadLinks(editDownloadCount, 'note_');
+    var tags = Edttags; 
+
+    const data = {
+        name: name,
+        description: description,
+        category_txt: categories,
+        img: img,
+        language: language,
+        duration: duration,
+        release_date: release_date,
+        star_cast: star_cast,
+        contentType: contentType,
+        download_links: downloadLinks,
+        download_sizes: downloadSizes,
+        download_qualities: downloadQualities,
+        download_notes: downloadNotes,
+        tags: tags,
+        type: editType
+    };
+
+    if (name === lastNametoEdit) {
+        alert("Make sure to change Name while editing!");
+        return;
+    }
+    if (localStorage.getItem(name) !== null) {
+        alert("A movie with this name already exists!");
+        return;
     }
 
-//close button press function
-function closeEditModal(){
-document.querySelector("#myEditModal").style.display = "none";
+    localStorage.setItem(name, JSON.stringify(data));
+    localStorage.removeItem(lastNametoEdit);
+    editCard(data);
+    closeEditModal();
 }
 
-//function to get movie details from id and then open edit modal 🙂
-function editMovie(name, ths){
-if(!name || name.trim() === ""){
-return;
+function getDownloadLinks(count, prefix) {
+    var links = [];
+    for (var i = 1; i <= count; i++) {
+        links.push(getValById(prefix + i));
+    }
+    return links;
 }
-if(ths){
-nowEditing_ = ths;
-}else{
-nowEditing_ = undefined;
-}
-fetch(`/admin/data/get/movie/${name}`).then(data => data.json()).then(data => {
-try {
-editDownloadCount = 0;
-document.getElementById('additionalEditInputs').innerHTML = "";
-}catch{
-console.log("failed to clear inputs...");
-}
-if(!data.success || data.success !== true){
-return;
-}
-lastNametoEdit = data.data.name;
-document.querySelector("#myEditModal").style.display = "flex";
-document.querySelector("#edit_name").value = data.data.name;
-document.querySelector("#edit_imageUrl").value = data.data.img;
-document.querySelector("#edit_description").value = data.data.description;
-document.querySelector("#edit_duration").value = data.data.duration;
-document.querySelector("#edit_release_date").value = data.data.release_date;
-document.querySelector("#edit_starCast").value = data.data.cast;
-try {
-var editTypeselectElement = document.getElementById("edit_h_type");
-var editTypeoptionToSelect = editTypeselectElement.querySelector(`option[value='${data.data.h_type}']`);
-editTypeoptionToSelect.selected = true;
-}catch{
-document.querySelector("#edit_h_type").value="no";
-}
-try {
-document.getElementById('edit-tagContainer').innerHTML = "";
-Edttags = [];
-var taggToSett = data.data.tags.join(", ");
-document.getElementById('edit_tags').value = taggToSett;
-document.getElementById('edit_tags').dispatchEvent(new Event('input'));
-}catch{}
 
-//adding download Links
-data.data.links.forEach(nata => {
-editDownloadCount++;
-      const additionalEditInputs = document.getElementById('additionalEditInputs');
-additionalEditInputs.appendChild(document.createElement('br'));
-     var cedittext = document.createElement('span');
-cedittext.style = "margin: 0 auto; margin-top: 10px;";
-cedittext.innerHTML = `Link ${editDownloadCount}`;
-additionalEditInputs.appendChild(cedittext);
-	    
-      // Create input fields for download link, size, and quality  
-      const editDownloadLinkInput = document.createElement('input');
-      editDownloadLinkInput.type = 'text';
-      editDownloadLinkInput.id = `downLink_${editDownloadCount}`;
-      editDownloadLinkInput.placeholder = `Enter Download Link for link #${editDownloadCount}`;
-      editDownloadLinkInput.value = nata.download;
-      additionalEditInputs.appendChild(editDownloadLinkInput);
-
-      const sizeEditInput = document.createElement('input');
-      sizeEditInput.type = 'text';
-      sizeEditInput.id = `size_${editDownloadCount}`;
-      sizeEditInput.placeholder = `Enter Size for link #${editDownloadCount}`;
-      sizeEditInput.value = nata.size;
-      additionalEditInputs.appendChild(sizeEditInput);
-
-      const qualityEditInput = document.createElement('select');
-      qualityEditInput.innerHTML = `
-        <option value="144p">144p</option>
-        <option value="360p">360p</option>
-        <option value="480p">480p</option>
-        <option value="720p">720p</option>
-        <option value="1080p">1080p</option>
-        <option value="2k">2k</option>
-        <option value="4k">4k</option>
-      `;
-      qualityEditInput.id = `qual_${editDownloadCount}`;
-      var optionToSelect = qualityEditInput.querySelector(`option[value="${nata.quality}"]`);
-if (optionToSelect) {
-  optionToSelect.selected = true;
+function getSelectValues(selectElement) {
+    const selectedOptions = Array.from(selectElement.options)
+        .filter(option => option.selected)
+        .map(option => option.value);
+    return selectedOptions;
 }
-      additionalEditInputs.appendChild(qualityEditInput);
-   
-      const noteEditInput = document.createElement('input');
-      noteEditInput.type = 'text';
-      noteEditInput.placeholder = `eg. parts (optional) for link #${editDownloadCount}`;
-      noteEditInput.id = `note_${editDownloadCount}`;
-      noteEditInput.value = nata.note;
-      additionalEditInputs.appendChild(noteEditInput);
 
-additionalEditInputs.scrollTop = additionalEditInputs.scrollHeight;
+function openEditModal(cardContainer) {
+    nowEditing_ = cardContainer.querySelector('.options');
+    var name = cardContainer.querySelector('.card-title').textContent;
+    var data = JSON.parse(localStorage.getItem(name));
+    lastNametoEdit = name;
+    document.getElementById('edit_name').value = name;
+    document.getElementById('edit_description').value = data.description;
+    document.getElementById('edit_imageUrl').value = data.img;
+    document.getElementById('edit_h_type').value = data.type;
 
+    setSelectValues('edit_category', data.category_txt);
+    setSelectValues('edit_language', data.language);
+    document.getElementById('edit_duration').value = data.duration;
+    document.getElementById('edit_release_date').value = data.release_date;
+    document.getElementById('edit_starCast').value = data.star_cast;
+    document.getElementById('edit_contentType').value = data.contentType;
+
+    // Handle the download links
+    editDownloadCount = 0; 
+    const additionalEditInputs = document.getElementById('additionalEditInputs');
+    additionalEditInputs.innerHTML = '';
+    for (let i = 0; i < data.download_links.length; i++) {
+        addEditDounload();
+        document.getElementById(`downLink_${editDownloadCount}`).value = data.download_links[i];
+        document.getElementById(`size_${editDownloadCount}`).value = data.download_sizes[i];
+        document.getElementById(`qual_${editDownloadCount}`).value = data.download_qualities[i];
+        document.getElementById(`note_${editDownloadCount}`).value = data.download_notes[i];
+    }
+
+    Edttags = data.tags || [];
+    document.getElementById('edit_tags').value = Edttags.join(', ');
+    const tagContainer = document.getElementById('edit-tagContainer');
+    tagContainer.innerHTML = '';
+    Edttags.forEach(tag => {
+        const tagElement = document.createElement('div');
+        tagElement.classList.add('tag');
+        tagElement.textContent = tag;
+        tagContainer.appendChild(tagElement);
     });
 
-//removing previous language
-var langToRemove_ = document.querySelector("#edit_language");
-var langToRemove_ = langToRemove_.options;
-for(let i=0; i<langToRemove_.length; i++){
-if(langToRemove_[i].selected){
-langToRemove_[i].selected = false;
-}
+    document.getElementById('myEditModal').style.display = 'block';
 }
 
-//adding language 
-var langInpEdited = document.querySelector("#edit_language");
-data.data.language.forEach(lang => {
-  var optionToSelec = langInpEdited.querySelector(`option[value="${lang}"]`);
-  if (optionToSelec) {
-    optionToSelec.selected = true;
-  }
-});
-
-//removing previous categorys
-var catToRemove_ = document.querySelector("#edit_category");
-var catToRemove_ = catToRemove_.options;
-for(let i=0; i<catToRemove_.length; i++){
-if(catToRemove_[i].selected){
-catToRemove_[i].selected = false;
-}
-}
-
-//adding categories 
-var catInpEdited = document.querySelector("#edit_category");
-data.data.category.forEach(cat => {
-  var optionToSelec = catInpEdited.querySelector(`option[value="${cat}"]`);
-  if (optionToSelec) {
-    optionToSelec.selected = true;
-  }
-});
-}).catch(console.log);
-}
-
-//tags ke sath karnama 😤
-function removeEditedTag(tagElement) {
-      const tagsEditedContainer = document.getElementById('edit-tagContainer');
-      tagsEditedContainer.removeChild(tagElement);
+function setSelectValues(selectId, values) {
+    const selectElement = document.getElementById(selectId);
+    if (selectElement) {
+        for (const option of selectElement.options) {
+            option.selected = values.includes(option.value);
+        }
     }
-
-       document.getElementById('edit_tags').addEventListener("input", async() => {
-       	  var EagsContainer = document.getElementById('edit-tagContainer');
-       
-       var ETInput = document.getElementById('edit_tags');   
-       if(!ETInput.value.includes(",")) return;
-var Etgs = ETInput.value.split(",");
-if(!Etgs || Etgs.length < 1){
-return; 
 }
-if(!Etgs[0].length || Etgs[0].trim() === "") return;
-	       Etgs.forEach(tag => {
-if(!tag || tag.trim() === "") return;
- const EagElement = document.createElement('div');
-        EagElement.classList.add('tag');
-        EagElement.innerText = tag;
-        EagElement.addEventListener('click', () => removeEditedTag(EagElement));
-        EagsContainer.appendChild(EagElement);
-ETInput.value = "";
-Edttags.push(tag);
-	       });
-       });
-</script>
 
+function closeEditModal() {
+    document.getElementById('myEditModal').style.display = 'none';
+    Edttags = [];
+}
+
+document.getElementById('edit_tags').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        const input = e.target.value.trim();
+        if (input !== '') {
+            Edttags.push(input);
+            const tagContainer = document.getElementById('edit-tagContainer');
+            const tagElement = document.createElement('div');
+            tagElement.classList.add('tag');
+            tagElement.textContent = input;
+            tagContainer.appendChild(tagElement);
+            e.target.value = '';
+        }
+    }
+});
+</script>
