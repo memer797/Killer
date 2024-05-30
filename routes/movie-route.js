@@ -2,7 +2,26 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("Movie page");
+  var data = await db.getArray("info.movie");
+  var data = data.filter(item => item.contemtType === "movie");
+    var trendDataNow =  await db.getArray("trend.movie");
+  const result = Object.values(data.reduce((acc, { name, category, img }) => {
+  category.forEach(category => {
+    acc[category] = acc[category] || { category, items: [] };
+    acc[category].items.push({ name, img });
+    // Shuffle the items array and keep only the first 5 items
+    acc[category].items = shuffle(acc[category].items).slice(0, 10);
+  });
+  return acc;
+}, {}));
+let tmdtal = [];
+  trendDataNow.forEach(g => {
+var udf = data.filter(j => j.name === g && j.contentType === "movie");
+    if(udf.length > 0){
+      tmdtal.push({name: udf[0].name, img: udf[0].img }); 
+    }
+  });
+  res.render('index', { data: result, trend: tmdtal });
 });
 // generate download link route: get
 router.get('/generate/download/:name', async(req, res) => {
