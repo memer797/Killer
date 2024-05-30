@@ -373,5 +373,22 @@
     function setSelectedOption(option) {
       document.getElementById('selectedOption').innerHTML = option + " ▼";
     }
-    
+
+try {
+const route = (window.location.href).pathname.split("/").filter(Boolean).pop();
+var knownRoute = ["movie", "anime", "webseries"];
+if(knownRoute.includes(route)){
+ if(route === "movie"){
+    setSelectedOption('Movies')
+}else if(route === "anime"){
+    setSelectedOption('Anime')
+}else if(route === "webseries"){
+    setSelectedOption('Web series')
+}else{
+    // digdugi bajao
+}
+}else{
+// kichu korbar nai khuje paoua galo nai route ta All thak 
+}
+}catch{}
   </script>
