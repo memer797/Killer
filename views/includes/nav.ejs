@@ -376,7 +376,7 @@
 
 try {
 const urlInThisCase = new URL(window.location.href);
-const route = urlInThisCase.pathname.split("/").filter(Boolean).pop();
+const route = urlInThisCase.pathname.split("/").filter(Boolean)[0];
 var knownRoute = ["movie", "anime", "webseries"];
 if(knownRoute.includes(route)){
  if(route === "movie"){
