@@ -377,7 +377,7 @@
 try {
 const urlInThisCase = new URL(window.location.href);
 const route = urlInThisCase.pathname.split("/").filter(Boolean)[0];
-var knownRoute = ["movie", "anime", "webseries"];
+var knownRoute = ["movie", "anime", "webseries", "search"];
 if(knownRoute.includes(route)){
  if(route === "movie"){
     setSelectedOption('Movies')
