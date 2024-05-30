@@ -1,5 +1,12 @@
 const express = require("express");
 const router = express.Router();
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 router.get("/", async(req, res) => {
   var data = await db.getArray("info.movie");
