@@ -85,6 +85,8 @@ var authRoute = require("./routes/auth");
   app.use('/login', loginRoute);
   app.use('/dm/admin', adminDM);
   app.use('/movie', movieRoute);
+  app.use("/anime", require("./routes/anime-route.js"));
+  app.use("/webseries", require("./routes/webseries-route.js"));
   app.use("/support", supportChat);
   app.use("/auth", authRoute);
 app.use("*", async(req, res, next) => {
