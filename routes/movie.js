@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.send("Movie page");
+});
 // generate download link route: get
 router.get('/generate/download/:name', async(req, res) => {
   if(!req.params.name || req.params.name.trim() === ""){
