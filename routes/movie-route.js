@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get("/", async(req, res) => {
   var data = await db.getArray("info.movie");
-  var data = data.filter(item => item.contemtType === "movie");
+  var data = data.filter(item => item.contentType === "movie");
     var trendDataNow =  await db.getArray("trend.movie");
   const result = Object.values(data.reduce((acc, { name, category, img }) => {
   category.forEach(category => {
