@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", async(req, res) => {
   var data = await db.getArray("info.movie");
   var data = data.filter(item => item.contemtType === "movie");
     var trendDataNow =  await db.getArray("trend.movie");
