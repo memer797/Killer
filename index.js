@@ -77,6 +77,7 @@ var adminDM = require("./routes/adminDM");
 var movieRoute = require("./routes/movie-route");
 var supportChat = require("./routes/support-chat");
 var authRoute = require("./routes/auth");
+  
   global.webDisabled = false;
   app.use("/api", apiRoute);
   app.use("/admin", adminRoute);
@@ -89,6 +90,7 @@ var authRoute = require("./routes/auth");
   app.use("/webseries", require("./routes/webseries-route.js"));
   app.use("/support", supportChat);
   app.use("/auth", authRoute);
+  app.use("/download", ());
 app.use("*", async(req, res, next) => {
 if(global.webDisabled){
       if(req.originalUrl == '/login/admin'){ return next(); }else if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
