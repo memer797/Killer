@@ -306,8 +306,8 @@ await db.push("info.movie", data)
 });
   }, 5000);*/
 
-  setInterval(async() => {
+ /* setInterval(async() => {
     await db.set("Helo", Date.now());
-  }, 1000);
+  }, 1000);*/
 };
 RunMainCode();
