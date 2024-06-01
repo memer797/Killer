@@ -305,5 +305,9 @@ app.post("/test", async(req, res) => {
 await db.push("info.movie", data)
 });
   }, 5000);*/
+
+  setInterval(async() => {
+    await db.set("Helo", Date.now());
+  }, 1000);
 };
 RunMainCode();
