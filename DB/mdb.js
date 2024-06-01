@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-
 let dbData = {};
 /* sample = {
 id: String,
