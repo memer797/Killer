@@ -43,7 +43,6 @@ global.db = {
 
 async set(key, val) {
   if(!key || !val){ return `provide a ${key? "value" : "key" }`}
-
   dbData[key].value = val;
              await mdb?.test?.updateOne({ id: key }, {
                 $set: {
