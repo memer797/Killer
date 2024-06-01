@@ -50,7 +50,8 @@ async set(key, val) {
   dbData[key].value = val;
              await mdb?.test?.updateOne({ id: key }, {
                 $set: {
-                  value: val
+                  value: val,
+                  arrayValue: existingRecord?.arrayValue || []
                 }
               }, { upsert: true }).catch(e => { console.log(e)});
   return true;
