@@ -15,7 +15,8 @@ const scma = Schema({
 arrayValue: {
  type: Schema.Types.Mixed,
 unique: true,
-index: 1
+index: 1,
+default: []
 },
 });
 
