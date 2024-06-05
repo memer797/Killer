@@ -303,6 +303,47 @@ app.post("/test", async(req, res) => {
   app.get("/status", (req, res) => {
     res.render("public_status");
   });
+
+  app.get("/download/:name", async(req, res) => {
+  if(!req.params.name || req.params.name.trim() === ""){
+   return res.send(`4** error, name parameter is required to fetch the movie example:: /movie/download/jawan`);
+  }
+var name = req.params.name;
+  if(name.includes(".html")){
+var name = name.replace(".html", "");
+  }
+  var movie_info = await db.getArray("info.movie");
+  var movie_info = movie_info.filter(i => (((i.name).toLowerCase()).replace(/ /g, "-")) === (name.toLowerCase()).replace(/ /g, "-"));
+  if(!movie_info || movie_info.length < 1){
+    return res.send(`4** error, N 0 Movie F()und With ${name} name`);
+  }
+  var name = movie_info[0].name;
+  var description = movie_info[0].description;
+  var img = movie_info[0].img;
+  var category = movie_info[0].category;
+  var tags = movie_info[0].tags;
+  var duration = movie_info[0].duration;
+  var language = movie_info[0].language;
+  var release_date = movie_info[0].release_date;
+  var cast = movie_info[0].cast;
+  var links = movie_info[0].links;
+  var h_type = movie_info[0].h_type ?? "Not Provided";
+  res.render("show_movie", {
+    name: name,
+    banner: {
+      jpg: img
+    },
+    release_date: release_date,
+    duration: duration,
+    category: category,
+    actors: cast,
+    language: language,
+    description: description,
+    downloads: links,
+    tags,
+    h_type
+  });
+});
 /*  setTimeout(async() => {
 [{"name":"Jawan","description":"Shah Rukh Khan makes a comeback to the silver screen after a sabbatical of about half a decade. The patriotic thriller marks his third release in 2023 and puts on the platter suspense, action, and drama.","tags":["Jawan (2023) Bollywood Hindi Full Movie HD ESub memer797","Jawan (2023) Bollywood Hindi Full Movie HD ESub","Jawan (2023) Bollywood Hindi Full Movie HD ESub memer797","Jawan (2023) Bollywood Hindi Full Movie HD ESub 480p Download","Jawan","Jawan movie","Jayan","Jawan (2023) Bollywood Hindi Full Movie HD ESub memer797.com","Jawan (2023) Bollywood Hindi Full Movie HD ESub 720p Download","Bollywood Hindi Full Movie HD ESub memer797","memer797.onrender.com","memer797.com"],"category":["Action","Drama","Thriller"],"img":"https://i.imgur.com/pA4EKxu.png","id":"lYdLsL4I17RcgcvZj11C","duration":"2h 50mint","language":["Hindi"],"release_date":"2023-09-07","cast":"Shah Rukh Khan, Nayanthara, Priyamani, Sanya Malhotra, Yogi Babu, Sunil Grover, Simarjeet Singh Nagra, Azzy Bagria, Manahar Kumar","links":[{"download":"https://clouda.filesdl.in/dl/9cvFSjXqm44N3Sg","size":"541MB","note":"","quality":"480p"},{"download":"https://clouda.filesdl.in/dl/pkAomaoEbafK6FU","size":"912 MB","note":"","quality":"720p"},{"download":"https://clouda.filesdl.in/dl/YQUR0O5A7nNwIfj","size":"3.9 GB","note":"","quality":"1080p"},{"download":"https://clouda.filesdl.in/dl/8zRhBzs6mP8uI0b","size":"5.01 GB","note":"","quality":"2k"}],"lastMod":1709580253736},{"name":"Puschpa","description":"Shah Rukh Khan makes a comeback to the silver screen after a sabbatical of about half a decade. The patriotic thriller marks his third release in 2023 and puts on the platter suspense, action, and drama.","tags":[],"category":["Action","Drama","Thriller"],"img":"https://i.imgur.com/rcThRKz.png","id":"KhyHZM9W5IclHqUFet0T","duration":"2h 50mint","language":["Hindi"],"release_date":"2023-09-07","cast":"Shah Rukh Khan, Nayanthara, Priyamani, Sanya Malhotra, Yogi Babu, Sunil Grover, Simarjeet Singh Nagra, Azzy Bagria, Manahar Kumar","links":[],"lastMod":1709601941163},{"name":"Jghh","description":"Hsvsg","tags":[],"category":["Comedy","Crime","Documentary"],"img":"https://imgur.com/jUeBUo0.png","id":"vbMCmMVBrwSc8rBT2sRc","duration":"00:00:00","language":[],"release_date":"No Date Specified!","cast":"!","links":[],"lastMod":1710596864888},{"name":"Eagle","description":"A retired assassin living low as a cotton farmer is a target for armed forces ,terrorists and various extremist groups across the globe. Eagle is a story of a rigid stubborn man whose redemption is standing up against arms shown from the perspective of all the forces and lives around him.","tags":["Eagle"," Eagle movie"," memer797"," Eagle movie download link"," Eagle movie download"," Eagle memer797"," e"," Eagle film download in hindi"," Movies memer797"],"category":["Action","Thriller"],"img":"https://imgur.com/92EMd3R.png","id":"CWJagWAPWgZBMlsCrgF4","duration":"2h 39min","language":["Hindi"],"release_date":"2024-02-09","cast":"RAVI TEJA, KAVYA THAPAR, ANUPAMA PARAMESWARAN","links":[{"download":"https://clouda.filesdl.in/dl/rk6ylP6sv6g1Lj7","size":"521MB","note":"","quality":"480p"},{"download":"https://clouda.filesdl.in/dl/k8evS48y8IIkLbK","size":"861 MB","note":"","quality":"720p"},{"download":"https://clouda.filesdl.in/dl/JnnRbxdaghrSLYt","size":"3 GB","note":"","quality":"1080p"}],"lastMod":1711192740328},{"name":"iddkk","description":"jeirhrbenj","tags":["8s3n9eeh"],"category":["Crime"],"img":"rhirnrmr","id":"Ha4Qo47K4wpNqaaoo079","duration":"94.meie","language":["Hindi","English","Bengali"],"release_date":"2024-03-24","cast":"you","links":[],"lastMod":1711274101939}].forEach(async data => {
 await db.push("info.movie", data)
