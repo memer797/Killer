@@ -4,32 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel</title>
-<script src="/socket.io/socket.io.js"></script>
-<%- include(".././includes/my_toast.ejs")%>
+  <script src="/socket.io/socket.io.js"></script>
+  <%- include(".././includes/my_toast.ejs")%>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
       background-color: #121212;
       color: #ffffff;
+      overflow-x: hidden;
     }
 
     nav {
       background-color: #1f1f1f;
       color: #ffffff;
-      padding: 10px 10px;
-      height: 20px;
+      padding: 10px 20px;
+      height: 60px;
       display: flex;
       align-items: center;
-      overflow-x: auto; /* Horizontal scroll bar */
-      white-space: nowrap; /* Prevent items from wrapping */
+      overflow-x: auto;
+      white-space: nowrap;
     }
 
     nav span {
-      text-decoration: none; 
+      text-decoration: none;
       color: inherit;
-      outline: none; 
+      outline: none;
       margin-right: 20px;
       padding: 10px 15px;
       cursor: pointer;
@@ -41,11 +50,7 @@
       background-color: #333;
     }
 
-    section {
-      padding: 20px;
-    }
-
-    .movie, .showingdivs {
+    .showingdivs {
       display: none;
       height: calc(100vh - 60px);
       padding: 20px;
@@ -114,7 +119,7 @@
       color: white;
       padding: 3px 8px;
       font-size: 12px;
-      position: absolute; 
+      position: absolute;
       top: -5px;
       right: -10px;
     }
