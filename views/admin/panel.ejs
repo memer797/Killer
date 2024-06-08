@@ -4,58 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel</title>
-  <script src="/socket.io/socket.io.js"></script>
-  <%- include(".././includes/my_toast.ejs")%>
+<script src="/socket.io/socket.io.js"></script>
+<%- include(".././includes/my_toast.ejs")%>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #121212;
-      color: #ffffff;
-      overflow-x: hidden;
+      background-color: #f4f4f4;
     }
-
     nav {
-      background-color: #1f1f1f;
-      color: #ffffff;
-      padding: 10px 20px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      overflow-x: auto;
-      white-space: nowrap;
+      background-color: #555;
+      color: #fff;
+      padding: 3px;
+      height: 5%;
+      overflow-x: scroll; /* Horizontal scroll bar */
+      white-space: nowrap; /* Prevent items from wrapping */
     }
 
     nav span {
-      text-decoration: none;
+      text-decoration: none; 
       color: inherit;
-      outline: none;
-      margin-right: 20px;
-      padding: 10px 15px;
+      outline: none; 
+      margin-right: 1em;
       cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
     }
 
-    nav span.active, nav span:hover {
+    nav span.active {
       background-color: #333;
+      border-radius: 5px;
+      padding: 2px 5px;
     }
 
-    .showingdivs {
-      display: none;
-      height: calc(100vh - 60px);
-      padding: 20px;
-      box-sizing: border-box;
-      overflow-y: auto;
+    section {
+      padding-top: 5px;
+    }
+
+    .movie, .showingdivs {
+      display: block;
+      height: 92%;
+      padding-top: 4px;
+      width: 100%;
     }
 
     .switch {
@@ -79,7 +68,8 @@
       right: 0;
       bottom: 0;
       background-color: #ccc;
-      transition: 0.4s;
+      -webkit-transition: .4s;
+      transition: .4s;
     }
 
     .slider:before {
@@ -90,7 +80,8 @@
       left: 4px;
       bottom: 4px;
       background-color: white;
-      transition: 0.4s;
+      -webkit-transition: .4s;
+      transition: .4s;
     }
 
     input:checked + .slider {
@@ -102,9 +93,12 @@
     }
 
     input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
       transform: translateX(26px);
     }
 
+    /* Rounded sliders */
     .slider.round {
       border-radius: 34px;
     }
@@ -115,57 +109,59 @@
 
     .noticount__badge {
       background-color: #fa3e3e;
-      border-radius: 12px;
+      border-radius: 40px;
       color: white;
-      padding: 3px 8px;
-      font-size: 12px;
-      position: absolute;
-      top: -5px;
-      right: -10px;
+      padding: 1px 3px;
+      font-size: 15px;
+      position: absolute; 
+      top: 4;
+      right: -15;
     }
 
     .noticount {
-      position: relative;
+      color: white;
       display: inline-block;
+      position: relative;
+      padding: 2px 5px; 
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <span class="nav-item" onclick="display_div('movies')">Movies</span>
-    <span class="nav-item" onclick="display_div('settings')">Settings</span>
-    <span class="nav-item" onclick="display_div('trending')">Trending</span>
-    <span class="nav-item" onclick="display_div('stat')">Stat</span>
-    <span class="nav-item" onclick="display_div('st')">Search Terms</span>
-    <span class="nav-item noticount" onclick="display_div('query')">Querys
-      <% if(queryCount){ %>
-      <span class="noticount__badge" id="queryCount"><%= queryCount%></span>
-      <% } %>
-    </span>
-    <span class="nav-item" onclick="display_div('online-admins')">Admins</span>
+    <div style="display: inline-block;">
+      <span class="nav-item" onclick="display_div('movies')">Movies</span>
+      <span class="nav-item" onclick="display_div('settings')">Settings</span>
+      <span class="nav-item" onclick="display_div('trending')">Trending</span>
+      <span class="nav-item" onclick="display_div('stat')">Stat</span>
+      <span class="nav-item" onclick="display_div('st')">Search Terms</span>
+      <span class="nav-item noticount" onclick="display_div('query')">Querys
+        <% if(queryCount){ %>
+        <span class="noticount__badge" id="queryCount"><%= queryCount%></span>
+        <% } %>
+      </span>
+      <span class="nav-item" onclick="display_div('online-admins')">Admins</span>
+    </div>
   </nav>
 
   <div id="div_movies" class="showingdivs">
     <%- include("./movie.ejs")%>
   </div>
   <div id="div_settings" class="showingdivs">
-    <h2>Settings</h2>
-    <label>Disable Site:
-      <label class="switch">
-        <input id="bla" type="checkbox">
-        <span class="slider round"></span>
-      </label>
+    Disable Site:
+    <label class="switch">
+      <input id="bla" type="checkbox">
+      <span class="slider round"></span>
     </label>
     <br>
-    <label>Show Ads:
-      <label class="switch">
-        <input id="showAds" type="checkbox" checked>
-        <span class="slider round"></span>
-      </label>
+    Show Ads:
+    <label class="switch">
+      <input id="showAds" type="checkbox" checked>
+      <span class="slider round"></span>
     </label>
     <br>
-    <button id="restartServerButton" onclick="restartServer()">Restart Server</button>
+    Restart server:
+    <button id='restartServerButton' onclick='restartServer()'>Restart</button>
     <script>
       var checkbox = document.querySelector("#bla");
       fetch("https://memer797.onrender.com/admin/data/settings")
@@ -207,10 +203,10 @@
       var all = document.querySelectorAll(`div[id^="div_"]`);
       all.forEach(divs => divs.style.display = "none");
       document.querySelector(`#div_${item}`).style.display = 'block';
-
+      
       // Remove active class from all nav items
       document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-
+      
       // Add active class to the clicked nav item
       document.querySelector(`span[onclick="display_div('${item}')"]`).classList.add('active');
     }
@@ -218,7 +214,7 @@
     display_div('stat');
 
     function restartServer() {
-      document.getElementById('restartServerButton').innerHTML = 'Restarting server... now don’t press the button for 30 minutes';
+      document.getElementById('restartServerButton').innerHTML = 'Restarting server... now dont press the button for 30 minutes';
       const options = {
         method: 'POST',
         headers: {
