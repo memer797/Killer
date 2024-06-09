@@ -1,7 +1,7 @@
 <div id="myModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
         <button class="close-button" onclick="closeModal()">X</button>
-        <button class="clear-button" onclick="clearInp()">🗑️</button>
+        <button class="clear-button" onclick="clearInp()">🧹</button>
         <h2>Add Item</h2>
 
         <label for="name">Name:</label>
@@ -9,12 +9,12 @@
 
         <label for="contentType">Content Type:</label>
         <select id="contentType">
-            <option value="movie">Movies</option>
-            <option value="webseries">Web Series</option>
-            <option value="anime">Anime</option>
+            <option value="Movies">Movies</option>
+            <option value="WebSeries">Web Series</option>
+            <option value="Anime">Anime</option>
         </select>
 
-        <label for="h_type">Cam:</label>
+        <label for="h_type">Category:</label>
         <select id="h_type">
             <option value="HD">HD</option>
             <option value="HQ-CAM">HQ-CAM</option>
@@ -87,7 +87,7 @@
         <input id="starCast" type="text" placeholder="Rahul, Sujoy" />
 
         <button onclick="addDounload()"><strong>➕</strong></button>
-        <button onclick="removeDownload()"><strong>📛</strong></button>
+        <button onclick="removeDownload()"><strong>🗑️</strong></button>
         <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
         <label for="tags">Tags:</label>
@@ -141,13 +141,20 @@ function addDounload() {
     noteInput.id = `note_${downloadCount}`;
     additionalInputs.appendChild(noteInput);
 
+    // Adding Episode Number input field for Web Series
+    const episodeNumberInput = document.createElement('input');
+    episodeNumberInput.type = 'text';
+    episodeNumberInput.id = `episode_${downloadCount}`;
+    episodeNumberInput.placeholder = `Enter Episode Number for link #${downloadCount}`;
+    additionalInputs.appendChild(episodeNumberInput);
+
     additionalInputs.scrollTop = additionalInputs.scrollHeight;
 }
 
 function removeDownload() {
     const additionalInputs = document.getElementById('additionalInputs');
     if (downloadCount > 0) {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 7; i++) { // Adjusted to remove the additional Episode Number input
             additionalInputs.removeChild(additionalInputs.lastChild);
         }
         downloadCount--;
@@ -155,9 +162,9 @@ function removeDownload() {
 }
 
 function clearInp() {
-    var i = confirm("🗑️ Are you sure to clear all inputs?");
+    var i = confirm("🧹 Are you sure to clear all inputs?");
     if (i) {
-        var ii = confirm("clearing all inputs... 🗑️");
+        var ii = confirm("clearing all inputs... 🧹");
         if (ii) {
             document.querySelectorAll("input").forEach(lak => lak.value = "");
             document.querySelectorAll("textarea").forEach(lak => lak.value = "");
@@ -168,7 +175,7 @@ function clearInp() {
 function addCardFu() {
     let finalData = {};
     finalData.name = document.querySelector("#name").value;
-    finalData.contentType = (document.querySelector("#contentType").value).toLowerCase();
+    finalData.contentType = document.querySelector("#contentType").value;
     finalData.h_type = document.querySelector("#h_type").value;
     finalData.imageUrl = document.querySelector("#imageUrl").value;
     finalData.description = document.querySelector("#description").value;
@@ -185,6 +192,7 @@ function addCardFu() {
         ary.size = document.querySelector(`#size_${i}`).value;
         ary.note = document.querySelector(`#note_${i}`).value;
         ary.quality = document.querySelector(`#qual_${i}`).value;
+        ary.episode = document.querySelector(`#episode_${i}`).value; // Include episode number in the data
         finalData.links.push(ary);
     }
 
@@ -205,13 +213,13 @@ function addCardFu() {
         addCard({
             name: finalData.name,
             description: finalData.description,
-            category_txt: finalData.category,
-            id: finalData.contentType,
+            category_txt: (finalData.category),
+            id: "✅",
             img: finalData.imageUrl
         });
         showToast("Movie Has Been Added", "success", 5000);
     }).catch(e => {
-        return showToast("Somthing Went Wrong !", "danger", 5000);
+        return showToast("Something Went Wrong!", "danger", 5000);
     });
 
     document.querySelector("#tags").value = '';
