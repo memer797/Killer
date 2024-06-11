@@ -1,13 +1,86 @@
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .data-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .data-content {
+            display: flex;
+            align-items: center;
+        }
+        .data-content strong {
+            margin-right: 10px;
+        }
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .delete-btn:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+<body>
+
 <script>
-console.log("<%= srarchTermRecord%>");
+    // Simulating srarchTermRecord data from the server-side
+    var srarchTermRecord = ["term1[•|{\\:/}|•]definition1", "term2[•|{\\:/}|•]definition2"];
+
+    console.log("<%= srarchTermRecord%>");
+
+    // Function to handle the deletion of data
+    function deleteData(index) {
+        srarchTermRecord.splice(index, 1);
+        renderData();
+    }
+
+    // Function to render the data
+    function renderData() {
+        var container = document.getElementById('data-container');
+        container.innerHTML = '';
+        srarchTermRecord.reverse();
+        srarchTermRecord.forEach((data, index) => {
+            var ndata = data.split("[•|{\\:/}|•]");
+            if (ndata && ndata.length > 1) {
+                var dataItem = document.createElement('div');
+                dataItem.className = 'data-item';
+                
+                var dataContent = document.createElement('div');
+                dataContent.className = 'data-content';
+                dataContent.innerHTML = `<strong>${ndata[0]}</strong> => <strong>${ndata[1]}</strong>`;
+                
+                var deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.onclick = function() {
+                    deleteData(index);
+                };
+                
+                dataItem.appendChild(dataContent);
+                dataItem.appendChild(deleteBtn);
+                container.appendChild(dataItem);
+            }
+        });
+    }
+
+    // Initial render
+    window.onload = function() {
+        renderData();
+    }
 </script>
 
-<% srarchTermRecord.reverse(); %>
-<% srarchTermRecord.forEach(data => {
-    var ndata = data.split("[•|{\\:/}|•]");
-    if (ndata && ndata.length > 1) { %>
-        <%= console.log(ndata); %>
-        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><br>
-<%   }
-}); %>
+<div id="data-container"></div>
 
+</body>
