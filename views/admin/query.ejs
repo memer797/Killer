@@ -1,115 +1,170 @@
-<div style="margin: 0;
-            padding: 0;
-            background-color: #252525;
-            color: white;
-            width: 100%;
-            min-height: 100%;">
-<table border="3" style="width: 100%;">
-<thead>
-<tr>
-<th>Name</th>
-<th>Query</th>
-<th style="width: 5px;">@</th>
-</thead>
-<tbody>
-<% userQueryes.forEach(data => { %>
-<tr>
-<td style="word-break: break-all;"><%= data.sender%></td>
-<td style="word-break: break-all;"><%= data.query%></td>
-<td style="width: 5px;" onclick = 'deleteQuery("<%= data.sender%>", "<%= data.query%>", this)'>🗑️</td>
-</tr>
-<% }); %>
-</tbody>
-</table>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #252525;
+    color: white;
+    width: 100%;
+    min-height: 100%;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 3px solid white;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #333;
+  }
+  td {
+    word-break: break-all;
+  }
+  .delete-btn {
+    cursor: pointer;
+    width: 5px;
+  }
+  .section-title {
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div id="section1">
+  <div class="section-title">Section 1</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Query</th>
+        <th>@</th>
+      </tr>
+    </thead>
+    <tbody id="section1-tbody">
+    </tbody>
+  </table>
+</div>
 
+<div id="section2">
+  <div class="section-title">Section 2</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Query</th>
+        <th>@</th>
+      </tr>
+    </thead>
+    <tbody id="section2-tbody">
+    </tbody>
+  </table>
 </div>
 
 <script>
- const querySocket = io("/ws/dm/admin");
+const querySocket = io("/ws/dm/admin");
+
 querySocket.on("new.query", async(data) => {
-let queryCountElement = document.querySelector("#queryCount");
-try {
-if(queryCountElement.innerHTML == "99+"){  }else{
-let currentCount = parseInt(queryCountElement.innerHTML);
-currentCount += 1;
-if(currentCount > 99){
-currentCount = "99+";
-}
-queryCountElement.innerHTML = currentCount;
-}
-                        } catch {
-const spanElement = document.createElement("span");
-spanElement.id = "queryCount";
-spanElement.className = "noticount__badge";
-const noticountElements = document.getElementsByClassName("noticount");
-if (noticountElements.length > 0) {
-    noticountElements[0].appendChild(spanElement);
-} else {
-    console.error("Element with class 'noticount' not found.");
-}
-         queryCountElement = spanElement;
-let currentCount = parseInt(queryCountElement.innerHTML);
-if(isNaN(currentCount)){
-currentCount = 0;
-}
-currentCount += 1;
-if(currentCount > 99){
-currentCount = "99+";
-}
-queryCountElement.innerHTML = currentCount;
-                        }
-console.log(data);
-var tbody = document.querySelector("tbody");
-var tr = document.createElement("tr");
-var td1 = document.createElement("td");
-td1.innerHTML = data.sender;
-tr.appendChild(td1);
-var td2 = document.createElement("td");
-td2.innerHTML = data.query;
-tr.appendChild(td2);
-var td3 = document.createElement("td");
-td3.setAttribute("onclick", `deleteQuery("${data.sender}", "${data.query}", this)`);
-td3.innerHTML = "🗑️";
-tr.appendChild(td3);
-tbody.appendChild(tr);
-});
-function deleteQuery(name, query, btn){
-console.log(name, query);
-var parent = btn.parentNode;
-    parent.remove();
-let currentCount = parseInt(document.querySelector("#queryCount").innerHTML);
-if(isNaN(currentCount)){
-
-}else{
-currentCount -= 1;
-document.querySelector("#queryCount").innerHTML = currentCount;
-                       } 
-fetch(`/dm/admin/query`, {
-  method: 'DELETE',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body : JSON.stringify({
-name: name,
-q: query
-})
-})
-.catch(error => {
-  console.error('There was a problem with the fetch operation:', error);
+  let queryCountElement = document.querySelector("#queryCount");
+  try {
+    if(queryCountElement.innerHTML == "99+") {
+      // Do nothing if already at 99+
+    } else {
+      let currentCount = parseInt(queryCountElement.innerHTML);
+      currentCount += 1;
+      if(currentCount > 99) {
+        currentCount = "99+";
+      }
+      queryCountElement.innerHTML = currentCount;
+    }
+  } catch {
+    const spanElement = document.createElement("span");
+    spanElement.id = "queryCount";
+    spanElement.className = "noticount__badge";
+    const noticountElements = document.getElementsByClassName("noticount");
+    if (noticountElements.length > 0) {
+      noticountElements[0].appendChild(spanElement);
+    } else {
+      console.error("Element with class 'noticount' not found.");
+    }
+    queryCountElement = spanElement;
+    let currentCount = parseInt(queryCountElement.innerHTML);
+    if(isNaN(currentCount)) {
+      currentCount = 0;
+    }
+    currentCount += 1;
+    if(currentCount > 99) {
+      currentCount = "99+";
+    }
+    queryCountElement.innerHTML = currentCount;
+  }
+  
+  console.log(data);
+  
+  // Assuming you have a way to determine which section the data belongs to
+  const sectionId = determineSection(data); // This is a custom function you need to implement
+  const tbody = document.querySelector(`#${sectionId}-tbody`);
+  var tr = document.createElement("tr");
+  var td1 = document.createElement("td");
+  td1.innerHTML = data.sender;
+  tr.appendChild(td1);
+  var td2 = document.createElement("td");
+  td2.innerHTML = data.query;
+  tr.appendChild(td2);
+  var td3 = document.createElement("td");
+  td3.className = 'delete-btn';
+  td3.setAttribute("onclick", `deleteQuery("${data.sender}", "${data.query}", this)`);
+  td3.innerHTML = "🗑️";
+  tr.appendChild(td3);
+  tbody.appendChild(tr);
 });
 
-};
+function deleteQuery(name, query, btn) {
+  console.log(name, query);
+  var parent = btn.parentNode;
+  parent.remove();
+  let currentCount = parseInt(document.querySelector("#queryCount").innerHTML);
+  if(!isNaN(currentCount)) {
+    currentCount -= 1;
+    document.querySelector("#queryCount").innerHTML = currentCount;
+  }
+  fetch(`/dm/admin/query`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body : JSON.stringify({
+      name: name,
+      q: query
+    })
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+}
 
-function getWsPing__(){
-let beforePingTime = Date.now();
-querySocket.emit("ping", (i) => {
-let nowWsPing = Date.now() - beforePingTime;
-document.querySelector("#wsPingCount").textContent = `${nowWsPing} ms`;
-});
+function getWsPing__() {
+  let beforePingTime = Date.now();
+  querySocket.emit("ping", (i) => {
+    let nowWsPing = Date.now() - beforePingTime;
+    document.querySelector("#wsPingCount").textContent = `${nowWsPing} ms`;
+  });
 }
 getWsPing__();
 setInterval(() => {
-getWsPing__();
+  getWsPing__();
 }, 10000);
 
+// Custom function to determine which section data belongs to
+function determineSection(data) {
+  // Example logic (replace with actual logic)
+  if (data.sender.startsWith('A')) {
+    return 'section1';
+  } else {
+    return 'section2';
+  }
+}
 </script>
+</body>
