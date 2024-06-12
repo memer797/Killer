@@ -1,46 +1,12 @@
 <script>
-    console.log("<%= srarchTermRecord%>");
-
-    function deleteItem(index) {
-        // Remove the item from the srarchTermRecord array
-        srarchTermRecord.splice(index, 1);
-        // Update the page content
-        updateList();
-    }
-
-    function updateList() {
-        // Get the container element where the list items will be displayed
-        var container = document.getElementById('listContainer');
-        container.innerHTML = '';
-        // Iterate over the updated srarchTermRecord array and add the list items back
-        srarchTermRecord.forEach((data, index) => {
-            var ndata = data.split("[•|{\\:/}|•]");
-            if (ndata && ndata.length > 1) {
-                var item = document.createElement('div');
-                item.innerHTML = `
-                    <strong>${ndata[0]}</strong> => <strong>${ndata[1]}</strong>
-                    <button onclick="deleteItem(${index})">Delete</button>
-                    <br>
-                `;
-                container.appendChild(item);
-            }
-        });
-    }
-
-    // Call the function initially to populate the list on page load
-    updateList();
+console.log("<%= srarchTermRecord%>");
 </script>
 
 <% srarchTermRecord.reverse(); %>
-<div id="listContainer">
-<% srarchTermRecord.forEach((data, index) => {
+<% srarchTermRecord.forEach(data => {
     var ndata = data.split("[•|{\\:/}|•]");
     if (ndata && ndata.length > 1) { %>
-        <div>
-            <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong>
-            <button onclick="deleteItem(<%= index %>)">Delete</button>
-            <br>
-        </div>
+        <%= console.log(ndata); %>
+        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><br>
 <%   }
 }); %>
-</div>
