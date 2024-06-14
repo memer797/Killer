@@ -1,120 +1,144 @@
 <div id="myModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
-      <button class="close-button" onclick="closeModal()">X</button>
-      <button class="clear-button" onclick="clearInp()">🧹</button>
-      <h2>Add Item</h2>
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Enter Name">
+        <button class="close-button" onclick="closeModal()">X</button>
+        <button class="clear-button" onclick="clearInp()">🧹</button>
+        <h2>Add Item</h2>
+
+        <label for="name">Name:</label>
+        <div style="display: flex; align-items: center;">
+            <input type="text" id="name" placeholder="Enter Name">
+            <button onclick="pasteText('name')">Paste</button>
+        </div>
+
+        <label for="contentType">Content Type:</label>
+        <select id="contentType">
+            <option value="Movies">Movies</option>
+            <option value="WebSeries">Web Series</option>
+            <option value="Anime">Anime</option>
+        </select>
 
         <label for="h_type">Category:</label>
-      <select id="h_type">
-<option value="HD">HD</option>
-<option value="HQ-CAM">HQ-CAM</option>
-       </select>   
+        <select id="h_type">
+            <option value="HD">HD</option>
+            <option value="HQ-CAM">HQ-CAM</option>
+        </select>   
 
-      <label for="imageUrl">Image URL:</label>
-      <input type="text" id="imageUrl" placeholder="Enter Image URL">
+        <label for="imageUrl">Image URL:</label>
+        <div style="display: flex; align-items: center;">
+            <input type="text" id="imageUrl" placeholder="Enter Image URL">
+            <button onclick="pasteText('imageUrl')">Paste</button>
+        </div>
 
-      <label for="description">Description:</label>
-      <textarea id="description" placeholder="Enter Description"></textarea>
+        <label for="description">Description:</label>
+        <div style="display: flex; align-items: center;">
+            <textarea id="description" placeholder="Enter Description"></textarea>
+            <button onclick="pasteText('description')">Paste</button>
+        </div>
 
-      <label for="category">Category:</label>
-      <select id="category" multiple>
-<option value="Action">Action</option>
-    <option value="Adventure">Adventure</option>
-    <option value="Animation">Animation</option>
-    <option value="Biography">Biography</option>
-    <option value="Comedy">Comedy</option>
-    <option value="Crime">Crime</option>
-    <option value="Documentary">Documentary</option>
-    <option value="Drama">Drama</option>
-    <option value="Family">Family</option>
-    <option value="Fantasy">Fantasy</option>
-    <option value="Historical">Historical</option>
-    <option value="Horror">Horror</option>
-    <option value="Musical">Musical</option>
-    <option value="Mystery">Mystery</option>
-    <option value="Romance">Romance</option>
-    <option value="Science-Fiction">Science Fiction (Sci-Fi)</option>
-    <option value="Superhero">Superhero</option>
-    <option value="Thriller">Thriller</option>
-    <option value="War">War</option>
-    <option value="Western">Western</option>
-      </select>
+        <label for="category">Category:</label>
+        <select id="category" multiple>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Animation">Animation</option>
+            <option value="Biography">Biography</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Crime">Crime</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Drama">Drama</option>
+            <option value="Family">Family</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Historical">Historical</option>
+            <option value="Horror">Horror</option>
+            <option value="Musical">Musical</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Romance">Romance</option>
+            <option value="Science-Fiction">Science Fiction (Sci-Fi)</option>
+            <option value="Superhero">Superhero</option>
+            <option value="Thriller">Thriller</option>
+            <option value="War">War</option>
+            <option value="Western">Western</option>
+        </select>
 
-     <label for="duration">Duration:</label>
-      <input id="duration" type="test" placeholder="2.5 min"/>
-	
-      <label for="release_date">Release Date:</label>
-      <input id="release_date" type="date" />
-    
-      <label for="language">Language:</label>
-      <select id="language" multiple> 
-     <option value="Hindi" selected>Hindi</option>
-     <option value="English">English</option>
-     <option value="Bengali">Bengali</option>
-     <option value="Assamese">Assamese</option>
-     <option value="Bodo">Bodo</option>
-     <option value="Dogri">Dogri</option>
-     <option value="Gujarati">Gujarati</option>
-     <option value="Konkani">Konkani</option>
-     <option value="Kannada">Kannada</option>
-     <option value="Kashmiri">Kashmiri</option>
-     <option value="Maithili">Maithili</option>
-     <option value="Malayalam">Malayalam</option>
-     <option value="Manipuri">Manipuri</option>
-     <option value="Marathi">Marathi</option>
-     <option value="Nepali">Nepali</option>
-     <option value="Oriya">Oriya</option>
-     <option value="Punjabi">Punjabi</option>
-     <option value="Tamil">Tamil</option>
-     <option value="Telugu">Telugu</option>
-     <option value="Santali">Santali</option>
-     <option value="Sindhi">Sindhi</option>
-     <option value="Urdu">Urdu</option>
-</select>
+        <label for="duration">Duration:</label>
+        <div style="display: flex; align-items: center;">
+            <input id="duration" type="text" placeholder="2.5 min"/>
+            <button onclick="pasteText('duration')">Paste</button>
+        </div>
 
-      <label for="starCast">Star Cast:</label>
-      <input id="starCast" type="text" placeholder="Rahul, Sujoy" />
-	
-      <button onclick="addDounload()"><strong>➕</strong></button>      <button onclick="removeDownload()"><strong>🗑️</strong></button>
-  <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
+        <label for="release_date">Release Date:</label>
+        <input id="release_date" type="date" />
 
-<label for="tags">Tags:</label>
-      <input type="text" id="tags" placeholder="Enter Tags and write ,">
-      <div class="tag-container" id="tagContainer"></div>
+        <label for="language">Language:</label>
+        <select id="language" multiple>
+            <option value="Hindi" selected>Hindi</option>
+            <option value="English">English</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Assamese">Assamese</option>
+            <option value="Bodo">Bodo</option>
+            <option value="Dogri">Dogri</option>
+            <option value="Gujarati">Gujarati</option>
+            <option value="Konkani">Konkani</option>
+            <option value="Kannada">Kannada</option>
+            <option value="Kashmiri">Kashmiri</option>
+            <option value="Maithili">Maithili</option>
+            <option value="Malayalam">Malayalam</option>
+            <option value="Manipuri">Manipuri</option>
+            <option value="Marathi">Marathi</option>
+            <option value="Nepali">Nepali</option>
+            <option value="Oriya">Oriya</option>
+            <option value="Punjabi">Punjabi</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Telugu">Telugu</option>
+            <option value="Santali">Santali</option>
+            <option value="Sindhi">Sindhi</option>
+            <option value="Urdu">Urdu</option>
+            <option value="Japanese">Japanese</option>
+        </select>
 
-      <button onclick="addCardFu()" k="test()" class="add-button" style="margin-top: 15px;">Add</button>
+        <label for="starCast">Star Cast:</label>
+        <div style="display: flex; align-items: center;">
+            <input id="starCast" type="text" placeholder="Rahul, Sujoy" />
+            <button onclick="pasteText('starCast')">Paste</button>
+        </div>
+
+        <button onclick="addDounload()"><strong>➕</strong></button>
+        <button onclick="removeDownload()"><strong>🗑️</strong></button>
+        <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
+
+        <label for="tags">Tags:</label>
+        <input type="text" id="tags" placeholder="Enter Tags and write ,">
+        <div class="tag-container" id="tagContainer"></div>
+
+        <button onclick="addCardFu()" k="test()" class="add-button" style="margin-top: 15px;">Add</button>
     </div>
-  </div>
-
+</div>
 
 <script>
 let downloadCount = 0;
-    function addDounload() {
-downloadCount++;
-      const additionalInputs = document.getElementById('additionalInputs');
-additionalInputs.appendChild(document.createElement('br'));
-     var ctext = document.createElement('span');
-ctext.style = "margin: 0 auto; margin-top: 10px;";
-ctext.innerHTML = `Link ${downloadCount}`;
-additionalInputs.appendChild(ctext);
-      // Create input fields for download link, size, and quality
-   
-      const downloadLinkInput = document.createElement('input');
-      downloadLinkInput.type = 'text';
-      downloadLinkInput.id = `downLink_${downloadCount}`;
-      downloadLinkInput.placeholder = `Enter Download Link for link #${downloadCount}`;
-      additionalInputs.appendChild(downloadLinkInput);
 
-      const sizeInput = document.createElement('input');
-      sizeInput.type = 'text';
-      sizeInput.id = `size_${downloadCount}`;
-      sizeInput.placeholder = `Enter Size for link #${downloadCount}`;
-      additionalInputs.appendChild(sizeInput);
+function addDounload() {
+    downloadCount++;
+    const additionalInputs = document.getElementById('additionalInputs');
+    additionalInputs.appendChild(document.createElement('br'));
+    var ctext = document.createElement('span');
+    ctext.style = "margin: 0 auto; margin-top: 10px;";
+    ctext.innerHTML = `Link ${downloadCount}`;
+    additionalInputs.appendChild(ctext);
+    
+    const downloadLinkInput = document.createElement('input');
+    downloadLinkInput.type = 'text';
+    downloadLinkInput.id = `downLink_${downloadCount}`;
+    downloadLinkInput.placeholder = `Enter Download Link for link #${downloadCount}`;
+    additionalInputs.appendChild(downloadLinkInput);
 
-      const qualityInput = document.createElement('select');
-      qualityInput.innerHTML = `
+    const sizeInput = document.createElement('input');
+    sizeInput.type = 'text';
+    sizeInput.id = `size_${downloadCount}`;
+    sizeInput.placeholder = `Enter Size for link #${downloadCount}`;
+    additionalInputs.appendChild(sizeInput);
+
+    const qualityInput = document.createElement('select');
+    qualityInput.innerHTML = `
         <option value="144p">144p</option>
         <option value="360p">360p</option>
         <option value="480p">480p</option>
@@ -122,94 +146,101 @@ additionalInputs.appendChild(ctext);
         <option value="1080p">1080p</option>
         <option value="2k">2k</option>
         <option value="4k">4k</option>
-      `;
-      qualityInput.id = `qual_${downloadCount}`;
-      additionalInputs.appendChild(qualityInput);
-   
-      const noteInput = document.createElement('input');
-      noteInput.type = 'text';
-      noteInput.placeholder = `eg. parts (optional) for link #${downloadCount}`;
-      noteInput.id = `note_${downloadCount}`;
-      additionalInputs.appendChild(noteInput);
+    `;
+    qualityInput.id = `qual_${downloadCount}`;
+    additionalInputs.appendChild(qualityInput);
 
-additionalInputs.scrollTop = additionalInputs.scrollHeight;
+    const noteInput = document.createElement('input');
+    noteInput.type = 'text';
+    noteInput.placeholder = `eg. parts (optional) for link #${downloadCount}`;
+    noteInput.id = `note_${downloadCount}`;
+    additionalInputs.appendChild(noteInput);
 
-    }
+    additionalInputs.scrollTop = additionalInputs.scrollHeight;
+}
+
 function removeDownload() {
-      const additionalInputs = document.getElementById('additionalInputs');
-
-      // Remove the last set of inputs if there are more than one set
-      if (downloadCount > 0) {
+    const additionalInputs = document.getElementById('additionalInputs');
+    if (downloadCount > 0) {
         for (let i = 0; i < 6; i++) {
-          additionalInputs.removeChild(additionalInputs.lastChild);
+            additionalInputs.removeChild(additionalInputs.lastChild);
         }
         downloadCount--;
-      }
     }
+}
 
 function clearInp() {
-var i = confirm("🧹 Are you sure to clear all inputs?");
-if(i){
-var ii = confirm("clearing all inputs... 🧹");
-if(ii){
-document.querySelectorAll("input").forEach(lak => lak.value = "");
-document.querySelectorAll("textarea").forEach(lak => lak.value = "");
-}
-}
-}
-    function addCardFu() {
-let finalData = {};
-finalData.name = document.querySelector("#name").value;
-finalData.h_type = document.querySelector("#h_type").value;
-finalData.imageUrl = document.querySelector("#imageUrl").value;
-finalData.description = document.querySelector("#description").value;
-finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);
-finalData.duration = document.querySelector("#duration").value;
-finalData.release_date = document.querySelector("#release_date").value;
-finalData.language = Array.from(document.querySelectorAll('#language option:checked')).map(option => option.value);
-finalData.cast = document.querySelector("#starCast").value;
-finalData.tags = ttags;
-finalData.links = [];
-for(i=1; i<downloadCount+1; i++){
-var ary = {};
-ary.download = document.querySelector(`#downLink_${i}`).value;
-ary.size = document.querySelector(`#size_${i}`).value;
-ary.note = document.querySelector(`#note_${i}`).value;
-ary.quality = document.querySelector(`#qual_${i}`).value;
-finalData.links.push(ary);
-}
-
-fetch("/admin/data/save/movie", {
-method: "POST",
-headers: {
-        "Content-Type": "application/json"
-    },
-body: JSON.stringify(finalData),
-
-}).then(d => d.json()).then(gotData => {
-if(!gotData.success && gotData.toast){
-showToast(gotData.toast.msg, gotData.toast.type || 'info', gotData.toast.time || 7000);
-return;
-}
-if(!gotData.success){
-return showToast(gotData.msg, "info", 5000);
-}
-addCard({
-	name: finalData.name,
-	description: finalData.description,
-	category_txt: (finalData.category),
-	id: "✅",
-	img: finalData.imageUrl
-	});
-showToast("Movie Has Been Added", "success", 5000);
-}).catch(e => {
-return showToast("Somthing Went Wrong !", "danger", 5000);
-});
-
-      // Clear input fields and tags container
-      document.querySelector("#tags").value = '';
-      document.querySelector("#tagContainer").innerHTML = '';
-
-      closeModal(); // Close the modal after adding the card
+    var i = confirm("🧹 Are you sure to clear all inputs?");
+    if (i) {
+        var ii = confirm("clearing all inputs... 🧹");
+        if (ii) {
+            document.querySelectorAll("input").forEach(lak => lak.value = "");
+            document.querySelectorAll("textarea").forEach(lak => lak.value = "");
+        }
     }
+}
+
+function addCardFu() {
+    let finalData = {};
+    finalData.name = document.querySelector("#name").value;
+    finalData.contentType = document.querySelector("#contentType").value;
+    finalData.h_type = document.querySelector("#h_type").value;
+    finalData.imageUrl = document.querySelector("#imageUrl").value;
+    finalData.description = document.querySelector("#description").value;
+    finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);
+    finalData.duration = document.querySelector("#duration").value;
+    finalData.release_date = document.querySelector("#release_date").value;
+    finalData.language = Array.from(document.querySelectorAll('#language option:checked')).map(option => option.value);
+    finalData.cast = document.querySelector("#starCast").value;
+    finalData.tags = ttags;
+    finalData.links = [];
+    for (let i = 1; i < downloadCount + 1; i++) {
+        var ary = {};
+        ary.download = document.querySelector(`#downLink_${i}`).value;
+        ary.size = document.querySelector(`#size_${i}`).value;
+        ary.note = document.querySelector(`#note_${i}`).value;
+        ary.quality = document.querySelector(`#qual_${i}`).value;
+        finalData.links.push(ary);
+    }
+
+    fetch("/admin/data/save/movie", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(finalData),
+    }).then(d => d.json()).then(gotData => {
+        if (!gotData.success && gotData.toast) {
+            showToast(gotData.toast.msg, gotData.toast.type || 'info', gotData.toast.time || 7000);
+            return;
+        }
+        if (!gotData.success) {
+            return showToast(gotData.msg, "info", 5000);
+        }
+        addCard({
+            name: finalData.name,
+            description: finalData.description,
+            category_txt: (finalData.category),
+            id: "✅",
+            img: finalData.imageUrl
+        });
+        showToast("Movie Has Been Added", "success", 5000);
+    }).catch(e => {
+        return showToast("Somthing Went Wrong !", "danger", 5000);
+    });
+
+    document.querySelector("#tags").value = '';
+    document.querySelector("#tagContainer").innerHTML = '';
+
+    closeModal();
+}
+
+async function pasteText(fieldId) {
+    try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById(fieldId).value = text;
+    } catch (err) {
+        console.error('Failed to read clipboard contents: ', err);
+    }
+}
 </script>
