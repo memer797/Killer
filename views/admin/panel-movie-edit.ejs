@@ -4,16 +4,16 @@
 <div id="myEditModal" class="modal" style="overflow-y: auto;">
     <div style="overflow-y: auto;" class="modal-content">
       <button class="close-button" onclick="closeEditModal()">X</button>
-      <button class="clear-button" onclick="clearEditInp()">ðŸ—‘ï¸</button>
+      <button class="clear-button" onclick="clearEditInp()">🗑️</button>
       <h2>Edit Movie</h2>
       <label for="edit_name">Name:</label>
       <input type="text" id="edit_name" placeholder="Enter Name">
 
 <label for="edit_contentType">Content Type:</label>
       <select id="edit_contentType">
-        <option value="Movie">Movie</option>
-        <option value="Web Series">Web Series</option>
-        <option value="Anime">Anime</option>
+        <option value="movie">Movie</option>
+        <option value="webseries">Web Series</option>
+        <option value="anime">Anime</option>
       </select>
 
      <label for="edit_h_type">TYPE:</label>
@@ -87,7 +87,7 @@
       <label for="edit_starCast">Star Cast:</label>
       <input id="edit_starCast" type="text" placeholder="Rahul, Sujoy" />
 	
-      <button onclick="addEditDounload()"><strong>âž•</strong></button>      <button onclick="removeEditDownload()"><strong>ðŸ“›</strong></button>
+      <button onclick="addEditDounload()"><strong>➕</strong></button>      <button onclick="removeEditDownload()"><strong>📛</strong></button>
   <div id="additionalEditInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
 
 <label for="edit_tags">Tags:</label>
@@ -163,7 +163,7 @@ function removeEditDownload() {
 function clearEditInp() {
 var i = confirm("ðŸ—‘ï¸ Are you sure to clear all inputs?");
 if(i){
-var ii = confirm("clearing all inputs... ðŸ—‘ï¸");
+var ii = confirm("clearing all inputs... 🗑️");
 if(ii){
 document.querySelectorAll("input[id^='edit_']").forEach(lak => lak.value = "");
 document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = "");
@@ -174,7 +174,7 @@ document.querySelectorAll("textarea[id^='edit_']").forEach(lak => lak.value = ""
 //edit card function
 var ecardsContainer = document.querySelector("#cardsContainer");
 function editCard(data){
-var { name, description, category_txt, img } = data;
+var { name, description, category_txt, img, id } = data;
 try {
     var cardContainer = nowEditing_.parentNode.parentNode;
 //console.log(">", cardContainer);
@@ -183,7 +183,7 @@ cardContainer.classList.add('card-container');
 
 var optionsButton = document.createElement('div');
 optionsButton.classList.add('options');
-optionsButton.textContent = 'â€¦';
+optionsButton.textContent = '…';
 optionsButton.onclick = function(event) {
     showOptionsMenu(event, cardContainer);
 };
@@ -240,7 +240,7 @@ customText.style.position = 'absolute';
 customText.style.bottom = '5px';
 customText.style.left = '5px';
 customText.style.color = '#555';
-customText.textContent = "âœ…";
+customText.textContent = id;
 
 textContainer.appendChild(nameHeading);
 textContainer.appendChild(descriptionParagraph);
@@ -264,6 +264,7 @@ console.log(error);
 let finalData = {};
 finalData.lastName = lastNametoEdit;
 finalData.name = document.querySelector("#edit_name").value;
+finalData.contentType = document.querySelector("#edit_contentType").value;
 finalData.h_type = document.querySelector("#edit_h_type").value || "Not Provided";
 finalData.imageUrl = document.querySelector("#edit_imageUrl").value;
 finalData.description = document.querySelector("#edit_description").value;
@@ -303,7 +304,8 @@ editCard({
 name: finalData.name,
 description: finalData.description,
 category_txt: finalData.category,
-img: finalData.imageUrl
+img: finalData.imageUrl,
+id: finalData.contentType
 });
       // Clear input fields and tags container
       document.querySelector("#edit_tags").value = '';
@@ -339,6 +341,7 @@ return;
 lastNametoEdit = data.data.name;
 document.querySelector("#myEditModal").style.display = "flex";
 document.querySelector("#edit_name").value = data.data.name;
+document.querySelector("#edit_contentType").value = data.data.contentType ?? "movie";
 document.querySelector("#edit_imageUrl").value = data.data.img;
 document.querySelector("#edit_description").value = data.data.description;
 document.querySelector("#edit_duration").value = data.data.duration;
