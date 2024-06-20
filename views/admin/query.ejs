@@ -16,7 +16,7 @@
 <tr>
 <td style="word-break: break-all;"><%= data.sender%></td>
 <td style="word-break: break-all;"><%= data.query%></td>
-<td style="width: 5px;" onclick = 'deleteQuery("<%= data.sender%>", "<%= data.query%>", this)'>🗑️</td>
+<td style="width: 5px;" onclick = 'deleteQuery(encodeURIComponent("<%= data.sender%>"), encodeURIComponent("<%= data.query%>"), this)'>🗑️</td>
 </tr>
 <% }); %>
 </tbody>
