@@ -16,3 +16,6 @@ router.get("/get/:id", async(req, res) => {
 router.post("/perform-search", async(req, res) => {
   let query = req.query.term;
 });
+
+
+module.exports = router;
