@@ -70,7 +70,7 @@ trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${r
 }else{
 trmv.innerHTML = `${res.data.name} <a class="rmvBtnTrend" onclick="rmvTrend('${res.data.name}', this)">Remove</a> <div class="line2"></div>`;
 }
-document.querySelector(".trendList").appendChild(trmv);
+document.querySelector(".trendList").insertBefore(trmv, document.querySelector(".trendList").firstChild);
 });
 movIdAdd.value = "";
 });
