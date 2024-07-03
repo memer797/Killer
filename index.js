@@ -77,6 +77,7 @@ var adminDM = require("./routes/adminDM");
 var movieRoute = require("./routes/movie-route");
 var supportChat = require("./routes/support-chat");
 var authRoute = require("./routes/auth");
+var notificationRoute = require("./routes/notification");
   
   global.webDisabled = false;
   app.use("/api", apiRoute);
@@ -90,6 +91,7 @@ var authRoute = require("./routes/auth");
   app.use("/webseries", require("./routes/webseries-route.js"));
   app.use("/support", supportChat);
   app.use("/auth", authRoute);
+  app.use("/notification", notificationRoute);
  // app.use("/download", ());
 app.use("*", async(req, res, next) => {
 if(global.webDisabled){
