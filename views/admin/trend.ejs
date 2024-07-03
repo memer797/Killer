@@ -94,6 +94,7 @@ but.parentNode.style.display = "none";
 }
 	
 	fetch("/admin/data/get/trend/movie").then(jo => jo.json()).then(lol => {
+lol.reverse();
 lol.forEach(lo => {
 		var name = lo.name;
 		var trmv = document.createElement("span");
