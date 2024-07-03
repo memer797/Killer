@@ -136,6 +136,7 @@
       <span class="nav-item" onclick="display_div('trending')">Trending</span>
       <span class="nav-item" onclick="display_div('stat')">Stat</span>
       <span class="nav-item" onclick="display_div('st')">Search Terms</span>
+      <span class="nav-item" onclick="display_div('todo')">To-do List</span>
       <span class="nav-item noticount" onclick="display_div('query')">Querys
         <% if(queryCount){ %>
         <span class="noticount__badge" id="queryCount"><%= queryCount%></span>
@@ -195,6 +196,9 @@
   <div id="div_query" class="showingdivs">
     <%- include("query")%>
   </div>
+  <div id="div_todo" class="showingdivs">
+    <%- include("todo")%>
+  </div>
   <div id="div_online-admins" class="showingdivs">
     <%- include("online-admins")%>
   </div>
@@ -221,7 +225,7 @@
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          Authorization: 'Bearer rnd_lO59NLDTKDNj6SnAHTWBjvYADaEz'
+          Authorization: 'Bearer rnd_lO59Ntsv8g8gTWBjvYADaEz'
         },
         body: JSON.stringify({ clearCache: 'clear' })
       };
