@@ -8,7 +8,10 @@ todoSocket.on("connection", (socket) => {
 
   socket.on("new.todo", async(req) => {
     if(!req || req.trim() === "" || typeof req !== "string") return;
-  await db.push("admin.todos", req);
+  await db.push("admin.todos", {
+    title: req,
+    isDone: false,
+  });
     todoSocket.emit("new.todo", req);
   });
 
@@ -25,7 +28,6 @@ todoSocket.on("connection", (socket) => {
     await db.push("admin.todos", {
       title: title,
       isDone: isDone,
-      isDeleted: false
     });
     socket.emit("todo.update", {title: title, isDone: isDone});
   });
