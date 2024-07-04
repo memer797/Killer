@@ -187,6 +187,7 @@ litoneed.textContent = task;
 let spanToSetInLi = document.createElement("span");
 spanToSetInLi.classList.add("todo-close");
 spanToSetInLi.textContent = "🗑️";
+spanToSetInLi.onclick = console.log(this);
 litoneed.appendChild(spanToSetInLi);
 
 document.querySelector(".todo-ul").insertBefore(litoneed, document.querySelector(".todo-ul").firstChild);
