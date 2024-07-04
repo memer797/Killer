@@ -200,7 +200,6 @@ todoSocket.emit("get.list", (todos) => {
 *    ...
 * ]
 **/
-todos.reverse();
 todos.forEach(todo => {
  let parNode = document.querySelector(".todo-ul");
  let createdLi = document.createElement("li");
