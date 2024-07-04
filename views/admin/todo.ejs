@@ -180,6 +180,9 @@ function newElement() {
     }
   }
 }
+function addTask(task) {
+
+};
 
 let todoSocket = io("/ws/admin/todo");
 todoSocket.emit("get.list", (todos) => {
