@@ -1,10 +1,10 @@
 <style>
-ul {
+.todo-ul {
   margin: 0;
   padding: 0;
 }
 
-ul li {
+.todo-ul li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
@@ -21,18 +21,18 @@ ul li {
   user-select: none;
 }
 
-ul li:hover {
+.todo-ul li:hover {
   background: #ddd;
 color: black;
 }
 
-ul li.checked {
+.todo-ul li.checked {
   background: #888;
   color: #fff;
   text-decoration: line-through;
 }
 
-ul li.checked::before {
+.todo-ul li.checked::before {
   content: '✅';
   font-size: 23px;
   position: absolute;
@@ -61,7 +61,6 @@ ul li.checked::before {
 .header {
   background-color: #353535;
   padding: 30px 40px;
-  color: white;
   text-align: center;
   border-radius: 5px;
 }
@@ -101,19 +100,25 @@ input {
   background-color: #bbb;
 }
 </style>
-
+<div style="
+margin: 0;
+           padding: 0;
+background-color: #353535;
+            color: white;
+            width: 100%;
+            min-height: 100%;">
 <div id="myDIV" class="header">
   <h2 style="margin:5px auto;">To Do List</h2>
   <input type="text" id="myInput" placeholder="Title...">
   <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
-<ul id="myUL">
+<ul class="todo-ul" id="myUL">
   <li class="checked">Test ¹</li>
   <li>Test ²</li>
   <li>Test ³</li>
 </ul>
-
+</div>
 <script>
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
