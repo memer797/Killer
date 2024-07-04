@@ -180,8 +180,16 @@ function newElement() {
     }
   }
 }
-function addTask(task) {
 
+function addTask(task) {
+let litoneed = document.createElement("li");
+litoneed.textContent = task;
+let spanToSetInLi = document.createElement("span");
+spanToSetInLi.classList.add("todo-close");
+spanToSetInLi.textContent = "🗑️";
+litoneed.append(spanToSetInLi);
+
+document.querySelector(".todo-ul").append(litoneed);
 };
 
 let todoSocket = io("/ws/admin/todo");
