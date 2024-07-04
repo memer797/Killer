@@ -126,13 +126,13 @@ var i;
 for (i = 0; i < myNodelist.length; i++) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("🗑️");
-  span.className = "close";
+  span.className = "todo-close";
   span.appendChild(txt);
   myNodelist[i].appendChild(span);
 }
 
 // Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
+var close = document.getElementsByClassName("todo-close");
 var i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
@@ -167,7 +167,7 @@ function newElement() {
 
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("🗑️");
-  span.className = "close";
+  span.className = "todo-close";
   span.appendChild(txt);
   li.appendChild(span);
 
@@ -194,6 +194,12 @@ todoSocket.emit("get.list", (todos) => {
 *    ...
 * ]
 **/
+todos.reverse();
+todos.forEach(todo => {
+ let parNode = document.querySelector(".todo-ul");
+
+ parNode.insertBefore(``, parNode);
+});
 });
 
 todoSocket.on("new.todo", (todo) => {
