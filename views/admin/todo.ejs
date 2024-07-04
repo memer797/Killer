@@ -187,10 +187,17 @@ litoneed.textContent = task;
 let spanToSetInLi = document.createElement("span");
 spanToSetInLi.classList.add("todo-close");
 spanToSetInLi.textContent = "🗑️";
-spanToSetInLi.onclick = console.log(this);
+spanToSetInLi.onclick = deleteTask(this);
 litoneed.appendChild(spanToSetInLi);
 
 document.querySelector(".todo-ul").insertBefore(litoneed, document.querySelector(".todo-ul").firstChild);
+};
+
+function deleteTask(task) {
+let titleToDelete = this.textContent;
+if(!titleToDelete) return;
+task.style.display = "none";
+
 };
 
 let todoSocket = io("/ws/admin/todo");
