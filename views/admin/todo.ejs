@@ -122,7 +122,7 @@ background-color: #353535;
 <script>
 let todoSocket = io("/ws/admin/todo");
 // Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
+/*var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
   var span = document.createElement("SPAN");
@@ -144,7 +144,7 @@ for (i = 0; i < close.length; i++) {
     }
   }
 }
-
+*/
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
@@ -162,21 +162,6 @@ function newElement() {
   todoSocket.emit("new.todo", inputValue);
   }
   document.getElementById("myInput").value = "";
-/*
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("🗑️");
-  span.className = "todo-close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-    let conFirm = prompt("Aree You Sure?");
-    if(conFirm.toLowerCase() !== "yes") return;
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }*/
 }
 
 
@@ -193,11 +178,13 @@ document.querySelector(".todo-ul").insertBefore(litoneed, document.querySelector
 };
 
 function deleteTask(task) {
-console.log(task.parentNode);
-/*let titleToDelete = this.textContent;
+let lastConf = prompt("Sure? yes / no");
+if(lastConf !== "yes") return;
+task.parentNode.style.display = "none";
+let titleToDelete = task.parentNode.textContent;
 task.style.display = "none";
 if(!titleToDelete) return;
-todoSocket.emit("todo.delete", titleToDelete);*/
+todoSocket.emit("todo.delete", titleToDelete);
 };
 
 
