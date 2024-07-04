@@ -93,6 +93,10 @@ var notificationRoute = require("./routes/notification");
   app.use("/auth", authRoute);
   app.use("/notification", notificationRoute);
  // app.use("/download", ());
+
+  //websocket routes
+  require("./socket/admin.todo.js");
+  //next()
 app.use("*", async(req, res, next) => {
 if(global.webDisabled){
       if(req.originalUrl == '/login/admin'){ return next(); }else if(!req.cookies.admin_key || req.cookies.admin_key !== process.env.admin_login_cookie){
