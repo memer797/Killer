@@ -197,8 +197,8 @@ document.querySelector(".todo-ul").insertBefore(litoneed, document.querySelector
 
 function deleteTask(task) {
 let titleToDelete = this.textContent;
-if(!titleToDelete) return;
 task.style.display = "none";
+if(!titleToDelete) return;
 todoSocket.emit("todo.delete", titleToDelete);
 };
 
