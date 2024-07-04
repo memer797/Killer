@@ -120,6 +120,7 @@ background-color: #353535;
 </ul>
 </div>
 <script>
+let todoSocket = io("/ws/admin/todo");
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 var i;
@@ -154,17 +155,14 @@ list.addEventListener('click', function(ev) {
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
-  var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
   if (inputValue === '') {
   return;
   } else {
-    document.getElementById("myUL").insertBefore(li, document.getElementById("myUL").firstChild);
+  todoSocket.emit("new.todo", inputValue);
   }
   document.getElementById("myInput").value = "";
-
+/*
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("🗑️");
   span.className = "todo-close";
@@ -178,10 +176,9 @@ function newElement() {
       var div = this.parentElement;
       div.style.display = "none";
     }
-  }
+  }*/
 }
 
-let todoSocket = io("/ws/admin/todo");
 
 function addTask(task) {
 let litoneed = document.createElement("li");
