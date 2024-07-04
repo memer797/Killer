@@ -181,6 +181,8 @@ function newElement() {
   }
 }
 
+let todoSocket = io("/ws/admin/todo");
+
 function addTask(task) {
 let litoneed = document.createElement("li");
 litoneed.textContent = task;
@@ -197,10 +199,10 @@ function deleteTask(task) {
 let titleToDelete = this.textContent;
 if(!titleToDelete) return;
 task.style.display = "none";
-
+todoSocket.emit("todo.delete", titleToDelete);
 };
 
-let todoSocket = io("/ws/admin/todo");
+
 todoSocket.emit("get.list", (todos) => {
 /**
 * todos structure
