@@ -223,7 +223,7 @@ spanNode.classList.add('todo-close');
 spanNode.textContent = "🗑️";
 spanNode.onclick = function() { deleteTask(this); };
 createdLi.appendChild(spanNode);
- parNode.insertBefore(`createdLi`, parNode);
+ parNode.insertBefore(createdLi, parNode);
 });
 });
 
