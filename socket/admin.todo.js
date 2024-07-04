@@ -1,7 +1,10 @@
 var todoSocket = socketIo.of("/ws/admin/todo");
-
+(async() => {
+  await db.delete("admin.todos");
+})();
 todoSocket.on("connection", (socket) => {
   socket.on("get.list", async(req) => {
+    
     let allTodos = await db.getArray("admin.todos");
     req(allTodos);
   });
@@ -36,7 +39,7 @@ todoSocket.on("connection", (socket) => {
     let all = await db.getArray("admin.todos");
     let whatifound = all.filter(i => i.title === req);
     if(!whatifound || whatifound.length < 1) return;
-    await db.pull("admin.todos", whatifound);
+    await db.pull("admin.todos", whatifound[0]);
   });
 });
 
