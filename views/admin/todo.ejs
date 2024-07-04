@@ -114,9 +114,7 @@ background-color: #353535;
 </div>
 
 <ul class="todo-ul" id="myUL">
-  <li class="checked">Test ¹</li>
-  <li>Test ²</li>
-  <li>Test ³</li>
+  
 </ul>
 </div>
 <script>
@@ -203,7 +201,7 @@ todoSocket.emit("get.list", (todos) => {
 todos.forEach(todo => {
  let parNode = document.querySelector(".todo-ul");
  let createdLi = document.createElement("li");
- createdLi.textContent = todo;
+ createdLi.textContent = todo.title;
  let spanNode = document.createElement("span");
 spanNode.classList.add('todo-close');
 spanNode.textContent = "🗑️";
