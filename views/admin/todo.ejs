@@ -186,14 +186,14 @@ litoneed.textContent = task;
 let spanToSetInLi = document.createElement("span");
 spanToSetInLi.classList.add("todo-close");
 spanToSetInLi.textContent = "🗑️";
-spanToSetInLi.onclick = deleteTask(this);
+spanToSetInLi.onclick = function() { deleteTask(this); };
 litoneed.appendChild(spanToSetInLi);
 
 document.querySelector(".todo-ul").insertBefore(litoneed, document.querySelector(".todo-ul").firstChild);
 };
 
 function deleteTask(task) {
-console.log(task);
+console.log(task.parentNode);
 /*let titleToDelete = this.textContent;
 task.style.display = "none";
 if(!titleToDelete) return;
