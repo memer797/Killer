@@ -10,6 +10,28 @@ todoSocket.on("connection", (socket) => {
     if(!req || req.trim() === "" || typeof req !== "string") return;
   await db.push("admin.todos", req)
   });
+
+  socket.on("todo.update", async(req) => {
+    let title = req.title;
+    let isDone = req.isDone;
+    if(isDone){
+      isDone = true;
+    } else {
+      isDone = false;
+    }
+    if(!title) return;
+    //await db.pull("admin.tools", title).catch();
+    await db.push("admin.tools", {
+      title: title,
+      isDone: isDone,
+      isDeleted: false
+    });
+    socket.emit("todo.update", {title: title, isDone: isDone});
+  });
+
+  socket.on("todo.delete", async(req) => {
+    
+  });
 });
 
 
