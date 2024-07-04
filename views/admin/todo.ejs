@@ -156,7 +156,7 @@ list.addEventListener('click', function(ev) {
 // Create a new list item when clicking on the "Add" button
 function newElement() {
   var inputValue = document.getElementById("myInput").value;
-  if (inputValue === '') {
+  if (!inputValue || inputValue.trim() === '') {
   return;
   } else {
   todoSocket.emit("new.todo", inputValue);
@@ -216,8 +216,14 @@ todoSocket.emit("get.list", (todos) => {
 todos.reverse();
 todos.forEach(todo => {
  let parNode = document.querySelector(".todo-ul");
-
- parNode.insertBefore(``, parNode);
+ let createdLi = document.createElement("li");
+ createdLi.textContent = todo;
+ let spanNode = document.createElement("span");
+spanNode.classList.add('todo-close');
+spanNode.textContent = "🗑️";
+spanNode.onclick = function() { deleteTask(this); };
+createdLi.appendChild(spanNode);
+ parNode.insertBefore(`createdLi`, parNode);
 });
 });
 
