@@ -200,7 +200,7 @@ todoSocket.emit("get.list", (todos) => {
 **/
 todos.forEach(todo => {
 if(typeof todo !== "object" || !todo.title){
-continue;
+return;
 }
  let parNode = document.querySelector(".todo-ul");
  let createdLi = document.createElement("li");
