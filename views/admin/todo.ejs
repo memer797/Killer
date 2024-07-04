@@ -187,9 +187,9 @@ litoneed.textContent = task;
 let spanToSetInLi = document.createElement("span");
 spanToSetInLi.classList.add("todo-close");
 spanToSetInLi.textContent = "🗑️";
-litoneed.append(spanToSetInLi);
+litoneed.appendChild(spanToSetInLi);
 
-document.querySelector(".todo-ul").append(litoneed);
+document.querySelector(".todo-ul").insertBefore(litoneed, document.querySelector(".todo-ul").firstChild);
 };
 
 let todoSocket = io("/ws/admin/todo");
