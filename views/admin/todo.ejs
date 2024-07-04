@@ -224,7 +224,7 @@ todos.forEach(todo => {
 });
 
 todoSocket.on("new.todo", (todo) => {
- // todo = name;
+  addTask(todo);
 });
 
 todoSocket.on("todo.update", (todo) => {
