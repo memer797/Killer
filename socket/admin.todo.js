@@ -22,7 +22,7 @@ todoSocket.on("connection", (socket) => {
     }
     if(!title) return;
     //await db.pull("admin.tools", title).catch();
-    await db.push("admin.tools", {
+    await db.push("admin.todos", {
       title: title,
       isDone: isDone,
       isDeleted: false
@@ -31,7 +31,10 @@ todoSocket.on("connection", (socket) => {
   });
 
   socket.on("todo.delete", async(req) => {
-    
+    let all = await db.getArray("admin.todos");
+    let whatifound = all.filter(i => i.title === req);
+    if(!whatifound || whatifound.length < 1) return;
+    await db.pull("admin.todos", whatifound);
   });
 });
 
