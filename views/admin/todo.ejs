@@ -238,6 +238,10 @@ createdLi.appendChild(spanNode);
 });
 });
 
+todoSocket.on("new.todo", (todo) => {
+  addTask(todo);
+});
+
 todoSocket.on("todo.update", (todo) => {
 let listItems = document.querySelectorAll('.todo-ul li');
 
