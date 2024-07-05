@@ -179,8 +179,9 @@ function deleteTask(task) {
 let lastConf = prompt("Sure? yes / no");
 if(lastConf !== "yes") return;
 task.parentNode.style.display = "none";
-let titleToDelete = task.parentNode.textContent;
-titleToDelete = titleToDelete.substring(titleToDelete.length-1, "");
+let backupTask = task.parentNode;
+task.parentNode.removeChild(task);
+let titleToDelete = backupTask.textContent;
 if(!titleToDelete) return;
 todoSocket.emit("todo.delete", titleToDelete);
 };
