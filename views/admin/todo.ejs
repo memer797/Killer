@@ -180,7 +180,7 @@ let lastConf = prompt("Sure? yes / no");
 if(lastConf !== "yes") return;
 task.parentNode.style.display = "none";
 let titleToDelete = task.parentNode.textContent;
-task.style.display = "none";
+console.log(titleToDelete);
 if(!titleToDelete) return;
 todoSocket.emit("todo.delete", titleToDelete);
 };
