@@ -1,7 +1,5 @@
 var todoSocket = socketIo.of("/ws/admin/todo");
-(async() => {
-  await db.delete("admin.todos");
-})();
+
 todoSocket.on("connection", (socket) => {
   socket.on("get.list", async(req) => {
     
