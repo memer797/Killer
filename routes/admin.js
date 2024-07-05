@@ -254,10 +254,11 @@ router.get("/", async(req, res) => {
     var ttlMov = await db.getArray("info.movie");
     var ttlTrendMov = await db.getArray("trend.movie");
     var queryCount = await db.getArray("user.query");
+    var srarchTermRecord = await db.getArray("search.term");
 res.render("admin/panel", {
     uniqueMagaViews,
     totalMagaViews,
-    srarchTermRecord: global.srarchTermRecord,
+    srarchTermRecord: srarchTermRecord,
     uptime: Date.now() - global.serverInfo.startTime,
     totalMovCount: ttlMov.length,
     totalTrendCount: ttlTrendMov.length,
