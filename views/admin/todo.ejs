@@ -238,22 +238,17 @@ createdLi.appendChild(spanNode);
 });
 });
 
-todoSocket.on("new.todo", (todo) => {
-  addTask(todo);
-});
-
 todoSocket.on("todo.update", (todo) => {
- /**
-* todo structyre
-*[
-*  {
-*    name: String,
-*    isDone: Boolean,
-*  }
-*]
-**/
-console.log(todo);
+let listItems = document.querySelectorAll('.todo-ul li');
 
-//task.classList.toggle('checked');
+let targetText = todo.title;
+let targetLi = Array.from(listItems).find(li => li.childNodes[0].textContent.trim() === targetText);
+
+if(!targetLi) return;
+if(todo.isDone){
+ targetLi.classList.add("checked");
+} else {
+ targetLi.classList.remove("checked");
+}
 });
 </script>
