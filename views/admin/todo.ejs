@@ -228,6 +228,7 @@ spanNode.classList.add('todo-close');
 spanNode.textContent = "🗑️";
 spanNode.onclick = function() { deleteTask(this); };
 if(todo.isDone){
+createdLi.classList.toggle('checked');
 createdLi.appendChild(spanNode);
  parNode.appendChild(createdLi);
 }else{
