@@ -1,4 +1,3 @@
-
 <div style="margin: 0;
             padding: 0;
             background-color: #252525;
@@ -20,7 +19,7 @@ console.log("<%= data.query%>");
 <tr>
 <td style="word-break: break-all;"><%= data.sender%></td>
 <td style="word-break: break-all;"><%= data.query%></td>
-<td style="width: 5px;" onclick = 'deleteQuery(encodeURIComponent("<%= data.sender%>"), encodeURIComponent("<%= data.query%>"), this)'>🗑️</td>
+<td style="width: 5px;" onclick = 'deleteQuery(`<%= data.sender%>`, `<%= data.query%>`, this)'>🗑️</td>
 </tr>
 <% }); %>
 </tbody>
@@ -33,6 +32,7 @@ console.log("<%= data.query%>");
 querySocket.on("new.query", async(data) => {
 let queryCountElement = document.querySelector("#queryCount");
 try {
+document.querySelector(".stat-query-count").textContent = (parseInt(document.querySelector(".stat-query-count").textContent) + 1);
 if(queryCountElement.innerHTML == "99+"){  }else{
 let currentCount = parseInt(queryCountElement.innerHTML);
 currentCount += 1;
@@ -87,6 +87,9 @@ if(isNaN(currentCount)){
 }else{
 currentCount -= 1;
 document.querySelector("#queryCount").innerHTML = currentCount;
+try {
+document.querySelector(".stat-query-count").textContent = (parseInt(document.querySelector(".stat-query-count").textContent) - 1);
+} catch {}
                        } 
 fetch(`/dm/admin/query`, {
   method: 'DELETE',
