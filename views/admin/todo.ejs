@@ -179,7 +179,8 @@ document.querySelector(".todo-ul").insertBefore(litoneed, document.querySelector
 function deleteTask(task) {
 let lastConf = prompt("Sure? yes / no");
 if(lastConf !== "yes") return;
-task.parentNode.style.display = "none";
+//task.parentNode.style.display = "none";
+task.parentNode.remove();
 let backupTask = task.parentNode;
 task.parentNode.removeChild(task);
 let titleToDelete = backupTask.textContent;
@@ -217,8 +218,13 @@ return;
 spanNode.classList.add('todo-close');
 spanNode.textContent = "🗑️";
 spanNode.onclick = function() { deleteTask(this); };
+if(todo.isDone){
+createdLi.appendChild(spanNode);
+ parNode.appendChild(createdLi);
+}else{
 createdLi.appendChild(spanNode);
  parNode.insertBefore(createdLi, parNode.firstChild);
+}
 });
 });
 
