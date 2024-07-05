@@ -179,8 +179,7 @@ var data = await db.getArray("info.movie");
       var result = fuse.search(query);
      res.render("search list", {list: result.map(item => ({name: item.item.name, category: item.item.category, img: item.item.img})), term: query});
      //res.json(result.map(item => ({name: item.item.name, id: item.item.id})));
-
-  global.srarchTermRecord.push(`${query} [•|{\\:/}|•] ${result[0] ? result[0].item.name : "404"}`); 
+  await db.push("search.term", `${query} [•|{\\:/}|•] ${result[0] ? result[0].item.name : "404"}`);
  });
 
 //get all movie with related tag
