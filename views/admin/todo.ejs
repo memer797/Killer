@@ -190,7 +190,7 @@ if(!titleToDelete) return;
 
 
 function toogleChecked(task){
-if(task.classList.has("checked")){
+if(task.classList.contains("checked")){
 todoSocket.emit("todo.update", {
 title: task.childNodes[0].textContent,
 isDone: false,
