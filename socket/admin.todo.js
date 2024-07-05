@@ -26,6 +26,14 @@ todoSocket.on("connection", (socket) => {
     }
     if(!title) return;
     //await db.pull("admin.tools", title).catch();
+   /* await db.push("admin.todos", {
+      title: title,
+      isDone: isDone,
+    });*/
+    let allTodosForEdit_raw = await db.getArray("admin.todos");
+    let todoForEdit = allTodosForEdit_raw.filter(i => i.title === title);
+    if(!todoForEdit || todoForEdit.length < 1) return;
+    await db.pull("admin.todos", todoForEdit[0]);
     await db.push("admin.todos", {
       title: title,
       isDone: isDone,
