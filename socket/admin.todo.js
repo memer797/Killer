@@ -42,6 +42,7 @@ todoSocket.on("connection", (socket) => {
   });
 
   socket.on("todo.delete", async(req) => {
+    console.log(req);
     let all = await db.getArray("admin.todos");
     let whatifound = all.filter(i => i.title === req);
     console.log(whatifound);
