@@ -190,7 +190,6 @@ if(!titleToDelete) return;
 
 
 function toogleChecked(task){
-task.toogleClass("checked");
 if(task.classList.has("checked")){
 todoSocket.emit("todo.update", {
 title: task.childNodes[0].textContent,
@@ -253,5 +252,7 @@ todoSocket.on("todo.update", (todo) => {
 *]
 **/
 console.log(todo);
+
+//task.classList.toggle('checked');
 });
 </script>
