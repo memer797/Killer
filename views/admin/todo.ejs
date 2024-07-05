@@ -185,7 +185,7 @@ let backupTask = task.parentNode;
 task.parentNode.removeChild(task);
 let titleToDelete = backupTask.textContent;
 if(!titleToDelete) return;
-//todoSocket.emit("todo.delete", titleToDelete);
+todoSocket.emit("todo.delete", titleToDelete);
 };
 
 
