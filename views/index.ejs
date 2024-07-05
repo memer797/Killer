@@ -132,6 +132,7 @@ border-radius: 4px;
     <div style = "font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
   </div>
   <div id="trending">
+<% trend.reverse() %>
 <% trend.forEach(data => { %>
     <div class="movie-container" onclick="window.location.href = '/download/<%= (data.name).replace(/ /g, `-`)%>'">
       <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
