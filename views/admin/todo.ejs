@@ -190,8 +190,8 @@ todoSocket.emit("todo.delete", titleToDelete);
 
 
 function toogleChecked(task){
-console.log(task.textContent);
 task.classList.toggle('checked');
+console.log(task.childNodes[0].textContent);
 };
 
 
