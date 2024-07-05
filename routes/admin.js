@@ -240,6 +240,7 @@ return res.json({success: false, msg: 'name is not provided!'});
 console.log(toRemVe);
  await db.pull("info.movie", toRemVe[0]);
  res.json({success: true, msg: `movie ${req.body.name} removed successfully`});
+    await db.push("backup.del.items", toRemVe[0]);
 });
 
 
