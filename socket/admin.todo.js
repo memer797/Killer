@@ -38,7 +38,7 @@ todoSocket.on("connection", (socket) => {
       title: title,
       isDone: isDone,
     });
-    socket.emit("todo.update", {title: title, isDone: isDone});
+    todoSocket.emit("todo.update", {title: title, isDone: isDone});
   });
 
   socket.on("todo.delete", async(req) => {
