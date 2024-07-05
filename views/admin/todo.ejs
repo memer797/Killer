@@ -190,8 +190,18 @@ if(!titleToDelete) return;
 
 
 function toogleChecked(task){
-console.log(task.childNodes[0].textContent);
-todoSocket.emit("todo.update");
+task.toogleClass("checked");
+if(task.classList.has("checked")){
+todoSocket.emit("todo.update", {
+title: task.childNodes[0].textContent,
+isDone: false,
+});
+} else {
+todoSocket.emit("todo.update", {
+title: task.childNodes[0].textContent,
+isDone: true,
+});
+}
 };
 
 
@@ -242,5 +252,6 @@ todoSocket.on("todo.update", (todo) => {
 *  }
 *]
 **/
+console.log(todo);
 });
 </script>
