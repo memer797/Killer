@@ -148,7 +148,7 @@ var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     //ev.target.classList.toggle('checked');
-    //toogleChecked(ev.target);
+    toogleChecked(ev.target);
   }
 }, false);
 
@@ -188,9 +188,9 @@ todoSocket.emit("todo.delete", titleToDelete);
 };
 
 
-function toogleChecked(this){
-console.log(this.textContent);
-this.classList.toggle('checked');
+function toogleChecked(task){
+console.log(task.textContent);
+task.classList.toggle('checked');
 };
 
 
