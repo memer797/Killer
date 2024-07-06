@@ -372,7 +372,7 @@ function parseUserAgent(userAgent) {
 }
 
 router.post("/search-term/delete", async(req, res) => {
- if(req.body || req.body.term) return;
+ if(!req.body || !req.body.term) return;
     let termToDelete = req.body.term;
     await db.pull("search.term", termToDelete);
     res.send("ok");
