@@ -6,7 +6,6 @@ console.log("<%= srarchTermRecord%>");
 <% srarchTermRecord.forEach(data => {
     var ndata = data.split("[•|{\\:/}|•]");
     if (ndata && ndata.length > 1) { %>
-        <%= console.log(ndata); %>
-        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><br>
+        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><span style="float: right; margin-right: 0%;">🗑️</span><br>
 <%   }
 }); %>
