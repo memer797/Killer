@@ -31,8 +31,16 @@ router.get("/signup", async(req, res) => {
   res.render("auth/signup");
 });
 router.post("/signup", async(req, res) => {
+  let otpMail = {
+    from: `"Verification" <${senderEmailAddress}>`,
+    to: "sujoyk211@gmail.com",
+    subject: "OTP Verification",
+    text: `Your OTP is: #### 
+    Use This OTP to Verify Your Email Address
+    » Don't Share This OTP to anyone except memer797 admin`
+  };
   
-  otpSender.sendMail(withtext, function(error, info) {
+  otpSender.sendMail(otpMail, function(error, info) {
   if (error) {
     console.log(error);
     res.json({ success: false, msg: "Error while sending Email" });
