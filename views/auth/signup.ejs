@@ -254,6 +254,24 @@
             }
 
             if (isValidEmail && isValidPassword && passwordsMatch) {
+fetch("/auth/signup", {
+    method: "POST", // Make sure to set the method to POST or whatever method is appropriate
+    headers: {
+        "Content-Type": "application/json"
+    }
+})
+.then(response => response.json())
+.then(data => {
+                document.getElementById('success-message').innerText = data.message;
+                document.getElementById('success-message').style.display = 'block';
+return;
+})
+.catch(error => {
+                document.getElementById('success-message').innerText = 'Error';
+                document.getElementById('success-message').style.display = 'block';
+return;
+});
+
                 document.getElementById('success-message').innerText = 'Registration successfully!';
                 document.getElementById('success-message').style.display = 'block';
                 document.getElementById('email').value = ''; // Clear input fields
