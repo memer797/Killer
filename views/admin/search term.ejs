@@ -1,11 +1,7 @@
-<script>
-console.log("<%= srarchTermRecord%>");
-</script>
-
 <% srarchTermRecord.reverse(); %>
 <% srarchTermRecord.forEach(data => {
     var ndata = data.split("[•|{\\:/}|•]");
     if (ndata && ndata.length > 1) { %>
-        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><span style="float: right; margin-right: 0%;">🗑️</span><br>
+        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><span style="float: right; margin-right: 0%;" onclick="deleteSearchTerm(`<%= ndata[0] %>[•|{\\:/}|•]<%= ndata[1] %>`)">🗑️</span><br>
 <%   }
 }); %>
