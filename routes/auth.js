@@ -1,6 +1,14 @@
 var express = require("express");
 var router = express.Router();
 const nodemailer = require("nodemailer");
+let senderEmailAddress = "noreply.memer797@gmail.com";
+var otpSender = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: senderEmailAddress,
+    pass: process.env.otpSenderPass,
+  }
+});
 
 router.get("*", async(req, res, next)=> {
   next();
