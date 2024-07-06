@@ -12,8 +12,16 @@ router.get("/", async(req, res) => {
 router.get("/login", async(req, res) => {
   res.render("auth/login");
 });
+router.post("/login", async(req, res) => {
+  if(!req.body || !req.body.email || !req.body.pass){
+    return res.json({ success: false, msg: `${req.body.email ? req.body.pass ? "Somthing" : "Password" : "Email" } is not provided!`});
+  }
+});
 
 router.get("/signup", async(req, res) => {
+  res.render("auth/signup");
+});
+router.post("/signup", async(req, res) => {
   res.render("auth/signup");
 });
 
