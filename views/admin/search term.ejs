@@ -2,13 +2,25 @@
 <% srarchTermRecord.forEach(data => {
     var ndata = data.split("[•|{\\:/}|•]");
     if (ndata && ndata.length > 1) { %>
-        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><span style="float: right; margin-right: 0%;" onclick="deleteSearchTerm(`<%= ndata[0] %>[•|{\\:/}|•]<%= ndata[1] %>`)">🗑️</span><br>
+<div>
+        <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><span style="float: right; margin-right: 0%;" onclick="deleteSearchTerm(`<%= ndata[0] %>[•|{\\:/}|•]<%= ndata[1] %>`, this)">🗑️</span><br>
+</div>
 <%   }
 }); %>
 
 <script>
-function deleteSearchTerm(term){
+function deleteSearchTerm(term, item){
+try {
+item.parentNode.remove();
+} catch {}
   fetch("/admin/search-term/delete", {
-}
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        term: term
+    })
+});
 }
 </script>
