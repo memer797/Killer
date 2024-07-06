@@ -1,167 +1,267 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-	* {
-		-webkit-tap-highlight-color: transparent;
-		}
-html, body {
-margin: 0;
-padding: 0;
-width: 100%;
-height: 100%;
-}
-::placeholder { color: white;opacity: 1;}
-::-ms-input-placeholder { color: white;}
-body {font-family: Arial, Helvetica, sans-serif; background-color: #292929; color: white;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In • memer797</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-input[type=email], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 10px 0;
-  display: inline-block;
-  border: 1px solid cyan;
-  box-sizing: border-box;
-  border-radius: 4px;
-  background-color: transparent;
-  color: white;
-  outline: none;
-box-shadow: 
-        inset 0 0 20px rgba(12, 273, 203, 0.5), 
-        inset 0 0 20px rgba(12, 273, 203, 0.2),
-         0 0 20px rgba(12, 273, 203, 0.5), 
-         0 0 20px rgba(12, 273, 203, 0.2);
-         font-size: 20px;
-}
+        * {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-button {
-  background-color: #0cedcb;
-  color: black;
+        .wrapper {
+            background: #ececec;
+            padding: 0 20px 0 20px;
+        }
 
-  height: 45px;
-  cursor: pointer;
-  width: 135px;
-  display: block;
-  margin: 16px auto;
-  border: 1px solid #0cedcb;
-  border-radius: 4px;
-  font-size: 34px;
-  text-align: center;
-  align-items: center;
-}
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-button:hover {
-	border-radius: 30px;
-  opacity: 0.8;
-}
+        .row {
+            display: flex;
+            width: 900px;
+            height: 550px;
+            border-radius: 10px;
+            background: #fff;
+            padding: 0;
+            box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+        }
 
-.imgcontainer {
-  text-align: center;
-  margin: 10px 0 8px 0;
-  position: relative;
-}
+        .side-image {
+            background-image: url("https://imgur.com/iA3zZWu.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 10px 0 0 10px;
+            position: relative;
+            width: 50%;
+        }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-  border: 0.5px solid black;
-  background-color: transparent;
-  box-shadow: 0 0 20px rgba(12, 273, 203, 0.5), 
-         0 0 20px rgba(12, 273, 203, 0.8);
-}
+        .right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 50%;
+        }
 
-.container {
-  padding: 8px;
-  position: relative;
-  overflow: hidden;
-}
-.container-bottom {
-  padding: 0 2px;
-  position: relative;
-  overflow: scroll;
-}
-.container-bottom a {
-color: cyan;	
-	}
+        .input-box {
+            width: 330px;
+        }
 
-span.psw {
-  text-align: center;
-  padding-top: 5px;
-display: block;
-}
-span.new{
-   text-align: center;
- padding-top: 5px;
-display: block;
-}
+        .input-box header {
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 45px;
+        }
 
-.modal-content {
-  border-radius: 8px;
-  margin: 0 auto;
-  border: 1px solid #888;
-  width: 80%; 
-  margin-top: 5px;
-}
+        .input-field {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 0 10px;
+            margin-bottom: 20px;
+        }
 
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+        .input-field input {
+            height: 45px;
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            outline: none;
+            color: #40414a;
+        }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
+        .input-field label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            pointer-events: none;
+            transition: .5s;
+        }
 
-</style>
-<link rel="stylesheet" href="/my_toast_dark.css">
+        .input-field input:focus ~ label,
+        .input-field input:not(:placeholder-shown) ~ label {
+            top: -10px;
+            font-size: 13px;
+            color: #5d5076;
+        }
+
+        .input-field input:focus,
+        .input-field input:not(:placeholder-shown) {
+            border-bottom: 1px solid #743ae1;
+        }
+
+        .input-field .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .input-field .toggle-password:hover {
+            color: #743ae1;
+        }
+
+        .submit {
+            border: none;
+            outline: none;
+            height: 45px;
+            background: #ececec;
+            border-radius: 5px;
+            transition: .4s;
+        }
+
+        .submit:hover {
+            background: rgba(37, 95, 156, 0.937);
+            color: #fff;
+        }
+
+        .signin {
+            text-align: center;
+            font-size: small;
+            margin-top: 25px;
+        }
+
+        .signin span a {
+            text-decoration: none;
+            font-weight: 700;
+            color: #000;
+            transition: .5s;
+        }
+
+        .signin span a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .row {
+                flex-direction: column;
+                max-width: 420px;
+                width: 100%;
+            }
+
+            .side-image {
+                border-radius: 10px 10px 0 0;
+                width: 100%;
+                height: 200px;
+            }
+
+            .right {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1 style="text-align: center; margin: 8px auto; display: block;">memer797 User Login</h1>
-  
-  <form class="modal-content animate" id="myForm" style="border: 1px solid rgb(10, 190, 240); overflow: hidden; background-color: transparent; box-shadow: 
-        inset 0 0 20px rgba(12, 273, 203, 0.5), 
-        inset 0 0 70px rgba(12, 273, 203, 0.2),'
-         0 0 20px rgba(12, 273, 203, 0.5), 
-         0 0 20px rgba(12, 273, 203, 0.2);">
-    <div class="imgcontainer">
-
-      <img src="https://memer797.onrender.com/android-chrome-192x192.png" alt="Avatar" class="avatar">
+    <div class="wrapper">
+        <div class="container main">
+            <div class="row">
+                <div class="side-image">
+                    <!-- Image section with background image -->
+                </div>
+                <div class="right">
+                    <div class="input-box">
+                        <header>Hello! Welcome Back </header>
+                        <form onsubmit="return validateSignInForm(event)">
+                            <div class="input-field">
+                                <input type="email" class="input" id="signin-email" required autocomplete="off" placeholder=" ">
+                                <label for="signin-email">Email</label> 
+                                <div class="error-message" id="signin-email-error">Please enter a valid email address.</div>
+                            </div> 
+                            <div class="input-field">
+                                <input type="password" class="input" id="signin-pass" required placeholder=" ">
+                                <label for="signin-pass">Password</label>
+                                <span class="toggle-password" onclick="toggleSignInPassword()"></span>
+                                <div class="error-message" id="signin-password-error">Incorrect password.</div>
+                            </div> 
+                            <div class="input-field">
+                                <button type="submit" class="submit">Sign In</button>
+                            </div> 
+                            <div class="success-message" id="signin-success-message"></div>
+                        </form>
+                        <div class="signin">
+                            <span>Don't have an account? <a href="#">Sign up here</a></span>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        function validateSignInForm(event) {
+            event.preventDefault(); // Prevent form submission
 
-    <div class="container">
-      <label for="emailad"><b>Email: </b></label>
-      <input type="email" placeholder="Enter Email Address" name="emailad" required />
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-pass').value;
 
-      <label for="psw"><b>Password: </b></label>
-      <input minlength="4" type="password" placeholder="Enter Password" name="psw" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}" title="Password must contain at least one uppercase letter, one lowercase letter, and one digit, and be at least 6 characters long" required>
-        
-      <button type="submit" class="lgnBtn">Login</button>
-    </div>
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            const isValidEmail = emailPattern.test(email);
+            const isValidPassword = password.length >= 6;
 
-    <div class="container-bottom" style="background-color:transparent;">
+            if (!isValidEmail) {
+                document.getElementById('signin-email-error').style.display = 'block';
+            } else {
+                document.getElementById('signin-email-error').style.display = 'none';
+            }
 
-      <span class="psw">Forgot <a href="#">password?</a></span>
-            <span class="new"> <a href="#">Create New Account</a></span>
-    </div>
-</div>
-<script>
-	document.getElementById("myForm").onsubmit = function(e) {
-e.preventDefault();
-};
-function validate() {
-showToast("Error Occurred Try Again", "danger", 5000);	
-	}
-	
-</script>
+            if (!isValidPassword) {
+                document.getElementById('signin-password-error').style.display = 'block';
+            } else {
+                document.getElementById('signin-password-error').style.display = 'none';
+            }
 
-<script src="/my_toast.js"></script>
+            if (isValidEmail && isValidPassword) {
+                document.getElementById('signin-success-message').innerText = 'Sign in successful!';
+                document.getElementById('signin-success-message').style.display = 'block';
+                document.getElementById('signin-email').value = ''; // Clear input fields
+                document.getElementById('signin-pass').value = '';
+            } else {
+                document.getElementById('signin-success-message').style.display = 'none';
+            }
 
+            return false;
+        }
+
+        function toggleSignInPassword() {
+            const passwordField = document.getElementById('signin-pass');
+            const toggleBtn = document.querySelector('.toggle-password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleBtn.textContent = '';
+            } else {
+                passwordField.type = 'password';
+                toggleBtn.textContent = '';
+            }
+        }
+    </script>
 </body>
 </html>
