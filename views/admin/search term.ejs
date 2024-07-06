@@ -5,3 +5,9 @@
         <strong><%= ndata[0] %></strong> => <strong><%= ndata[1] %></strong><span style="float: right; margin-right: 0%;" onclick="deleteSearchTerm(`<%= ndata[0] %>[•|{\\:/}|•]<%= ndata[1] %>`)">🗑️</span><br>
 <%   }
 }); %>
+
+<script>
+function deleteSearchTerm(term){
+console.log(term);
+}
+</script>
