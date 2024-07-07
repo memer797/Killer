@@ -1,1 +1,1 @@
-express body-parser path cookie-parser socket.io ejs cors mongoose web-push axios nodemailer fs translate-google node-telegram-bot-api ws
+express body-parser path cookie-parser socket.io ejs cors mongoose web-push axios nodemailer fs imgur ws
