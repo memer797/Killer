@@ -246,7 +246,9 @@ async function pasteText(fieldId) {
 
 // cache setup
 
-document.querySelector("#name").addEventListener("input", () => {
-  
+document.querySelector("#name").addEventListener("input", () => {  
+localStorage.setItem("movie_name", document.querySelector("#name").value);
 });
+
+document.querySelector("#name").value = localStorage.getItem("movie_name") ?? "";
 </script>
