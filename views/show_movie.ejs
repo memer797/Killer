@@ -190,6 +190,37 @@ button {
     height: auto;
     display: block;
 }
+
+    .like-container {
+            display: flex;
+            flex-direction: column;
+            float: right;
+        }
+
+        .like-button {
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+            color: white;
+        }
+
+        .like-button:hover {
+            transform: scale(1.2);
+        }
+
+        .liked {
+            background: linear-gradient(45deg, #00BFFF, #FF69B4); /* Brighter gradient colors */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: default;
+        }
+
+        .like-count {
+            margin-top: 5px;
+            font-size: 15px;
+            margin-left: 10px;
+            color: white;
+        } 
   </style>
 </head>
 <body>
