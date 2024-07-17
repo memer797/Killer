@@ -232,6 +232,12 @@ button {
 
   <div class="movie-details">
     <h2><%= name%></h2>
+<!--- like button --->
+         <div class="like-container">
+           <div id="likeButton" class="like-button">💖</div> <label for="likeButton">Like</label>
+           <div class="like-count"><span id="likeCount">∞</span></div>
+         </div>
+
     <p><strong><strong style="color: #4285f4;">Type:</strong> <%= h_type%></strong></p>
     <p><strong><strong style="color: #4285f4;">Genre:</strong> <%= category.join(", ")%></strong></p>
     <p><strong><strong style="color: #4285f4;">Duration:</strong> <%= duration%></strong></p>
