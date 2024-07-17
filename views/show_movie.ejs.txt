@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= name%> Movie Download Page</title>
+  <meta name="description" content="Download <%= name%> Movie For free In our website! We Provide <%= name%> movies direct download link - memer797 all movies for free">
+  <meta name="keywords" content="<% if(tags && tags.length > 0){ %> <%= tags.join(', ') + ','%> <% } %> memer797, m7, <%= name%> Full Movie Download, <%= name%> Download in free, <%= name%> Download, <%= name%>, <%= name%> full movie in hindi, <%= name%> full movie download links memer797, <%= name%> full HD download, <%= name%> download in free memer797 movies">
+  <%- include('./includes/fav icon')%>
+<link rel="stylesheet" type="text/css" href="/global.css"/>
+<style>     
+button {
+  margin: 20px;
+  padding: 10px;
+  background-color: #4285f4; /* Google Blue for button */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+    .movie-container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: transparent;
+      box-shadow: 0 0 10px rgba(250, 250, 250, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    img.movie-image {
+  width: 100%;
+/*  height: 200px;*/
+  border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+}
+
+    .movie-details {
+      margin-top: 20px;
+      text-align: left;
+      background-color: transaprent;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .movie-details h2 {
+      color: #4285f4;
+    }
+
+    .movie-details p {
+      margin: 10px 0;
+      color: #fff;
+    }
+
+    .download-links {
+      margin-top: 20px;
+      text-align: center;
+      background-color: transaprent;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .download-links h3 {
+      color: #4285f4;
+    }
+
+    .download-links a {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 20px;
+      background-color: #4285f4;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .download-links a:hover {
+      background-color: #345dc1;
+      color: #fff;
+    }
+
+    .tags {
+  margin-top: 20px;
+  text-align: left;
+  background-color: transaprent;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.tags h3 {
+  color: #4285f4;
+}
+
+.tags ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tags li {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px 8px; /* Adjusted padding */
+  margin: 4px;
+  border-radius: 5px;
+  font-size: 11px; /* Adjusted font size */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tags li:hover {
+  background-color: #4285f4;
+  color: #fff;
+}
+
+    @media only screen and (max-width: 600px) {
+      .movie-container {
+        padding: 10px;
+      }
+    }
+
+.loader {
+    position: relative;
+    width: 120px;
+    height: 14px;
+    border-radius: 0 0 15px 15px;
+    background-color: #3e494d;
+    box-shadow: 0 -1px 4px #5d6063 inset;
+    animation: panex 0.5s linear alternate infinite;
+    transform-origin: 170px 0;
+    z-index: 10;
+    perspective: 300px;
+
+}
+.loader::before {
+  content: '';
+  position: absolute;
+  left: calc( 100% - 2px);
+  top: 0;
+  z-index: -2;
+  height: 10px;
+  width: 70px;
+  border-radius: 0 4px 4px 0;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#6c4924, #4b2d21), linear-gradient(#4d5457 24px, transparent 0), linear-gradient(#9f9e9e 24px, transparent 0);
+  background-size: 50px 10px , 4px 8px , 24px 4px;
+  background-position: right center , 17px center , 0px center;
+}
+  .loader::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: -2;
+    transform: translate(-50% , -20px) rotate3d(75, -2, 3, 78deg);
+    width: 55px;
+    height: 53px;
+    background: #fff;
+    background-image:
+    radial-gradient(circle 3px , #fff6 90%, transparent 10%),
+    radial-gradient(circle 12px , #ffc400 90%, transparent 10%),
+    radial-gradient(circle 12px , #ffae00 100%, transparent 0);
+    background-repeat: no-repeat;
+    background-position: -4px -6px , -2px -2px , -1px -1px;
+    box-shadow: -2px -3px #0002 inset, 0 0 4px #0003 inset;
+    border-radius: 47% 36% 50% 50% / 49% 45% 42% 44%;
+    animation: eggRst 1s ease-out infinite;
+  }
+
+@keyframes eggRst {
+  0% ,  100%{  transform: translate(-50%, -20px) rotate3d(90, 0, 0, 90deg); opacity: 0; }
+  10% , 90% {  transform: translate(-50%, -30px) rotate3d(90, 0, 0, 90deg); opacity: 1; }
+  25%  {transform:  translate(-50% , -40px) rotate3d(85, 17, 2, 70deg) }
+  75% {transform:  translate(-50% , -40px) rotate3d(75, -3, 2, 70deg) }
+  50% {transform:  translate(-55% , -50px) rotate3d(75, -8, 3, 50deg) }
+}
+@keyframes panex {
+  0%{  transform: rotate(-5deg)  }
+  100%{  transform: rotate(10deg)  }
+}
+  </style>
+</head>
+<body>
+<%- include('./includes/nav')%>
+<div class="taremaka">
+<span><a style="color: white; text-decoration: none; font-size: 20px; margin-left: 4px;" href="javascript: history.go(-1);">⬅️ back</a></span>        
+<div class="movie-container">
+  <img class="movie-image" src="<%= banner.jpg%>" alt="<%= name%> Movie Poster">
+
+  <div class="movie-details">
+    <h2><%= name%></h2>
+    <p><strong><strong style="color: #4285f4;">Type:</strong> <%= h_type%></strong></p>
+    <p><strong><strong style="color: #4285f4;">Genre:</strong> <%= category.join(", ")%></strong></p>
+    <p><strong><strong style="color: #4285f4;">Duration:</strong> <%= duration%></strong></p>
+    <p><strong><strong style="color: #4285f4;">Release Date:</strong> <%= release_date%></strong></p>
+    <p><strong><strong style="color: #4285f4;">Language:</strong> <%= language.join(" , ")%></strong></p>
+    <p><strong style=" word-break: break-word;"><strong style="color: #4285f4;">Star Cast:</strong> <%= actors%></strong></p>
+    <p><strong style=" word-break: break-word;"><strong style="color: #4285f4;">Description:</strong> <%= description%></strong></p>
+  </div>
+
+  <div class="download-links">
+    <h3>Download Links :</h3>
+<button id="generateLinkBtn" style='color: white; background: #4285f4; width: 250px; height: 105px; font-size: 30px; border-radius: 12px; box-shadow: 0 0 80px 8px #4285f4'>Generate Download Links</button>
+  <!--- <p><a href="download-link-480p">Download 480p</a></p>
+   <p><a href="download-link-720p">Download 720p</a></p>
+   <p><a href="download-link-1080p">Download 1080p</a></p>--->
+  </div>
+
+  <div class="tags">
+    <h3>Tags :</h3>
+<% if(!tags || tags.length === 0){ %>
+<p>No External Tags Are Provided</p>
+<% } %>
+    <ul>
+      <% tags.forEach(tag => { %>
+           <li onclick="goToTag('<%= tag%>')"><%= tag%></li>	
+    <%  }); %>
+<li><%= name%> Full Movie Download</li>
+<li><%= name%> Download in free</li>
+<li><%= name%> Download</li>
+<li>memer797.onrender.com</li>
+<li>memer797</li>
+<li>m7</li>
+<li><%= name%></li>
+<li><%= name%> full movie in hindi</li>
+<li><%= name%> full movie download links memer797</li>
+<li><%= name%> full HD download</li>
+<li><%= name%> download in free memer797 movies</li>
+    </ul>
+  </div>
+</div>
+<%- include('./includes/footer')%>
+</div>
+<script>
+document.querySelector("#generateLinkBtn").addEventListener("click", () => {
+document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> <br><!--- <div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div> ---> <span class="loader"></span>`;
+var movieNameToDownload = decodeURIComponent("<%= name%>");
+fetch(`https://memer797.onrender.com/movie/generate/download/${movieNameToDownload}`).then(r => r.json()).then(data => {
+setTimeout(() => {
+document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> `;
+data.links.forEach((detai) => {
+document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}">Download  ${detai.quality} ( ${detai.size} ) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>`
+});
+}, 1500);
+});
+});
+	function goToTag(tag) {
+		window.location.href = `/tag/${tag}`;
+		};
+	</script>
+</body>
+</html>
