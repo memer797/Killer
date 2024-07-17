@@ -7,16 +7,16 @@
   <meta name="description" content="Download <%= name%> Movie For free In our website! We Provide <%= name%> movies direct download link - memer797 all movies for free">
   <meta name="keywords" content="<% if(tags && tags.length > 0){ %> <%= tags.join(', ') + ','%> <% } %> memer797, m7, <%= name%> Full Movie Download, <%= name%> Download in free, <%= name%> Download, <%= name%>, <%= name%> full movie in hindi, <%= name%> full movie download links memer797, <%= name%> full HD download, <%= name%> download in free memer797 movies">
   <%- include('./includes/fav icon')%>
-<link rel="stylesheet" type="text/css" href="/global.css"/>
-<style>     
-button {
-  margin: 20px;
-  padding: 10px;
-  background-color: #4285f4; /* Google Blue for button */
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
+  <link rel="stylesheet" type="text/css" href="/global.css"/>
+  <style>     
+    button {
+      margin: 20px;
+      padding: 10px;
+      background-color: #4285f4; /* Google Blue for button */
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
 
     .movie-container {
       max-width: 800px;
@@ -28,15 +28,14 @@ button {
     }
 
     img.movie-image {
-  width: 100%;
-/*  height: 200px;*/
-  border-radius: 8px; /* Optional: Rounded corners for aesthetics */
-}
+      width: 100%;
+      border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+    }
 
     .movie-details {
       margin-top: 20px;
       text-align: left;
-      background-color: transaprent;
+      background-color: transparent;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -44,76 +43,113 @@ button {
 
     .movie-details h2 {
       color: #4285f4;
+      font-size: 24px; /* Adjusted font size */
     }
 
     .movie-details p {
       margin: 10px 0;
       color: #fff;
-    }
+      font-size: 14px; /* Adjusted font size */
+    } 
+    
+    .like-container {
+            display: flex;
+            flex-direction: column;
+            float: right;
+        }
 
-    .download-links {
+        .like-button {
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+            color: white;
+        }
+
+        .like-button:hover {
+            transform: scale(1.2);
+        }
+
+        .liked {
+            background: linear-gradient(45deg, #00BFFF, #FF69B4); /* Brighter gradient colors */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: default;
+        }
+
+        .like-count {
+            margin-top: 5px;
+            font-size: 15px;
+            margin-left: 10px;
+            color: white;
+        } 
+
+.image-container {
+    border: 0px solid #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.download-links {
+    text-align: left;
+    color: #4285f4;
+}
+.center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#generateLinkBtn {
+    color: white;
+    background: #4285f4;
+    width: 250px;
+    height: 90px;
+    font-size: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 80px 8px #4285f4;
+    font-family: 'Courier New';
+    font-weight: 700;
+}
+
+    .tags {
       margin-top: 20px;
-      text-align: center;
-      background-color: transaprent;
+      text-align: left;
+      background-color: transparent;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
 
-    .download-links h3 {
+    .tags h3 {
       color: #4285f4;
     }
 
-    .download-links a {
-      display: block;
-      margin: 10px 0;
-      padding: 10px 20px;
-      background-color: #4285f4;
-      color: #fff;
-      text-decoration: none;
+    .tags ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tags li {
+      display: inline-block;
+      background-color: #e0e0e0;
+      color: #333;
+      padding: 5px 8px; /* Adjusted padding */
+      margin: 4px;
       border-radius: 5px;
+      font-size: 11px; /* Adjusted font size */
       transition: background-color 0.3s, color 0.3s;
     }
 
-    .download-links a:hover {
-      background-color: #345dc1;
+    .tags li:hover {
+      background-color: #4285f4;
       color: #fff;
     }
-
-    .tags {
-  margin-top: 20px;
-  text-align: left;
-  background-color: transaprent;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-.tags h3 {
-  color: #4285f4;
-}
-
-.tags ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tags li {
-  display: inline-block;
-  background-color: #e0e0e0;
-  color: #333;
-  padding: 5px 8px; /* Adjusted padding */
-  margin: 4px;
-  border-radius: 5px;
-  font-size: 11px; /* Adjusted font size */
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.tags li:hover {
-  background-color: #4285f4;
-  color: #fff;
-}
 
     @media only screen and (max-width: 600px) {
       .movie-container {
@@ -121,134 +157,271 @@ button {
       }
     }
 
-.loader {
-    position: relative;
-    width: 120px;
-    height: 14px;
-    border-radius: 0 0 15px 15px;
-    background-color: #3e494d;
-    box-shadow: 0 -1px 4px #5d6063 inset;
-    animation: panex 0.5s linear alternate infinite;
-    transform-origin: 170px 0;
-    z-index: 10;
-    perspective: 300px;
+    .loader {
+      position: relative;
+      width: 120px;
+      height: 14px;
+      border-radius: 0 0 15px 15px;
+      background-color: #3e494d;
+      box-shadow: 0 -1px 4px #5d6063 inset;
+      animation: panex 0.5s linear alternate infinite;
+      transform-origin: 170px 0;
+      z-index: 10;
+      perspective: 300px;
+    }
 
-}
-.loader::before {
-  content: '';
-  position: absolute;
-  left: calc( 100% - 2px);
-  top: 0;
-  z-index: -2;
-  height: 10px;
-  width: 70px;
-  border-radius: 0 4px 4px 0;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(#6c4924, #4b2d21), linear-gradient(#4d5457 24px, transparent 0), linear-gradient(#9f9e9e 24px, transparent 0);
-  background-size: 50px 10px , 4px 8px , 24px 4px;
-  background-position: right center , 17px center , 0px center;
-}
-  .loader::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    z-index: -2;
-    transform: translate(-50% , -20px) rotate3d(75, -2, 3, 78deg);
-    width: 55px;
-    height: 53px;
-    background: #fff;
-    background-image:
-    radial-gradient(circle 3px , #fff6 90%, transparent 10%),
-    radial-gradient(circle 12px , #ffc400 90%, transparent 10%),
-    radial-gradient(circle 12px , #ffae00 100%, transparent 0);
-    background-repeat: no-repeat;
-    background-position: -4px -6px , -2px -2px , -1px -1px;
-    box-shadow: -2px -3px #0002 inset, 0 0 4px #0003 inset;
-    border-radius: 47% 36% 50% 50% / 49% 45% 42% 44%;
-    animation: eggRst 1s ease-out infinite;
-  }
+    .loader::before {
+      content: '';
+      position: absolute;
+      left: calc(100% - 2px);
+      top: 0;
+      z-index: -2;
+      height: 10px;
+      width: 70px;
+      border-radius: 0 4px 4px 0;
+      background-repeat: no-repeat;
+      background-image: linear-gradient(#6c4924, #4b2d21), linear-gradient(#4d5457 24px, transparent 0), linear-gradient(#9f9e9e 24px, transparent 0);
+      background-size: 50px 10px, 4px 8px, 24px 4px;
+      background-position: right center, 17px center, 0px center;
+    }
 
-@keyframes eggRst {
-  0% ,  100%{  transform: translate(-50%, -20px) rotate3d(90, 0, 0, 90deg); opacity: 0; }
-  10% , 90% {  transform: translate(-50%, -30px) rotate3d(90, 0, 0, 90deg); opacity: 1; }
-  25%  {transform:  translate(-50% , -40px) rotate3d(85, 17, 2, 70deg) }
-  75% {transform:  translate(-50% , -40px) rotate3d(75, -3, 2, 70deg) }
-  50% {transform:  translate(-55% , -50px) rotate3d(75, -8, 3, 50deg) }
-}
-@keyframes panex {
-  0%{  transform: rotate(-5deg)  }
-  100%{  transform: rotate(10deg)  }
-}
+    .loader::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      z-index: -2;
+      transform: translate(-50%, -20px) rotate3d(75, -2, 3, 78deg);
+      width: 55px;
+      height: 53px;
+      background: #fff;
+      background-image:
+        radial-gradient(circle 3px, #fff6 90%, transparent 10%),
+        radial-gradient(circle 12px, #ffc400 90%, transparent 10%),
+        radial-gradient(circle 12px, #ffae00 100%, transparent 0);
+      background-repeat: no-repeat;
+      background-position: -4px -6px, -2px -2px, -1px -1px;
+      box-shadow: -2px -3px #0002 inset, 0 0 4px #0003 inset;
+      border-radius: 47% 36% 50% 50% / 49% 45% 42% 44%;
+      animation: eggRst 1s ease-out infinite;
+    }
+
+    @keyframes eggRst {
+      0%, 100% { transform: translate(-50%, -20px) rotate3d(90, 0, 0, 90deg); opacity: 0; }
+      10%, 90% { transform: translate(-50%, -30px) rotate3d(90, 0, 0, 90deg); opacity: 1; }
+      25% { transform: translate(-50%, -40px) rotate3d(85, 17, 2, 70deg); }
+      75% { transform: translate(-50%, -40px) rotate3d(75, -3, 2, 70deg); }
+      50% { transform: translate(-55%, -50px) rotate3d(75, -8, 3, 50deg); }
+    }
+
+    @keyframes panex {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(10deg); }
+    }
   </style>
 </head>
 <body>
-<%- include('./includes/nav')%>
-<div class="taremaka">
-<span><a style="color: white; text-decoration: none; font-size: 20px; margin-left: 4px;" href="javascript: history.go(-1);">⬅️ back</a></span>        
-<div class="movie-container">
-  <img class="movie-image" src="<%= banner.jpg%>" alt="<%= name%> Movie Poster">
+  <%- include('./includes/nav')%>
+  <div class="taremaka">
+    <span>
 
-  <div class="movie-details">
-    <h2><%= name%></h2>
-    <p><strong><strong style="color: #4285f4;">Type:</strong> <%= h_type%></strong></p>
-    <p><strong><strong style="color: #4285f4;">Genre:</strong> <%= category.join(", ")%></strong></p>
-    <p><strong><strong style="color: #4285f4;">Duration:</strong> <%= duration%></strong></p>
-    <p><strong><strong style="color: #4285f4;">Release Date:</strong> <%= release_date%></strong></p>
-    <p><strong><strong style="color: #4285f4;">Language:</strong> <%= language.join(" , ")%></strong></p>
-    <p><strong style=" word-break: break-word;"><strong style="color: #4285f4;">Star Cast:</strong> <%= actors%></strong></p>
-    <p><strong style=" word-break: break-word;"><strong style="color: #4285f4;">Description:</strong> <%= description%></strong></p>
-  </div>
+<a style="color: white; text-decoration: none; font-size: 20px; margin-left: 4px;" href="javascript: history.go(-1);">â¬…ï¸ back</a>
+  <a id="shareButton" style="color: white; text-decoration: none; font-size: 20px; 
+      float: right; margin-right: 5px; cursory: pointer;">ðŸ”—</a>
+   
 
-  <div class="download-links">
-    <h3>Download Links :</h3>
-<button id="generateLinkBtn" style='color: white; background: #4285f4; width: 250px; height: 105px; font-size: 30px; border-radius: 12px; box-shadow: 0 0 80px 8px #4285f4'>Generate Download Links</button>
-  <!--- <p><a href="download-link-480p">Download 480p</a></p>
-   <p><a href="download-link-720p">Download 720p</a></p>
-   <p><a href="download-link-1080p">Download 1080p</a></p>--->
-  </div>
+</span>        
+    <div class="movie-container">
+      <img class="movie-image" src="<%= banner.jpg%>" alt="<%= name%> Movie Poster">
 
-  <div class="tags">
-    <h3>Tags :</h3>
-<% if(!tags || tags.length === 0){ %>
-<p>No External Tags Are Provided</p>
-<% } %>
-    <ul>
-      <% tags.forEach(tag => { %>
-           <li onclick="goToTag('<%= tag%>')"><%= tag%></li>	
-    <%  }); %>
-<li><%= name%> Full Movie Download</li>
-<li><%= name%> Download in free</li>
-<li><%= name%> Download</li>
-<li>memer797.onrender.com</li>
-<li>memer797</li>
-<li>m7</li>
-<li><%= name%></li>
-<li><%= name%> full movie in hindi</li>
-<li><%= name%> full movie download links memer797</li>
-<li><%= name%> full HD download</li>
-<li><%= name%> download in free memer797 movies</li>
-    </ul>
+      <div class="movie-details">
+        <h2><%= name%></h2>     
+        
+         <div class="like-container">
+        <div id="likeButton" class="like-button">ðŸ¤</div>
+        <div class="like-count"><span id="likeCount">0</span></div>
+    </div>
+        
+        <p><strong><strong style="color: #4285f4;">Type:</strong> <%= h_type%></strong></p>
+        <p><strong><strong style="color: #4285f4;">Genre:</strong> <%= category.join(", ")%></strong></p>
+        <p><strong><strong style="color: #4285f4;">Duration:</strong> <%= duration%></strong></p>
+        <p><strong><strong style="color: #4285f4;">Release Date:</strong> <%= release_date%></strong></p>
+        <p><strong><strong style="color: #4285f4;">Language:</strong> <%= language.join(" , ")%></strong></p>
+        <p><strong style=" word-break: break-word;"><strong style="color: #4285f4;">Star Cast:</strong> <%= actors%></strong></p>
+        <p><strong style=" word-break: break-word;"><strong style="color: #4285f4;">Description:</strong> <%= description%></strong></p>
+      </div>
+
+
+
+          <div class="download-links">
+        <h3>Download Links :</h3>
+        <div class="center-button">
+            <button id="generateLinkBtn">Generate Download Links</button>
+        </div>
+    </div>
+
+
+<!-- Review Section -->
+	<div style="margin-top:40px;">
+		<h3 style="color: #4285f4;">Screenshots:</h3>
+    <div class="image-container">
+        <img src="https://imgur.com/kOW1PqS.jpg" alt="<%= name%> Movie Screenshot">
+    </div>
+    </div>
+    
+<!-- Comment Section -->
+<div class="comments-section" style="margin-top: 40px;">
+  <h3 style="color: #4285f4;">Comments:</h3>
+  <div id="comments">
+    <% comments.forEach(comment => { %>
+      <div class="comment" style="margin-top: 10px; padding: 10px; border-radius: 5px; background-color: #f1f1f1;">
+        <p><strong><%= comment.username %>:</strong> <%= comment.text %></p>
+      </div>
+    <% }); %>
   </div>
+  <% if (user) { %> <!-- Check if user is signed in -->
+    <textarea id="commentText" placeholder="Add a comment..." style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px;"></textarea>
+    <button id="submitComment" style="margin-top: 10px; background-color: #4285f4; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+  <% } else { %>
+    <p style="color: #ff0000;">You must be signed in to post a comment.</p>
+  <% } %>
 </div>
-<%- include('./includes/footer')%>
-</div>
-<script>
-document.querySelector("#generateLinkBtn").addEventListener("click", () => {
-document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> <br><!--- <div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div> ---> <span class="loader"></span>`;
-var movieNameToDownload = decodeURIComponent("<%= name%>");
-fetch(`https://memer797.onrender.com/movie/generate/download/${movieNameToDownload}`).then(r => r.json()).then(data => {
-setTimeout(() => {
-document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> `;
-data.links.forEach((detai) => {
-document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}">Download  ${detai.quality} ( ${detai.size} ) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>`
-});
-}, 1500);
-});
-});
-	function goToTag(tag) {
-		window.location.href = `/tag/${tag}`;
-		};
-	</script>
+<!-- End Comment Section -->
+
+      <div class="tags">
+        <h3>Tags :</h3>
+        <% if(!tags || tags.length === 0){ %>
+        <p>No External Tags Are Provided</p>
+        <% } %>
+        <ul>
+          <% tags.forEach(tag => { %>
+          <li onclick="goToTag('<%= tag%>')"><%= tag%></li>	
+          <%  }); %>
+          <li><%= name%> Full Movie Download</li>
+          <li><%= name%> Download in free</li>
+          <li><%= name%> Download</li>
+          <li>memer797.onrender.com</li>
+          <li>memer797</li>
+          <li>m7</li>
+          <li><%= name%></li>
+          <li><%= name%> full movie in hindi</li>
+          <li><%= name%> full movie download links memer797</li>
+          <li><%= name%> full HD download</li>
+          <li><%= name%> download in free memer797 movies</li>
+        </ul>
+      </div>
+    </div>
+
+    
+    <%- include('./includes/footer')%>
+  </div>
+  <script>
+  	
+  
+  
+    document.querySelector("#generateLinkBtn").addEventListener("click", () => {
+      document.querySelector(".download-links").innerHTML = `<h3>Download Links :</h3> <br><span class="loader"></span>`;
+      var movieNameToDownload = decodeURIComponent("<%= name%>");
+      fetch(`https://memer797.onrender.com/movie/generate/download/${movieNameToDownload}`).then(r => r.json()).then(data => {
+        setTimeout(() => {
+          document.querySelector(".download-links").innerHTML = `<h3>Download Links :</h3>`;
+          data.links.forEach((detai) => {
+            document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}">Download ${detai.quality} (${detai.size})</a></p>`;
+          });
+        }, 1500);
+      });
+    });
+
+    function goToTag(tag) {
+      window.location.href = `/tag/${tag}`;
+    }
+
+    <% if (user) { %> <!-- Check if user is signed in -->
+    document.querySelector("#submitComment").addEventListener("click", () => {
+      const commentText = document.querySelector("#commentText").value;
+      if (commentText) {
+        // In a real scenario, you would also save the comment to the server
+        fetch('/path/to/api/comments', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ text: commentText, username: '<%= user.username %>' })
+        })
+        .then(response => response.json())
+        .then(comment => {
+          // Add comment to the list
+          const commentDiv = document.createElement("div");
+          commentDiv.innerHTML = `<strong>${comment.username}:</strong> ${comment.text}`;
+          commentDiv.style.marginTop = "10px";
+          commentDiv.style.padding = "10px";
+          commentDiv.style.borderRadius = "5px";
+          commentDiv.style.backgroundColor = "#f1f1f1";
+          document.querySelector("#comments").appendChild(commentDiv);
+
+          // Clear the textarea
+          document.querySelector("#commentText").value = "";
+        });
+      }
+    });
+  <% } %>
+  	
+  
+  </script>
+  <script>
+    document.getElementById('shareButton').addEventListener('click', function() {
+      if (navigator.share) {
+        navigator.share({
+          title: '<%= name %>',
+          url: window.location.href
+        }).then(() => {
+          console.log('Thanks for sharing!');
+        }).catch(err => {
+          console.error('Error sharing:', err);
+        });
+      } else {
+        // Fallback for browsers that do not support the share API
+        prompt('Copy this link to share:', window.location.href);
+      }
+    });
+    
+    
+  </script>
+  <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const likeButton = document.getElementById('likeButton');
+            const likeCount = document.getElementById('likeCount');
+            const likedKey = 'userLiked';
+            let likes = parseInt(localStorage.getItem('likes')) || 0;
+            let userLiked = localStorage.getItem(likedKey) === 'true';
+
+            // Initial setup based on user's like status
+            updateLikeButton();
+
+            likeButton.addEventListener('click', () => {
+                if (userLiked) {
+                    likes--;
+                    localStorage.setItem('likes', likes);
+                    localStorage.setItem(likedKey, 'false');
+                    userLiked = false;
+                } else {
+                    likes++;
+                    localStorage.setItem('likes', likes);
+                    localStorage.setItem(likedKey, 'true');
+                    userLiked = true;
+                }
+                updateLikeButton();
+            });
+
+            function updateLikeButton() {
+                likeCount.textContent = likes;
+                if (userLiked) {
+                    likeButton.classList.add('liked');
+                } else {
+                    likeButton.classList.remove('liked');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
