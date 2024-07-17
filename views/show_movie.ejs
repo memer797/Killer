@@ -346,7 +346,7 @@
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ text: commentText, username: '<%= user.username %>' })
+          body: JSON.stringify({ text: commentText, username: '<- user.username ->' })
         })
         .then(response => response.json())
         .then(comment => {
