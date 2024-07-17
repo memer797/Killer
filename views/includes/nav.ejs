@@ -394,4 +394,35 @@ document.querySelector(".dropdown").style.display = "none";
 // kichu korbar nai khuje paoua galo nai route ta All thak 
 }
 }catch{}
+
+//Search...
+
+let searchInputElem = document.querySelector("#searchInput");
+setInterval(() => {
+  let textToPlace = "Search...";
+  let startedInterval;
+  let nowC = 0;
+  startedInterval = setInterval(() => {
+  if(nowC === textToPlace.length){
+clearInterval(startedInterval);
+return;
+  }
+  searchInputElem.placeholder = textToPlace.substring(0, nowC);
+nowC++;
+  }, 200);
+}, 1700);
+
+setTimeout(() => {
+  let textToPlace = "Search...";
+  let startedInterval;
+  let nowC = 0;
+  startedInterval = setInterval(() => {
+  if(nowC === textToPlace.length){
+clearInterval(startedInterval);
+return;
+  }
+  searchInputElem.placeholder = textToPlace.substring(0, nowC);
+nowC++;
+  }, 200);
+}, 500);
   </script>
