@@ -336,7 +336,7 @@
       window.location.href = `/tag/${tag}`;
     }
 
-    <% if (user) { %> <!-- Check if user is signed in -->
+    <- if (user) { -> <!-- Check if user is signed in -->
     document.querySelector("#submitComment").addEventListener("click", () => {
       const commentText = document.querySelector("#commentText").value;
       if (commentText) {
@@ -364,7 +364,7 @@
         });
       }
     });
-  <% } %>
+  <- } ->
   	
   
   </script>
