@@ -44,8 +44,9 @@ console.log("sleeping for 5 second");
     next();
   });
   app.use((req, res, next) => {
- if(req.get('get_status') || req.headers['get_status']) next();
-  
+    try {
+ if(req.headers || req.headers['get_status']) next();
+    } catch {};
     var ip = req.ip;
 
     if(req.method.toLowerCase() === "get"){
