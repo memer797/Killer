@@ -44,10 +44,9 @@ console.log("sleeping for 5 second");
     next();
   });
   app.use((req, res, next) => {
-    console.log(req.ip);
-  console.log(req.originalUrl); // Output: current URL path
-  console.log(!(req.originalUrl.startsWith("/admin")));
-var ip = req.ip;
+ if(req.get('get_status') || req.headers['get_status']) next();
+  
+    var ip = req.ip;
 
     if(req.method.toLowerCase() === "get"){
       if(!(req.originalUrl.startsWith("/admin")) && !(req.originalUrl.startsWith("/ping"))){
