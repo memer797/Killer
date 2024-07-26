@@ -268,18 +268,18 @@ button {
 <div class="comments-section" style="margin-top: 40px;">
   <h3 style="color: #4285f4;">Comments:</h3>
   <div id="comments">
-    <- comments.forEach(comment => { ->
+    <!--- comments.forEach(comment => { --->
       <div class="comment" style="margin-top: 10px; padding: 10px; border-radius: 5px; background-color: #f1f1f1;">
         <p><strong><-= comment.username ->:</strong> <-= comment.text -></p>
       </div>
-    <- }); ->
+    <--- }); --->
   </div>
-  <- if (user) { -> <!-- Check if user is signed in -->
+  <!--- if (user) { ---> <!-- Check if user is signed in -->
     <textarea id="commentText" placeholder="Add a comment..." style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px;"></textarea>
     <button id="submitComment" style="margin-top: 10px; background-color: #4285f4; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
-  <- } else { ->
+  <!--- } else { --->
     <p style="color: #ff0000;">You must be signed in to post a comment.</p>
-  <- } ->
+  <!--- } --->
 </div>
 <!-- End Comment Section -->
 
