@@ -34,7 +34,7 @@ console.log("sleeping for 5 second");
     .use(express.urlencoded({ extended: false }))
     .use(express.json())
     .engine("html", require("ejs").renderFile)
-    .set("view engine", "ejs")
+    .set("view engine", "html")
     .use(express.static(path.join(__dirname, "/public")))
     .set("views", path.join(__dirname, "/views"))
     .enable('trust proxy');
