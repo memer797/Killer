@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/global.css"/>
-<%- include('./includes/fav icon')%>
+<%- include('./includes/fav icon.html')%>
     <style>
         .header {
             background-color: #000; /* Darker header background color */
@@ -252,7 +252,7 @@ function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 %>
-<%- include('./includes/nav')%>
+<%- include('./includes/nav.html')%>
 <div class="taremaka">
     <div class="header">
         <button class="arrow-back-button" onclick="history.go(-1)">
@@ -361,7 +361,7 @@ document.getElementById("feedback").disabled = true;
         });
     });
 </script>
-<%- include('./includes/footer')%>
+<%- include('./includes/footer.html')%>
 
 </body>
 </html>
