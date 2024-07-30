@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%- include('./includes/fav icon')%>
+  <%- include('./includes/fav icon.html')%>
 <link rel="stylesheet" type="text/css" href="/global.css"/>
 <style>
         .header {
@@ -111,7 +111,7 @@ function getRandomColor() {
             const colors = ['#FFFF00', '#00FF00', '#00FFFF', '#FF00FF'];
             return colors[Math.floor(Math.random() * colors.length)];
         } %>
-<%- include('./includes/nav')%>
+<%- include('./includes/nav.html')%>
 <div class="taremaka">
 <div class="header">
     <a href="javascript: history.go(-1)" class="back-link">⬅️ Back</a>
@@ -141,6 +141,6 @@ function getRandomColor() {
 </div>
 </div>
 </div>
-<%- include('./includes/footer')%>
+<%- include('./includes/footer.html')%>
 </body>
 </html>
