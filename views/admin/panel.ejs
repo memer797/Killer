@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel</title>
 <script src="/socket.io/socket.io.js"></script>
-<%- include(".././includes/my_toast.ejs")%>
+<%- include(".././includes/my_toast.html")%>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -147,7 +147,7 @@
   </nav>
 
   <div id="div_movies" class="showingdivs">
-    <%- include("./movie.ejs")%>
+    <%- include("./movie.html")%>
   </div>
   <div id="div_settings" class="showingdivs">
     Disable Site:
@@ -185,22 +185,22 @@
     </script>
   </div>
   <div id="div_trending" class="showingdivs">
-    <%- include("trend")%>
+    <%- include("trend.html")%>
   </div>
   <div id="div_stat" class="showingdivs">
-    <%- include("stat")%>
+    <%- include("stat.html")%>
   </div>
   <div id="div_st" class="showingdivs">
-    <%- include("search term")%>
+    <%- include("search term.html")%>
   </div>
   <div id="div_query" class="showingdivs">
-    <%- include("query")%>
+    <%- include("query.html")%>
   </div>
   <div id="div_todo" class="showingdivs">
-    <%- include("todo")%>
+    <%- include("todo.html")%>
   </div>
   <div id="div_online-admins" class="showingdivs">
-    <%- include("online-admins")%>
+    <%- include("online-admins.html")%>
   </div>
 
   <script>
