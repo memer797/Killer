@@ -8,7 +8,7 @@ const sendNoAuth = (req, res) => {
 			res.json({
 				error: true,
 				type: 'account',
-				authorised: false,
+				authorized: false,
 				alert: true,
 				message: {
 					type: 'warning',
@@ -17,6 +17,16 @@ const sendNoAuth = (req, res) => {
 			});
 		}
 	} catch {
+		res.json({
+				error: true,
+				type: 'server',
+				authorized: null,
+				alert: true,
+				message: {
+					type: 'error',
+					content: 'Internal Server Error :/ Talk with developers'
+				},
+			});
 	}
 }
 const checkAuth = async (req, res, next) => {
