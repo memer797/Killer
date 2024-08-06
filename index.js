@@ -66,7 +66,8 @@ console.log("sleeping for 5 second");
   next();
 });
 var apiRoute = require("./routes/api");
-var adminRoute = require("./routes/admin");
+var adminRoute = require("./routes/admin");  
+var accountRoute = require("./routes/account");
 var allPagesRoute = require("./routes/pages");
 var siteMapsRouter = require("./routes/site-maps");
 var loginRoute = require('./routes/login');
@@ -88,6 +89,7 @@ var notificationRoute = require("./routes/notification");
   app.use("/webseries", require("./routes/webseries-route.js"));
   app.use("/support", supportChat);
   app.use("/auth", authRoute);
+  app.use("/account", accountRoute);
   app.use("/notification", notificationRoute);
  // app.use("/download", ());
 
