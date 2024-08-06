@@ -273,7 +273,7 @@ res.render("admin/panel", {
 //upload panel
 router.get('/upload', async(req, res) => {
     var allItems = await db.getArray("info.movie");
-    res.json(allItems):
+    res.json(allItems);
 });
 
 router.get('/movie', async(req, res) => {
