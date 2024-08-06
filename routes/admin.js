@@ -268,6 +268,13 @@ res.render("admin/panel", {
     userQueryes: queryCount
 });
 });
+
+//upload panel
+router.get('/upload', async(req, res) => {
+    var allItems = await db.getArray("info.movie");
+    res.json(allItems):
+});
+
 router.get('/movie', async(req, res) => {
  //   await db.delete("info.movie");
  res.render('admin/movie');
