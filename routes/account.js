@@ -1,7 +1,13 @@
 let router = require('express').Router();
 
 const checkAuth = async (req, res, next) => {
-	next();
+	try{ 
+	if(!req?.cookies?.userToken?.trim()){
+		sendNoAuth(req, res);
+		return;
+	}
+	} catch {
+	}
 }
 
 router.use(checkAuth);
