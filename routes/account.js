@@ -1,10 +1,10 @@
 let router = require('express').Router();
-let db = {
-	
-};
-router.use('*', async(req, res, next) => {
-  next();
-});
+
+const checkAuth = async (req, res, next) => {
+	next();
+}
+
+router.use(checkAuth);
 
 router.get('/', async(req, res) => {
 	res.send('@account "/"');
