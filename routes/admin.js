@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 var UAP = require("./ua-parser.js");
@@ -273,7 +272,7 @@ res.render("admin/panel", {
 //upload panel
 router.get('/upload', async(req, res) => {
     var allItems = await db.getArray("info.movie");
-    res.render('upload/index');
+    res.render('admin/upload/index');
 });
 
 router.get('/movie', async(req, res) => {
