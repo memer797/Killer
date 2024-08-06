@@ -1,5 +1,24 @@
 let router = require('express').Router();
 
+const sendNoAuth = (req, res) => {
+	try {
+		if(req.method.toLowerCase() === 'get') {
+			res.send('login');	
+		}else{
+			res.json({
+				error: true,
+				type: 'account',
+				authorised: false,
+				alert: true,
+				message: {
+					type: 'warning',
+					content: 'not authorise'
+				},
+			});
+		}
+	} catch {
+	}
+}
 const checkAuth = async (req, res, next) => {
 	try{ 
 	if(!req?.cookies?.userToken?.trim()){
