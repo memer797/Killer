@@ -24,7 +24,7 @@ router.get("/login", async(req, res) => {
 });
 router.post("/login", async(req, res) => {
   if(!req.body || !req.body.email || !req.body.pass){
-    return res.json({ success: false, msg: `${req.body.email ? req.body.pass ? "Somthing" : "Password" : "Email" } is not provided!`});
+    return res.json({ success: false, alert: true, msg: `${req.body.email ? req.body.pass ? "Somthing" : "Password" : "Email" } is not provided!`});
   }
 });
 
