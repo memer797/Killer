@@ -1,4 +1,8 @@
-//
+// function isValidEmail(email) {
+//     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//     return emailRegex.test(email);
+// }
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 var express = require("express");
 var router = express.Router();
 const nodemailer = require("nodemailer");
@@ -25,6 +29,12 @@ router.get("/login", async(req, res) => {
 router.post("/login", async(req, res) => {
   if(!req.body || !req.body.email || !req.body.pass){
     return res.json({ success: false, alert: true, msg: `${req.body.email ? req.body.pass ? "Somthing" : "Password" : "Email" } is not provided!`});
+  }
+  let email = req.body.email,
+    password = req.body.pass;
+  
+  if(!emailRegex.test(email)){
+    return res.json({ success: false, alert: true, msg: `${email} is not a valid email address!`});
   }
 });
 
