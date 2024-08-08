@@ -243,11 +243,17 @@ transition: .5s;
 
             fetch('/auth/login', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     email: email,
                     pass: password
                 })
             }).then(res => res.json()).then(res => {
+                if(res.alert){
+                    // showAlerts
+                }
                 console.log(res);
             }).catch();
 
