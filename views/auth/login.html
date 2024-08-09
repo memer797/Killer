@@ -232,7 +232,12 @@ transition: .5s;
             const isValidEmail = emailPattern.test(email);
             const isValidPassword = password.length >= 4;
 
-            emailInp.addEventlistener('input')
+            emailInp.addEventlistener('input', (inp) => {
+                console.log(inp);
+            });
+            passwordInp.addEventlistener('input', (inp) => {
+                console.log(inp);
+            });
             // if (!isValidEmail) {
             //     document.getElementById('signin-email-error').style.display = 'block';
             // } else {
