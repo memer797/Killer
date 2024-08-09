@@ -219,25 +219,28 @@ transition: .5s;
         </div>
     </div>
     <script>
+        
+            const emailInp = document.getElementById('signin-email');
+            const passwordInp = document.getElementById('signin-pass');
+
+        emailInp.addEventListener('input', (inp) => {
+                console.log(inp);
+            });
+            passwordInp.addEventListener('input', (inp) => {
+                console.log(inp);
+            });
+        
         function validateSignInForm(event) {
             event.preventDefault(); // Prevent form submission
 
             const email = document.getElementById('signin-email').value;
             const password = document.getElementById('signin-pass').value;
 
-            const emailInp = document.getElementById('signin-email').value;
-            const passwordInp = document.getElementById('signin-pass').value;
-
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             const isValidEmail = emailPattern.test(email);
             const isValidPassword = password.length >= 4;
 
-            emailInp.addEventListener('input', (inp) => {
-                console.log(inp);
-            });
-            passwordInp.addEventListener('input', (inp) => {
-                console.log(inp);
-            });
+            
             // if (!isValidEmail) {
             //     document.getElementById('signin-email-error').style.display = 'block';
             // } else {
