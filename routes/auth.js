@@ -36,6 +36,15 @@ router.post("/login", async(req, res) => {
   if(!emailRegex.test(email)){
     return res.json({ success: false, alert: true, msg: `${email} is not a valid email address!`});
   }
+  let accountData = await db.getArray('user_accs');
+  let thisUser = accountData.filter(i => i.email === email);
+  if(!thisUser ||thisUser.length < 1) {
+    return res.json({ success: false, alert: true, msg: `no account found with this email address!`});
+  }
+  if(thisUser[0].password !== password){
+    return res.json({ success: false, alert: true, msg: `Email or Password is incorrect!`});
+  }
+  res.json({ success: true, alert: true, msg: `Login successfull, welcome back ${thisUser[0].name}!`});
 });
 
 router.get("/signup", async(req, res) => {
