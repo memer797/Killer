@@ -252,7 +252,7 @@ transition: .5s;
                 })
             }).then(res => res.json()).then(res => {
                 if(res.alert){
-                    showToast(res.msg, res.error ? "warning" : "success", 7000);
+                    showToast(res.msg, res.success ? "success" : "warning", 7000);
                 }
                 console.log(res);
             }).catch();
