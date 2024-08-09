@@ -115,3 +115,11 @@ router.get("*", (req, res) => {
 
 
 module.exports = router;
+
+(async() => {
+  await db.push('user_accs', {
+    email: 'test@user.js',
+    password: "test",
+    name: "Sujoy"
+  });
+  })();
