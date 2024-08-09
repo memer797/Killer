@@ -38,7 +38,7 @@ router.post("/login", async(req, res) => {
   }
   let accountData = await db.getArray('user_accs');
   let thisUser = accountData.filter(i => i.email === email);
-  if(!thisUser ||thisUser.length < 1) {
+  if(!thisUser || thisUser.length < 1) {
     return res.json({ success: false, alert: true, msg: `no account found with this email address!`});
   }
   if(thisUser[0].password !== password){
