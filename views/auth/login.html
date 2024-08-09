@@ -232,10 +232,10 @@ transition: .5s;
             const isValidEmail = emailPattern.test(email);
             const isValidPassword = password.length >= 4;
 
-            emailInp.addEventlistener('input', (inp) => {
+            emailInp.addEventListener('input', (inp) => {
                 console.log(inp);
             });
-            passwordInp.addEventlistener('input', (inp) => {
+            passwordInp.addEventListener('input', (inp) => {
                 console.log(inp);
             });
             // if (!isValidEmail) {
