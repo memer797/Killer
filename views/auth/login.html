@@ -225,21 +225,25 @@ transition: .5s;
             const email = document.getElementById('signin-email').value;
             const password = document.getElementById('signin-pass').value;
 
+            const emailInp = document.getElementById('signin-email').value;
+            const passwordInp = document.getElementById('signin-pass').value;
+
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             const isValidEmail = emailPattern.test(email);
-            const isValidPassword = password.length >= 6;
+            const isValidPassword = password.length >= 4;
 
-            if (!isValidEmail) {
-                document.getElementById('signin-email-error').style.display = 'block';
-            } else {
-                document.getElementById('signin-email-error').style.display = 'none';
-            }
+            emailInp.addEventlistener('input')
+            // if (!isValidEmail) {
+            //     document.getElementById('signin-email-error').style.display = 'block';
+            // } else {
+            //     document.getElementById('signin-email-error').style.display = 'none';
+            // }
 
-            if (!isValidPassword) {
-                document.getElementById('signin-password-error').style.display = 'block';
-            } else {
-                document.getElementById('signin-password-error').style.display = 'none';
-            }
+            // if (!isValidPassword) {
+            //     document.getElementById('signin-password-error').style.display = 'block';
+            // } else {
+            //     document.getElementById('signin-password-error').style.display = 'none';
+            // }
 
             fetch('/auth/login', {
                 method: 'POST',
