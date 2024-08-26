@@ -325,7 +325,7 @@ fetch(`https://memer797.onrender.com/movie/generate/download/${movieNameToDownlo
 setTimeout(() => {
 document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> `;
 data.links.forEach((detai) => {
-document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}" target="_blank">Download  ${detai.quality} ( ${detai.size} ) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>`
+document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}" target="_blank" referrerpolicy="no-referrer">Download  ${detai.quality} ( ${detai.size} ) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>`
 });
 }, 1500);
 });
