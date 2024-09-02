@@ -95,7 +95,8 @@ var name = name.replace(".html", "");
     description: description,
     downloads: links,
     tags,
-    h_type
+    h_type,
+    ScreenshotUrl
   });
 });
 
