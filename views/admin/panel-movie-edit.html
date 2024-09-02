@@ -351,6 +351,7 @@ document.querySelector("#edit_description").value = data.data.description;
 document.querySelector("#edit_duration").value = data.data.duration;
 document.querySelector("#edit_release_date").value = data.data.release_date;
 document.querySelector("#edit_starCast").value = data.data.cast;
+document.querySelector("#edit_ScreenShotUrl").value = data.data.ScreenshotUrl || '';
 try {
 var editTypeselectElement = document.getElementById("edit_h_type");
 var editTypeoptionToSelect = editTypeselectElement.querySelector(`option[value='${data.data.h_type}']`);

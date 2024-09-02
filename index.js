@@ -332,6 +332,7 @@ var name = name.replace(".html", "");
   var cast = movie_info[0].cast;
   var links = movie_info[0].links;
   var h_type = movie_info[0].h_type ?? "Not Provided";
+  var ScreenshotUrl = movie_info[0].ScreenshotUrl ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNNLEL-qmmLeFR1nxJuepFOgPYfnwHR56vcw&s";
   res.render("show_movie", {
     name: name,
     banner: {
@@ -345,7 +346,8 @@ var name = name.replace(".html", "");
     description: description,
     downloads: links,
     tags,
-    h_type
+    h_type,
+    ScreenshotUrl
   });
 });
 /*  setTimeout(async() => {

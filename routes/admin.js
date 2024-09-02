@@ -100,6 +100,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
  var h_type = req.body.h_type ? req.body.h_type : "Not Provided";
+ var ScreenshotUrl = req.body.ScreenshotUrl ?? '';
  var lastMod = Date.now();
     var validarray = await db.getArray("info.movie");
     var validarray = validarray.filter(k => ((k.name).toLowerCase()) === ((name).toLowerCase()));
@@ -127,6 +128,7 @@ return res.json({
      release_date: release_date,
      cast: cast,
      links: links,
+     ScreenshotUrl: ScreenshotUrl,
      lastMod: lastMod
      });
     
@@ -158,6 +160,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var release_date = req.body.release_date ? req.body.release_date : "No Date Specified!";
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
+ var ScreenshotUrl = req.body.ScreenshotUrl ?? '';
  var majorUpdate = req.body.majorUpdate;
  var lastMod;
 
@@ -186,6 +189,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
      release_date: release_date,
      cast: cast,
      links: links,
+     ScreenshotUrl: ScreenshotUrl,
      lastMod: lastMod
      });
         console.log(tags);
