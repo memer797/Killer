@@ -277,6 +277,7 @@ finalData.release_date = document.querySelector("#edit_release_date").value;
 finalData.language = Array.from(document.querySelectorAll('#edit_language option:checked')).map(option => option.value);
 finalData.cast = document.querySelector("#edit_starCast").value;
 finalData.tags = Edttags;
+finalData.ScreenshotUrl = document.querySelector('#edit_ScreenShotUrl').value || ""; 
 finalData.links = [];
 for(i=1; i<editDownloadCount+1; i++){
 var ary = {};

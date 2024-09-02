@@ -198,6 +198,7 @@ function addCardFu() {
     finalData.language = Array.from(document.querySelectorAll('#language option:checked')).map(option => option.value);
     finalData.cast = document.querySelector("#starCast").value;
     finalData.tags = ttags;
+    finalData.ScreenshotUrl = document.querySelector('#ScreenshotUrl').value  || "";
     finalData.links = [];
     for (let i = 1; i < downloadCount + 1; i++) {
         var ary = {};
