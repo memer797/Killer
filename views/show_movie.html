@@ -13,102 +13,71 @@
 button {
   margin: 20px;
   padding: 10px;
-  background-color: #4285f4; /* Google Blue for button */
+  background-color: #4285f4;
   color: #fff;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-    .movie-container {
-      max-width: 800px;
-      margin: 20px auto;
-      background-color: transparent;
-      box-shadow: 10px rgba(250, 250, 250, 0.1);
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    img.movie-image {
-  width: 100%;
-/*  height: 200px;*/
-  border-radius: 5px; /* Optional: Rounded corners for aesthetics */
-}
-
-    .movie-details {
-      margin-top: 10px;
-      text-align: left;
-      background-color: transaprent;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 10px rgba(255, 255, 255, 0.1);
-    }
-
-    .movie-details h2 {
-      color: #4285f4;
-    }
-
-    .movie-details p {
-      margin: 5px;
-      color: #fff;
-    }
-
-    .download-links {
-      margin-top: 10px;
-      text-align: center;
-      background-color: transaprent;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 10px rgba(255, 255, 255, 0.1);
-    }
-
-    .download-links h3 {
-      color: #4285f4;
-    }
-
-    .download-links a {
-      display: block;
-      margin: 10px 0;
-      padding: 10px 20px;
-      background-color: #4285f4;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .download-links a:hover {
-      background-color: #345dc1;
-      color: #fff;
-    }
-
-    .tags {
-  margin-top: 20px;
-  text-align: left;
-  background-color: transaprent;
-  padding: 15px;
+.movie-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #1f1f1f;
+  padding: 20px;
   border-radius: 8px;
-  box-shadow: 10px rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
-.tags h3 {
+.movie-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.movie-details h2 {
   color: #4285f4;
+  margin-bottom: 10px;
+}
+
+.movie-details p {
+  margin: 5px 0;
+}
+
+.download-links, .tags {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.download-links a {
+  display: block;
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #4285f4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.download-links a:hover {
+  background-color: #345dc1;
 }
 
 .tags ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .tags li {
   display: inline-block;
   background-color: #e0e0e0;
   color: #333;
-  padding: 5px 8px; /* Adjusted padding */
+  padding: 5px 10px;
   margin: 4px;
-  border-radius: 8px;
-  font-size: 11px; /* Adjusted font size */
-  transition: background-color 0.3s, color 0.3s;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 .tags li:hover {
@@ -116,112 +85,12 @@ button {
   color: #fff;
 }
 
-    @media only screen and (max-width: 600px) {
-      .movie-container {
-        padding: 10px;
-      }
-    }
 
-.loader {
-    position: relative;
-    width: 120px;
-    height: 14px;
-    border-radius: 0 0 15px 15px;
-    background-color: #3e494d;
-    box-shadow: 0 -1px 4px #5d6063 inset;
-    animation: panex 0.5s linear alternate infinite;
-    transform-origin: 170px 0;
-    z-index: 10;
-    perspective: 300px;
-
-}
-.loader::before {
-  content: '';
-  position: absolute;
-  left: calc( 100% - 2px);
-  top: 0;
-  z-index: -2;
-  height: 10px;
-  width: 70px;
-  border-radius: 0 4px 4px 0;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(#6c4924, #4b2d21), linear-gradient(#4d5457 24px, transparent 0), linear-gradient(#9f9e9e 24px, transparent 0);
-  background-size: 50px 10px , 4px 8px , 24px 4px;
-  background-position: right center , 17px center , 0px center;
-}
-  .loader::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    z-index: -2;
-    transform: translate(-50% , -20px) rotate3d(75, -2, 3, 78deg);
-    width: 55px;
-    height: 53px;
-    background: #fff;
-    background-image:
-    radial-gradient(circle 3px , #fff6 90%, transparent 10%),
-    radial-gradient(circle 12px , #ffc400 90%, transparent 10%),
-    radial-gradient(circle 12px , #ffae00 100%, transparent 0);
-    background-repeat: no-repeat;
-    background-position: -4px -6px , -2px -2px , -1px -1px;
-    box-shadow: -2px -3px #0002 inset, 0 0 4px #0003 inset;
-    border-radius: 47% 36% 50% 50% / 49% 45% 42% 44%;
-    animation: eggRst 1s ease-out infinite;
+@media only screen and (max-width: 600px) {
+  .movie-container {
+    padding: 10px;
   }
-
-@keyframes eggRst {
-  0% ,  100%{  transform: translate(-50%, -20px) rotate3d(90, 0, 0, 90deg); opacity: 0; }
-  10% , 90% {  transform: translate(-50%, -30px) rotate3d(90, 0, 0, 90deg); opacity: 1; }
-  25%  {transform:  translate(-50% , -40px) rotate3d(85, 17, 2, 70deg) }
-  75% {transform:  translate(-50% , -40px) rotate3d(75, -3, 2, 70deg) }
-  50% {transform:  translate(-55% , -50px) rotate3d(75, -8, 3, 50deg) }
 }
-@keyframes panex {
-  0%{  transform: rotate(-5deg)  }
-  100%{  transform: rotate(10deg)  }
-}
-.image-container {
-    border: 0px solid #ffffff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.image-container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-    .like-container {
-            display: flex;
-            flex-direction: column;
-            float: right;
-        }
-
-        .like-button {
-            font-size: 30px;
-            cursor: pointer;
-            transition: transform 0.2s, color 0.2s;
-            color: white;
-        }
-
-        .like-button:hover {
-            transform: scale(1.2);
-        }
-
-        .liked {
-            background: linear-gradient(45deg, #00BFFF, #FF69B4); /* Brighter gradient colors */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            cursor: default;
-        }
-
-        .like-count {
-            margin-top: 5px;
-            font-size: 15px;
-            margin-left: 10px;
-            color: white;
-        } 
   </style>
 </head>
 <body>
@@ -233,11 +102,6 @@ button {
 
   <div class="movie-details">
     <h2><%= name%></h2>
-<!--- like button --->
-         <div class="like-container">
-           <div id="likeButton" class="like-button">🤍</div> <label for="likeButton">Like</label>
-           <div class="like-count"><span id="likeCount">∞</span></div>
-         </div>
 
     <p><strong style="font-size: 13px;"><strong style="color: #4285f4;">Type:</strong> <%= h_type%></strong></p>
     <p><strong style="font-size: 13px;"><strong style="color: #4285f4;">Genre:</strong> <%= category.join(", ")%></strong></p>
@@ -314,9 +178,7 @@ button {
 <%- include('./includes/footer.html')%>
 </div>
 <script>
-document.querySelector(".like-button").addEventListener("click", () => {
-  document.querySelector(".like-button").classList.toggle("liked");
-});
+
 document.querySelector("#generateLinkBtn").addEventListener("click", () => {
 document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> <br><!--- <div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div> ---> <span class="loader"></span>`;
 var movieNameToDownload = decodeURIComponent("<%= name%>");
