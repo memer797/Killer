@@ -64,6 +64,17 @@ button {
   background-color: #345dc1;
 }
 
+.image-container {
+    border: 0px solid #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .tags ul {
   list-style: none;
   padding: 0;
@@ -103,17 +114,17 @@ button {
   <div class="movie-details">
     <h2><%= name%></h2>
 
-    <p><strong style="font-size: 13px;"><strong style="color: #4285f4;">Type:</strong> <%= h_type%></strong></p>
-    <p><strong style="font-size: 13px;"><strong style="color: #4285f4;">Genre:</strong> <%= category.join(", ")%></strong></p>
-    <p><strong style="font-size: 13px;"><strong style="color: #4285f4;">Duration:</strong> <%= duration%></strong></p>
-    <p><strong style="font-size: 13px;"><strong style="color: #4285f4;">Release Date:</strong> <%= release_date%></strong></p>
-    <p><strong style="font-size: 13px;"><strong style="color: #4285f4;">Language:</strong> <%= language.join(" , ")%></strong></p>
-    <p><strong style="font-size: 13px; word-break: break-word;"><strong style="color: #4285f4;">Star Cast:</strong> <%= actors%></strong></p>
-    <p><strong style="font-size: 13px; word-break: break-word;"><strong style="color: #4285f4;">Description:</strong> <%= description%></strong></p>
+    <p><strong style="font-size: 11px;"><strong style="color: #4285f4;">Type:</strong> <%= h_type%></strong></p>
+    <p><strong style="font-size: 11px;"><strong style="color: #4285f4;">Genre:</strong> <%= category.join(", ")%></strong></p>
+    <p><strong style="font-size: 11px;"><strong style="color: #4285f4;">Duration:</strong> <%= duration%></strong></p>
+    <p><strong style="font-size: 11px;"><strong style="color: #4285f4;">Release Date:</strong> <%= release_date%></strong></p>
+    <p><strong style="font-size: 11px;"><strong style="color: #4285f4;">Language:</strong> <%= language.join(" , ")%></strong></p>
+    <p><strong style="font-size: 11px; word-break: break-word;"><strong style="color: #4285f4;">Star Cast:</strong> <%= actors%></strong></p>
+    <p><strong style="font-size: 11px; word-break: break-word;"><strong style="color: #4285f4;">Description:</strong> <%= description%></strong></p>
   </div>
 
   <div class="download-links">
-    <h3>Download Links :</h3>
+    <h3 style="color: #4285f4;">Download Links :</h3>
 <button id="generateLinkBtn" style='color: white; background: #4285f4; width: 250px; height: 105px; font-size: 30px; border-radius: 12px; box-shadow: 0 0 80px 8px #4285f4'>Generate Download Links</button>
   <!--- <p><a href="download-link-480p">Download 480p</a></p>
    <p><a href="download-link-720p">Download 720p</a></p>
