@@ -4,185 +4,189 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>memer797 • Movies Home Page</title>
-<%- include('./includes/fav icon.html')%>
-<meta property="og:title" content="memer797 • All Movie In One Place">
-<meta property="og:site_name" content="memer797">
-  <meta property="og:description" content="Explore a vast library of free movies, captivating web series, and exclusive premium content. Immerse yourself in a world of entertainment with our diverse selection of genres and titles, all available for your viewing pleasure. Discover new stories, indulge in your favorite genres, and elevate your entertainment experience with us. Start streaming now and unlock a world of cinematic wonders.">
+  <%- include('./includes/fav icon.html')%>
+  <meta property="og:title" content="memer797 • All Movie In One Place">
+  <meta property="og:site_name" content="memer797">
+  <meta property="og:description" content="Explore a vast library of free movies, captivating web series, and exclusive premium content. Start streaming now and unlock a world of cinematic wonders.">
   <meta property="og:image" content="https://memer797.onrender.com/favicon.ico">
   <meta property="og:url" content="https://memer797.onrender.com">
   <meta property="og:type" content="website">
-<link rel="stylesheet" type="text/css" href="/global.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/global.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     #trending {
       background-color: transparent;
     }
-
     #trending .movie-container {
-  margin: 10px;
-  text-align: center;
-background-color: transparent;
-  width: 150px; /* Adjust the width as needed */
-}
-
-#trending .movie-image {
-  width: 100%; /* Make the image fill the container */
-  height: 32.68%; /*160px Adjust the height as needed */
-object-fit: cover;
-  border-radius: 10px;
-}
-.new-section .movies-container .movie-container .movie-image {
-border-radius: 4px;
-}
-
+      margin: 10px;
+      text-align: center;
+      background-color: transparent;
+      width: 150px;
+    }
+    #trending .movie-image {
+      width: 100%;
+      height: 32.68%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .new-section .movies-container .movie-container .movie-image {
+      border-radius: 4px;
+    }
     .leftright-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px;
     }
-
-.left-side {
+    .left-side {
       flex: 1;
     }
-
     .right-side {
       flex: 1;
       text-align: right;
     }
-    
-.see-all {
-  color: #4285f4;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.see-all:hover {
-  color: #e50914; /* Hover color */
-}
-
-.new-section {
-  overflow-x: auto;
-  white-space: nowrap;
-  direction: ltr; /* Changed to left-to-right direction */
-  text-align: left; /* Align the text to the left */
-  margin-top: 3px; /* Adjust the top margin as needed */
-  padding-left: 15px; /* Add padding to the left */
-  padding-right: 15px; /* Add padding to the left */
-}
-
-.new-section .section-title {
+    .see-all {
+      color: #4285f4;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .see-all:hover {
+      color: #e50914;
+    }
+    .new-section {
+      overflow-x: auto;
+      white-space: nowrap;
+      text-align: left;
+      margin-top: 3px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .new-section .section-title {
       font-size: 22px;
       font-weight: bold;
       margin-top: 10px;
       margin-bottom: 10px;
-      color: #fff; /* Set the text color */
-}
-.leftright-container .left-side .section-title {
+      color: #fff;
+    }
+    .leftright-container .left-side .section-title {
       font-size: 16px;
       font-weight: bold;
       color: #fff;
-}
-.new-section .movie-container {
-  display: inline-block;
-  margin-right: 7px; /* Adjust spacing between movies */
-  text-align: center;
-  width: 135px; /* Set the width */
-  height: auto;
-}
- 
-.new-section .movie-image {
-  width: 100%; /* Make the image fill the container */
-  height: 80px; /* Set the height */
-  object-fit: cover;
-}
-
-.new-section .movie-container .movie-name {
-  display: flex;
-  flex-deriction: row;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #fff;
-  overflow: hidden;
-  overflow-y: auto;
-  text-overflow: ellipsis;
-  white-space: normal; /* Change from nowrap to normal */
-}
-
-.new-section .movie-name {
-  margin-top: 5px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #fff; 
-  overflow-wrap: break-word;
-  }
-    
+    }
+    .new-section .movie-container {
+      display: inline-block;
+      margin-right: 7px;
+      text-align: center;
+      width: 135px;
+      height: auto;
+    }
+    .new-section .movie-image {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+    }
+    .new-section .movie-container .movie-name {
+      margin-top: 5px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #fff;
+      overflow-wrap: break-word;
+    }
   </style>
 </head>
 
 <body>
-<%- include('./includes/nav.html')%>
-<div class="taremaka">
-
-  <div class="leftright-container">
-    <div style = "font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
-  </div>
-  <div id="trending">
-<% trend.reverse() %>
-<% trend.forEach(data => { %>
-    <div class="movie-container" onclick="window.location.href = '/download/<%= (data.name).replace(/ /g, `-`)%>'">
-      <img class="movie-image" src="<%= data.img%>" alt="<%= data.name%>">
-      <div class="movie-name"><%= data.name%></div>
+  <%- include('./includes/nav.html')%>
+  <div class="taremaka">
+    <!-- Trending Section -->
+    <div class="leftright-container">
+      <div style="font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: -5px; margin-bottom: -5px;">TRENDING🔥🔥</div>
     </div>
-<% }); %>
-    <!-- Add more movie containers as needed -->
-  </div>
-<% data.forEach(data => { %>
-<main>
-  <div class="leftright-container">
-  <div class="left-side">
-      <div class="section-title"><%= data.category%></div>
-  </div>
-  <div class="right-side">
-    <a href="/category/<%= data.category%>" class="see-all">See All</a>
-  </div>
-</div>
-
-  <div class="new-section">
-    <div class="movies-container">
-<% data.items.forEach(item => { %>  
-      <div class="movie-container">
-        <a href="/download/<%= (item.name).replace(/ /g, '-')%>"> <img class="movie-image" src="<%= item.img%>" alt="<%= item.name%>"></a>
-     <div class="movie-name"><%= item.name%></div>
+    <div id="trending">
+      <% trend.reverse() %>
+      <% trend.forEach(data => { %>
+      <div class="movie-container" onclick="window.location.href = '/download/<%= (data.name).replace(/ /g, '-')%>'">
+        <img class="movie-image" src="<%= data.img %>" alt="<%= data.name %>">
+        <div class="movie-name"><%= data.name %></div>
       </div>
-<% }); %>
-      <!-- Add more movie containers as needed -->
+      <% }); %>
     </div>
+
+    <!-- Coming Soon Section -->
+    <div class="leftright-container">
+      <div style="font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: 10px;">COMING SOON 🎬</div>
+    </div>
+    <div id="coming-soon" class="new-section">
+      <% comingSoon.forEach(data => { %>
+      <div class="movie-container">
+        <a href="/coming-soon/<%= (data.name).replace(/ /g, '-') %>">
+          <img class="movie-image" src="<%= data.img %>" alt="<%= data.name %>">
+        </a>
+        <div class="movie-name"><%= data.name %></div>
+      </div>
+      <% }); %>
+    </div>
+
+    <!-- Last Updated Section -->
+    <div class="leftright-container">
+      <div style="font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: 10px;">LAST UPDATED 🔄</div>
+    </div>
+    <div id="last-updated" class="new-section">
+      <% lastUpdated.forEach(data => { %>
+      <div class="movie-container">
+        <a href="/download/<%= (data.name).replace(/ /g, '-') %>">
+          <img class="movie-image" src="<%= data.img %>" alt="<%= data.name %>">
+        </a>
+        <div class="movie-name"><%= data.name %></div>
+      </div>
+      <% }); %>
+    </div>
+
+    <!-- Regular Categories Section -->
+    <% data.forEach(data => { %>
+    <main>
+      <div class="leftright-container">
+        <div class="left-side">
+          <div class="section-title"><%= data.category %></div>
+        </div>
+        <div class="right-side">
+          <a href="/category/<%= data.category %>" class="see-all">See All</a>
+        </div>
+      </div>
+      <div class="new-section">
+        <div class="movies-container">
+          <% data.items.forEach(item => { %>  
+          <div class="movie-container">
+            <a href="/download/<%= (item.name).replace(/ /g, '-') %>"> 
+              <img class="movie-image" src="<%= item.img %>" alt="<%= item.name %>">
+            </a>
+            <div class="movie-name"><%= item.name %></div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </main>
+    <% }); %>
+    <%- include('./includes/footer.html')%>
   </div>
-</main>
-<% }); %>
-<%- include('./includes/footer.html')%>
-</div>
+  
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
   <script>
-  // Initialize Slick slider
-  $(document).ready(function(){
-    $('#trending').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000, // Adjust the speed as needed
-      pauseOnHover: false,
-      arrows: false // Set arrows to false to hide them
+    $(document).ready(function(){
+      $('#trending').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: false,
+        arrows: false
+      });
     });
-  });
   </script>
 </body>
 </html>
