@@ -115,6 +115,29 @@
       <% }); %>
     </div>
 
+        <main>
+      <div class="leftright-container">
+        <div class="left-side">
+          <div class="section-title">Coming Soon/div>
+        </div>
+        <div class="right-side">
+          <a href="/category/<%= data.category %>" class="see-all">See All</a>
+        </div>
+      </div>
+      <div class="new-section">
+        <div class="movies-container">
+          <% comingSoon.forEach(item => { %>  
+          <div class="movie-container">
+            <a href="/download/<%= (item.name).replace(/ /g, '-') %>"> 
+              <img class="movie-image" src="<%= item.img %>" alt="<%= item.name %>">
+            </a>
+            <div class="movie-name"><%= item.name %></div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </main>
+        
     <!-- Regular Categories Section -->
     <% data.forEach(data => { %>
     <main>
