@@ -143,6 +143,14 @@ app.get("/", async (req, res) => {
   });
   return acc;
 }, {}));
+
+  const comingSoonResults = Object.values(data.reduce((acc, { name, img, isComingSoon }) => {
+  if(isComingSoon) {
+    acc 
+  }
+  return acc;
+}, {}));
+  
 let tmdtal = [];
   trendDataNow.forEach(g => {
 var udf = data.filter(j => j.name === g);
