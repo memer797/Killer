@@ -120,14 +120,14 @@
       <div style="font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: 10px;">COMING SOON 🎬</div>
     </div>
     <div id="coming-soon" class="new-section">
-      <% comingSoon.forEach(data => { %>
+      <%# comingSoon.forEach(data => { %>
       <div class="movie-container">
         <a href="/coming-soon/<%= (data.name).replace(/ /g, '-') %>">
           <img class="movie-image" src="<%= data.img %>" alt="<%= data.name %>">
         </a>
         <div class="movie-name"><%= data.name %></div>
       </div>
-      <% }); %>
+      <%# }); %>
     </div>
 
     <!-- Last Updated Section -->
@@ -135,14 +135,14 @@
       <div style="font-size: 20px; font-weight: bold; color: #fff; margin-left: 6px; margin-top: 10px;">LAST UPDATED 🔄</div>
     </div>
     <div id="last-updated" class="new-section">
-      <% lastUpdated.forEach(data => { %>
+      <%# lastUpdated.forEach(data => { %>
       <div class="movie-container">
         <a href="/download/<%= (data.name).replace(/ /g, '-') %>">
           <img class="movie-image" src="<%= data.img %>" alt="<%= data.name %>">
         </a>
         <div class="movie-name"><%= data.name %></div>
       </div>
-      <% }); %>
+      <%# }); %>
     </div>
 
     <!-- Regular Categories Section -->
