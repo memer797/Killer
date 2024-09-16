@@ -1,4 +1,3 @@
-
 <script>
 (function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
 </script>
@@ -286,6 +285,8 @@ finalData.cast = document.querySelector("#edit_starCast").value;
 finalData.tags = Edttags;
 finalData.ScreenshotUrl = document.querySelector('#edit_ScreenShotUrl').value || ""; 
 finalData.links = [];
+finalData.iscomingSoon = document.querySelector('#edit_comingSoon').checked || false;
+
 for(i=1; i<editDownloadCount+1; i++){
 var ary = {};
 ary.download = document.querySelector(`#downLink_${i}`).value;
@@ -359,7 +360,9 @@ document.querySelector("#edit_duration").value = data.data.duration;
 document.querySelector("#edit_release_date").value = data.data.release_date;
 document.querySelector("#edit_starCast").value = data.data.cast;
 document.querySelector("#edit_ScreenShotUrl").value = data.data.ScreenshotUrl || '';
-try {
+document.querySelector("#edit_comingSoon").checked = data.data?.isComingSoon || false;
+
+	try {
 var editTypeselectElement = document.getElementById("edit_h_type");
 var editTypeoptionToSelect = editTypeselectElement.querySelector(`option[value='${data.data.h_type}']`);
 editTypeoptionToSelect.selected = true;
