@@ -206,6 +206,8 @@ function addCardFu() {
     finalData.tags = ttags;
     finalData.ScreenshotUrl = document.querySelector('#ScreenshotUrl').value  || "";
     finalData.links = [];
+    finalData.isComingSoon = document.querySelector('#comingSoon').checked || false;
+    
     for (let i = 1; i < downloadCount + 1; i++) {
         var ary = {};
         ary.download = document.querySelector(`#downLink_${i}`).value;
@@ -233,7 +235,7 @@ function addCardFu() {
             name: finalData.name,
             description: finalData.description,
             category_txt: (finalData.category),
-            id: "✅",
+            id: finalData.isComingSoon ? '🔜' : '✅',
             img: finalData.imageUrl
         });
         showToast("Movie Has Been Added", "success", 5000);
