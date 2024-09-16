@@ -20,7 +20,7 @@
         <select id="h_type">
             <option value="HD">HD</option>
             <option value="HQ-CAM">HQ-CAM</option>
-        </select>
+        </select>   
 
         <label for="imageUrl">Image URL:</label>
         <div style="display: flex; align-items: center;">
@@ -107,12 +107,6 @@
             <button onclick="pasteText('starCast')">Paste</button>
         </div>
 
-        <!-- Radio buttons for 'Coming Soon' -->
-        <label for="comingSoon">Coming Soon:</label>
-        <div style="display: flex; align-items: center;">
-            <input type="radio" id="comingSoon" name="comingSoon">
-        </div>
-
         <button onclick="addDounload()"><strong>➕</strong></button>
         <button onclick="removeDownload()"><strong>🗑️</strong></button>
         <div id="additionalInputs" style="max-height: calc(1.2em * 20); overflow-y: auto; margin-top: 5px; margin-bottom: 5px; border: 2px solid gray; border-radius: 4px; padding: 3px;"></div>
@@ -121,7 +115,7 @@
         <input type="text" id="tags" placeholder="Enter Tags and write ,">
         <div class="tag-container" id="tagContainer"></div>
 
-        <button onclick="addCardFu()" class="add-button" style="margin-top: 15px;">Add</button>
+        <button onclick="addCardFu()" k="test()" class="add-button" style="margin-top: 15px;">Add</button>
     </div>
 </div>
 
@@ -184,28 +178,84 @@ function removeDownload() {
 function clearInp() {
     var i = confirm("🧹 Are you sure to clear all inputs?");
     if (i) {
-        const form = document.querySelector('.modal-content');
-        form.reset();
+        var ii = confirm("clearing all inputs... 🧹");
+        if (ii) {
+            document.querySelectorAll("input").forEach(lak => lak.value = "");
+            document.querySelectorAll("textarea").forEach(lak => lak.value = "");
+        }
     }
 }
 
-function pasteText(id) {
-    const input = document.getElementById(id);
-    navigator.clipboard.readText()
-        .then(text => {
-            input.value = text;
-        })
-        .catch(err => {
-            console.error('Failed to paste text: ', err);
-        });
-}
-
 function addCardFu() {
-    console.log("Add Card Functionality will be here");
+    let finalData = {};
+    finalData.name = document.querySelector("#name").value;
+    finalData.contentType = document.querySelector("#contentType").value;
+    finalData.h_type = document.querySelector("#h_type").value;
+    finalData.imageUrl = document.querySelector("#imageUrl").value;
+    finalData.description = document.querySelector("#description").value;
+    finalData.category = Array.from(document.querySelectorAll('#category option:checked')).map(option => option.value);
+    finalData.duration = document.querySelector("#duration").value;
+    finalData.release_date = document.querySelector("#release_date").value;
+    finalData.language = Array.from(document.querySelectorAll('#language option:checked')).map(option => option.value);
+    finalData.cast = document.querySelector("#starCast").value;
+    finalData.tags = ttags;
+    finalData.ScreenshotUrl = document.querySelector('#ScreenshotUrl').value  || "";
+    finalData.links = [];
+    for (let i = 1; i < downloadCount + 1; i++) {
+        var ary = {};
+        ary.download = document.querySelector(`#downLink_${i}`).value;
+        ary.size = document.querySelector(`#size_${i}`).value;
+        ary.note = document.querySelector(`#note_${i}`).value;
+        ary.quality = document.querySelector(`#qual_${i}`).value;
+        finalData.links.push(ary);
+    }
+
+    fetch("/admin/data/save/movie", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(finalData),
+    }).then(d => d.json()).then(gotData => {
+        if (!gotData.success && gotData.toast) {
+            showToast(gotData.toast.msg, gotData.toast.type || 'info', gotData.toast.time || 7000);
+            return;
+        }
+        if (!gotData.success) {
+            return showToast(gotData.msg, "info", 5000);
+        }
+        addCard({
+            name: finalData.name,
+            description: finalData.description,
+            category_txt: (finalData.category),
+            id: "✅",
+            img: finalData.imageUrl
+        });
+        showToast("Movie Has Been Added", "success", 5000);
+    }).catch(e => {
+        return showToast("Somthing Went Wrong !", "danger", 5000);
+    });
+
+    document.querySelector("#tags").value = '';
+    document.querySelector("#tagContainer").innerHTML = '';
+
+    closeModal();
 }
 
-function closeModal() {
-    const modal = document.getElementById('myModal');
-    modal.style.display = "none";
+async function pasteText(fieldId) {
+    try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById(fieldId).value = text;
+    } catch (err) {
+        console.error('Failed to read clipboard contents: ', err);
+    }
 }
+
+// cache setup
+
+document.querySelector("#name").addEventListener("input", () => {  
+localStorage.setItem("movie_name", document.querySelector("#name").value);
+});
+
+document.querySelector("#name").value = localStorage.getItem("movie_name") ?? "";
 </script>
