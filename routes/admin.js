@@ -101,6 +101,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var links = req.body.links ? req.body.links : [];
  var h_type = req.body.h_type ? req.body.h_type : "Not Provided";
  var ScreenshotUrl = req.body.ScreenshotUrl ?? '';
+    var isComingSoon = req.body?.isComingSoon || false;
  var lastMod = Date.now();
     var validarray = await db.getArray("info.movie");
     var validarray = validarray.filter(k => ((k.name).toLowerCase()) === ((name).toLowerCase()));
@@ -129,6 +130,7 @@ return res.json({
      cast: cast,
      links: links,
      ScreenshotUrl: ScreenshotUrl,
+     isComingSoon: isComingSoon,
      lastMod: lastMod
      });
     
@@ -161,6 +163,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
  var cast = req.body.cast ? req.body.cast : "!";
  var links = req.body.links ? req.body.links : [];
  var ScreenshotUrl = req.body.ScreenshotUrl ?? '';
+        var isComingSoon = req.body?.isComingSoon || false;
  var majorUpdate = req.body.majorUpdate;
  var lastMod;
 
@@ -190,6 +193,7 @@ if(!category || category.length == 0){ return res.json({success: false, msg: "at
      cast: cast,
      links: links,
      ScreenshotUrl: ScreenshotUrl,
+     isComingSoon: isComingSoon,
      lastMod: lastMod
      });
         console.log(tags);
