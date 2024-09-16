@@ -133,6 +133,9 @@ app.get("/", async (req, res) => {
     var trendDataNow =  await db.getArray("trend.movie");
   const result = Object.values(data.reduce((acc, { name, category, img, isComingSoon }) => {
   category.forEach(category => {
+    if(isComingSoon){
+    return;
+    }
     acc[category] = acc[category] || { category, items: [] };
     acc[category].items.push({ name, img });
     // Shuffle the items array and keep only the first 5 items
