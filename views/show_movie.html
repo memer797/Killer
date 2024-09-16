@@ -102,6 +102,60 @@ button {
     padding: 10px;
   }
 }
+
+/* Loader CSS */
+    .loader {
+      width: 175px;
+      height: 80px;
+      display: block;
+      margin: auto;
+      background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);
+      background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
+      background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;
+      background-repeat: no-repeat;
+      position: relative;
+      box-sizing: border-box;
+    }
+    
+    .loader::after {
+      content: '';  
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 0);
+      position: absolute;
+      border: 15px solid transparent;
+      border-top-color: #FF3D00;
+      box-sizing: border-box;
+      animation: fadePush 1s linear infinite;
+    }
+    
+    .loader::before {
+      content: '';  
+      left: 50%;
+      bottom: 30px;
+      transform: translate(-50%, 0);
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #FF3D00;
+      box-sizing: border-box;
+      animation: fadePush 1s linear infinite;
+    }
+
+    @keyframes fadePush {
+      0% {
+        transform: translate(-50%, -15px);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(-50%, 0px);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, 15px);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -124,12 +178,9 @@ button {
   </div>
 
   <div class="download-links">
-    <h3 style="color: #4285f4;">Download Links :</h3>
-<button id="generateLinkBtn" style='color: white; background: #4285f4; width: 250px; height: 105px; font-size: 30px; border-radius: 12px; box-shadow: 0 0 80px 8px #4285f4'>Generate Download Links</button>
-  <!--- <p><a href="download-link-480p">Download 480p</a></p>
-   <p><a href="download-link-720p">Download 720p</a></p>
-   <p><a href="download-link-1080p">Download 1080p</a></p>--->
-  </div>
+  <h3 style="color: #4285f4;">Download Links :</h3>
+  <button id="generateLinkBtn" style='color: white; background: #4285f4; width: 250px; height: 105px; font-size: 30px; border-radius: 12px; box-shadow: 0 0 80px 8px #4285f4'>Generate Download Links</button>
+</div>
 
 <!--- screen shots --->
 	<div style="margin-top:40px;">
@@ -193,22 +244,26 @@ button {
 <%- include('./includes/footer.html')%>
 </div>
 <script>
+  document.querySelector("#generateLinkBtn").addEventListener("click", () => {
+    // Show loader while waiting for download links
+    document.querySelector(".download-links").innerHTML = `<h3>Download Links :</h3> <span class="loader"></span>`;
 
-document.querySelector("#generateLinkBtn").addEventListener("click", () => {
-document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> <br><!--- <div style='margin-top: 8px; margin: 0 auto;' class='loading'><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div><div class='obj'></div></div> ---> <span class="loader"></span>`;
-var movieNameToDownload = decodeURIComponent("<%= name%>");
-fetch(`https://memer797.onrender.com/movie/generate/download/${movieNameToDownload}`).then(r => r.json()).then(data => {
-setTimeout(() => {
-document.querySelector(".download-links").innerHTML = ` <h3>Download Links :</h3> `;
-data.links.forEach((detai) => {
-document.querySelector(".download-links").innerHTML += `<p><a href="${detai.download}" target="_blank" referrerpolicy="no-referrer">Download  ${detai.quality} ( ${detai.size} ) <span style="font-size: 4px; right: 4px; bottom: 4px;"></span></a></p>`
-});
-}, 1500);
-});
-});
-	function goToTag(tag) {
-		window.location.href = `/tag/${tag}`;
-		};
-	</script>
+    // Simulate movie name decoding
+    var movieNameToDownload = decodeURIComponent("<%= name %>");
+    
+    // Fetch download links (replace URL with the actual API)
+    fetch(`https://memer797.onrender.com/movie/generate/download/${movieNameToDownload}`)
+      .then(response => response.json())
+      .then(data => {
+        // Remove loader after data is loaded and display download links
+        setTimeout(() => {
+          document.querySelector(".download-links").innerHTML = `<h3>Download Links :</h3>`;
+          data.links.forEach(link => {
+            document.querySelector(".download-links").innerHTML += `<p><a href="${link.download}" target="_blank" referrerpolicy="no-referrer">Download ${link.quality} (${link.size})</a></p>`;
+          });
+        }, 1500);
+      });
+  });
+</script>
 </body>
 </html>
