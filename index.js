@@ -146,7 +146,7 @@ app.get("/", async (req, res) => {
 
   const comingSoonResults = Object.values(data.reduce((acc, { name, img, isComingSoon }) => {
   if(isComingSoon) {
-    acc 
+    acc[name] = { name, img };
   }
   return acc;
 }, {}));
@@ -158,7 +158,7 @@ var udf = data.filter(j => j.name === g);
       tmdtal.push({name: udf[0].name, img: udf[0].img }); 
     }
   });
-  res.render('index', { data: result, trend: tmdtal });
+  res.render('index', { data: result, trend: tmdtal, comingSoon: comingSoonResults });
 });
   
 app.get("/suggest", async(req, res) => {
