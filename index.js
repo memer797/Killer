@@ -131,7 +131,7 @@ var val = req.query.value;
 app.get("/", async (req, res) => {
     var data = await db.getArray("info.movie");
     var trendDataNow =  await db.getArray("trend.movie");
-  const result = Object.values(data.reduce((acc, { name, category, img }) => {
+  const result = Object.values(data.reduce((acc, { name, category, img, isComingSoon }) => {
   category.forEach(category => {
     acc[category] = acc[category] || { category, items: [] };
     acc[category].items.push({ name, img });
