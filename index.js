@@ -43,6 +43,9 @@ console.log("sleeping for 5 second");
     socket.cookies = sockcookies;
     next();
   });
+  
+    const dns = require('dns');
+  
   app.use((req, res, next) => {
     var ip = req.ip;
 
@@ -370,5 +373,15 @@ await db.push("info.movie", data)
  /* setInterval(async() => {
     await db.set("Helo", Date.now());
   }, 1000);*/
+  app.get('/', async(req, res) => {
+dns.resolve4('example.com', (err, addresses) => {
+  if (err) {
+  res.json({ er: true, msg: err });
+    return;
+  }
+  console.log('A records:', addresses);
+  res.josn({ er: false, data: addresses });
+});
+  });
 };
 RunMainCode();
