@@ -373,8 +373,8 @@ await db.push("info.movie", data)
  /* setInterval(async() => {
     await db.set("Helo", Date.now());
   }, 1000);*/
-  app.get('/', async(req, res) => {
-dns.resolve4('example.com', (err, addresses) => {
+  app.get('/dns', async(req, res) => {
+dns.resolve4(req?.query?.domain || 'go-mail.us.to', (err, addresses) => {
   if (err) {
   res.json({ er: true, msg: err });
     return;
