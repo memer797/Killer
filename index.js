@@ -380,13 +380,13 @@ await db.push("info.movie", data)
       domain = req.query.domain;
     }
     
-dns.resolve4(doamin, (err, addresses) => {
+dns.resolve4(domain, (err, addresses) => {
   if (err) {
   res.json({ er: true, msg: err });
     return;
   }
   console.log('A records:', addresses);
-  res.josn({ er: false, data: addresses });
+  res.json({ er: false, data: addresses });
 });
   });
 };
