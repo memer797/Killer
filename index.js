@@ -391,7 +391,7 @@ dns.resolve4(domain, (err, addresses) => {
   });
 
   const { SMTPClient } = require('smtp-client');
-const dns = require('dns');
+//const dns = require('dns');
 const { DKIMSign } = require('dkim-signer');
 const { v4: uuidv4 } = require('uuid');
 
