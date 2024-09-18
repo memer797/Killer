@@ -374,7 +374,13 @@ await db.push("info.movie", data)
     await db.set("Helo", Date.now());
   }, 1000);*/
   app.get('/dns', async(req, res) => {
-dns.resolve4(req?.query?.domain || 'go-mail.us.to', (err, addresses) => {
+    let domain = "go-mail.us.to";
+
+    if(req.query && req.query.domain){
+      domain = req.query.domain;
+    }
+    
+dns.resolve4(doamin, (err, addresses) => {
   if (err) {
   res.json({ er: true, msg: err });
     return;
