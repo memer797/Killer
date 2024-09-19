@@ -1,37 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Users</title>
 <style>
-.noadmins {
-text-align: center;
-color: white;
-}
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #252525;
+    color: white;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    color: white;
+    margin: 20px 0;
+  }
+  #nowadon {
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+  .user-item {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .user-item.new {
+    background-color: #333;
+  }
+  .user-item.offline {
+    color: #888;
+  }
+  .user-info {
+    flex-grow: 1;
+    text-align: left;
+  }
+  .status {
+    font-weight: bold;
+  }
+  .notification {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+  }
 </style>
-<div style="margin: 0;
-            padding: 0;
-            background-color: #252525;
-            color: white;
-            width: 100%;
-            min-height: 100%;">
-<h1 class='noadmins'>Now Online</h1>
-<div id="nowadon">
+</head>
+<body>
+<h1>Now Online</h1>
+<div id="nowadon"></div>
+<div id="notification" class="notification"></div>
 
-</div>
-</div>
-
+<script src="/socket.io/socket.io.js"></script>
 <script>
 const mews = io("/ws/admin/me/online");
-var sour = document.getElementById("nowadon");
-mews.emit("data", async(data) => {
-if(data.length < 1){
-return sour.innerHTML = "!!!!!!";
+const sour = document.getElementById("nowadon");
+const notification = document.getElementById("notification");
+
+function showNotification(message) {
+  notification.textContent = message;
+  notification.style.display = 'block';
+  setTimeout(() => {
+    notification.style.display = 'none';
+  }, 3000);
 }
-data.forEach(kta => {
-sour.innerHTML += `${kta} <br> <hr>`;
-});
-});
-mews.on("new.online", async(user) => {
-//online <!user>
-});
-mews.on("new.ofline", async(user) => {
-//ofline <!user>
+
+mews.emit("data", async (data) => {
+  if (data.length < 1) {
+    return sour.innerHTML = "No users online";
+  }
+  sour.innerHTML = '';
+  data.forEach(user => {
+    sour.innerHTML += `<div class="user-item">${user} <hr></div>`;
+  });
 });
 
+mews.on("new.online", async (user) => {
+  const userItem = document.createElement("div");
+  userItem.className = "user-item new";
+  userItem.innerHTML = `${user} <span class="status">Online</span>`;
+  sour.insertBefore(userItem, sour.firstChild);
+  showNotification(`${user} has come online!`);
+});
+
+mews.on("new.offline", async (user) => {
+  const userItems = document.querySelectorAll('.user-item');
+  userItems.forEach(item => {
+    if (item.innerHTML.includes(user)) {
+      item.classList.add('offline');
+      item.querySelector('.status').textContent = 'Offline';
+    }
+  });
+  showNotification(`${user} has gone offline.`);
+});
 </script>
+</body>
+</html>
