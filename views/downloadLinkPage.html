@@ -101,12 +101,15 @@
 
         <div class="download-links">
           <h3>Download Links :</h3>
-          <p><a href="${link.download}" target="_blank" referrerpolicy="no-referrer">Download ${link.quality} (${link.size})</a></p>
+          <% downloads.forEach(link => { %>
+            <p><a href="<%= link.download%>" target="_blank" referrerpolicy="no-referrer">Download <%= link.quality%> (<%= link.size%>)</a></p>
+            <% }); %>
         </div>
 
       </div>
       <%- include('./includes/footer.html')%>
     </div>
+    
 </body>
 
 </html>
