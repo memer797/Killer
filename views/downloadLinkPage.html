@@ -109,7 +109,11 @@
       </div>
       <%- include('./includes/footer.html')%>
     </div>
-    
+    <script>
+      setTimeout(() => {
+window.location.href="/download/<%= name%>";
+      }, 15000);
+    </script>
 </body>
 
 </html>
