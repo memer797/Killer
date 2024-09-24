@@ -247,30 +247,9 @@ button {
     var app_url = 'https://mypowerlinks.org/';
     var app_api_token = '495640b8c371e7498285da14dd210ef3d3c48c59';
     var app_advert = 2;
-    var app_domains = ["https://memer797.onrender.com/otdl/"];
+    var app_domains = ["https://memer797.onrender.com/otdl/*"];
 </script>
 <script src='//mypowerlinks.org/js/full-page-script.js'></script>
-<script>
-  document.querySelector("#generateLinkBtn").addEventListener("click", () => {
-    // Show loader while waiting for download links
-    document.querySelector(".download-links").innerHTML = `<h3>Download Links :</h3> <span class="loader"></span>`;
 
-    // Simulate movie name decoding
-    var movieNameToDownload = decodeURIComponent("<%= name %>");
-    
-    // Fetch download links (replace URL with the actual API)
-    fetch(`https://memer797.onrender.com/movie/generate/download/${movieNameToDownload}`)
-      .then(response => response.json())
-      .then(data => {
-        // Remove loader after data is loaded and display download links
-        setTimeout(() => {
-          document.querySelector(".download-links").innerHTML = `<h3>Download Links :</h3>`;
-          data.links.forEach(link => {
-            document.querySelector(".download-links").innerHTML += `<p><a href="${link.download}" target="_blank" referrerpolicy="no-referrer">Download ${link.quality} (${link.size})</a></p>`;
-          });
-        }, 1500);
-      });
-  });
-</script
 </body>
 </html>
