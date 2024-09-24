@@ -179,7 +179,7 @@ button {
 
   <div class="download-links">
   <h3 style="color: #4285f4;">Download Links :</h3>
-  <a style='color: white; background: #4285f4; width: 250px; height: 105px; font-size: 30px; border-radius: 12px; box-shadow: 0 0 80px 8px #4285f4' href="https://memer797.onrender.com/otdl/<%= name%>">Get Download Links</a>
+  <a style='color: white; background: #4285f4; width: 250px; height: 105px; font-size: 30px; border-radius: 12px; box-shadow: 0 0 80px 8px #4285f4' href="https://memer797.onrender.com/otdl/<%= name.replace(/ /g, '-')">Get Download Links</a>
 </div>
 
 <!--- screen shots --->
@@ -247,7 +247,7 @@ button {
     var app_url = 'https://mypowerlinks.org/';
     var app_api_token = '495640b8c371e7498285da14dd210ef3d3c48c59';
     var app_advert = 2;
-    var app_domains = ["https://memer797.onrender.com/otdl/*"];
+    var app_domains = ["https://memer797.onrender.com/otdl/<%= name.replace(/ /g, '-')"];
 </script>
 <script src='//mypowerlinks.org/js/full-page-script.js'></script>
 
