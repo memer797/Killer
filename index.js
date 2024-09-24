@@ -369,6 +369,9 @@ async function RunMainCode() {
     var img = movie_info[0].img;
     var links = movie_info[0].links;
 
+  let referrer = req.get('Referer');
+  console.log(referrer);
+
     res.render('downloadLinkPage', {
       name: name,
       banner: {
