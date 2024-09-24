@@ -370,7 +370,9 @@ async function RunMainCode() {
     var links = movie_info[0].links;
 
   let referrer = req.get('Referer');
-  console.log(referrer);
+  if(!referrer){
+    return res.redirect(`/download/${name}`);
+}
 
     res.render('downloadLinkPage', {
       name: name,
