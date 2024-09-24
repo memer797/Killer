@@ -352,5 +352,10 @@ var name = name.replace(".html", "");
   });
 });
 
+app.get('/otdl/:name', async(req, res) => {
+ res.render('downloadLinkPage', {
+  name: req.params.name
+ })
+});
 };
 RunMainCode();

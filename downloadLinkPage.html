@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= name%> Movie Download Page
+  </title>
+  <%- include('./includes/fav icon.html')%>
+    <link rel="stylesheet" type="text/css" href="/global.css" />
+    <style>
+      button {
+        margin: 20px;
+        padding: 10px;
+        background-color: #4285f4;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .movie-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #1f1f1f;
+        padding: 20px;
+        border-radius: 8px;
+        color: #fff;
+      }
+
+      .movie-image {
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      .movie-details h2 {
+        color: #4285f4;
+        margin-bottom: 10px;
+      }
+
+      .movie-details p {
+        margin: 5px 0;
+      }
+
+      .download-links,
+      .tags {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .download-links a {
+        display: block;
+        margin: 5px 0;
+        padding: 8px;
+        background-color: #4285f4;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        text-align: center;
+      }
+
+      .download-links a:hover {
+        background-color: #345dc1;
+      }
+
+      .image-container {
+        border: 0px solid #ffffff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .movie-container {
+          padding: 10px;
+        }
+      }
+    </style>
+</head>
+
+<body>
+  <%- include('./includes/nav.html')%>
+    <div class="taremaka">
+      <span><a style="color: white; text-decoration: none; font-size: 20px; margin-left: 4px;" href="/download/<%= name.replace(/ /g, '-')
+  %>">⬅️ back</a></span>
+      <div class="movie-container">
+        <img class="movie-image" src="<%= banner.jpg%>" alt="<%= name%> Movie Poster">
+
+        <div class="movie-details">
+          <h2>
+            <%= name%>
+          </h2> <br>
+          <p>This page will work only one time</p>
+        </div>
+
+        <div class="download-links">
+          <h3>Download Links :</h3>
+          <p><a href="${link.download}" target="_blank" referrerpolicy="no-referrer">Download ${link.quality} (${link.size})</a></p>
+        </div>
+
+      </div>
+      <%- include('./includes/footer.html')%>
+    </div>
+</body>
+
+</html>
