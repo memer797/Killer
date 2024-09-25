@@ -70,6 +70,28 @@ margin-left: 20px;
         .filter-links a:hover {
             background-color: #45a049;
         }
+        
+        #cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-container {
+    width: 48%; /* Adjust width to create two columns */
+    margin-bottom: 20px;
+    background-color: #2c2c2c;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: move;
+}
+
+.card-container img {
+    width: 100%; /* Ensure image takes full width */
+    border-radius: 10px;
+}
+
     </style>
 </head>
 <body>
@@ -311,6 +333,50 @@ margin-left: 20px;
                 });
             });
         }).catch();
+    </script>   
+ <script>
+    function addCard(data) {
+    const { name, description, category_txt, img, id } = data;
+    const cardContainer = document.createElement('div');
+    cardContainer.classList.add('card-container');
+    cardContainer.draggable = true; // Make the card draggable
+
+    cardContainer.addEventListener('dragstart', handleDragStart);
+    cardContainer.addEventListener('dragover', handleDragOver);
+    cardContainer.addEventListener('drop', handleDrop);
+
+    // Rest of your card creation code here...
+    // append options, image, and text containers like before
+    
+    // Append card to the container
+    const cardsContainer = document.getElementById('cardsContainer');
+    cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
+}
+
+function handleDragStart(e) {
+    e.dataTransfer.setData('text/plain', e.target.dataset.index); // Track card index
+    e.dataTransfer.effectAllowed = 'move';
+    e.target.classList.add('dragging'); // Optionally, add a class for visual indication
+}
+
+function handleDragOver(e) {
+    e.preventDefault(); // Necessary for allowing a drop
+    e.dataTransfer.dropEffect = 'move';
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    const draggedCard = document.querySelector('.dragging');
+    draggedCard.classList.remove('dragging');
+    
+    const cardsContainer = document.getElementById('cardsContainer');
+    const targetCard = e.target.closest('.card-container');
+
+    if (draggedCard !== targetCard) {
+        // Swap the positions of the dragged and target cards
+        cardsContainer.insertBefore(draggedCard, targetCard.nextSibling);
+    }
+}
     </script>
 </body>
-</html>
+    </html>
