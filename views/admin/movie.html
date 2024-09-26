@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="/admin.movie.css">
     <title>Admin Panel</title>
     <style>
+        /* Same styles as before */
+        
         .search-container {
             position: relative;
             margin-bottom: 20px;
@@ -70,11 +72,25 @@ margin-left: 20px;
         .filter-links a:hover {
             background-color: #45a049;
         }
+        
+        
+        .mark-edited {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .mark-edited input[type="checkbox"] {
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search movies..." oninput="searchMovies()">
+        <!-- Same search container as before -->
+        	<input type="text" id="searchInput" placeholder="Search movies..." oninput="searchMovies()">
         <button onclick="searchMovies()">Search</button>
         <div class="filter-links">
             <a href="#" onclick="filterCategory('All')">All</a>
@@ -311,6 +327,102 @@ margin-left: 20px;
                 });
             });
         }).catch();
+// Your existing functions here...
+
+        function addCard(data) {
+            const { name, description, category_txt, img, id, edited } = data;
+            const cardContainer = document.createElement('div');
+            cardContainer.classList.add('card-container');
+
+            // Create an options button as before...
+
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image-container');
+
+            const imageElement = document.createElement('img');
+            imageElement.src = img;
+            imageElement.alt = 'Icon';
+
+            imageContainer.appendChild(imageElement);
+
+            const textContainer = document.createElement('div');
+            textContainer.classList.add('text-container');
+
+            const nameHeading = document.createElement('div');
+            nameHeading.style.width = '100%';
+            nameHeading.innerHTML = `<h4>${name}</h4>`;
+
+            const descriptionParagraph = document.createElement('div');
+            descriptionParagraph.classList.add('pd');
+            descriptionParagraph.textContent = description;
+
+            const category = document.createElement('div');
+            category.classList.add('category');
+            category.textContent = truncateString(category_txt.join(", "), 18);
+
+            const customText = document.createElement('div');
+            customText.id = 'customText';
+            customText.style.position = 'absolute';
+            customText.style.bottom = '5px';
+            customText.style.left = '5px';
+            customText.style.color = 'white';
+            customText.textContent = id;
+
+            const markEdited = document.createElement('div');
+            markEdited.classList.add('mark-edited');
+            markEdited.innerHTML = `
+                <label for="mark-${id}">Edited</label>
+                <input type="checkbox" id="mark-${id}" ${edited ? 'checked' : ''} onchange="toggleEditMark(this, '${name}')">
+            `;
+
+            textContainer.appendChild(nameHeading);
+            textContainer.appendChild(descriptionParagraph);
+            textContainer.appendChild(category);
+            textContainer.appendChild(customText);
+
+            cardContainer.appendChild(optionsButton);
+            cardContainer.appendChild(optionsMenu);
+            cardContainer.appendChild(imageContainer);
+            cardContainer.appendChild(textContainer);
+            textContainer.appendChild(markEdited);
+
+            const cardsContainer = document.getElementById('cardsContainer');
+            cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
+        }
+
+        function toggleEditMark(checkbox, movieName) {
+            const isEdited = checkbox.checked;
+            // Optionally, send the update to the server:
+            fetch("/admin/data/update/edit-status", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: movieName,
+                    edited: isEdited
+                })
+            }).then(() => {
+                console.log(`${movieName} marked as edited: ${isEdited}`);
+            }).catch(err => console.error(err));
+        }
+
+        // Fetch and add the cards as before...
+        fetch("/admin/data/get/movie", {
+            method: "POST"
+        }).then(ggp => ggp.json()).then(dtta => {
+            dtta.data.forEach((dosta) => {
+                const { name, description, category, img, contentType, edited } = dosta;
+                addCard({
+                    name,
+                    description,
+                    category_txt: category,
+                    img,
+                    id: contentType,
+                    edited: edited || false // Assuming edited status from server
+                });
+            });
+        }).catch();
     </script>
 </body>
-    </html>
+</html>
