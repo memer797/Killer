@@ -9,7 +9,7 @@
         .search-container {
             position: relative;
             margin-bottom: 20px;
-            margin-left: 20px;
+margin-left: 20px;
         }
 
         #searchInput {
@@ -70,20 +70,6 @@
         .filter-links a:hover {
             background-color: #45a049;
         }
-
-        .hide-button {
-            padding: 8px 12px;
-            background-color: #ff5722;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 20px;
-        }
-
-        .hide-button:hover {
-            background-color: #e64a19;
-        }
     </style>
 </head>
 <body>
@@ -100,7 +86,6 @@
     </div>
 
     <button class="add-button" onclick="openModal()">Add</button>
-    <button class="hide-button" onclick="toggleMovies()">Hide Movies</button>
 
     <%- include("./panel-movie-add.html") %>
     <%- include("./panel-movie-edit.html") %>
@@ -110,7 +95,6 @@
         let activeOptionsMenu = null;
         let ttags = [];
         let selectedCategoryContentType = 'All';
-        let moviesHidden = false;
 
         function searchMovies() {
             const input = document.getElementById("searchInput");
@@ -285,25 +269,48 @@
                 const card = activeOptionsMenu.closest('.card-container');
                 card.parentNode.removeChild(card);
                 activeOptionsMenu.style.display = 'none';
-                activeOptionsMenu = null;
             }
         }
 
-        function toggleMovies() {
-            const cards = document.getElementsByClassName("card-container");
-            for (let i = 0; i < cards.length; i++) {
-                cards[i].style.display = moviesHidden ? "" : "none";
-            }
-            moviesHidden = !moviesHidden;
-            document.querySelector('.hide-button').textContent = moviesHidden ? 'Show Movies' : 'Hide Movies';
-        }
-
-        document.body.addEventListener('click', function(event) {
-            if (activeOptionsMenu && !activeOptionsMenu.contains(event.target)) {
+        document.addEventListener('click', () => {
+            if (activeOptionsMenu) {
                 activeOptionsMenu.style.display = 'none';
-                activeOptionsMenu = null;
             }
         });
+
+        document.getElementById('tags').addEventListener("input", async() => {
+            const tagsContainer = document.getElementById('tagContainer');
+            const TInput = document.getElementById('tags');
+            if (!TInput.value.includes(",")) return;
+            const tgs = TInput.value.split(",");
+            if (!tgs || tgs.length < 1) {
+                return;
+            }
+            if (!tgs[0].length || tgs[0].trim() === "") return;
+            const tagElement = document.createElement('div');
+            tagElement.classList.add('tag');
+            tagElement.innerText = tgs[0];
+            tagElement.addEventListener('click', () => removeTag(tagElement));
+            tagsContainer.appendChild(tagElement);
+            TInput.value = "";
+            ttags.push(tgs[0]);
+            console.log(tgs);
+        });
+
+        fetch("/admin/data/get/movie", {
+            method: "POST"
+        }).then(ggp => ggp.json()).then(dtta => {
+            dtta.data.forEach((dosta) => {
+                const { name, description, category, img, contentType } = dosta;
+                addCard({
+                    name,
+                    description,
+                    category_txt: category,
+                    img,
+                    id: contentType
+                });
+            });
+        }).catch();
     </script>
 </body>
-</html>
+    </html>
