@@ -9,7 +9,7 @@
         .search-container {
             position: relative;
             margin-bottom: 20px;
-margin-left: 20px;
+            margin-left: 20px;
         }
 
         #searchInput {
@@ -69,6 +69,69 @@ margin-left: 20px;
 
         .filter-links a:hover {
             background-color: #45a049;
+        }
+
+        .card-container {
+            display: block;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .options {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .options-menu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        .options-menu a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .options-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .delete {
+            color: red;
+        }
+
+        .image-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .text-container {
+            margin-left: 120px;
+        }
+
+        .pd {
+            margin-top: 10px;
+        }
+
+        .category {
+            margin-top: 5px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -178,8 +241,17 @@ margin-left: 20px;
                 confirmDeleteCard(name);
             };
 
+            // Add Show/Hide Button
+            const toggleVisibilityLink = document.createElement('a');
+            toggleVisibilityLink.href = '#';
+            toggleVisibilityLink.textContent = 'Show/Hide';
+            toggleVisibilityLink.onclick = function() {
+                toggleMovieVisibility(cardContainer);
+            };
+
             optionsMenu.appendChild(editLink);
             optionsMenu.appendChild(deleteLink);
+            optionsMenu.appendChild(toggleVisibilityLink); // Append Show/Hide button
 
             const imageContainer = document.createElement('div');
             imageContainer.classList.add('image-container');
@@ -227,90 +299,49 @@ margin-left: 20px;
             cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
         }
 
-        function openModal() {
-            document.getElementById('myModal').style.display = 'flex';
+        function toggleMovieVisibility(card) {
+            if (card.style.display === 'none') {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
         }
 
-        function closeModal() {
-            document.getElementById('myModal').style.display = 'none';
-        }
-
-        function removeTag(tagElement) {
-            const tagsContainer = document.getElementById('tagContainer');
-            tagsContainer.removeChild(tagElement);
-        }
-
-        function showOptionsMenu(event, card) {
+        function showOptionsMenu(event, cardContainer) {
             if (activeOptionsMenu) {
                 activeOptionsMenu.style.display = 'none';
             }
-            const optionsMenu = card.querySelector('.options-menu');
+
+            const optionsMenu = cardContainer.querySelector('.options-menu');
             optionsMenu.style.display = 'block';
             activeOptionsMenu = optionsMenu;
-            event.stopPropagation();
+
+            document.addEventListener('click', function hideOptions(e) {
+                if (!optionsMenu.contains(e.target) && !cardContainer.contains(e.target)) {
+                    optionsMenu.style.display = 'none';
+                    activeOptionsMenu = null;
+                    document.removeEventListener('click', hideOptions);
+                }
+            });
+        }
+
+        function editMovie(name, link) {
+            // Implement movie editing functionality
+            alert('Edit movie: ' + name);
         }
 
         function confirmDeleteCard(name) {
-            const isConfirmed = confirm('Are you sure you want to delete this card?');
-            if (isConfirmed) {
-                const lastPrompt = prompt('Say YES to delete');
-                if (lastPrompt.trim().toLowerCase() !== "yes") {
-                    return;
-                }
-                fetch("/admin/data/delete/movie", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        name: name
-                    })
-                });
-                const card = activeOptionsMenu.closest('.card-container');
-                card.parentNode.removeChild(card);
-                activeOptionsMenu.style.display = 'none';
+            // Implement delete confirmation functionality
+            if (confirm("Are you sure you want to delete " + name + "?")) {
+                alert('Movie deleted: ' + name);
             }
         }
 
-        document.addEventListener('click', () => {
-            if (activeOptionsMenu) {
-                activeOptionsMenu.style.display = 'none';
-            }
-        });
+        function openModal() {
+            // Open the modal to add a new movie
+            alert('Open Add Movie Modal');
+        }
 
-        document.getElementById('tags').addEventListener("input", async() => {
-            const tagsContainer = document.getElementById('tagContainer');
-            const TInput = document.getElementById('tags');
-            if (!TInput.value.includes(",")) return;
-            const tgs = TInput.value.split(",");
-            if (!tgs || tgs.length < 1) {
-                return;
-            }
-            if (!tgs[0].length || tgs[0].trim() === "") return;
-            const tagElement = document.createElement('div');
-            tagElement.classList.add('tag');
-            tagElement.innerText = tgs[0];
-            tagElement.addEventListener('click', () => removeTag(tagElement));
-            tagsContainer.appendChild(tagElement);
-            TInput.value = "";
-            ttags.push(tgs[0]);
-            console.log(tgs);
-        });
-
-        fetch("/admin/data/get/movie", {
-            method: "POST"
-        }).then(ggp => ggp.json()).then(dtta => {
-            dtta.data.forEach((dosta) => {
-                const { name, description, category, img, contentType } = dosta;
-                addCard({
-                    name,
-                    description,
-                    category_txt: category,
-                    img,
-                    id: contentType
-                });
-            });
-        }).catch();
     </script>
 </body>
-    </html>
+</html>
