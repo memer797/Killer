@@ -9,7 +9,7 @@
         .search-container {
             position: relative;
             margin-bottom: 20px;
-margin-left: 20px;
+            margin-left: 20px;
         }
 
         #searchInput {
@@ -70,6 +70,45 @@ margin-left: 20px;
         .filter-links a:hover {
             background-color: #45a049;
         }
+
+        .card-container {
+            margin: 10px;
+            padding: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .options-menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .options-menu a {
+            display: block;
+            margin-bottom: 5px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .options-menu a:hover {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -91,100 +130,6 @@ margin-left: 20px;
     <%- include("./panel-movie-edit.html") %>
     <div id="cardsContainer"></div>
 
-
-
-
-<script>
-
-        function addCard(data) {
-    const { name, description, category_txt, img, id } = data;
-    const cardContainer = document.createElement('div');
-    cardContainer.classList.add('card-container');
-
-    const optionsButton = document.createElement('div');
-    optionsButton.classList.add('options');
-    optionsButton.textContent = '…';
-    optionsButton.onclick = function(event) {
-        showOptionsMenu(event, cardContainer);
-    };
-
-    const optionsMenu = document.createElement('div');
-    optionsMenu.classList.add('options-menu');
-    optionsMenu.id = 'optionsMenu';
-
-    const editLink = document.createElement('a');
-    editLink.href = '#';
-    editLink.textContent = 'Edit';
-    editLink.onclick = function() {
-        editMovie(name, this);
-    };
-
-    const deleteLink = document.createElement('a');
-    deleteLink.href = '#';
-    deleteLink.classList.add('delete');
-    deleteLink.textContent = 'Delete';
-    deleteLink.onclick = function() {
-        confirmDeleteCard(name);
-    };
-
-    // Add Show/Hide Button
-    const toggleVisibilityLink = document.createElement('a');
-    toggleVisibilityLink.href = '#';
-    toggleVisibilityLink.textContent = 'Show/Hide';
-    toggleVisibilityLink.onclick = function() {
-        toggleMovieVisibility(cardContainer);
-    };
-
-    optionsMenu.appendChild(editLink);
-    optionsMenu.appendChild(deleteLink);
-    optionsMenu.appendChild(toggleVisibilityLink); // Append Show/Hide button
-
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('image-container');
-
-    const imageElement = document.createElement('img');
-    imageElement.src = img;
-    imageElement.alt = 'Icon';
-
-    imageContainer.appendChild(imageElement);
-
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('text-container');
-
-    const nameHeading = document.createElement('div');
-    nameHeading.style.width = '100%';
-    nameHeading.innerHTML = `<h4>${name}</h4>`;
-
-    const descriptionParagraph = document.createElement('div');
-    descriptionParagraph.classList.add('pd');
-    descriptionParagraph.textContent = description;
-
-    const category = document.createElement('div');
-    category.classList.add('category');
-    category.textContent = truncateString(category_txt.join(", "), 18);
-
-    const customText = document.createElement('div');
-    customText.id = 'customText';
-    customText.style.position = 'absolute';
-    customText.style.bottom = '5px';
-    customText.style.left = '5px';
-    customText.style.color = 'white';
-    customText.textContent = id;
-
-    textContainer.appendChild(nameHeading);
-    textContainer.appendChild(descriptionParagraph);
-    textContainer.appendChild(category);
-    textContainer.appendChild(customText);
-
-    cardContainer.appendChild(optionsButton);
-    cardContainer.appendChild(optionsMenu);
-    cardContainer.appendChild(imageContainer);
-    cardContainer.appendChild(textContainer);
-
-    const cardsContainer = document.getElementById('cardsContainer');
-    cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
-}
-    </script>
     <script>
         let activeOptionsMenu = null;
         let ttags = [];
@@ -272,8 +217,17 @@ margin-left: 20px;
                 confirmDeleteCard(name);
             };
 
+            // Add Show/Hide Button
+            const toggleVisibilityLink = document.createElement('a');
+            toggleVisibilityLink.href = '#';
+            toggleVisibilityLink.textContent = 'Show/Hide';
+            toggleVisibilityLink.onclick = function() {
+                toggleMovieVisibility(cardContainer);
+            };
+
             optionsMenu.appendChild(editLink);
             optionsMenu.appendChild(deleteLink);
+            optionsMenu.appendChild(toggleVisibilityLink); // Append Show/Hide button
 
             const imageContainer = document.createElement('div');
             imageContainer.classList.add('image-container');
@@ -334,79 +288,28 @@ margin-left: 20px;
             tagsContainer.removeChild(tagElement);
         }
 
-        function showOptionsMenu(event, card) {
-            if (activeOptionsMenu) {
+        function showOptionsMenu(event, cardContainer) {
+            if (activeOptionsMenu && activeOptionsMenu !== cardContainer) {
                 activeOptionsMenu.style.display = 'none';
             }
-            const optionsMenu = card.querySelector('.options-menu');
+            const optionsMenu = cardContainer.querySelector('.options-menu');
             optionsMenu.style.display = 'block';
             activeOptionsMenu = optionsMenu;
-            event.stopPropagation();
-        }
 
-        function confirmDeleteCard(name) {
-            const isConfirmed = confirm('Are you sure you want to delete this card?');
-            if (isConfirmed) {
-                const lastPrompt = prompt('Say YES to delete');
-                if (lastPrompt.trim().toLowerCase() !== "yes") {
-                    return;
+            document.addEventListener('click', function(event) {
+                if (!cardContainer.contains(event.target)) {
+                    optionsMenu.style.display = 'none';
                 }
-                fetch("/admin/data/delete/movie", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        name: name
-                    })
-                });
-                const card = activeOptionsMenu.closest('.card-container');
-                card.parentNode.removeChild(card);
-                activeOptionsMenu.style.display = 'none';
-            }
+            }, { once: true });
         }
 
-        document.addEventListener('click', () => {
-            if (activeOptionsMenu) {
-                activeOptionsMenu.style.display = 'none';
+        function toggleMovieVisibility(card) {
+            if (card.style.display === 'none') {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
             }
-        });
-
-        document.getElementById('tags').addEventListener("input", async() => {
-            const tagsContainer = document.getElementById('tagContainer');
-            const TInput = document.getElementById('tags');
-            if (!TInput.value.includes(",")) return;
-            const tgs = TInput.value.split(",");
-            if (!tgs || tgs.length < 1) {
-                return;
-            }
-            if (!tgs[0].length || tgs[0].trim() === "") return;
-            const tagElement = document.createElement('div');
-            tagElement.classList.add('tag');
-            tagElement.innerText = tgs[0];
-            tagElement.addEventListener('click', () => removeTag(tagElement));
-            tagsContainer.appendChild(tagElement);
-            TInput.value = "";
-            ttags.push(tgs[0]);
-            console.log(tgs);
-        });
-
-        fetch("/admin/data/get/movie", {
-            method: "POST"
-        }).then(ggp => ggp.json()).then(dtta => {
-            dtta.data.forEach((dosta) => {
-                const { name, description, category, img, contentType } = dosta;
-                addCard({
-                    name,
-                    description,
-                    category_txt: category,
-                    img,
-                    id: contentType
-                });
-            });
-        }).catch();
-
-      
+        }
     </script>
 </body>
-    </html>
+</html>
