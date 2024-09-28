@@ -91,6 +91,100 @@ margin-left: 20px;
     <%- include("./panel-movie-edit.html") %>
     <div id="cardsContainer"></div>
 
+
+
+
+<script>
+
+        function addCard(data) {
+    const { name, description, category_txt, img, id } = data;
+    const cardContainer = document.createElement('div');
+    cardContainer.classList.add('card-container');
+
+    const optionsButton = document.createElement('div');
+    optionsButton.classList.add('options');
+    optionsButton.textContent = '…';
+    optionsButton.onclick = function(event) {
+        showOptionsMenu(event, cardContainer);
+    };
+
+    const optionsMenu = document.createElement('div');
+    optionsMenu.classList.add('options-menu');
+    optionsMenu.id = 'optionsMenu';
+
+    const editLink = document.createElement('a');
+    editLink.href = '#';
+    editLink.textContent = 'Edit';
+    editLink.onclick = function() {
+        editMovie(name, this);
+    };
+
+    const deleteLink = document.createElement('a');
+    deleteLink.href = '#';
+    deleteLink.classList.add('delete');
+    deleteLink.textContent = 'Delete';
+    deleteLink.onclick = function() {
+        confirmDeleteCard(name);
+    };
+
+    // Add Show/Hide Button
+    const toggleVisibilityLink = document.createElement('a');
+    toggleVisibilityLink.href = '#';
+    toggleVisibilityLink.textContent = 'Show/Hide';
+    toggleVisibilityLink.onclick = function() {
+        toggleMovieVisibility(cardContainer);
+    };
+
+    optionsMenu.appendChild(editLink);
+    optionsMenu.appendChild(deleteLink);
+    optionsMenu.appendChild(toggleVisibilityLink); // Append Show/Hide button
+
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
+    const imageElement = document.createElement('img');
+    imageElement.src = img;
+    imageElement.alt = 'Icon';
+
+    imageContainer.appendChild(imageElement);
+
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('text-container');
+
+    const nameHeading = document.createElement('div');
+    nameHeading.style.width = '100%';
+    nameHeading.innerHTML = `<h4>${name}</h4>`;
+
+    const descriptionParagraph = document.createElement('div');
+    descriptionParagraph.classList.add('pd');
+    descriptionParagraph.textContent = description;
+
+    const category = document.createElement('div');
+    category.classList.add('category');
+    category.textContent = truncateString(category_txt.join(", "), 18);
+
+    const customText = document.createElement('div');
+    customText.id = 'customText';
+    customText.style.position = 'absolute';
+    customText.style.bottom = '5px';
+    customText.style.left = '5px';
+    customText.style.color = 'white';
+    customText.textContent = id;
+
+    textContainer.appendChild(nameHeading);
+    textContainer.appendChild(descriptionParagraph);
+    textContainer.appendChild(category);
+    textContainer.appendChild(customText);
+
+    cardContainer.appendChild(optionsButton);
+    cardContainer.appendChild(optionsMenu);
+    cardContainer.appendChild(imageContainer);
+    cardContainer.appendChild(textContainer);
+
+    const cardsContainer = document.getElementById('cardsContainer');
+    cardsContainer.insertBefore(cardContainer, cardsContainer.childNodes[0]);
+}
+    </script>
     <script>
         let activeOptionsMenu = null;
         let ttags = [];
@@ -311,6 +405,8 @@ margin-left: 20px;
                 });
             });
         }).catch();
+
+      
     </script>
 </body>
     </html>
