@@ -369,10 +369,10 @@ async function RunMainCode() {
     var img = movie_info[0].img;
     var links = movie_info[0].links;
 
-  let referrer = req.get('Referer');
+  /*let referrer = req.get('Referer');
   if(!referrer || referrer === `${req.protocol}://${req.get('host')}${req.originalUrl}`){
     return res.redirect(`/download/${name}`);
-}
+}*/
 
     res.render('downloadLinkPage', {
       name: name,
