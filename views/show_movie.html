@@ -114,16 +114,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
 });*/
 	window.onload = function() {
-    if (sessionStorage.getItem('isRefreshed') === 'true') {
-        sessionStorage.removeItem('isRefreshed'); // Clear the flag to avoid infinite loop
-        let currentURL = window.location.href;
-        if (currentURL.includes('/otdl/')) {
-            let newURL = currentURL.replace('/otdl/', '/download/');
-            window.location.replace(newURL); // Redirect to the new URL
-        }
-    } else {
-        sessionStorage.setItem('isRefreshed', 'true'); // Set flag for refresh detection
-    }
+    sessionStorage.setItem('isRefreshed', 'false');
 };
 </script>
 
